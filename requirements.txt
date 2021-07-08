@@ -1,2 +1,6 @@
 django
 markdown
+django-tinymce
+mysqlclient
+gunicorn
+django-environ

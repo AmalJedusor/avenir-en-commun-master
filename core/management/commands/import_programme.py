@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
         for file in glob.glob("programme/chapitre*/index.md"):
             title = open(file,encoding='utf-8').read().split('\n')[0][1:].strip()
-            print("numero du fichier",file.split('chapitre-')[1].split('\\')[0])
+            print(slugify(title))   
             Chapter(
                 number=file.split('chapitre-')[1].split('\\')[0],
                 slug=slugify(title),
@@ -24,8 +24,7 @@ class Command(BaseCommand):
         for file in glob.glob("programme/chapitre*/*.md"):
             if 'index.md' in file:
                 continue
-            chapter_number = file.split('chapitre-')[1].split('\\')[0]
-            print(chapter_number)
+            chapter_number = file.split('chapitre-')[1].split('\\')[0]       
             chapter = Chapter.objects.get(number=chapter_number)
             title = open(file,encoding='utf-8').read().split('\n')[0][1:].strip()
             Article(

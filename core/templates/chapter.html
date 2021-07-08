@@ -87,8 +87,29 @@
                             {{ content|safe }}
                         </div>
                     </section>
+                    {% if chapter.number != "0" %}                 
+                    <section class="chapter-toc">
+                        <header class="page-header"><h2 class="h4"><i class="fa fa-fw fa-list-ul"></i> Sommaire du chapitre</h2></header>
+                        <nav class="toc" role="navigation">
+                            <ul class="toc list-group">
+                            {% for article in chapter.article_set.all %}
+                            <a
+                               class="list-group-item toc-section toc-chapter-{{chapter.number}}"
+                               href="/section/{{article.number}}/{{article.slug}}">
+                               <span class="label label-default">{{article.number}}</span> {{article.title}}
+                            </a>
+                            {% endfor %}
+                            </ul>
+                        </nav>
+                        </section>
+                    {% endif %}
+                
+                    
+                 
                 </article>
+              
             </div>
+
             <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page"><i class="fa fa-arrow-up" aria-hidden="true"></i><span> Retour en haut de page</span></a>
         </div>
     </div>

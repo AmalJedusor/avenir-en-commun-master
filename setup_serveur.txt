@@ -1,0 +1,1 @@
+cloud_sql_proxy.exe -instances=laec-prod-test:europe-west3:laec-django=tcp:8888

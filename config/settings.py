@@ -30,8 +30,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # PROD
 DEBUG = True
-
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["laec-prod-test.ey.r.appspot.com",'127.0.0.1','localhost']
 
 # Application definition
 
@@ -85,8 +84,8 @@ DATABASES = {
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD':  env('DATABASE_PASS'),
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'HOST': '/cloudsql/laec-prod-test:europe-west3:laec-django',   # Or an IP Address that your DB is hosted on
+        'PORT': '8888',
     }
 }
 
@@ -126,4 +125,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_ROOT = "static"
+STATIC_URL = "/static/"
+STATICFILES_DIRS = []

@@ -19,13 +19,13 @@
             {% for chapter in chapters %}
                <a
                   id="chapitre-{{chapter.number}}"
-                  class="list-group-item toc-chapter toc-chapter-la-6e-republique"
+                  class="list-group-item toc-chapter toc-chapter-{{chapter.number}}"
                   href="/chapitre/{{chapter.number}}/{{chapter.slug}}">
                                     <span class="alternate">{{chapter.title}}</span>
                </a>
                   {% for article in chapter.article_set.all %}
                   <a
-                     class="list-group-item toc-section toc-chapter-la-6e-republique"
+                     class="list-group-item toc-section toc-chapter-{{chapter.number}}"
                      href="/section/{{article.number}}/{{article.slug}}">
                      <span class="label label-default">{{article.number}}</span> {{article.title}}
                   </a>
