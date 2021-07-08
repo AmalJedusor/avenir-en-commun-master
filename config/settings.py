@@ -84,8 +84,8 @@ DATABASES = {
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD':  env('DATABASE_PASS'),
-        'HOST': '/cloudsql/laec-prod-test:europe-west3:laec-django',   # Or an IP Address that your DB is hosted on
-        'PORT': '8888',
+        'HOST': env('DATABASE_HOST'),   # Or an IP Address that your DB is hosted on
+        'PORT': env('DATABASE_PORT'),
     }
 }
 
