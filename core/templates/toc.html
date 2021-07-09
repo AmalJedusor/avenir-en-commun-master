@@ -5,9 +5,9 @@
    {% include "_navbar.html" %}
    <div class="jumbotron">
       <div class="container">
-         <h1><b><i class="fa fa-fw fa-list-ul" aria-hidden="true"></i>Table des matières</b></h1>
+         <h1><b><i class="fa fa-fw fa-list-ul" aria-hidden="true"></i> Table des matières </b></h1>
          <p class="sidelines" aria-hidden="true"><i class="fa fa-phi"></i></p>
-         <a rel="start" data-load-display="" href="/"><i class="fa fa-fw fa-home" aria-hidden="true"></i>Retour à l'accueil</a>
+         <a rel="start" data-load-display="" href="/"><i class="fa fa-fw fa-home" aria-hidden="true"></i> Retour à l'accueil</a>
       </div>
    </div>
    <div class="wrap-container-main">
@@ -21,12 +21,13 @@
                   id="chapitre-{{chapter.number}}"
                   class="list-group-item toc-chapter toc-chapter-{{chapter.number}}"
                   href="/chapitre/{{chapter.number}}/{{chapter.slug}}">
+                  <i class="fa fa-fw fa-2x fa-pull-right icon icon-chapter-{{chapter.number}}" aria-hiddent="true"></i>
                                     <span class="alternate">{{chapter.title}}</span>
                </a>
                   {% for article in chapter.article_set.all %}
                   <a
                      class="list-group-item toc-section toc-chapter-{{chapter.number}}"
-                     href="/section/{{article.number}}/{{article.slug}}">
+                     href="/chapitre/{{chapter.number}}/section/{{article.number}}/{{article.slug}}">
                      <span class="label label-default">{{article.number}}</span> {{article.title}}
                   </a>
                   {% endfor %}

@@ -6,7 +6,7 @@
         <small>Le programme de la <strong>France insoumise</strong></small>
     </div>
     {% include "_navbar.html" %}
-    <div class="jumbotron" aria-hidden="true">
+    <div class="theme-chapter-{{chapter.number}} jumbotron" aria-hidden="true">
         <div class="container">
 		<h1><i class="fa fa-fw fa-pull-right fa-3x fa-phi visible-lg-inline-block visible-md-inline-block"></i><b class="text-balance">{{chapter.title}}</b></h1>
             <p class="sidelines"><i class="fa fa-phi"></i></p>
@@ -88,14 +88,14 @@
                         </div>
                     </section>
                     {% if chapter.number != "0" %}                 
-                    <section class="chapter-toc">
+                    <section class="chapter-toc theme-chapter-{{chapter.number}}">
                         <header class="page-header"><h2 class="h4"><i class="fa fa-fw fa-list-ul"></i> Sommaire du chapitre</h2></header>
                         <nav class="toc" role="navigation">
                             <ul class="toc list-group">
                             {% for article in chapter.article_set.all %}
                             <a
                                class="list-group-item toc-section toc-chapter-{{chapter.number}}"
-                               href="/section/{{article.number}}/{{article.slug}}">
+                               href="/chapitre/{{chapter.number}}/section/{{article.number}}/{{article.slug}}">
                                <span class="label label-default">{{article.number}}</span> {{article.title}}
                             </a>
                             {% endfor %}

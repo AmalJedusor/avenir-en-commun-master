@@ -4965,8 +4965,7 @@ a.badge:focus {
     padding-top: 30px;
     padding-bottom: 30px;
     margin-bottom: 30px;
-    color: inherit;
-    background-color: #d8d8d8
+    background-color:inherit;
 }
 
 .jumbotron h1,
@@ -11916,77 +11915,78 @@ ul#side-navigation span.alternate {
     }
 }
 
-.theme-chapter-1 .jumbotron h1 b {
+.theme-chapter-1.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #ffae39, 1px 1px 0 #ffac34, 1.5px 1.5px 0 #ffaa2f, 2px 2px 0 #ffa82a, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
-    .theme-chapter-1 .jumbotron h1 b {
+    .theme-chapter-1.jumbotron h1 b {
         text-shadow: 0.5px 0.5px 0 #ffae39, 1px 1px 0 #ffac34, 1.5px 1.5px 0 #ffaa2f, 2px 2px 0 #ffa82a, 2.5px 2.5px 0 #ffa625, 3px 3px 0 #ffa625, 3.5px 3.5px 0 #ffa320, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
 
-.theme-chapter-2 .jumbotron h1 b {
+.theme-chapter-2.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #f6a9a9, 1px 1px 0 #f6a5a5, 1.5px 1.5px 0 #f5a0a0, 2px 2px 0 #f59b9b, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
-    .theme-chapter-2 .jumbotron h1 b {
+    .theme-chapter-2.jumbotron h1 b {
         text-shadow: 0.5px 0.5px 0 #f6a9a9, 1px 1px 0 #f6a5a5, 1.5px 1.5px 0 #f5a0a0, 2px 2px 0 #f59b9b, 2.5px 2.5px 0 #f49797, 3px 3px 0 #f49797, 3.5px 3.5px 0 #f49292, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
 
-.theme-chapter-3 .jumbotron h1 b {
+.theme-chapter-3.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #66d7a2, 1px 1px 0 #62d69f, 1.5px 1.5px 0 #5ed59d, 2px 2px 0 #5ad49a, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
-    .theme-chapter-3 .jumbotron h1 b {
+    .theme-chapter-3.jumbotron h1 b {
         text-shadow: 0.5px 0.5px 0 #66d7a2, 1px 1px 0 #62d69f, 1.5px 1.5px 0 #5ed59d, 2px 2px 0 #5ad49a, 2.5px 2.5px 0 #56d398, 3px 3px 0 #56d398, 3.5px 3.5px 0 #52d295, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
 
-.theme-chapter-4 .jumbotron h1 b {
+.theme-chapter-4.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #8da2ed, 1px 1px 0 #889eec, 1.5px 1.5px 0 #849beb, 2px 2px 0 #8097ea, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
-    .theme-chapter-4 .jumbotron h1 b {
+    .theme-chapter-4.jumbotron h1 b {
         text-shadow: 0.5px 0.5px 0 #8da2ed, 1px 1px 0 #889eec, 1.5px 1.5px 0 #849beb, 2px 2px 0 #8097ea, 2.5px 2.5px 0 #7b93ea, 3px 3px 0 #7b93ea, 3.5px 3.5px 0 #7790e9, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
 
-.theme-chapter-5 .jumbotron h1 b {
+.theme-chapter-5.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #d96594, 1px 1px 0 #d86191, 1.5px 1.5px 0 #d75d8e, 2px 2px 0 #d6598b, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
-    .theme-chapter-5 .jumbotron h1 b {
+    .theme-chapter-5.jumbotron h1 b {
         text-shadow: 0.5px 0.5px 0 #d96594, 1px 1px 0 #d86191, 1.5px 1.5px 0 #d75d8e, 2px 2px 0 #d6598b, 2.5px 2.5px 0 #d55589, 3px 3px 0 #d55589, 3.5px 3.5px 0 #d45086, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
 
-.theme-chapter-6 .jumbotron h1 b {
+.theme-chapter-6.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #facf66, 1px 1px 0 #face61, 1.5px 1.5px 0 #facc5c, 2px 2px 0 #facb57, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
-    .theme-chapter-6 .jumbotron h1 b {
+    .theme-chapter-6.jumbotron h1 b {
         text-shadow: 0.5px 0.5px 0 #facf66, 1px 1px 0 #face61, 1.5px 1.5px 0 #facc5c, 2px 2px 0 #facb57, 2.5px 2.5px 0 #fac952, 3px 3px 0 #fac952, 3.5px 3.5px 0 #f9c84d, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
 
-.theme-chapter-7 .jumbotron h1 b {
+.theme-chapter-7.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #6ecdc8, 1px 1px 0 #6accc6, 1.5px 1.5px 0 #67cbc5, 2px 2px 0 #63c9c3, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
-    .theme-chapter-7 .jumbotron h1 b {
+    .theme-chapter-7.jumbotron h1 b {
         text-shadow: 0.5px 0.5px 0 #6ecdc8, 1px 1px 0 #6accc6, 1.5px 1.5px 0 #67cbc5, 2px 2px 0 #63c9c3, 2.5px 2.5px 0 #5fc8c2, 3px 3px 0 #5fc8c2, 3.5px 3.5px 0 #5bc7c0, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
 
 .jumbotron h1 b .fa {
+    
     vertical-align: bottom
 }
 
@@ -12137,7 +12137,21 @@ ul#side-navigation span.alternate {
     color: #eab7ac
 }
 
-.theme-chapter-1 .jumbotron {
+.theme-chapter-0.jumbotron {
+    background: #3F2682 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background-color: #3F2682;
+    background: #3F2682 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+
+.theme-chapter-0.jumbotron h1 .fa {
+    color: #56487c
+}
+
+.theme-chapter-1.jumbotron {
     background: #ec8b00 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
     background-color: #ec8b00;
     background: #ec8b00 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
@@ -12147,11 +12161,11 @@ ul#side-navigation span.alternate {
     background-size: cover
 }
 
-.theme-chapter-1 .jumbotron h1 .fa {
+.theme-chapter-1.jumbotron h1 .fa {
     color: #ffcd86
 }
 
-.theme-chapter-2 .jumbotron {
+.theme-chapter-2.jumbotron  {
     background: #ef6464 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
     background-color: #ef6464;
     background: #ef6464 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
@@ -12161,11 +12175,11 @@ ul#side-navigation span.alternate {
     background-size: cover
 }
 
-.theme-chapter-2 .jumbotron h1 .fa {
+.theme-chapter-2.jumbotron h1 .fa {
     color: #fdefef
 }
 
-.theme-chapter-3 .jumbotron {
+.theme-chapter-3.jumbotron {
     background: #32bf7c url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
     background-color: #32bf7c;
     background: #32bf7c url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
@@ -12175,11 +12189,11 @@ ul#side-navigation span.alternate {
     background-size: cover
 }
 
-.theme-chapter-3 .jumbotron h1 .fa {
+.theme-chapter-3.jumbotron h1 .fa {
     color: #a3e7c7
 }
 
-.theme-chapter-4 .jumbotron {
+.theme-chapter-4.jumbotron {
     background: #4b6ce2 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
     background-color: #4b6ce2;
     background: #4b6ce2 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
@@ -12189,11 +12203,11 @@ ul#side-navigation span.alternate {
     background-size: cover
 }
 
-.theme-chapter-4 .jumbotron h1 .fa {
+.theme-chapter-4.jumbotron h1 .fa {
     color: #cfd8f7
 }
 
-.theme-chapter-5 .jumbotron {
+.theme-chapter-5.jumbotron {
     background: #c1306b url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
     background-color: #c1306b;
     background: #c1306b url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
@@ -12203,11 +12217,11 @@ ul#side-navigation span.alternate {
     background-size: cover
 }
 
-.theme-chapter-5 .jumbotron h1 .fa {
+.theme-chapter-5.jumbotron h1 .fa {
     color: #e8a2bf
 }
 
-.theme-chapter-6 .jumbotron {
+.theme-chapter-6.jumbotron {
     background: #f8b81b url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
     background-color: #f8b81b;
     background: #f8b81b url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
@@ -12217,11 +12231,11 @@ ul#side-navigation span.alternate {
     background-size: cover
 }
 
-.theme-chapter-6 .jumbotron h1 .fa {
+.theme-chapter-6.jumbotron h1 .fa {
     color: #fde6b0
 }
 
-.theme-chapter-7 .jumbotron {
+.theme-chapter-7.jumbotron {
     background: #3db2ab url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
     background-color: #3db2ab;
     background: #3db2ab url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
@@ -12231,7 +12245,7 @@ ul#side-navigation span.alternate {
     background-size: cover
 }
 
-.theme-chapter-7 .jumbotron h1 .fa {
+.theme-chapter-7.jumbotron h1 .fa {
     color: #a7e1dd
 }
 
@@ -12246,7 +12260,7 @@ ul#side-navigation span.alternate {
     display: none !important
 }
 
-.theme-chapter-7 .jumbotron h1 .fa {
+.theme-chapter-7.jumbotron h1 .fa {
     margin-top: 25px
 }
 
@@ -12701,6 +12715,30 @@ ul#side-navigation span.alternate {
     color: rgba(201, 78, 52, 0.7)
 }
 
+
+.toc-chapter-0 {
+    color: #3f2682 !important
+}
+
+.toc-chapter-0:hover {
+    background-color: #24164c !important;
+    border-color: #24164c !important
+}
+
+.toc-chapter-0:hover span.label {
+    opacity: 0.5;
+    color: #fff;
+    border-color: #fff
+}
+
+.toc-chapter-0 span.label {
+    background-color: transparent;
+    border: #3f2682; 
+    border: 2px solid rgba(63, 38, 130, 0.3);
+    color: #3f2682;
+    color: rgba(63, 38, 130, 0.7)
+}
+
 .toc-chapter-1 {
     color: #c87600 !important
 }
@@ -12862,6 +12900,29 @@ ul#side-navigation span.alternate {
     color: rgba(61, 178, 171, 0.7)
 }
 
+.toc-chapter-a {
+    color: #c61432 !important
+}
+
+.toc-chapter-a:hover {
+    background-color: #9b0720 !important;
+    border-color: #9b0720 !important
+}
+
+.toc-chapter-a:hover span.label {
+    opacity: 0.5;
+    color: #fff;
+    border-color: #fff
+}
+
+.toc-chapter-a span.label {
+    background-color: transparent;
+    border: #c61432;
+    border: 2px solid rgba(191, 51, 74,0.3);
+    color: #c61432;
+    color: rgba(191, 51, 74,0.7);
+}
+
 .page-toc .modal-backdrop {
     background-color: #c94e34
 }
@@ -12877,7 +12938,6 @@ ul#side-navigation span.alternate {
 }
 
 .page-toc .jumbotron {
-    background-color: #d6402f;
     background: #d6402f url('/static/photo-l-avenir-en-commun-le-livre.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -12932,11 +12992,13 @@ ul#side-navigation span.alternate {
 
 .toc .list-group-item.toc-chapter .icon-last-visited {
     margin-right: 0.3em;
-    opacity: 0.75
+    opacity: 0.75;
+    min-height:50px;
 }
 
 .toc .list-group-item i.fa {
-    margin-top: 5px
+    margin-top: 5px;
+    padding-bottom: 5px;
 }
 
 .toc .list-group-item.visited {
@@ -16789,3 +16851,57 @@ h6 .alternate,
     }
 }
 
+
+.icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: FontAwesome;
+    margin-bottom: 10px;
+  }
+  
+  /* Step 2: Reference Individual Icons */
+  .icon-chapter-1::before {
+    font-family: "icomoon";
+    font-weight: 900;
+    content: "\f19c";
+  }
+  
+  /* Note: Make sure to include the correct weight and Unicode value for the icon */
+  .icon-chapter-2::before {
+    font-family: "icomoon";
+    font-weight: 900;
+    content: "\f24e";
+  }
+  .icon-chapter-3::before {
+    font-family: "icomoon";
+    font-weight: 900;
+    content: "\f06c";
+  }
+  
+  /* Note: Make sure to include the correct weight and Unicode value for the icon */
+  .icon-chapter-4::before {
+    font-family: "icomoon";
+    font-weight: 900;
+    content: "\f005";
+  }
+  .icon-chapter-5::before {
+    font-family: "icomoon";
+    font-weight: 900;
+    content: "\f2b5";
+  }
+  
+  /* Note: Make sure to include the correct weight and Unicode value for the icon */
+  .icon-chapter-6::before {
+    font-family: "icomoon";
+    font-weight: 900;
+    content: "\f21e";
+  } 
+   /* Note: Make sure to include the correct weight and Unicode value for the icon */
+  .icon-chapter-7::before {
+    font-family: "icomoon";
+    font-weight: 900;
+    content: "\f135";
+  }
