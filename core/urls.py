@@ -1,11 +1,16 @@
-from django.urls import path
+from django.urls import path, include
+from django.conf.urls import url
 from core import views
-
+#from .views import MySearchView
+from haystack.generic_views import SearchView
 urlpatterns = [
     path('', views.home),
     path('sommaire/', views.toc),
     path('chapitre/<slug:n>/<slug:slug>', views.chapter),
-    path('chapitre/<slug:c>/section/<slug:n>/<slug:slug>', views.section),
+    path('section/<slug:n>/<slug:slug>', views.section),
     path('hasard', views.random),
-    path('recherche', views.search),
+
+    path('search/', views.search),
+   
+   
 ]

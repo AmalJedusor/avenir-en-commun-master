@@ -22,12 +22,18 @@
                   class="list-group-item toc-chapter toc-chapter-{{chapter.number}}"
                   href="/chapitre/{{chapter.number}}/{{chapter.slug}}">
                   <i class="fa fa-fw fa-2x fa-pull-right icon icon-chapter-{{chapter.number}}" aria-hiddent="true"></i>
-                                    <span class="alternate">{{chapter.title}}</span>
+                  {% if chapter.main_title %}
+                           <span class="alternate">{{chapter.main_title}}</span>
+                                    <h4>{{chapter.sub_title}}</h4>
+                  {% else %}
+                  <span class="alternate">{{ chapter.title }}</span>
+
+                  {% endif %}
                </a>
                   {% for article in chapter.article_set.all %}
                   <a
                      class="list-group-item toc-section toc-chapter-{{chapter.number}}"
-                     href="/chapitre/{{chapter.number}}/section/{{article.number}}/{{article.slug}}">
+                     href="/section/{{article.number}}/{{article.slug}}">
                      <span class="label label-default">{{article.number}}</span> {{article.title}}
                   </a>
                   {% endfor %}

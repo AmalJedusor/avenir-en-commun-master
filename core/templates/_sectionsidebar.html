@@ -1,0 +1,47 @@
+<aside class="col-md-4 col-md-push-8 aside-content-container">
+  
+<a href="#contenu" id="scroll-to-contents" class="visible-xs-block visible-sm-block" data-do-scroll-to="300">Aller au texte</a>
+
+<ul role="navigation" id="side-navigation">
+
+  <li>
+    <a title="Consulter une section du programme au hasard" data-load-display href="/hasard"><i class="fa fa-fw fa-random" aria-hidden="true"></i> Au hasard !</a>
+  </li>
+
+  {% if book_navigation is defined %}
+    <li class="heading"><span><i class="fa fa-fw fa-laec" aria-hidden="true"></i> Plan du livre</span></li>
+    {# End of book #}
+    {% if subject.entity == 'section' and not next  and not subject.chapter.next %}
+
+      <li>
+          <label>Quoi, déjà ?</label>
+          <a href="/" title="Même les meilleures choses ont une fin…" data-load-display><i class="fa fa-fw fa-arrow-right" aria-hidden="true"></i> Fin du livre</a>
+      </li>
+
+    {% endif %}
+
+  {% if next %}
+  <li>
+      <label>{{ next.desc }}</label>
+      <a href="/" rel="{{ rel }}" title="{{ next.desc }}" data-load-display>
+        {% if icon %}<i class="fa fa-fw fa-{{ icon }}" aria-hidden="true"></i>{% endif %}
+        {% if next.number %} {{ next.number }} . {% endif %}
+        {{ next.title }}</a>
+  </li>
+{% endif %}
+
+{% if prev %}
+<li>
+  <label>{{ prev.desc }}</label>
+  <a href="/" rel="{{ rel }}" title="{{ prev.desc }}" data-load-display>
+    {% if icon %}<i class="fa fa-fw fa-{{ icon }}" aria-hidden="true"></i>{% endif %}
+    {% if prev.number %} {{ prev.number }} . {% endif %}
+    {{ prev.title }}</a>
+</li>
+{% endif %}
+
+</ul>
+
+{% endif %}
+  
+</aside>

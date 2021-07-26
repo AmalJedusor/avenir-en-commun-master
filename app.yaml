@@ -34,3 +34,4 @@ handlers:
 entrypoint: gunicorn -b :$PORT core.wsgi
 beta_settings:
     cloud_sql_instances: laec-prod-test:europe-west3:laec-django
+

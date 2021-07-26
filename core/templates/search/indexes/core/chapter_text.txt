@@ -1,0 +1,6 @@
+{{ object.content }}
+{{ object.number }}
+{{ object.slug }}
+{{ object.title }}
+{{ object.entity }}
+{{ object.id }}

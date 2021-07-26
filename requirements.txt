@@ -4,3 +4,8 @@ django-tinymce
 mysqlclient
 gunicorn
 django-environ
+elasticsearch>=2.0.0,<3.0.0
+django-haystack
+elasticsearch-dsl
+requests
+pandas

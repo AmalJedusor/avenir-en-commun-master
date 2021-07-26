@@ -11895,12 +11895,12 @@ ul#side-navigation span.alternate {
     }
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .jumbotron h1 b {
+.theme-chapter-8.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #da8270, 1px 1px 0 #d97f6c, 1.5px 1.5px 0 #d87b67, 2px 2px 0 #d77863, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
-    .theme-chapter-introduction-de-jean-luc-melenchon .jumbotron h1 b {
+    .theme-chapter-8.jumbotron h1 b {
         text-shadow: 0.5px 0.5px 0 #da8270, 1px 1px 0 #d97f6c, 1.5px 1.5px 0 #d87b67, 2px 2px 0 #d77863, 2.5px 2.5px 0 #d6745f, 3px 3px 0 #d6745f, 3.5px 3.5px 0 #d5715b, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
@@ -12109,24 +12109,24 @@ ul#side-navigation span.alternate {
     font-size: 56%
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .jumbotron {
-    background: #c94e34 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+.theme-chapter-8.jumbotron {
+    background: #c94e34 url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #c94e34;
-    background: #c94e34 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #c94e34 url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .jumbotron h1 .fa {
+.theme-chapter-8.jumbotron h1 .fa {
     color: #eab7ac
 }
 
 .theme-chapter-un-programme-en-evolution-permanente .jumbotron {
-    background: #c94e34 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background: #c94e34 url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #c94e34;
-    background: #c94e34 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #c94e34 url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12138,9 +12138,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-0.jumbotron {
-    background: #3F2682 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background: #3F2682 url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #3F2682;
-    background: #3F2682 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #3F2682 url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12152,9 +12152,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-1.jumbotron {
-    background: #ec8b00 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background: #ec8b00 url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #ec8b00;
-    background: #ec8b00 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #ec8b00 url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12166,9 +12166,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-2.jumbotron  {
-    background: #ef6464 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background: #ef6464 url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #ef6464;
-    background: #ef6464 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #ef6464 url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12180,9 +12180,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-3.jumbotron {
-    background: #32bf7c url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background: #32bf7c url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #32bf7c;
-    background: #32bf7c url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #32bf7c url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12194,9 +12194,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-4.jumbotron {
-    background: #4b6ce2 url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background: #4b6ce2 url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #4b6ce2;
-    background: #4b6ce2 url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #4b6ce2 url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12208,9 +12208,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-5.jumbotron {
-    background: #c1306b url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background: #c1306b url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #c1306b;
-    background: #c1306b url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #c1306b url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12222,9 +12222,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-6.jumbotron {
-    background: #f8b81b url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background: #f8b81b url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #f8b81b;
-    background: #f8b81b url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #f8b81b url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12236,9 +12236,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-7.jumbotron {
-    background: #3db2ab url(/img/fond/phi-transparent.svg) no-repeat center center fixed;
+    background: #3db2ab url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #3db2ab;
-    background: #3db2ab url('/img/fond/phi-transparent.svg') no-repeat center center fixed;
+    background: #3db2ab url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12249,6 +12249,7 @@ ul#side-navigation span.alternate {
     color: #a7e1dd
 }
 
+
 @media screen and (min-width:768px) {
     .page-section .jumbotron {
         padding-top: 27px;
@@ -12258,10 +12259,6 @@ ul#side-navigation span.alternate {
 
 .page-section .jumbotron h1 .fa {
     display: none !important
-}
-
-.theme-chapter-7.jumbotron h1 .fa {
-    margin-top: 25px
 }
 
 @media (max-device-width:480px) and (orientation:landscape) {
@@ -12900,26 +12897,26 @@ ul#side-navigation span.alternate {
     color: rgba(61, 178, 171, 0.7)
 }
 
-.toc-chapter-a {
-    color: #c61432 !important
+.toc-chapter-8 {
+    color: #d6402f !important
 }
 
-.toc-chapter-a:hover {
-    background-color: #9b0720 !important;
-    border-color: #9b0720 !important
+.toc-chapter-8:hover {
+    background-color: #d6402f !important;
+    border-color: #d6402f !important
 }
 
-.toc-chapter-a:hover span.label {
+.toc-chapter-8:hover span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
 }
 
-.toc-chapter-a span.label {
+.toc-chapter-8 span.label {
     background-color: transparent;
-    border: #c61432;
+    border: #d6402f;
     border: 2px solid rgba(191, 51, 74,0.3);
-    color: #c61432;
+    color: #d6402f;
     color: rgba(191, 51, 74,0.7);
 }
 
@@ -13247,13 +13244,13 @@ span.search-results-count strong.suggestion:hover {
     margin-top: 0.5em
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon.page-section .list-measures .list-group-item.active {
+.theme-chapter-8.page-section .list-measures .list-group-item.active {
     background-color: #c34c32;
     border-color: #b5462f
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon.page-section .list-measures .list-group-item.active:hover,
-.theme-chapter-introduction-de-jean-luc-melenchon.page-section .list-measures .list-group-item.active:focus {
+.theme-chapter-8.page-section .list-measures .list-group-item.active:hover,
+.theme-chapter-8.page-section .list-measures .list-group-item.active:focus {
     background-color: #cc543b
 }
 
@@ -13336,6 +13333,17 @@ span.search-results-count strong.suggestion:hover {
 .theme-chapter-7.page-section .list-measures .list-group-item.active:focus {
     background-color: #40bab2
 }
+
+.theme-chapter-8.page-section .list-measures .list-group-item.active {
+    background-color: #9b0720;
+    border-color: #9b0720
+}
+
+.theme-chapter-8.page-section .list-measures .list-group-item.active:hover,
+.theme-chapter-8.page-section .list-measures .list-group-item.active:focus {
+    background-color: #9b0720
+}
+
 
 .modal-measure .modal-header h4 {
     font-size: 150%
@@ -13661,14 +13669,14 @@ span.search-results-count strong.suggestion:hover {
     margin-left: 0
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .form-control:focus {
+.theme-chapter-8 .form-control:focus {
     border-color: #c94e34;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(201, 78, 52, .6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(201, 78, 52, .6)
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon button {
+.theme-chapter-8 button {
     outline-color: #34afc9
 }
 
@@ -14130,25 +14138,25 @@ footer.footer>.container {
     color: #c94e34
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .page-header h1,
-.theme-chapter-introduction-de-jean-luc-melenchon .page-header h2 {
+.theme-chapter-8 .page-header h1,
+.theme-chapter-8 .page-header h2 {
     color: #c14b32
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .btn-default .fa {
+.theme-chapter-8 .btn-default .fa {
     color: #b5462f
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .btn-default:hover .fa {
+.theme-chapter-8 .btn-default:hover .fa {
     color: #515151 !important
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon *::selection {
+.theme-chapter-8 *::selection {
     color: #fff;
     background-color: rgba(169, 65, 44, 0.8)
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon *::-moz-selection {
+.theme-chapter-8 *::-moz-selection {
     color: #fff;
     background-color: rgba(169, 65, 44, 0.8)
 }
@@ -14374,18 +14382,18 @@ footer.footer>.container {
     border-color: #b5462f
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .btn-bookmark.active,
-.theme-chapter-introduction-de-jean-luc-melenchon .btn-bookmark.active .fa {
+.theme-chapter-8 .btn-bookmark.active,
+.theme-chapter-8 .btn-bookmark.active .fa {
     color: white !important
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .btn-bookmark.active:hover {
+.theme-chapter-8 .btn-bookmark.active:hover {
     background-color: #f4dad5;
     border-color: #8c3624;
     color: #c94e34 !important
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .btn-bookmark.active:hover .fa {
+.theme-chapter-8 .btn-bookmark.active:hover .fa {
     color: #b5462f !important
 }
 
@@ -14827,19 +14835,19 @@ footer.footer>.container {
     transition: max-height 0.3s ease-out
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .modal-backdrop {
+.theme-chapter-8 .modal-backdrop {
     background-color: #c94e34
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .modal .modal-header .close {
+.theme-chapter-8 .modal .modal-header .close {
     color: #b5462f
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .modal .modal-header h4 {
+.theme-chapter-8 .modal .modal-header h4 {
     color: #c14b32
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon .modal .modal-footer i.fa {
+.theme-chapter-8 .modal .modal-footer i.fa {
     color: #b5462f
 }
 
@@ -15962,11 +15970,11 @@ footer.footer>.container {
     background: #c94e34
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon [type='range']::-webkit-slider-thumb {
+.theme-chapter-8 [type='range']::-webkit-slider-thumb {
     background-color: #b5462f
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon [type='range']::-webkit-slider-thumb:hover {
+.theme-chapter-8 [type='range']::-webkit-slider-thumb:hover {
     background-color: #df9484
 }
 
@@ -16065,11 +16073,11 @@ footer.footer>.container {
     background: #c94e34
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon [type='range']::-moz-range-thumb {
+.theme-chapter-8 [type='range']::-moz-range-thumb {
     background-color: #b5462f
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon [type='range']::-moz-range-thumb:hover {
+.theme-chapter-8 [type='range']::-moz-range-thumb:hover {
     background-color: #df9484
 }
 
@@ -16183,11 +16191,11 @@ footer.footer>.container {
     background: #c94e34
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon [type='range']::-ms-thumb {
+.theme-chapter-8 [type='range']::-ms-thumb {
     background-color: #b5462f
 }
 
-.theme-chapter-introduction-de-jean-luc-melenchon [type='range']::-ms-thumb:hover {
+.theme-chapter-8 [type='range']::-ms-thumb:hover {
     background-color: #df9484
 }
 
@@ -16852,56 +16860,45 @@ h6 .alternate,
 }
 
 
-.icon::before {
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    font-family: FontAwesome;
-    margin-bottom: 10px;
-  }
   
   /* Step 2: Reference Individual Icons */
   .icon-chapter-1::before {
     font-family: "icomoon";
-    font-weight: 900;
+    content: "\f19c";
+  }
+  
+  .icon-chapter-1::before {
+    font-family: "icomoon";
     content: "\f19c";
   }
   
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-2::before {
     font-family: "icomoon";
-    font-weight: 900;
     content: "\f24e";
   }
   .icon-chapter-3::before {
     font-family: "icomoon";
-    font-weight: 900;
     content: "\f06c";
   }
   
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-4::before {
     font-family: "icomoon";
-    font-weight: 900;
     content: "\f005";
   }
   .icon-chapter-5::before {
     font-family: "icomoon";
-    font-weight: 900;
     content: "\f2b5";
   }
   
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-6::before {
     font-family: "icomoon";
-    font-weight: 900;
     content: "\f21e";
   } 
    /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-7::before {
     font-family: "icomoon";
-    font-weight: 900;
     content: "\f135";
   }

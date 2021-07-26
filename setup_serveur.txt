@@ -1,1 +1,68 @@
 cloud_sql_proxy.exe -instances=laec-prod-test:europe-west3:laec-django=tcp:8888
+
++
+
+lancer elasticsearch
+
+
+
+array('type' => 'custom', 
+'tokenizer' => 'standard',
+ 'filter' => array(0 => 'lowercase', 1 => 'asciifolding', 2 => 'elision', 3 => 'snowball', 4 => 'stopwords', 5 => 'french_stem'))),
+  'filter' => array('snowball' => array('type' => 'snowball', 'language' => 'French'),
+   'french_stem' => array('type' => 'stemmer', 'name' => 'french'), 
+   'elision' => array('type' => 'elision',
+    'articles' => array(0 => 'l', 1 => 'm', 2 => 't', 3 => 'qu', 4 => 'n', 5 => 's', 6 => 'j', 7 => 'd')),
+     'stopwords' => array('type' => 'stop', 'stopwords' => array(0 => '_french_'), 'ignore_case' => true)), 
+     'tokenizer' => array('app_ngram' => array('type' => 'nGram', 'min_gram' => 3, 'max_gram' => 20))))), 
+     'type_prototype' => array(), 'use_alias' => false, 
+     'types' => array('chapter' => array('name' => 'chapter', 
+     'mapping' => array('dynamic_templates' => array(), 'properties' => 
+     array('title' => array('type' => 'string', 'property_path' => 'indexableTitle', 'boost' => 3, 'analyzer' => 
+     'app_custom_analyzer', 'term_vector' =>
+      'with_positions_offsets'),
+       'body' => array('type' => 'string', 'property_path' => 
+       'indexableBody', 'analyzer' => 'app_custom_analyzer', 
+       'term_vector' => 'with_positions_offsets'))),
+        'config' => array('persistence' => array('driver' => 'orm',
+         'model' => 'AppBundle\\Entity\\Chapter', 
+         'listener' => array('insert' => false, 'update' => false, 'delete' => false, 
+         'flush' => false, 
+         'immediate' => false, 
+         'logger' => false), 
+         'identifier' => 'id', 
+         'provider' => array('batch_size' => 100, 'clear_object_manager' => true, 
+         'debug_logging' => true, 'query_builder_method' => 'createQueryBuilder'), 
+         'finder' => array(), '
+         elastica_to_model_transformer' => array('hints' => array(), 
+         'hydrate' => true, 'ignore_missing' => false, 
+         'query_builder_method' => 'createQueryBuilder'), 
+         'model_to_elastica_transformer' => array(),
+          'persister' => array()), 
+          'serializer' => array('groups' => array(),
+           'serialize_null' => false), 
+           'index_analyzer' => NULL, 
+           'search_analyzer' => NULL,
+            'dynamic' => NULL, 
+            'date_detection' => NULL,
+             'dynamic_date_formats' => array(),
+              'numeric_detection' => NULL)),
+               'section' => array('name' => 'section', 
+               'mapping' => array('dynamic_templates' => array()
+               , 'properties' => array('title' => array('type' => 'string', 'property_path' => 'indexableTitle', 
+               'boost' => 3, 'analyzer' => 'app_custom_analyzer', 'term_vector' => 'with_positions_offsets'),
+                'body' => array('type' => 'string', 'property_path' => 'indexableBody',
+                 'analyzer' => 'app_custom_analyzer', 'term_vector' => 'with_positions_offsets'))),
+                  'config' => array('persistence' => array('driver' => 'orm',
+                   'model' => 'AppBundle\\Entity\\Section', 
+                   'listener' => array('insert' => false, 'update' => false,
+                    'delete' => false, 'flush' => false, 'immediate' => false, 'logger' => false), 'identifier' => 'id',
+                     'provider' => array('batch_size' => 100, 'clear_object_manager' => true, 'debug_logging' => true, 
+                     'query_builder_method' => 'createQueryBuilder'), 'finder' => array(), 
+                     'elastica_to_model_transformer' => array('hints' => array(), 'hydrate' => true,
+                      'ignore_missing' => false, 'query_builder_method' => 'createQueryBuilder'),
+                       'model_to_elastica_transformer' => array(), 'persister' => array()), 
+                       'serializer' => array('groups' => array(), 'serialize_null' => false), '
+                       index_analyzer' => NULL, 'search_analyzer' => NULL, 'dynamic' => NULL, 'date_detection' => NULL, 
+         'dynamic_date_formats' => array(), 
+'numeric_detection' => NULL))))))));

@@ -6,17 +6,17 @@
         <small>Le programme de la <strong>France insoumise</strong></small>
     </div>
     {% include "_navbar.html" %}
-    <div class="theme-chapter-{{chapter.number}} jumbotron" aria-hidden="true">
+    <div class="theme-chapter-{{subject.number}} jumbotron" aria-hidden="true">
         <div class="container">
-		<h1><i class="fa fa-fw fa-pull-right fa-3x fa-phi visible-lg-inline-block visible-md-inline-block"></i><b class="text-balance">{{chapter.title}}</b></h1>
-            <p class="sidelines"><i class="fa fa-phi"></i></p>
+		<h1><i class="fa fa-fw fa-pull-right fa-3x icon-chapter-{{ subject.number }} visible-lg-inline-block visible-md-inline-block"></i><b class="text-balance">{{subject.title}}</b></h1>
+            <p class="sidelines"><i class="fa icon-chapter-{{ subject.number }}"></i></p>
             <a rel="contents" data-load-display href="/sommaire" title="Retour au sommaire"><i class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
         </div>
     </div>
     <div class="wrap-container-main">
         <div class="container container-main">
             <div class="row">
-                {% include '_sidebar.html' %}
+                {% include '_sectionsidebar.html' %}
                 <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
                     <section class="actions actions-c">
                         <div class="btn-toolbar" role="toolbar" aria-label="Actions disponibles pour ce chapitre">
@@ -87,15 +87,15 @@
                             {{ content|safe }}
                         </div>
                     </section>
-                    {% if chapter.number != "0" %}                 
-                    <section class="chapter-toc theme-chapter-{{chapter.number}}">
+                    {% if subject.number != "0" %}                 
+                    <section class="chapter-toc theme-chapter-{{subject.number}}">
                         <header class="page-header"><h2 class="h4"><i class="fa fa-fw fa-list-ul"></i> Sommaire du chapitre</h2></header>
                         <nav class="toc" role="navigation">
                             <ul class="toc list-group">
-                            {% for article in chapter.article_set.all %}
+                            {% for article in subject.article_set.all %}
                             <a
-                               class="list-group-item toc-section toc-chapter-{{chapter.number}}"
-                               href="/chapitre/{{chapter.number}}/section/{{article.number}}/{{article.slug}}">
+                               class="list-group-item toc-section toc-chapter-{{subject.number}}"
+                               href="/section/{{article.number}}/{{article.slug}}">
                                <span class="label label-default">{{article.number}}</span> {{article.title}}
                             </a>
                             {% endfor %}

@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+
 {% block body %}
 
-<body id="body">
+<body id="body" class="page-search page-search-results">
    {% include "_navbar.html" %}
 
 
@@ -21,19 +22,18 @@
                </button>
             </span>
             <input type="text" autocomplete="off" class="search-terms form-control instant-search" name="termes"
-               value=" Votre recherche ici : {{ search_terms|upper|truncatechars:20 }}">
+               value="{{ request|title|truncatechars:20 }}">
          </div>
          <p class="sidelines" aria-hidden="true">
             <i class="fa fa-search"></i>
          </p>
          <span class="search-results-count"
             data-prototype="<strong>__total__</strong> occurence__plural__ pour « <strong>__query__</strong> » dans « {{ site_long_name }} »">
-            {% if no_search is defined %}<i class="fa fa-fw fa-lightbulb-o" aria-hidden="true"></i> Pourquoi ne pas
+            {% if not query %}<i class="fa fa-fw fa-lightbulb-o" aria-hidden="true"></i> Pourquoi ne pas
             essayer
-            ci-dessus des termes tels que <strong class="suggestion">' ~ suggestions|shuffle|slice(0,
-               4)|join('</strong>, <strong class="suggestion">') ~ '</strong> , etc. {% else %} Nous avons trouvé
-            <strong>{{ search_results|length }}</strong>
-            {%if search_results|length > 1 %} occurences {% else %} occurences {% endif %} pour « <strong>{{ search_terms|truncatechars:20 }}</strong> » dans « L'Avenir En Commun ».{% endif %}</span>
+            ci-dessus des termes tels que <strong class="suggestion">partage</strong>,<strong class="suggestion">écologie</strong>,<strong class="suggestion">bonheur</strong>, <strong class="suggestion">santé </strong>, <strong class="suggestion">industrie </strong>, <strong class="suggestion">économie</strong>,<strong class="suggestion">planification </strong>,<strong class="suggestion">transition </strong>,<strong class="suggestion">indépendance </strong>,<strong class="suggestion">Europe </strong>,<strong class="suggestion">finance </strong>,<strong class="suggestion">protectionnisme </strong>,<strong class="suggestion">laïcité </strong> ,<strong class="suggestion">coopération </strong> , etc. {% else %} Nous avons trouvé
+            <strong>{{ query|length }}</strong>
+            {%if query|length > 1 %} occurences {% else %} occurences {% endif %} pour « <strong>{{ request|title }}</strong> » dans « L'Avenir En Commun ».{% endif %}</span>
       </form>
    </div>
    {% endblock jumbotron %}
@@ -41,37 +41,44 @@
    {% block main_content %}
    <div class="wrap-container-main">
       <div class="container container-main">
+
          <div class="row">
-            <h1 class="h3">
-               <i class="fa fa-fw fa-hand-o-right" aria-hidden="true"></i> Liste des résultats
-            </h1>
-            <hr>
+            {% include '_searchsidebar.html' %}
+            <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
+               <h1 class="h3">
 
-            {% if no_search is defined %}
-            <p class="lead no-search">
-               Pour commencer à rechercher dans le programme, merci de saisir les termes de votre recherche ci-dessus
-            </p>
-            {% endif %}
+                  <i class="fa fa-fw fa-hand-o-right" aria-hidden="true"></i> Liste des résultats
+               </h1>
+               <hr>
 
-            <p class="lead no-results {% if no_search is defined or search_results|length != 0 %} hidden{% endif %}">
-               Votre requête n'a produit aucun résultat. Merci d'en vérifier l'orthographe ou d'essayer de la formuler
-               différemment.
-            </p>
+               {% if not query%}
+                  <p class="lead no-search">
+                     Pour commencer à rechercher dans le programme, merci de saisir les termes de votre recherche ci-dessus
+                  </p>
+               {% endif %}
+               <p class="lead no-results {% if  query or query|length != 0 %} hidden{% endif %}">
+                  Votre requête n'a produit aucun résultat. Merci d'en vérifier l'orthographe ou d'essayer de la
+                  formuler
+                  différemment.
+               </p>
 
+               <ul id="resultats" class="list-group search-results">
+                  {% spaceless %}
+                  {% for result in query %}
+                  {% include './result.html' %}
+                  {% endfor %}
+                  {% endspaceless %}
+               </ul>
 
-            <ul id="resultats" class="list-group search-results">
-               {% for result in search_results %}
-               {% include 'result.html' %}
-               {% endfor %}
-            </ul>
-
-            <p class="sidelines" aria-hidden="true">
-               <i class="fa fa-fw fa-search"></i>
-            </p>
+               <p class="sidelines" aria-hidden="true">
+                  <i class="fa fa-fw fa-search"></i>
+               </p>
+            </article>
          </div>
       </div>
    </div>
    {% endblock main_content %}
+
 
    {% include '_footer.html' %}
    <script src="/static/app.js"></script>

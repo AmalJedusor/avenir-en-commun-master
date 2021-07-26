@@ -12,16 +12,17 @@
       </div>
    {% include "_navbar.html" %}
    
-      <div class="theme-chapter-{{chapter}} jumbotron" aria-hidden="true">
+      <div class="theme-chapter-{{subject.chapter.number}} jumbotron" aria-hidden="true">
          <div class="container">
             <h1>
-               <span class="number">{{article.number}}</span>
-               <b class="text-balance">{{article.title}}</b>
+               <span class="number">{{subject.number}}</span>
+               <span class="alternate">{{ subject.chapter.main_title }}</span>
+               <b class="text-balance">{{subject.title}}</b>
             </h1>
             <p class="sidelines">
                <i class="fa fa-institution"></i>
             </p>
-            <a rel="contents" data-load-display href="/chapitre/1/la-6e-republique">
+            <a rel="contents" data-load-display href="/chapitre/{{subject.chapter.number}}/{{subject.chapter.slugify}}">
                <i class="fa fa-fw fa-arrow-left"></i>
                <span class="hidden-xs"> Index du chapitre</span>
             </a>
@@ -34,7 +35,7 @@
                <a href="/page/le-javascript-c-est-non" title="Informations sur les fonctionnalités de LAEC.fr nécessitant l'utilisation de javascript">qu'est-ce que je manque</a> ?
             </noscript>
             <div class="row">
-                  {% include '_sidebar.html' %}
+                  {% include '_sectionsidebar.html' %}
                   <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
                      <section class="actions actions-s">
                         <div class="btn-toolbar" role="toolbar" aria-label="Actions disponibles pour cette section">
@@ -114,7 +115,7 @@
                                     </h4>
                                  </div>
                                  <div class="modal-body lead">
-                                    <p>Convoquer un référendum (article 11 de la Constitution) pour engager le processus constituant (modalités de la composition de l'Assemblée constituante — mode de scrutin, parité, tirage au sort et incompatibilités ; modalités de la délibération ; association des citoyens aux travaux…)</p>
+                                   
                                  </div>
                                  <div class="modal-footer actions">
                                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Fermer 

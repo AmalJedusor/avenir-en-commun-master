@@ -108,3 +108,5 @@
 >Nous avons besoin d’elles. En France, rien de grand ne s’est jamais fait
 >sans le peuple. Encore une fois, il a la clé du futur. Il peut ouvrir
 > bien grand les portes du droit au bonheur et de nouveaux jours heureux.
+
+>  **Jean-Luc Mélenchon**

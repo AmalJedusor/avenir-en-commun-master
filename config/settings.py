@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import environ
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -57,10 +57,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(BASE_DIR)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,  '/core/templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,11 +114,93 @@ AUTH_PASSWORD_VALIDATORS = [
 #HAYSTACK
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'ENGINE': 'core.search_backends.CustomElasticSearchEngine',
         'URL': 'http://127.0.0.1:9200/',
+        'TIMEOUT': 60 * 5,
+        'INCLUDE_SPELLING': True,
         'INDEX_NAME': 'haystack',
     },
 }
+
+#ELASTICSEARCH
+ELASTICSEARCH_DSL={
+    'default': {
+        'hosts': '127.0.0.1:9200'
+    },
+}
+ELASTICSEARCH_INDEX_SETTINGS   = {
+    'settings': {
+        "analysis": {
+            "analyzer": {
+                "ngram_analyzer": {
+                    "type": "custom",
+                    "tokenizer": "lowercase",
+                    "filter": ["haystack_ngram"]
+                },
+                "edgengram_analyzer": {
+                    "type": "custom",
+                    "tokenizer": "lowercase",
+                    "filter": ["haystack_edgengram"]
+                },
+                "suggest_analyzer": {
+                    "type":"custom",
+                    "tokenizer":"standard",
+                    "filter":[
+                        "standard",
+                        "lowercase",
+                        "asciifolding",
+                         "french_stemmer"
+                    ]
+                },
+            },
+            "tokenizer": {
+                "haystack_ngram_tokenizer": {
+                    "type": "nGram",
+                    "min_gram": 5,
+                    "max_gram": 15,
+                },
+                "haystack_edgengram_tokenizer": {
+                    "type": "edgeNGram",
+                    "min_gram": 5,
+                    "max_gram": 15,
+                    "side": "front"
+                }
+            },
+            "filter": {
+                "haystack_ngram": {
+                    "type": "nGram",
+                    "min_gram": 5,
+                    "max_gram": 15
+                },
+                "haystack_edgengram": {
+                    "type": "edgeNGram",
+                    "min_gram": 5,
+                    "max_gram": 15
+                },
+                 "french_stemmer": {
+                    "type":       "stemmer",
+                    "language":   "french"
+                },
+                 "french_elision": {
+                    "type": "elision",
+                    "articles_case": True,
+                    "articles": ["l", "m", "t", "qu", "n", "s", "j", "d", "c", "jusqu", "quoiqu", "lorsqu", "puisqu"]
+                 },
+                  "french_stop": {
+                "type":       "stop",
+                "stopwords":  "_french_" 
+                }
+             },
+
+
+        }
+    },
+    
+
+ }
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'
+
+ELASTICSEARCH_DEFAULT_ANALYZER = "snowball"
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
