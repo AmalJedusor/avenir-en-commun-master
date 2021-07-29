@@ -1,47 +1,66 @@
 <aside class="col-md-4 col-md-push-8 aside-content-container">
-  
-<a href="#contenu" id="scroll-to-contents" class="visible-xs-block visible-sm-block" data-do-scroll-to="300">Aller au texte</a>
 
-<ul role="navigation" id="side-navigation">
+  <a href="#contenu" id="scroll-to-contents" class="visible-xs-block visible-sm-block" data-do-scroll-to="300">Aller au
+    texte</a>
 
-  <li>
-    <a title="Consulter une section du programme au hasard" data-load-display href="/hasard"><i class="fa fa-fw fa-random" aria-hidden="true"></i> Au hasard !</a>
-  </li>
+  <ul role="navigation" id="side-navigation">
 
-  {% if book_navigation is defined %}
+    <li>
+      <a title="Consulter une section du programme au hasard" data-load-display href="/hasard"><i
+          class="fa fa-fw fa-random" aria-hidden="true"></i> Au hasard !</a>
+    </li>
+
+    {% if book_navigation is defined %}
     <li class="heading"><span><i class="fa fa-fw fa-laec" aria-hidden="true"></i> Plan du livre</span></li>
     {# End of book #}
-    {% if subject.entity == 'section' and not next  and not subject.chapter.next %}
 
-      <li>
-          <label>Quoi, déjà ?</label>
-          <a href="/" title="Même les meilleures choses ont une fin…" data-load-display><i class="fa fa-fw fa-arrow-right" aria-hidden="true"></i> Fin du livre</a>
-      </li>
+    {% if subject.entity == 'section'  and next is None %}
+
+    <li>
+      <label>Quoi, déjà ?</label>
+      <a href="/fin" title="Même les meilleures choses ont une fin…" data-load-display><i class="fa fa-fw fa-arrow-right"
+          aria-hidden="true"></i> Fin du livre</a>
+    </li>
+
+    {% endif %}
+    {% if next %}
+    <li>
+      <label>{{ next.desc }}</label>
+      <a href="{{next.url}}{{next.number}}/{{next.slug}}" rel="{{ rel }}" title="{{ next.desc }}" data-load-display>
+        <i class="fa fa-fw fa-arrow-right" aria-hidden="true"></i>
+        {% if next.entity == 'section' %} {{ next.number }} . {{ next.title }}</a>   {% else %}
+        <span class="alternate">{{ next.main_title }} </span><br>{{ next.sub_title }}</a>
+        {% endif %}
 
     {% endif %}
 
-  {% if next %}
-  <li>
-      <label>{{ next.desc }}</label>
-      <a href="/" rel="{{ rel }}" title="{{ next.desc }}" data-load-display>
-        {% if icon %}<i class="fa fa-fw fa-{{ icon }}" aria-hidden="true"></i>{% endif %}
-        {% if next.number %} {{ next.number }} . {% endif %}
-        {{ next.title }}</a>
-  </li>
-{% endif %}
+    {% if prev %}
+    <li>
+      <label>{{ prev.desc }}</label>
+      <a href="{{prev.url}}{{prev.number}}/{{prev.slug}}" rel="{{ rel }}" title="{{ prev.desc }}" data-load-display>
+      <i class="fa fa-fw fa-arrow-left" aria-hidden="true"></i>
+        {% if  prev.entity == 'section' %} {{ prev.number }} . {{ prev.title }}</a>  {% else %}
+        <span class="alternate"> {{ prev.main_title }}  </span><br>{{ prev.sub_title }} </a>
+       {% endif %}
+    </li>
+    {% endif %}
 
-{% if prev %}
-<li>
-  <label>{{ prev.desc }}</label>
-  <a href="/" rel="{{ rel }}" title="{{ prev.desc }}" data-load-display>
-    {% if icon %}<i class="fa fa-fw fa-{{ icon }}" aria-hidden="true"></i>{% endif %}
-    {% if prev.number %} {{ prev.number }} . {% endif %}
-    {{ prev.title }}</a>
-</li>
-{% endif %}
-
-</ul>
-
-{% endif %}
+    {% if subject.entity == 'section' %}
+    <li><label>Préface du chapitre</label><a href="/chapitre/{{subject.chapter.number}}/{{subject.chapter.slug}}" rel="contents" title="Préface du chapitre" data-load-display="">
+      <i class="fa fa-fw fa-arrow-up" aria-hidden="true"></i><span class="alternate">{{subject.chapter.main_title}} </span><br>{{subject.chapter.sub_title}}</a></li>
   
+    {% else %}
+    <li><label>Retour au sommaire</label><a href="/sommaire" rel="contents" title="Retour au sommaire" data-load-display="">
+      <i class="fa fa-fw fa-list-ul" aria-hidden="true"></i>Table des matières</a></li>
+  
+    {% endif %}
+  
+  
+   
+
+  </ul>
+
+  {% endif %}
+
+
 </aside>

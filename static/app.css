@@ -15038,7 +15038,7 @@ footer.footer>.container {
 }
 
 .theme-minimal body {
-    background: #d7fbff url(/img/fond/phi-transparent-strong.svg) no-repeat center center fixed;
+    background: #d7fbff url(/static/phi-transparent-strong.svg) no-repeat center center fixed;
     background-size: cover;
     padding-top: 100px
 }

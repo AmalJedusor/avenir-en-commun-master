@@ -8,7 +8,7 @@
 {% endif %}
 {% endcomment %}
 
-<li class="list-group-item">
+
    <a href="{{ result.url }}" data-load-display
       title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
       <h2 class="h4">  {%if result.meta.highlight.title_auto %}  {{ result.meta.highlight.title_auto | first | safe }} {% else %} {{result.title_auto | safe }} {% endif %}  </h2>
@@ -19,4 +19,4 @@
    {% if result.meta.highlight.content_auto %}
    <p class="highlights">... {{result.meta.highlight.content_auto  | first | safe}} ...</p>
    {% endif %}
-</li>
+

@@ -13,7 +13,7 @@
    {% block jumbotron %}
 
    <div class="jumbotron">
-      <form class="container form-total-loading form-instant-search" action="/recherche">
+      <form class="container form-total-loading " method='GET' action="/search">
          <div class="input-group">
             <span class="input-group-btn">
                <button class="search-addon" type="submit" title="Effectuer une recherche sur « L'avenir en commun »">
@@ -21,7 +21,7 @@
                   <span class="sr-only">Rechercher</span>
                </button>
             </span>
-            <input type="text" autocomplete="off" class="search-terms form-control instant-search" name="termes"
+            <input type="text" name="q" autocomplete="off" class="search-terms form-control instant-search"
                value="{{ request|title|truncatechars:20 }}">
          </div>
          <p class="sidelines" aria-hidden="true">
@@ -31,7 +31,7 @@
             data-prototype="<strong>__total__</strong> occurence__plural__ pour « <strong>__query__</strong> » dans « {{ site_long_name }} »">
             {% if not query %}<i class="fa fa-fw fa-lightbulb-o" aria-hidden="true"></i> Pourquoi ne pas
             essayer
-            ci-dessus des termes tels que <strong class="suggestion">partage</strong>,<strong class="suggestion">écologie</strong>,<strong class="suggestion">bonheur</strong>, <strong class="suggestion">santé </strong>, <strong class="suggestion">industrie </strong>, <strong class="suggestion">économie</strong>,<strong class="suggestion">planification </strong>,<strong class="suggestion">transition </strong>,<strong class="suggestion">indépendance </strong>,<strong class="suggestion">Europe </strong>,<strong class="suggestion">finance </strong>,<strong class="suggestion">protectionnisme </strong>,<strong class="suggestion">laïcité </strong> ,<strong class="suggestion">coopération </strong> , etc. {% else %} Nous avons trouvé
+            ci-dessus des termes tels que <strong class="suggestion">partage</strong>, <strong class="suggestion">écologie</strong>, <strong class="suggestion">bonheur</strong>, <strong class="suggestion">santé</strong>, <strong class="suggestion">industrie</strong>, <strong class="suggestion">économie</strong>, <strong class="suggestion">planification</strong>, <strong class="suggestion">transition</strong>, <strong class="suggestion">indépendance</strong>, <strong class="suggestion">Europe</strong>, <strong class="suggestion">finance</strong>, <strong class="suggestion">protectionnisme</strong>, <strong class="suggestion">laïcité</strong>, <strong class="suggestion">coopération</strong>, etc. {% else %} Nous avons trouvé
             <strong>{{ query|length }}</strong>
             {%if query|length > 1 %} occurences {% else %} occurences {% endif %} pour « <strong>{{ request|title }}</strong> » dans « L'Avenir En Commun ».{% endif %}</span>
       </form>
@@ -65,7 +65,9 @@
                <ul id="resultats" class="list-group search-results">
                   {% spaceless %}
                   {% for result in query %}
+                  <li class="list-group-item">
                   {% include './result.html' %}
+               </li>
                   {% endfor %}
                   {% endspaceless %}
                </ul>

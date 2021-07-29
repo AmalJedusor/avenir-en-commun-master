@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block html_class %}page-chapter{% endblock %} {% block body %}
+{% extends 'base.html' %} 
+{% block html_class %}page-chapter theme-chapter-{{subject.number}} {% endblock %} 
+ {% block body %}
 <body id="body">
     <div class="visible-print-block text-center print-logotype" aria-hidden="true">
         <img src="/static/livre-phi-laec-fr-mention-impression.svg" style="max-height: 70px; width: auto;" alt="Logotype l'avenir en commun" data-no-svg-src="/img/logotype/livre-phi-laec-fr-mention-impression.png" />
@@ -8,7 +10,13 @@
     {% include "_navbar.html" %}
     <div class="theme-chapter-{{subject.number}} jumbotron" aria-hidden="true">
         <div class="container">
-		<h1><i class="fa fa-fw fa-pull-right fa-3x icon-chapter-{{ subject.number }} visible-lg-inline-block visible-md-inline-block"></i><b class="text-balance">{{subject.title}}</b></h1>
+		<h1><i class="fa fa-fw fa-pull-right fa-3x icon-chapter-{{ subject.number }} visible-lg-inline-block visible-md-inline-block"></i>
+
+
+            <span class="alternate">{{ subject.main_title }}</span>
+            <b class="text-balance">{{subject.sub_title}}</b>
+        </h1>
+
             <p class="sidelines"><i class="fa icon-chapter-{{ subject.number }}"></i></p>
             <a rel="contents" data-load-display href="/sommaire" title="Retour au sommaire"><i class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
         </div>
@@ -19,67 +27,7 @@
                 {% include '_sectionsidebar.html' %}
                 <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
                     <section class="actions actions-c">
-                        <div class="btn-toolbar" role="toolbar" aria-label="Actions disponibles pour ce chapitre">
-                            <div class="btn-group"></div>
-                            <div class="btn-group">
-                                <button
-                                    title="Lien direct vers le chapitre et boutons de partage sur les réseaux sociaux"
-                                    class="btn btn-default share-collapser"
-                                    data-target="#panel-c-share-1"
-                                    aria-controls="panel-c-share-1"
-                                    aria-expanded="false"
-                                    data-toggle="collapse"
-                                >
-                                    <i class="fa fa-fw fa-share-alt"></i>&nbsp;<span class="visible-lg-inline">Partager</span>
-                                </button>
-                            </div>
-                            <div class="btn-group pull-right js-only"></div>
-                        </div>
-                        <div class="collapse collapsable share-collapsable" id="panel-c-share-1">
-                            <div class="panel-wrap">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">Faites tourner ce chapitre !</div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <label for="share-control-c-1"><i class="fa fa-fw fa-link" aria-hidden="true"></i>Lien court direct</label>
-                                                <div class="form">
-                                                    <div class="form-group">
-                                                        <div class="input-group">
-                                                            <div class="input-group-addon"><i class="fa fa-fw fa-anchor" aria-hidden="true"></i></div>
-                                                            <input type="text" id="share-control-c-1" class="form-control share-control" readonly="readonly" value="http://laec.fr/ci" autofocus />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7">
-                                                <label><i class="fa fa-fw fa-share" aria-hidden="true"></i>Réseaux sociaux</label>
-                                                <nav class="btn-group networks" role="group">
-                                                    <a
-                                                        data-popup-dimensions="560,430"
-                                                        href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flaec.fr%2Fci"
-                                                        class="btn btn-default share-link"
-                                                        data-network="Facebook"
-                                                        title="Partager ce chapitre sur Facebook"
-                                                    >
-                                                        <span class="visible-lg-inline visible-sm-inline">Facebook </span><i class="fa fa-fw fa-facebook"></i>
-                                                    </a>
-                                                    <a
-                                                        data-popup-dimensions="430,284"
-                                                        href="https://twitter.com/home?status=%C3%80%20lire%20absolument%C2%A0%3A%20http%3A%2F%2Flaec.fr%2Fci%20%F0%9F%98%8E%20%23AvenirEnCommun%20%23M%C3%A9lenchon%20%23JLM2017"
-                                                        class="btn btn-default share-link"
-                                                        data-network="Twitter"
-                                                        title="Partager ce chapitre sur twitter"
-                                                    >
-                                                        <span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i>
-                                                    </a>
-                                                </nav>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       {% include '_partager.html' %}
                     </section>
                     <hr />
                     <section class="content-text parsedown">

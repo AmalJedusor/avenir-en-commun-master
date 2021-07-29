@@ -22,6 +22,7 @@ class Command(BaseCommand):
                         entity="chapitre",
                         title=title,
                         id=id,
+                        main_title=title,
                         content=strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:])),
                     ).save()                    
                 else:
@@ -31,7 +32,7 @@ class Command(BaseCommand):
                             entity="chapitre",
                             title=title,
                             id= id,
-                            content=strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:])),
+                            content='\n'.join(open(file,encoding='utf-8').read().split('\n')[1:]),
                             main_title = title.split(',', 1)[0],
                             sub_title = title.split(',', 1)[1]
 
@@ -54,7 +55,7 @@ class Command(BaseCommand):
                 entity="section",
                 title=title,
                 id=id,
-                content=strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:])),
+                content='\n'.join(open(file,encoding='utf-8').read().split('\n')[1:]),
                 chapter=chapter,
             ).save()
             id +=1

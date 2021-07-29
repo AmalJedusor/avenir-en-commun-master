@@ -9,8 +9,9 @@ urlpatterns = [
     path('chapitre/<slug:n>/<slug:slug>', views.chapter),
     path('section/<slug:n>/<slug:slug>', views.section),
     path('hasard', views.random),
-
+    path('fin/', views.fin),
+     path('page/mentions-legales', views.mentions),
     path('search/', views.search),
-   
+
    
 ]

@@ -15,20 +15,52 @@ def home(request):
 
 
 def toc(request):
-    print("passage par toc")
+ 
     return render(request, "toc.html",{
         'chapters': Chapter.objects.all()
        
     })
+def mentions(request):
+ 
+    return render(request, "mentions-legales.html")
 
 
 def chapter(request, n, slug):
     chapter = Chapter.objects.get(number=n)
-    print("l'id est : " ,chapter.id)
-    prev  = Article.objects.get(id = int(chapter.id)-1)
-    next = Article.objects.get(id = int(chapter.id)+1)
-    prev.desc = "Section précédente"
-    next.desc = "Section suivante"
+    prev = None
+    next = None
+    print( chapter.main_title)
+    try:
+        prev  = Article.objects.get(id = int(chapter.id)-1)
+        prev.desc = "Section précédente"
+        prev.url = "/section/"
+    except Article.DoesNotExist:
+        prev = None
+    if prev is None:
+        try:
+            prev = Chapter.objects.get(number=int(n) -1)
+            print( chapter.number)
+            prev.desc = "Chapitre précédent"
+            prev.url = "/chapitre/"
+        except Chapter.DoesNotExist:
+            prev = None
+
+
+    try:
+        next  = Article.objects.get(id = int(chapter.id)+1)
+        next.desc = "Section suivante"
+        next.url = "/section/"
+    except Article.DoesNotExist:
+        next = None
+    if next is None:
+        try:
+            next = Chapter.objects.get(number = int(chapter.number)+1)
+            next.desc = "Chapitre suivant"
+            next.url = "/chapitre/"
+        except Chapter.DoesNotExist:
+            next = None
+
+
     return render(request, "chapter.html", {
         'subject': chapter,
         'content': markdown.Markdown().convert(chapter.content),
@@ -44,25 +76,30 @@ def section(request, n, slug):
     article = Article.objects.get(number=n)
     prev = None
     next = None
+
+    #previous 
     try:
         prev = Article.objects.get(id = int(article.id)-1)
+        prev.desc = "Section précédente"
+        prev.url = "/section/"
     except Article.DoesNotExist:
         prev = None
-    if prev is None:
-        prev = Chapter.objects.get(number = int(article.chapter.number)-1)
-        prev.desc = "Chapitre précédent"
-    else:
-        prev.desc = "Section précédente"
-
+    
+    #next
     try:
          next = Article.objects.get(id = int(article.id)+1)
+         next.desc = "Section suivante"
+         next.url = "/section/"
     except Article.DoesNotExist:
         next = None
     if next is None:
-        next = Chapter.objects.get(number = int(article.chapter.number)+1)
-        next.desc = "Chapitre suivant"
-    else:
-        next.desc = "Section suivante"
+        try:
+            next = Chapter.objects.get(number = int(article.chapter.number)+1)
+            next.desc = "Chapitre suivant"
+            next.url = "/chapitre/"
+        except Chapter.DoesNotExist:
+            next = None   
+
     return render(request, "section.html", {
         'subject': article,
         'content': markdown.Markdown().convert(article.content),
@@ -77,6 +114,12 @@ def random(request):
 
     return redirect(f'/section/{article.number}/{article.slug}')
   
+
+def fin(request):
+    baseurl = request.build_absolute_uri()
+    return render(request, "fin.html", { 'baseurl': baseurl })
+
+
 
 def search(request):
     """My custom search view."""
