@@ -13,7 +13,7 @@
    {% block jumbotron %}
 
    <div class="jumbotron">
-      <form class="container form-total-loading " method='GET' action="/search">
+      <form class="container form-total-loading " method='GET' action="/recherche">
          <div class="input-group">
             <span class="input-group-btn">
                <button class="search-addon" type="submit" title="Effectuer une recherche sur « L'avenir en commun »">
@@ -63,13 +63,13 @@
                </p>
 
                <ul id="resultats" class="list-group search-results">
-                  {% spaceless %}
+                 
                   {% for result in query %}
                   <li class="list-group-item">
                   {% include './result.html' %}
-               </li>
+                  </li>
                   {% endfor %}
-                  {% endspaceless %}
+                
                </ul>
 
                <p class="sidelines" aria-hidden="true">

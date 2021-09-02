@@ -9,7 +9,8 @@ class Chapter(models.Model):
     id =  models.IntegerField(default=1)
     content = models.TextField()
     main_title = models.CharField(max_length=500,default='')
-    sub_title = models.CharField(max_length=500,default='')   
+    sub_title = models.CharField(max_length=500,default='')
+    text =  models.TextField(default='')
 
     class Meta:
         ordering = ('number',)
@@ -23,6 +24,12 @@ class Article(models.Model):
     id =  models.IntegerField(default=1)
     content = models.TextField()
     chapter = models.ForeignKey(Chapter, on_delete=models.DO_NOTHING)
+    text =  models.TextField(default='')
 
     class Meta:
         ordering = ('number',)
+
+
+class UrlData(models.Model):
+    url = models.CharField(max_length=200)
+    slug = models.CharField(max_length=15)

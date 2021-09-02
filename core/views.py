@@ -24,8 +24,7 @@ def mentions(request):
  
     return render(request, "mentions-legales.html")
 
-
-def chapter(request, n, slug):
+def chapter(request, n, slug=''):
     chapter = Chapter.objects.get(number=n)
     prev = None
     next = None
@@ -63,11 +62,50 @@ def chapter(request, n, slug):
 
     return render(request, "chapter.html", {
         'subject': chapter,
-        'content': markdown.Markdown().convert(chapter.content),
+        'content': markdown.Markdown().convert(chapter.text),
         'next': next,
         'prev': prev,
         'book_navigation':None,
     })
+def chapter_redirect(request, n):
+    chapter = Chapter.objects.get(number=n)
+    prev = None
+    next = None
+    print( chapter.main_title)
+    try:
+        prev  = Article.objects.get(id = int(chapter.id)-1)
+        prev.desc = "Section précédente"
+        prev.url = "/section/"
+    except Article.DoesNotExist:
+        prev = None
+    if prev is None:
+        try:
+            prev = Chapter.objects.get(number=int(n) -1)
+            print( chapter.number)
+            prev.desc = "Chapitre précédent"
+            prev.url = "/chapitre/"
+        except Chapter.DoesNotExist:
+            prev = None
+
+
+    try:
+        next  = Article.objects.get(id = int(chapter.id)+1)
+        next.desc = "Section suivante"
+        next.url = "/section/"
+    except Article.DoesNotExist:
+        next = None
+    if next is None:
+        try:
+            next = Chapter.objects.get(number = int(chapter.number)+1)
+            next.desc = "Chapitre suivant"
+            next.url = "/chapitre/"
+        except Chapter.DoesNotExist:
+            next = None
+
+
+    return redirect('chapitre/' + n +'/'+chapter.slug)
+
+    
 
 
 
@@ -102,12 +140,42 @@ def section(request, n, slug):
 
     return render(request, "section.html", {
         'subject': article,
-        'content': markdown.Markdown().convert(article.content),
+        'content': markdown.Markdown().convert(article.text),
         'next': next,
         'prev': prev,
         'book_navigation':None,
     })
 
+def section_redirect(request, n):
+
+    article = Article.objects.get(number=n)
+    prev = None
+    next = None
+
+    #previous 
+    try:
+        prev = Article.objects.get(id = int(article.id)-1)
+        prev.desc = "Section précédente"
+        prev.url = "/section/"
+    except Article.DoesNotExist:
+        prev = None
+    
+    #next
+    try:
+         next = Article.objects.get(id = int(article.id)+1)
+         next.desc = "Section suivante"
+         next.url = "/section/"
+    except Article.DoesNotExist:
+        next = None
+    if next is None:
+        try:
+            next = Chapter.objects.get(number = int(article.chapter.number)+1)
+            next.desc = "Chapitre suivant"
+            next.url = "/chapitre/"
+        except Chapter.DoesNotExist:
+            next = None   
+
+    return redirect('section/' + n +'/'+article.slug)
 
 def random(request):
     article = choice(list(Article.objects.all()))
@@ -121,7 +189,7 @@ def fin(request):
 
 
 
-def search(request):
+def recherche(request):
     """My custom search view."""
 
    
@@ -170,15 +238,9 @@ def search(request):
     s = s.query(q).extra(from_=0, size=100)
     s = s.highlight('title_auto', 'content_auto',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=False, number_of_fragments=1, fragment_size=250)
     s = s.execute()
-    for h in s.hits:
-        print(h)
-        if hasattr(h.meta,'highlight'):
-            if hasattr(h.meta.highlight,'title'):
-                print(h.meta.highlight.title)
-            if hasattr(h.meta.highlight,'content'):
-                print(h.meta.highlight.content)
-
-    return render(request, "search.html", {
+    for h in s.hits:  
+        print(h.content)
+    return render(request, "recherche.html", {
         'query': s,
         'request' :req
     })

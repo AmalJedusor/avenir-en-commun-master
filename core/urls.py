@@ -11,7 +11,9 @@ urlpatterns = [
     path('hasard', views.random),
     path('fin/', views.fin),
      path('page/mentions-legales', views.mentions),
-    path('search/', views.search),
+    path('recherche/', views.recherche),
+    path('c<slug:n>',views.chapter_redirect),
+    path('s<slug:n>',views.section_redirect)
 
    
 ]
