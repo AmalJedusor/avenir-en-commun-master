@@ -33,3 +33,6 @@ class Article(models.Model):
 class UrlData(models.Model):
     url = models.CharField(max_length=200)
     slug = models.CharField(max_length=15)
+
+    class Meta:
+        ordering = ('slug',)

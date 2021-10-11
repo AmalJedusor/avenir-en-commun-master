@@ -2,7 +2,7 @@
 from random import choice
 from django.shortcuts import render, redirect
 import markdown
-from .models import Chapter, Article
+from .models import Chapter, Article, UrlData
 from haystack.query import SQ
 
 from elasticsearch import Elasticsearch
@@ -67,47 +67,6 @@ def chapter(request, n, slug=''):
         'prev': prev,
         'book_navigation':None,
     })
-def chapter_redirect(request, n):
-    chapter = Chapter.objects.get(number=n)
-    prev = None
-    next = None
-    print( chapter.main_title)
-    try:
-        prev  = Article.objects.get(id = int(chapter.id)-1)
-        prev.desc = "Section précédente"
-        prev.url = "/section/"
-    except Article.DoesNotExist:
-        prev = None
-    if prev is None:
-        try:
-            prev = Chapter.objects.get(number=int(n) -1)
-            print( chapter.number)
-            prev.desc = "Chapitre précédent"
-            prev.url = "/chapitre/"
-        except Chapter.DoesNotExist:
-            prev = None
-
-
-    try:
-        next  = Article.objects.get(id = int(chapter.id)+1)
-        next.desc = "Section suivante"
-        next.url = "/section/"
-    except Article.DoesNotExist:
-        next = None
-    if next is None:
-        try:
-            next = Chapter.objects.get(number = int(chapter.number)+1)
-            next.desc = "Chapitre suivant"
-            next.url = "/chapitre/"
-        except Chapter.DoesNotExist:
-            next = None
-
-
-    return redirect('chapitre/' + n +'/'+chapter.slug)
-
-    
-
-
 
 def section(request, n, slug):
 
@@ -146,36 +105,6 @@ def section(request, n, slug):
         'book_navigation':None,
     })
 
-def section_redirect(request, n):
-
-    article = Article.objects.get(number=n)
-    prev = None
-    next = None
-
-    #previous 
-    try:
-        prev = Article.objects.get(id = int(article.id)-1)
-        prev.desc = "Section précédente"
-        prev.url = "/section/"
-    except Article.DoesNotExist:
-        prev = None
-    
-    #next
-    try:
-         next = Article.objects.get(id = int(article.id)+1)
-         next.desc = "Section suivante"
-         next.url = "/section/"
-    except Article.DoesNotExist:
-        next = None
-    if next is None:
-        try:
-            next = Chapter.objects.get(number = int(article.chapter.number)+1)
-            next.desc = "Chapitre suivant"
-            next.url = "/chapitre/"
-        except Chapter.DoesNotExist:
-            next = None   
-
-    return redirect('section/' + n +'/'+article.slug)
 
 def random(request):
     article = choice(list(Article.objects.all()))
@@ -244,3 +173,8 @@ def recherche(request):
         'query': s,
         'request' :req
     })
+
+def redirect_short(request,n):
+     content = UrlData.objects.get(slug=request.path)
+     print(content)
+     return redirect( content.url,n = n)

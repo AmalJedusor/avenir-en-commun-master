@@ -1,6 +1,6 @@
 import datetime
 from haystack import indexes
-from .models import Chapter, Article
+from .models import Chapter, Article, UrlData
 from .search_backends import CustomEdgeNgramField
 
 class ChapterIndex(indexes.SearchIndex, indexes.Indexable):
@@ -23,6 +23,8 @@ class ChapterIndex(indexes.SearchIndex, indexes.Indexable):
     def index_queryset(self, using=None):
         return self.get_model().objects.all()
 
+
+
 class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.EdgeNgramField(document=True, use_template=True)
     content = indexes.CharField(model_attr='content')
@@ -34,9 +36,6 @@ class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
       # We add this for autocomplete.
     content_auto = CustomEdgeNgramField(model_attr='content',index_analyzer="french_elision")
     title_auto = CustomEdgeNgramField(model_attr='title',index_analyzer="french_elision")
-
-
-
 
 
     def get_model(self):
