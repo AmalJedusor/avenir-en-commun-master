@@ -5,7 +5,7 @@ from core import views
 from haystack.generic_views import SearchView
 urlpatterns = [
     path('', views.home),
-    path('sommaire/', views.toc),
+    path('sommaire', views.toc),
     path('chapitre/<slug:n>/<slug:slug>', views.chapter),
     path('section/<slug:n>/<slug:slug>', views.section),
     path('hasard', views.random),
