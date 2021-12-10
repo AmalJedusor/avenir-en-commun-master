@@ -129,6 +129,29 @@ ELASTICSEARCH_DSL={
     },
 }
 ELASTICSEARCH_INDEX_SETTINGS   = {
+    'mappings' : {
+      "modelresult" : {
+        "properties" : {
+          "content" : {
+            "type" : "text",
+            "analyzer" : "snowball"
+          },
+          "content_auto" : {
+            "type" : "text",
+            "analyzer" : "edgengram_analyzer"
+          },
+         
+          "title" : {
+            "type" : "text",
+            "analyzer" : "snowball"
+          },
+          "title_auto" : {
+            "type" : "text",
+            "analyzer" : "edgengram_analyzer"
+          }
+        }
+      }
+    },
   'settings': {
                 "analysis": {
                     "analyzer": {
