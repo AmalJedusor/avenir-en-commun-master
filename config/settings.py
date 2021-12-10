@@ -129,73 +129,47 @@ ELASTICSEARCH_DSL={
     },
 }
 ELASTICSEARCH_INDEX_SETTINGS   = {
-    'settings': {
-        "analysis": {
-            "analyzer": {
-                "ngram_analyzer": {
-                    "type": "custom",
-                    "tokenizer": "lowercase",
-                    "filter": ["haystack_ngram"]
-                },
-                "edgengram_analyzer": {
-                    "type": "custom",
-                    "tokenizer": "lowercase",
-                    "filter": ["haystack_edgengram"]
-                },
-                "suggest_analyzer": {
-                    "type":"custom",
-                    "tokenizer":"standard",
-                    "filter":[
-                        "standard",
-                        "lowercase",
-                        "asciifolding",
-                         "french_stemmer"
-                    ]
-                },
-            },
-            "tokenizer": {
-                "haystack_ngram_tokenizer": {
-                    "type": "nGram",
-                    "min_gram": 5,
-                    "max_gram": 15,
-                },
-                "haystack_edgengram_tokenizer": {
-                    "type": "edgeNGram",
-                    "min_gram": 5,
-                    "max_gram": 15,
-                    "side": "front"
+  'settings': {
+                "analysis": {
+                    "analyzer": {
+                        "ngram_analyzer": {
+                            "type": "custom",
+                            "tokenizer": "lowercase",
+                            "filter": ["haystack_ngram"]
+                        },
+                        "edgengram_analyzer": {
+                            "type": "custom",
+                            "tokenizer": "lowercase",
+                            "filter": ["haystack_edgengram"]
+                        }
+                    },
+                    "tokenizer": {
+                        "haystack_ngram_tokenizer": {
+                            "type": "nGram",
+                            "min_gram": 5,
+                            "max_gram": 15,
+                        },
+                        "haystack_edgengram_tokenizer": {
+                            "type": "edgeNGram",
+                            "min_gram": 5,
+                            "max_gram": 15,
+                            "side": "front"
+                        }
+                    },
+                    "filter": {
+                        "haystack_ngram": {
+                            "type": "nGram",
+                            "min_gram": 5,
+                            "max_gram": 15
+                        },
+                        "haystack_edgengram": {
+                            "type": "edgeNGram",
+                            "min_gram": 5,
+                            "max_gram": 15
+                        }
+                    }
                 }
-            },
-            "filter": {
-                "haystack_ngram": {
-                    "type": "nGram",
-                    "min_gram": 5,
-                    "max_gram": 15
-                },
-                "haystack_edgengram": {
-                    "type": "edgeNGram",
-                    "min_gram": 5,
-                    "max_gram": 15
-                },
-                 "french_stemmer": {
-                    "type":       "stemmer",
-                    "language":   "french"
-                },
-                 "french_elision": {
-                    "type": "elision",
-                    "articles_case": True,
-                    "articles": ["l", "m", "t", "qu", "n", "s", "j", "d", "c", "jusqu", "quoiqu", "lorsqu", "puisqu"]
-                 },
-                  "french_stop": {
-                "type":       "stop",
-                "stopwords":  "_french_" 
-                }
-             },
-
-
-        }
-    },
-    
+            }
 
  }
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.BaseSignalProcessor'

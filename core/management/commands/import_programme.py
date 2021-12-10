@@ -10,13 +10,13 @@ class Command(BaseCommand):
         Chapter.objects.all().delete()
         UrlData.objects.all().delete()
         id = 0
-        for file in glob.glob("programme/chapitre*/*.md"):
+        for file in sorted(glob.glob("programme/chapitre*/*.md")):
             if "!index.md" in file:
                 title = open(file,encoding='utf-8').read().split('\n')[0][1:].strip()
-                number=file.split('chapitre-')[1].split('\\')[0]
+                number=file.split('chapitre-')[1].split(os.path.sep)[0]
                 if slugify(title) == "preface-nous-sommes-pour"  or slugify(title) == "annexes" :
                     Chapter(
-                         number= number,
+                        number= number,
                         slug=slugify(title),
                         entity="chapitre",
                         title=title,
@@ -47,10 +47,10 @@ class Command(BaseCommand):
                     ).save()
                 id += 1              
                 continue
-            chapter_number = file.split('chapitre-')[1].split('\\')[0]
+            chapter_number = file.split('chapitre-')[1].split(os.path.sep)[0]
             chapter = Chapter.objects.get(number=chapter_number)
             title = open(file,encoding='utf-8').read().split('\n')[0][1:].strip()
-            number= int(file.split('\\')[-1].replace('.md', ''))
+            number= int(file.split(os.path.sep)[-1].replace('.md', ''))
             Article(
                 number=number,
                 slug=slugify(title),

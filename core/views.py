@@ -8,7 +8,8 @@ from haystack.query import SQ
 from elasticsearch import Elasticsearch
 from django.utils.html import strip_tags
 import pandas as pd
-from elasticsearch_dsl import Search, connections
+from elasticsearch_dsl import Search
+from elasticsearch_dsl.connections import connections
 from elasticsearch_dsl import Q
 def home(request):
     return render(request, "home.html")

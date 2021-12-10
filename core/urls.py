@@ -13,8 +13,5 @@ urlpatterns = [
     path('page/mentions-legales', views.mentions),
     path('recherche/', views.recherche),
     path('s<slug:n>',views.redirect_short),
-    path('c<slug:n>',views.redirect_short)
-
-
-   
+    path('c<slug:n>',views.redirect_short)  
 ]

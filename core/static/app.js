@@ -12042,6 +12042,7 @@ __app.measures = {
     __deps: [],
     options: {},
     __run: function() {
+
         var t = $('.list-measures > .list-group-item.active').first();
         if (t.length > 0) {
             __app.scroll.to(t);

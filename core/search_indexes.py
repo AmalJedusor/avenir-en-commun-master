@@ -15,8 +15,8 @@ class ChapterIndex(indexes.SearchIndex, indexes.Indexable):
     entity = indexes.CharField(model_attr='entity')
     id = indexes.IntegerField(model_attr='id')
   # We add this for autocomplete.
-    content_auto = CustomEdgeNgramField(model_attr='content',index_analyzer="snowball")
-    title_auto = CustomEdgeNgramField(model_attr='title',index_analyzer="snowball")
+    content_auto =  indexes.EdgeNgramField(model_attr='content')
+    title_auto =  indexes.EdgeNgramField(model_attr='title')
 
     def get_model(self):
         return Chapter
@@ -34,8 +34,8 @@ class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
     entity = indexes.CharField(model_attr='entity')
     id = indexes.IntegerField(model_attr='id')
       # We add this for autocomplete.
-    content_auto = CustomEdgeNgramField(model_attr='content',index_analyzer="french_elision")
-    title_auto = CustomEdgeNgramField(model_attr='title',index_analyzer="french_elision")
+    content_auto =  indexes.EdgeNgramField(model_attr='content')
+    title_auto = indexes.EdgeNgramField(model_attr='title')
 
 
     def get_model(self):
