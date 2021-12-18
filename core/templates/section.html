@@ -78,16 +78,19 @@ $(document).on('click', '.list-measures > .list-group-item', function(e) {
             a.addClass('active');
             a.blur();
             o.modal('show');
-            var e = $('#modal-measure');
+            console.log(a.context.id);
+            var e = $('#modal-measure');  
       if (e.length > 0) {
-            var s = $('#mesure-' + 1).addClass('active');
-            console.log(a.html());
+            var s = $('#mesure-' + a.context.id).addClass('active');
+         
             var popup_text = $("#modal-measure > .modal-dialog > .modal-content").find('.modal-body');
             var popup_subttitle =  $("#modal-measure > .modal-dialog > .modal-content").find('.modal-title > .alternate');
             var popup_title = $("#modal-measure > .modal-dialog > .modal-content").find('.modal-title p');
+            var short_url = $("#share-control-m-4");
             popup_text.text(a.html());
             popup_title.text("{{subject.title}}");
             popup_subttitle.text("{{subject.chapter.main_title}}");
+            short_url.val("https://laec.fr/s{{subject.number}}-"+a.context.id);
             e.modal('show')
       }
         });

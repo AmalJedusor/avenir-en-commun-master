@@ -169,12 +169,12 @@ ELASTICSEARCH_INDEX_SETTINGS   = {
                     "tokenizer": {
                         "haystack_ngram_tokenizer": {
                             "type": "nGram",
-                            "min_gram": 5,
+                            "min_gram": 6,
                             "max_gram": 15,
                         },
                         "haystack_edgengram_tokenizer": {
                             "type": "edgeNGram",
-                            "min_gram": 5,
+                            "min_gram": 6,
                             "max_gram": 15,
                             "side": "front"
                         }
@@ -182,13 +182,13 @@ ELASTICSEARCH_INDEX_SETTINGS   = {
                     "filter": {
                         "haystack_ngram": {
                             "type": "nGram",
-                            "min_gram": 5,
-                            "max_gram": 15
+                            "min_gram": 6,
+                            "max_gram": 15,
                         },
                         "haystack_edgengram": {
                             "type": "edgeNGram",
-                            "min_gram": 5,
-                            "max_gram": 15
+                            "min_gram": 6,
+                            "max_gram": 15,
                         }
                     }
                 }

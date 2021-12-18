@@ -16,15 +16,31 @@
          {% include '_sidebar.html' %}
          <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
             <nav class="toc list-group" role="navigation">
-            {% for chapter in chapters %}
+             
+              
+            <div class="list-group-item list-group-separator" aria-hidden="true">
+               <p class="sidelines"><i class="fa fa-fw fa-scissors"></i></p>
+            </div>
+            {% for part in parts %}
+            <a
+               id="partie-{{part.number}}"
+               class="list-group-item toc-chapter toc-chapter-{{part.number}}"
+               href="/part/{{part.number}}/{{part.slug}}">
+             
+                                 <h3>{{part.title}}</h3>
+                             
+            </a>
+            <div class="list-group-item list-group-separator" aria-hidden="true">
+             
+            </div>
+            {% for chapter in part.chapter_set.all %}
                <a
                   id="chapitre-{{chapter.number}}"
-                  class="list-group-item toc-chapter toc-chapter-{{chapter.number}}"
+                  class="list-group-item toc-chapter toc-chapter-{{part.number}}"
                   href="/chapitre/{{chapter.number}}/{{chapter.slug}}">
                   <i class="fa fa-fw fa-2x fa-pull-right icon icon-chapter-{{chapter.number}}" aria-hiddent="true"></i>
-                  {% if chapter.main_title %}
-                           <span class="alternate">{{chapter.main_title}}</span>
-                                    <h4>{{chapter.sub_title}}</h4>
+                  {% if chapter.main_title %}                    
+                                    <h4>{{chapter.main_title}}</h4>
                   {% else %}
                   <span class="alternate">{{ chapter.title }}</span>
 
@@ -32,14 +48,18 @@
                </a>
                   {% for article in chapter.article_set.all %}
                   <a
-                     class="list-group-item toc-section toc-chapter-{{chapter.number}}"
+                     class="list-group-item toc-section toc-chapter-{{part.number}}"
                      href="/section/{{article.number}}/{{article.slug}}">
                      <span class="label label-default">{{article.number}}</span> {{article.title}}
                   </a>
                   {% endfor %}
-               <div class="list-group-item list-group-separator" aria-hidden="true">
-                  <p class="sidelines"><i class="fa fa-fw fa-scissors"></i></p>
-               </div>
+                  <div class="list-group-item list-group-separator" aria-hidden="true">
+                   
+                  </div>
+            {% endfor %}
+            <div class="list-group-item list-group-separator" aria-hidden="true">
+               <p class="sidelines"><i class="fa fa-fw fa-scissors"></i></p>
+            </div>
             {% endfor %}
             <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page" class="">
                <i class="fa fa-arrow-up" aria-hidden="true"></i>

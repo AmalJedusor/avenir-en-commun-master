@@ -7402,17 +7402,11 @@ button.close {
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
-@font-face {
-    font-family: 'icomoon';
-    src: url("/static/icomoon.eot");
-    src: url("/static/icomoon.eot") format('embedded-opentype'), url("/static/icomoon.woff") format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+
 
 .fa {
     display: inline-block;
-    font: normal normal normal 14px/1 icomoon;
+    font: normal normal normal 14px/1;
     font-size: inherit;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -12737,12 +12731,12 @@ ul#side-navigation span.alternate {
 }
 
 .toc-chapter-1 {
-    color: #c87600 !important
+    color: #EC8900 !important
 }
 
 .toc-chapter-1:hover {
-    background-color: #ec8b00 !important;
-    border-color: #ec8b00 !important
+    background-color: #EC8900 !important;
+    border-color: #EC8900 !important
 }
 
 .toc-chapter-1:hover span.label {
@@ -12753,19 +12747,19 @@ ul#side-navigation span.alternate {
 
 .toc-chapter-1 span.label {
     background-color: transparent;
-    border: #c87600;
-    border: 2px solid rgba(236, 139, 0, 0.3);
-    color: #c87600;
-    color: rgba(236, 139, 0, 0.7)
+    border: #EC8900;
+    border: 2px solid rgba(236, 137, 0, 0.3);
+    color: #EC8900;
+    color: rgba(236, 137, 0,  0.7);
 }
 
 .toc-chapter-2 {
-    color: #ec4444 !important
+    color: #32BF7C !important
 }
 
 .toc-chapter-2:hover {
-    background-color: #ef6464 !important;
-    border-color: #ef6464 !important
+    background-color: #32BF7C !important;
+    border-color: #32BF7C !important
 }
 
 .toc-chapter-2:hover span.label {
@@ -12776,19 +12770,19 @@ ul#side-navigation span.alternate {
 
 .toc-chapter-2 span.label {
     background-color: transparent;
-    border: #ec4444;
-    border: 2px solid rgba(239, 100, 100, 0.3);
-    color: #ec4444;
-    color: rgba(239, 100, 100, 0.7)
+    border: #32BF7C;
+    border: 2px solid rgba(50, 191, 124, 0.3);
+    color: #32BF7C;
+    color: rgba(50, 191, 124, 0.7);
 }
 
 .toc-chapter-3 {
-    color: #2ba36a !important
+    color: #EF6464 !important
 }
 
 .toc-chapter-3:hover {
-    background-color: #32bf7c !important;
-    border-color: #32bf7c !important
+    background-color: #EF6464 !important;
+    border-color: #EF6464 !important
 }
 
 .toc-chapter-3:hover span.label {
@@ -12799,19 +12793,19 @@ ul#side-navigation span.alternate {
 
 .toc-chapter-3 span.label {
     background-color: transparent;
-    border: #2ba36a;
-    border: 2px solid rgba(50, 191, 124, 0.3);
-    color: #2ba36a;
-    color: rgba(50, 191, 124, 0.7)
+    border: #EF6464;
+    border: 2px solid rgba(239, 100, 100, 0.3);
+    color: #EF6464;
+    color: rgba(239, 100, 100, 0.7);
 }
 
 .toc-chapter-4 {
-    color: #2c53dd !important
+    color: #3DB2AB !important
 }
 
 .toc-chapter-4:hover {
-    background-color: #4b6ce2 !important;
-    border-color: #4b6ce2 !important
+    background-color: #3DB2AB !important;
+    border-color: #3DB2AB !important
 }
 
 .toc-chapter-4:hover span.label {
@@ -12822,14 +12816,14 @@ ul#side-navigation span.alternate {
 
 .toc-chapter-4 span.label {
     background-color: transparent;
-    border: #2c53dd;
-    border: 2px solid rgba(75, 108, 226, 0.3);
-    color: #2c53dd;
-    color: rgba(75, 108, 226, 0.7)
+    border: #3DB2AB;
+    border: 2px solid rgba(61, 178, 171, 0.3);
+    color: #3DB2AB;
+    color: rgba(61, 178, 171, 1);
 }
 
 .toc-chapter-5 {
-    color: #a4295b !important
+    color: #C1306B !important
 }
 
 .toc-chapter-5:hover {
@@ -12848,7 +12842,7 @@ ul#side-navigation span.alternate {
     border: #a4295b;
     border: 2px solid rgba(193, 48, 107, 0.3);
     color: #a4295b;
-    color: rgba(193, 48, 107, 0.7)
+    color: rgba(193, 48, 107, 0.7);
 }
 
 .toc-chapter-6 {
@@ -12975,7 +12969,7 @@ ul#side-navigation span.alternate {
 }
 
 .toc .list-group-item h4 {
-    margin-top: 0;
+ 
     margin-bottom: 0
 }
 
@@ -16863,42 +16857,74 @@ h6 .alternate,
   
   /* Step 2: Reference Individual Icons */
   .icon-chapter-1::before {
-    font-family: "icomoon";
-    content: "\f19c";
-  }
-  
-  .icon-chapter-1::before {
-    font-family: "icomoon";
+    font-family: "FontAwesome";
     content: "\f19c";
   }
   
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-2::before {
-    font-family: "icomoon";
+    font-family: "FontAwesome";
     content: "\f24e";
   }
   .icon-chapter-3::before {
-    font-family: "icomoon";
-    content: "\f06c";
+    font-family: "FontAwesome";
+    content: "\f4d8";
   }
   
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-4::before {
-    font-family: "icomoon";
-    content: "\f005";
+    font-family: "FontAwesome";
+    content: "\f06c";
   }
   .icon-chapter-5::before {
-    font-family: "icomoon";
-    content: "\f2b5";
+    font-family: "FontAwesome";
+    content: "\f043";
   }
   
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-6::before {
-    font-family: "icomoon";
+    font-family: "FontAwesome";
     content: "\f21e";
   } 
    /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-7::before {
-    font-family: "icomoon";
+    font-family: "FontAwesome";
+    content: "\f3b3";
+  }
+
+  /* Note: Make sure to include the correct weight and Unicode value for the icon */
+  .icon-chapter-8::before {
+    font-family: "FontAwesome";
+    content: "\f555";
+  }
+  .icon-chapter-9::before {
+    font-family: "FontAwesome";
+    content: "\e219";
+  }
+  
+  /* Note: Make sure to include the correct weight and Unicode value for the icon */
+  .icon-chapter-10::before {
+    font-family: "FontAwesome";
+    content: "\f672";
+  }
+  .icon-chapter-11::before {
+    font-family: "FontAwesome";
+    content: "\e0c0";
+  }
+  
+  /* Note: Make sure to include the correct weight and Unicode value for the icon */
+  .icon-chapter-12::before {
+    font-family: "FontAwesome";
+    content: "\f5c0";
+  } 
+   /* Note: Make sure to include the correct weight and Unicode value for the icon */
+  .icon-chapter-13::before {
+    font-family: "FontAwesome";
+    content: "\f7a2";
+  }
+   /* Note: Make sure to include the correct weight and Unicode value for the icon */
+   .icon-chapter-14::before {
+    font-family: "FontAwesome";
     content: "\f135";
   }
+   

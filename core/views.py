@@ -2,7 +2,7 @@
 from random import choice
 from django.shortcuts import render, redirect
 import markdown
-from .models import Chapter, Article, UrlData
+from .models import Chapter, Article, Part, UrlData
 from haystack.query import SQ
 
 from elasticsearch import Elasticsearch
@@ -18,7 +18,8 @@ def home(request):
 def toc(request):
  
     return render(request, "toc.html",{
-        'chapters': Chapter.objects.all()
+        'chapters': Chapter.objects.all(),
+        'parts': Part.objects.all()
        
     })
 def mentions(request):
@@ -148,13 +149,11 @@ def recherche(request):
                     "post_tags" : ["</mark>"],
                 "fields": {
                      "title_auto": {
+                "fragment_size": 300,           
+                     }, 
+                 "content_auto": {
                 "fragment_size": 300,
-                "number_of_fragments": 100,
-
-            }, 
-              "content_auto": {
-                "fragment_size": 300,
-                "number_of_fragments": 100,
+              
 
             }
                 }
@@ -166,7 +165,7 @@ def recherche(request):
     s = Search(index='haystack')
     q = Q("multi_match", query=req, fields=['title_auto','content_auto'])
     s = s.query(q).extra(from_=0, size=100)
-    s = s.highlight('title_auto', 'content_auto',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=False, number_of_fragments=1, fragment_size=250)
+    s = s.highlight('title_auto', 'content_auto',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=True, number_of_fragments=1, fragment_size=300)
     s = s.execute()
     for h in s.hits:  
         print(h.content)

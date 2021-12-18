@@ -11,7 +11,11 @@
 
    <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}" 
       title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
-      <h2 class="h4">  {%if result.meta.highlight.title_auto %}  {{ result.meta.highlight.title_auto | first  | safe }} {% else %} {{result.title_auto | safe}} {% endif %}  </h2>
+      <h2 class="h4"> 
+          {%if result.meta.highlight.title_auto %}  
+          {{ result.meta.highlight.title_auto | first  | safe }} 
+          {% else %} {{result.title_auto | safe}} 
+          {% endif %}  </h2>
    </a>
    <cite>
       {% if result.entity == 'chapitre' %}
@@ -21,7 +25,12 @@
       {% endif %}
    </cite>
  
-   <p class="highlights">...{% if result.meta.highlight.content_auto %} {{result.meta.highlight.content_auto | first | safe }}   {% else %} {{result.content_auto | safe }} {% endif %} ...</p>
+   <p class="highlights">...{% if result.meta.highlight.content_auto %}
+       {{result.meta.highlight.content_auto | first | safe }}   
+       {% else %} 
+       {{result.content_auto | striptags | safe |slice:":300" }} 
+       {% endif %} 
+       ...</p>
  
  
   
