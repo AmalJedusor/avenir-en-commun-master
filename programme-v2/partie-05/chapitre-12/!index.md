@@ -1,4 +1,4 @@
-# Europe
+Europe
 
 2022 est l’occasion de changer de trajectoire en Europe : en 2022, la France exercera la présidence de l’Union européenne au moment où se négocieront les nouvelles politiques climatiques et la réintroduction des règles budgétaires européennes. Les traités actuels seront donc inévitablement remis en cause pour répondre à l’ampleur des défis.
 Notre règle : en toute hypothèse, nous appliquerons les engagements de notre programme.

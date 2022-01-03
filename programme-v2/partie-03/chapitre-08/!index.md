@@ -1,1 +1,1 @@
-# Partage des richesses
+Partage des richesses

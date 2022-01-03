@@ -11909,6 +11909,15 @@ ul#side-navigation span.alternate {
     }
 }
 
+.theme-chapter-0.jumbotron h1 b {
+    text-shadow: 0.5px 0.5px 0 #9a7fe4, 1px 1px 0 #9a7fe4, 1.5px 1.5px 0 #9a7fe4, 2px 2px 0 #9a7fe4, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
+}
+
+@media (min-width:992px) {
+    .theme-chapter-0.jumbotron h1 b {
+        text-shadow: 0.5px 0.5px 0 #9a7fe4, 1px 1px 0 #9a7fe4, 1.5px 1.5px 0 #9a7fe4, 2px 2px 0 #9a7fe4, 2.5px 2.5px 0 #9a7fe4, 3px 3px 0 #9a7fe4, 3.5px 3.5px 0 #9a7fe4, 3px 3px 10px rgba(0, 0, 0, 0.3)
+    }
+}
 .theme-chapter-1.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #ffae39, 1px 1px 0 #ffac34, 1.5px 1.5px 0 #ffaa2f, 2px 2px 0 #ffa82a, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
@@ -11920,34 +11929,36 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-2.jumbotron h1 b {
-    text-shadow: 0.5px 0.5px 0 #f6a9a9, 1px 1px 0 #f6a5a5, 1.5px 1.5px 0 #f5a0a0, 2px 2px 0 #f59b9b, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
+  text-shadow: 0.5px 0.5px 0 #66d7a2, 1px 1px 0 #62d69f, 1.5px 1.5px 0 #5ed59d, 2px 2px 0 #5ad49a, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
     .theme-chapter-2.jumbotron h1 b {
-        text-shadow: 0.5px 0.5px 0 #f6a9a9, 1px 1px 0 #f6a5a5, 1.5px 1.5px 0 #f5a0a0, 2px 2px 0 #f59b9b, 2.5px 2.5px 0 #f49797, 3px 3px 0 #f49797, 3.5px 3.5px 0 #f49292, 3px 3px 10px rgba(0, 0, 0, 0.3)
+        text-shadow: 0.5px 0.5px 0 #66d7a2, 1px 1px 0 #62d69f, 1.5px 1.5px 0 #5ed59d, 2px 2px 0 #5ad49a, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
     }
 }
 
 .theme-chapter-3.jumbotron h1 b {
-    text-shadow: 0.5px 0.5px 0 #66d7a2, 1px 1px 0 #62d69f, 1.5px 1.5px 0 #5ed59d, 2px 2px 0 #5ad49a, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
+    text-shadow: 0.5px 0.5px 0 #f6a9a9, 1px 1px 0 #f6a5a5, 1.5px 1.5px 0 #f5a0a0, 2px 2px 0 #f59b9b, 2.5px 2.5px 0 #f49797, 3px 3px 0 #f49797, 3.5px 3.5px 0 #f49292, 3px 3px 10px rgba(0, 0, 0, 0.3)
 }
-
+  
 @media (min-width:992px) {
     .theme-chapter-3.jumbotron h1 b {
-        text-shadow: 0.5px 0.5px 0 #66d7a2, 1px 1px 0 #62d69f, 1.5px 1.5px 0 #5ed59d, 2px 2px 0 #5ad49a, 2.5px 2.5px 0 #56d398, 3px 3px 0 #56d398, 3.5px 3.5px 0 #52d295, 3px 3px 10px rgba(0, 0, 0, 0.3)
+        text-shadow: 0.5px 0.5px 0 #f6a9a9, 1px 1px 0 #f6a5a5, 1.5px 1.5px 0 #f5a0a0, 2px 2px 0 #f59b9b, 2.5px 2.5px 0 #f49797, 3px 3px 0 #f49797, 3.5px 3.5px 0 #f49292, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
 
+
 .theme-chapter-4.jumbotron h1 b {
-    text-shadow: 0.5px 0.5px 0 #8da2ed, 1px 1px 0 #889eec, 1.5px 1.5px 0 #849beb, 2px 2px 0 #8097ea, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
+    text-shadow: 0.5px 0.5px 0 #6ecdc8, 1px 1px 0 #6accc6, 1.5px 1.5px 0 #67cbc5, 2px 2px 0 #63c9c3, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
 }
 
 @media (min-width:992px) {
     .theme-chapter-4.jumbotron h1 b {
-        text-shadow: 0.5px 0.5px 0 #8da2ed, 1px 1px 0 #889eec, 1.5px 1.5px 0 #849beb, 2px 2px 0 #8097ea, 2.5px 2.5px 0 #7b93ea, 3px 3px 0 #7b93ea, 3.5px 3.5px 0 #7790e9, 3px 3px 10px rgba(0, 0, 0, 0.3)
+        text-shadow: 0.5px 0.5px 0 #6ecdc8, 1px 1px 0 #6accc6, 1.5px 1.5px 0 #67cbc5, 2px 2px 0 #63c9c3, 2.5px 2.5px 0 #5fc8c2, 3px 3px 0 #5fc8c2, 3.5px 3.5px 0 #5bc7c0, 3px 3px 10px rgba(0, 0, 0, 0.3)
     }
 }
+
 
 .theme-chapter-5.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #d96594, 1px 1px 0 #d86191, 1.5px 1.5px 0 #d75d8e, 2px 2px 0 #d6598b, 1.5px 1.5px 10px rgba(0, 0, 0, 0.3)
@@ -12142,7 +12153,7 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-0.jumbotron h1 .fa {
-    color: #56487c
+    color: #9a7fe4
 }
 
 .theme-chapter-1.jumbotron {
@@ -12160,9 +12171,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-2.jumbotron  {
-    background: #ef6464 url(/static/phi-transparent.svg) no-repeat center center fixed;
-    background-color: #ef6464;
-    background: #ef6464 url('/static/phi-transparent.svg') no-repeat center center fixed;
+    background: #32BF7C url(/static/phi-transparent.svg) no-repeat center center fixed;
+    background-color: #32BF7C;
+    background: #32BF7C url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12174,9 +12185,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-3.jumbotron {
-    background: #32bf7c url(/static/phi-transparent.svg) no-repeat center center fixed;
-    background-color: #32bf7c;
-    background: #32bf7c url('/static/phi-transparent.svg') no-repeat center center fixed;
+    background: #EF6464 url(/static/phi-transparent.svg) no-repeat center center fixed;
+    background-color: #EF6464;
+    background: #EF6464 url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12184,13 +12195,13 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-3.jumbotron h1 .fa {
-    color: #a3e7c7
+    color: #f6a9a9
 }
 
 .theme-chapter-4.jumbotron {
-    background: #4b6ce2 url(/static/phi-transparent.svg) no-repeat center center fixed;
-    background-color: #4b6ce2;
-    background: #4b6ce2 url('/static/phi-transparent.svg') no-repeat center center fixed;
+    background: #3DB2AB url(/static/phi-transparent.svg) no-repeat center center fixed;
+    background-color: #3DB2AB;
+    background: #3DB2AB url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12198,13 +12209,13 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-4.jumbotron h1 .fa {
-    color: #cfd8f7
+    color: #a7e1dd
 }
 
 .theme-chapter-5.jumbotron {
-    background: #c1306b url(/static/phi-transparent.svg) no-repeat center center fixed;
-    background-color: #c1306b;
-    background: #c1306b url('/static/phi-transparent.svg') no-repeat center center fixed;
+    background: #C1306B url(/static/phi-transparent.svg) no-repeat center center fixed;
+    background-color: #C1306B;
+    background: #C1306B url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12216,9 +12227,9 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-6.jumbotron {
-    background: #f8b81b url(/static/phi-transparent.svg) no-repeat center center fixed;
-    background-color: #f8b81b;
-    background: #f8b81b url('/static/phi-transparent.svg') no-repeat center center fixed;
+    background: #e8a707 url(/static/phi-transparent.svg) no-repeat center center fixed;
+    background-color: #e8a707;
+    background: #e8a707 url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -12230,7 +12241,7 @@ ul#side-navigation span.alternate {
 }
 
 .theme-chapter-7.jumbotron {
-    background: #3db2ab url(/static/phi-transparent.svg) no-repeat center center fixed;
+    background: #349791 url(/static/phi-transparent.svg) no-repeat center center fixed;
     background-color: #3db2ab;
     background: #3db2ab url('/static/phi-transparent.svg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -13269,13 +13280,13 @@ span.search-results-count strong.suggestion:hover {
 }
 
 .theme-chapter-2.page-section .list-measures .list-group-item.active {
-    background-color: #ee5d5d;
-    border-color: #ed4d4d
+    background-color: #32BF7C;
+    border-color: #32BF7C
 }
 
 .theme-chapter-2.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-2.page-section .list-measures .list-group-item.active:focus {
-    background-color: #f06d6d
+    background-color: #32BF7C
 }
 
 .theme-chapter-3.page-section .list-measures .list-group-item.active {
@@ -13697,14 +13708,14 @@ span.search-results-count strong.suggestion:hover {
 }
 
 .theme-chapter-2 .form-control:focus {
-    border-color: #ef6464;
+    border-color: #32BF7C;
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(239, 100, 100, .6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(239, 100, 100, .6)
 }
 
 .theme-chapter-2 button {
-    outline-color: #64efef
+    outline-color: #32BF7C
 }
 
 .theme-chapter-3 .form-control:focus {
@@ -14182,6 +14193,10 @@ footer.footer>.container {
     background-color: rgba(169, 65, 44, 0.8)
 }
 
+.theme-chapter-0 .btn-default .fa {
+    color: #9a7fe4
+}
+
 .color-chapter-1 {
     color: #ec8b00
 }
@@ -14215,15 +14230,15 @@ footer.footer>.container {
 
 .theme-chapter-2 .page-header h1,
 .theme-chapter-2 .page-header h2 {
-    color: #ee5b5b
+    color: #32BF7C
 }
 
 .theme-chapter-2 .btn-default .fa {
-    color: #ed4d4d
+    color: #32BF7C
 }
 
 .theme-chapter-2 .btn-default:hover .fa {
-    color: #515151 !important
+    color: #32BF7C !important
 }
 
 .theme-chapter-2 *::selection {
@@ -14242,25 +14257,25 @@ footer.footer>.container {
 
 .theme-chapter-3 .page-header h1,
 .theme-chapter-3 .page-header h2 {
-    color: #30b777
+    color: #f6a9a9
 }
 
 .theme-chapter-3 .btn-default .fa {
-    color: #2dab6f
+    color: #f6a9a9
 }
 
 .theme-chapter-3 .btn-default:hover .fa {
-    color: #515151 !important
+    color: #f6a9a9 !important
 }
 
 .theme-chapter-3 *::selection {
     color: #fff;
-    background-color: rgba(42, 159, 103, 0.8)
+    background-color: rgba(235, 63, 63, 0.8)
 }
 
 .theme-chapter-3 *::-moz-selection {
     color: #fff;
-    background-color: rgba(42, 159, 103, 0.8)
+    background-color: rgba(235, 63, 63, 0.8)
 }
 
 .color-chapter-4 {
@@ -14269,15 +14284,7 @@ footer.footer>.container {
 
 .theme-chapter-4 .page-header h1,
 .theme-chapter-4 .page-header h2 {
-    color: #4265e1
-}
-
-.theme-chapter-4 .btn-default .fa {
-    color: #355ade
-}
-
-.theme-chapter-4 .btn-default:hover .fa {
-    color: #515151 !important
+    color: #3aaaa4
 }
 
 .theme-chapter-4 *::selection {
@@ -14285,6 +14292,13 @@ footer.footer>.container {
     background-color: rgba(40, 79, 220, 0.8)
 }
 
+.theme-chapter-4 .btn-default .fa {
+    color: #369f99
+}
+
+.theme-chapter-4 .btn-default:hover .fa {
+    color: #515151 !important
+} 
 .theme-chapter-4 *::-moz-selection {
     color: #fff;
     background-color: rgba(40, 79, 220, 0.8)

@@ -1,1 +1,1 @@
-# Une diplomatie altermondialiste pour la paix
+Une diplomatie altermondialiste pour la paix

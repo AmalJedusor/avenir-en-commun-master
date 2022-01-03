@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-{% block html_class %}page-chapter theme-chapter-{{subject.number}} {% endblock %} 
+{% block html_class %}page-chapter theme-chapter-{{subject.part_id}} {% endblock %} 
  {% block body %}
 <body id="body">
     <div class="visible-print-block text-center print-logotype" aria-hidden="true">
@@ -8,7 +8,7 @@
         <small>Le programme de la <strong>France insoumise</strong></small>
     </div>
     {% include "_navbar.html" %}
-    <div class="theme-chapter-{{subject.number}} jumbotron" aria-hidden="true">
+    <div class="theme-chapter-{{subject.part_id}} jumbotron" aria-hidden="true">
         <div class="container">
 		<h1><i class="fa fa-fw fa-pull-right fa-3x icon-chapter-{{ subject.number }} visible-lg-inline-block visible-md-inline-block"></i>
 
@@ -36,13 +36,13 @@
                         </div>
                     </section>
                     {% if subject.number != "0" %}                 
-                    <section class="chapter-toc theme-chapter-{{subject.number}}">
+                    <section class="chapter-toc theme-chapter-{{subject.part_id}}">
                         <header class="page-header"><h2 class="h4"><i class="fa fa-fw fa-list-ul"></i> Sommaire du chapitre</h2></header>
                         <nav class="toc" role="navigation">
                             <ul class="toc list-group">
                             {% for article in subject.article_set.all %}
                             <a
-                               class="list-group-item toc-section toc-chapter-{{subject.number}}"
+                               class="list-group-item toc-section toc-chapter-{{subject.part_id}}"
                                href="/section/{{article.number}}/{{article.slug}}">
                                <span class="label label-default">{{article.number}}</span> {{article.title}}
                             </a>

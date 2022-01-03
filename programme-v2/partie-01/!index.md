@@ -1,4 +1,4 @@
-# Vivre libres et citoyens
+Vivre libres et citoyens
 
 « Et vous, législateurs, souvenez-vous que vous n’êtes point les représentants d’une caste privilégiée, mais ceux du peuple français, n’oubliez pas que la source de l’ordre, c’est la
 justice, que le plus sûr garant de la tranquillité publique, c’est le bonheur des citoyens. »

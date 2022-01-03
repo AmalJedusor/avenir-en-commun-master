@@ -12,7 +12,8 @@ class Command(BaseCommand):
         id = 0
         for file in sorted(glob.glob("programme-v2/partie-*/*")):         
             if "!index.md" in file:               
-                part_title = open(file,encoding='utf-8').read().split('\n')[0][1:].strip()
+                part_title = open(file,encoding='utf-8').read().split('\n')[0].strip()
+                print(part_title)
                 part_number=int(file.split('partie-')[1].split(os.path.sep)[0])
                 content =strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:]))
                 Part(
@@ -32,7 +33,7 @@ class Command(BaseCommand):
                 id += 1              
                 continue
             for subfile in sorted(glob.glob(file+"\\*" )):              
-                title = open(subfile,encoding='utf-8').read().split('\n')[0][1:].strip()
+                title = open(subfile,encoding='utf-8').read().split('\n')[0].strip()
                 number=int(subfile.split('chapitre-')[1].split(os.path.sep)[0])
                
                 if "!index.md" in subfile:                  
@@ -57,7 +58,7 @@ class Command(BaseCommand):
                 chapter_number = int(subfile.split('chapitre-')[1].split(os.path.sep)[0])
              
                 chapter = Chapter.objects.get(number=chapter_number)
-                title = open(subfile,encoding='utf-8').read().split('\n')[0][1:].strip()
+                title = open(subfile,encoding='utf-8').read().split('\n')[0].strip()
                 number= int(subfile.split(os.path.sep)[-1].replace('.md', ''))
                 Article(
                     number=number,

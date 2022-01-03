@@ -37,11 +37,14 @@
                         </div>
                     </div>
                     <div class="col-md-7">
+                   
                         <label><i class="fa fa-fw fa-share" aria-hidden="true"></i>Réseaux sociaux</label>
+                      
                         <nav class="btn-group networks" role="group">
+                            {% if result.entity == 'chapitre' %}
                             <a
                                 data-popup-dimensions="560,430"
-                                href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flaec.fr%2Fci"
+                                href="https://www.facebook.com/sharer/sharer.php?u=https://laec.fr/c{{subject.number}}"
                                 class="btn btn-default share-link"
                                 data-network="Facebook"
                                 title="Partager ce chapitre sur Facebook"
@@ -50,14 +53,37 @@
                             </a>
                             <a
                                 data-popup-dimensions="430,284"
-                                href="https://twitter.com/home?status=%C3%80%20lire%20absolument%C2%A0%3A%20http%3A%2F%2Flaec.fr%2Fci%20%F0%9F%98%8E%20%23AvenirEnCommun%20%23M%C3%A9lenchon%20%23JLM2017"
+                                href="https://twitter.com/home?status=https://laec.fr/c{{subject.number}}"
                                 class="btn btn-default share-link"
                                 data-network="Twitter"
                                 title="Partager ce chapitre sur twitter"
                             >
                                 <span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i>
+
                             </a>
+                            {% else %}
+                            <a
+                            data-popup-dimensions="560,430"
+                            href="https://www.facebook.com/sharer/sharer.php?u=https://laec.fr/s{{subject.number}}"
+                            class="btn btn-default share-link"
+                            data-network="Facebook"
+                            title="Partager cette section sur Facebook"
+                        >
+                            <span class="visible-lg-inline visible-sm-inline">Facebook </span><i class="fa fa-fw fa-facebook"></i>
+                        </a>
+                        <a
+                            data-popup-dimensions="430,284"
+                            href="https://twitter.com/intent/tweet?text=Partagez cette section https://laec.fr/s{{subject.number}}"
+                            class="btn btn-default share-link"
+                            data-network="Twitter"
+                            title="Partager cette section sur twitter"
+                        >
+                            <span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i>
+
+                        </a>
+                            {% endif %}
                         </nav>
+                       
                     </div>
                 </div>
             </div>

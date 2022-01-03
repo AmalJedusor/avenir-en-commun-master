@@ -1,4 +1,4 @@
-# S’adapter au système de la nature
+S’adapter au système de la nature
 
 « Sommes-nous donc hypnotisés au point d’accepter le médiocre et le nocif, comme si
 nous avions perdu la force ou la pénétration nécessaire pour exiger le bon ? »

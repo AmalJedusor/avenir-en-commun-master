@@ -1,1 +1,1 @@
-# Émancipation
+Émancipation

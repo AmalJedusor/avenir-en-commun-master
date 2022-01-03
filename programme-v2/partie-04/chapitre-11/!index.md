@@ -1,1 +1,1 @@
-# Éducation et formation
+Éducation et formation

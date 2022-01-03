@@ -25,6 +25,50 @@ def toc(request):
 def mentions(request):
  
     return render(request, "mentions-legales.html")
+def part(request, n, slug=''):
+    part = Part.objects.get(number=n)
+    prev = None
+    next = None
+    print( part.main_title)
+    try:
+        prev  = Article.objects.get(id = int(part.id)-1)
+        prev.desc = "Section précédente"
+        prev.url = "/section/"
+    except Article.DoesNotExist:
+        prev = None
+    if prev is None:
+        try:
+            print(part.id)
+            prev = Chapter.objects.get(id=int(part.id) -1)
+
+            prev.desc = "Chapitre précédent"
+            prev.url = "/chapitre/"
+        except Chapter.DoesNotExist:
+            prev = None
+
+
+    try:
+        next  = Article.objects.get(id = int(part.id)+1)
+        next.desc = "Section suivante"
+        next.url = "/section/"
+    except Article.DoesNotExist:
+        next = None
+    if next is None:
+        try:
+            next = Chapter.objects.get(id = int(part.id)+1)
+            next.desc = "Chapitre suivant"
+            next.url = "/chapitre/"
+        except Chapter.DoesNotExist:
+            next = None
+
+
+    return render(request, "part.html", {
+        'subject': part,
+        'content': markdown.Markdown().convert(part.content),
+        'next': next,
+        'prev': prev,
+        'book_navigation':None,
+    })
 
 def chapter(request, n, slug=''):
     chapter = Chapter.objects.get(number=n)

@@ -1,4 +1,4 @@
-# Humaniser les personnes et la société
+Humaniser les personnes et la société
 
 « Je suis ambitieuse pour l’humanité ; moi je voudrais que tout le monde fût assez artiste, assez poète pour que la vanité humaine disparût. », Louise Michel, Plaidoirie devant la cour d’assises de la Seine, 22 juin 1883
 

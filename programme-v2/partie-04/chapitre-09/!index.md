@@ -1,1 +1,1 @@
-# Égalité
+Égalité

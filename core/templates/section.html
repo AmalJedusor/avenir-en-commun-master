@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block html_class %}page-section theme-chapter-{{subject.chapter.number}} {% endblock %}
+{% block html_class %}page-section theme-chapter-{{subject.chapter.part_id}} {% endblock %}
 {% block body %}
 
 <script src="/static/app.js"></script>
@@ -14,7 +14,7 @@
    </div>
    {% include "_navbar.html" %}
 
-   <div class="theme-chapter-{{subject.chapter.number}} jumbotron" aria-hidden="true">
+   <div class="theme-chapter-{{subject.chapter.part_id}} jumbotron" aria-hidden="true">
       <div class="container">
          <h1>
             <span class="number">{{subject.number}}</span>
@@ -151,7 +151,7 @@ $(document).on('click', '.list-measures > .list-group-item', function(e) {
                             </div>
                             <div class="col-md-7">
                                <label><i class="fa fa-fw fa-share" aria-hidden="true"></i>Réseaux sociaux</label>
-                               <nav class="btn-group networks" role="group"><a data-popup-dimensions="560,430" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flaec.fr%2Fs2m1" class="btn btn-default share-link" data-network="Facebook" title="Partager cette mesure sur Facebook"><span class="visible-lg-inline visible-sm-inline">Facebook </span><i class="fa fa-fw fa-facebook"></i></a><a data-popup-dimensions="430,284" href="https://twitter.com/home?status=%C3%80%20lire%20absolument%C2%A0%3A%20https%3A%2F%2Flaec.fr%2Fs2m1%20%F0%9F%98%8E%20%23AvenirEnCommun%20%23M%C3%A9lenchon%20%23JLM2017" class="btn btn-default share-link" data-network="Twitter" title="Partager cette mesure sur twitter"><span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i></a><a data-popup-dimensions="400,415" href="https://plus.google.com/share?url=https%3A%2F%2Flaec.fr%2Fs2m1" class="btn btn-default share-link" data-network="Google+" title="Partager cette mesure sur Google+"><span class="visible-lg-inline visible-sm-inline">Google+ </span><i class="fa fa-fw fa-google-plus"></i></a></nav>
+                               <nav class="btn-group networks" role="group"><a data-popup-dimensions="560,430" href="https://www.facebook.com/sharer/sharer.php?u=https://laec.fr/s{{subject.number}}" class="btn btn-default share-link" data-network="Facebook" title="Partager cette mesure sur Facebook"><span class="visible-lg-inline visible-sm-inline">Facebook </span><i class="fa fa-fw fa-facebook"></i></a><a data-popup-dimensions="430,284" href="https://twitter.com/home?status=https://s{{subject.number}}" class="btn btn-default share-link" data-network="Twitter" title="Partager cette mesure sur twitter"><span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i></a><a data-popup-dimensions="400,415" href="https://plus.google.com/share?url=https%3A%2F%2Flaec.fr%2Fs2m1" class="btn btn-default share-link" data-network="Google+" title="Partager cette mesure sur Google+"><span class="visible-lg-inline visible-sm-inline">Google+ </span><i class="fa fa-fw fa-google-plus"></i></a></nav>
                             </div>
                          </div>
                       </div>

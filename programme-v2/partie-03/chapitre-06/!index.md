@@ -1,1 +1,1 @@
-# La vie en état de pandémie permanente
+La vie en état de pandémie permanente
