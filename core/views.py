@@ -68,6 +68,7 @@ def part(request, n, slug=''):
         'next': next,
         'prev': prev,
         'book_navigation':None,
+        'title' : part.title,
     })
 
 def chapter(request, n, slug=''):
@@ -112,6 +113,7 @@ def chapter(request, n, slug=''):
         'next': next,
         'prev': prev,
         'book_navigation':None,
+        'title' : chapter.sub_title,
     })
 
 def section(request, n, slug):
@@ -149,6 +151,7 @@ def section(request, n, slug):
         'next': next,
         'prev': prev,
         'book_navigation':None,
+        'title' : article.title,
     })
 
 

@@ -1,24 +1,29 @@
-{% extends 'base.html' %} 
-{% block html_class %}page-chapter theme-chapter-{{subject.number}} {% endblock %} 
- {% block body %}
+{% extends 'base.html' %}
+{% block html_class %}page-chapter theme-chapter-{{subject.number}} {% endblock %}
+{% block body %}
+
 <body id="body">
     <div class="visible-print-block text-center print-logotype" aria-hidden="true">
-        <img src="/static/livre-phi-laec-fr-mention-impression.svg" style="max-height: 70px; width: auto;" alt="Logotype l'avenir en commun" data-no-svg-src="/img/logotype/livre-phi-laec-fr-mention-impression.png" />
+        <img src="/static/livre-phi-laec-fr-mention-impression.svg" style="max-height: 70px; width: auto;"
+            alt="Logotype l'avenir en commun"
+            data-no-svg-src="/img/logotype/livre-phi-laec-fr-mention-impression.png" />
         <hr />
         <small>Le programme de la <strong>France insoumise</strong></small>
     </div>
     {% include "_navbar.html" %}
     <div class="theme-chapter-{{subject.number}} jumbotron" aria-hidden="true">
         <div class="container">
-		<h1><i class="fa fa-fw fa-pull-right fa-3x icon-chapter-{{subject.number }} visible-lg-inline-block visible-md-inline-block"></i>
+            <h1><i
+                    class="fa fa-fw fa-pull-right fa-3x icon-chapter-{{subject.number }} visible-lg-inline-block visible-md-inline-block"></i>
 
 
-            
-            <b class="text-balance">{{ subject.main_title }}</b>
-        </h1>
+
+                <b class="text-balance">{{ subject.main_title }}</b>
+            </h1>
 
             <p class="sidelines"><i class="fa icon-chapter-{{ subject.number }}"></i></p>
-            <a rel="contents" data-load-display href="/sommaire" title="Retour au sommaire"><i class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
+            <a rel="contents" data-load-display href="/sommaire" title="Retour au sommaire"><i
+                    class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
         </div>
     </div>
     <div class="wrap-container-main">
@@ -27,7 +32,7 @@
                 {% include '_sectionsidebar.html' %}
                 <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
                     <section class="actions actions-c">
-                       {% include '_partager.html' %}
+                        {% include '_partager.html' %}
                     </section>
                     <hr />
                     <section class="content-text parsedown">
@@ -35,30 +40,32 @@
                             {{ content|safe }}
                         </div>
                     </section>
-                    {% if subject.number != "0" %}                 
+                    {% if subject.number != "0" %}
                     <section class="chapter-toc theme-chapter-{{subject.number}}">
-                        <header class="page-header"><h2 class="h4"><i class="fa fa-fw fa-list-ul"></i> Sommaire de la partie</h2></header>
+                        <header class="page-header">
+                            <h2 class="h4"><i class="fa fa-fw fa-list-ul"></i> Sommaire de la partie</h2>
+                        </header>
                         <nav class="toc" role="navigation">
                             <ul class="toc list-group">
-                            {% for article in subject.chapter_set.all %}
-                            <a
-                               class="list-group-item toc-section toc-chapter-{{subject.number}}"
-                               href="/section/{{article.number}}/{{article.slug}}">
-                               <span class="label label-default">{{article.number}}</span> {{article.title}}
-                            </a>
-                            {% endfor %}
+                                {% for article in subject.chapter_set.all %}
+                                <a class="list-group-item toc-section toc-chapter-{{subject.number}}"
+                                    href="/section/{{article.number}}/{{article.slug}}">
+                                    <span class="label label-default">{{article.number}}</span> {{article.title}}
+                                </a>
+                                {% endfor %}
                             </ul>
                         </nav>
-                        </section>
+                    </section>
                     {% endif %}
-                
-                    
-                 
+
+
+
                 </article>
-              
+
             </div>
 
-            <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page"><i class="fa fa-arrow-up" aria-hidden="true"></i><span> Retour en haut de page</span></a>
+            <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page"><i
+                    class="fa fa-arrow-up" aria-hidden="true"></i><span> Retour en haut de page</span></a>
         </div>
     </div>
     {% include '_footer.html' %}

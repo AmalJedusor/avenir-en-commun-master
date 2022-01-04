@@ -1,14 +1,9 @@
 <div class="btn-toolbar" role="toolbar" aria-label="Actions disponibles pour ce chapitre">
     <div class="btn-group"></div>
     <div class="btn-group">
-        <button
-            title="Lien direct vers le chapitre et boutons de partage sur les réseaux sociaux"
-            class="btn btn-default share-collapser"
-            data-target="#panel-c-share-{{subject.number}}"
-            aria-controls="panel-c-share-{{subject.number}}"
-            aria-expanded="false"
-            data-toggle="collapse"
-        >
+        <button title="Lien direct vers le chapitre et boutons de partage sur les réseaux sociaux"
+            class="btn btn-default share-collapser" data-target="#panel-c-share-{{subject.number}}"
+            aria-controls="panel-c-share-{{subject.number}}" aria-expanded="false" data-toggle="collapse">
             <i class="fa fa-fw fa-share-alt"></i>&nbsp;<span class="visible-lg-inline">Partager</span>
         </button>
     </div>
@@ -17,73 +12,72 @@
 <div class="collapse collapsable share-collapsable" id="panel-c-share-{{subject.number}}">
     <div class="panel-wrap">
         <div class="panel panel-default">
-            <div class="panel-heading">Faites tourner  {% if result.entity == 'chapitre' %} ce chapitre !    {% else %}   cette section !  {% endif %} </div>
+            <div class="panel-heading">Faites tourner {% if result.entity == 'chapitre' %} ce chapitre ! {% else %}
+                cette section ! {% endif %} </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-5">
-                        <label for="share-control-c-{{subject.number}}"><i class="fa fa-fw fa-link" aria-hidden="true"></i>Lien court direct</label>
+                        <label for="share-control-c-{{subject.number}}"><i class="fa fa-fw fa-link"
+                                aria-hidden="true"></i>Lien court direct</label>
                         <div class="form">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-fw fa-anchor" aria-hidden="true"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-fw fa-anchor" aria-hidden="true"></i>
+                                    </div>
                                     {% if result.entity == 'chapitre' %}
-                                    <input type="text" id="share-control-c-{{subject.number}}" class="form-control share-control" readonly="readonly" value="http://laec.fr/c{{subject.number}}" autofocus />
+                                    <input type="text" id="share-control-c-{{subject.number}}"
+                                        class="form-control share-control" readonly="readonly"
+                                        value="http://laec.fr/c{{subject.number}}" autofocus />
                                     {% else %}
-                                    <input type="text" id="share-control-c-{{subject.number}}" class="form-control share-control" readonly="readonly" value="http://laec.fr/s{{subject.number}}" autofocus />
+                                    <input type="text" id="share-control-c-{{subject.number}}"
+                                        class="form-control share-control" readonly="readonly"
+                                        value="http://laec.fr/s{{subject.number}}" autofocus />
                                     {% endif %}
-                                  
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-7">
-                   
+
                         <label><i class="fa fa-fw fa-share" aria-hidden="true"></i>Réseaux sociaux</label>
-                      
+
                         <nav class="btn-group networks" role="group">
                             {% if result.entity == 'chapitre' %}
-                            <a
-                                data-popup-dimensions="560,430"
+                            <a data-popup-dimensions="560,430"
                                 href="https://www.facebook.com/sharer/sharer.php?u=https://laec.fr/c{{subject.number}}"
-                                class="btn btn-default share-link"
-                                data-network="Facebook"
-                                title="Partager ce chapitre sur Facebook"
-                            >
-                                <span class="visible-lg-inline visible-sm-inline">Facebook </span><i class="fa fa-fw fa-facebook"></i>
+                                class="btn btn-default share-link" data-network="Facebook"
+                                title="Partager ce chapitre sur Facebook">
+                                <span class="visible-lg-inline visible-sm-inline">Facebook </span><i
+                                    class="fa fa-fw fa-facebook"></i>
                             </a>
-                            <a
-                                data-popup-dimensions="430,284"
+                            <a data-popup-dimensions="430,284"
                                 href="https://twitter.com/home?status=https://laec.fr/c{{subject.number}}"
-                                class="btn btn-default share-link"
-                                data-network="Twitter"
-                                title="Partager ce chapitre sur twitter"
-                            >
-                                <span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i>
+                                class="btn btn-default share-link" data-network="Twitter"
+                                title="Partager ce chapitre sur twitter">
+                                <span class="visible-lg-inline visible-sm-inline">Twitter </span><i
+                                    class="fa fa-fw fa-twitter"></i>
 
                             </a>
                             {% else %}
-                            <a
-                            data-popup-dimensions="560,430"
-                            href="https://www.facebook.com/sharer/sharer.php?u=https://laec.fr/s{{subject.number}}"
-                            class="btn btn-default share-link"
-                            data-network="Facebook"
-                            title="Partager cette section sur Facebook"
-                        >
-                            <span class="visible-lg-inline visible-sm-inline">Facebook </span><i class="fa fa-fw fa-facebook"></i>
-                        </a>
-                        <a
-                            data-popup-dimensions="430,284"
-                            href="https://twitter.com/intent/tweet?text=Partagez cette section https://laec.fr/s{{subject.number}}"
-                            class="btn btn-default share-link"
-                            data-network="Twitter"
-                            title="Partager cette section sur twitter"
-                        >
-                            <span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i>
+                            <a data-popup-dimensions="560,430"
+                                href="https://www.facebook.com/sharer/sharer.php?u=https://laec.fr/s{{subject.number}}"
+                                class="btn btn-default share-link" data-network="Facebook"
+                                title="Partager cette section sur Facebook">
+                                <span class="visible-lg-inline visible-sm-inline">Facebook </span><i
+                                    class="fa fa-fw fa-facebook"></i>
+                            </a>
+                            <a data-popup-dimensions="430,284"
+                                href="https://twitter.com/intent/tweet?text=Partagez cette section https://laec.fr/s{{subject.number}}"
+                                class="btn btn-default share-link" data-network="Twitter"
+                                title="Partager cette section sur twitter">
+                                <span class="visible-lg-inline visible-sm-inline">Twitter </span><i
+                                    class="fa fa-fw fa-twitter"></i>
 
-                        </a>
+                            </a>
                             {% endif %}
                         </nav>
-                       
+
                     </div>
                 </div>
             </div>
