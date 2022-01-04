@@ -28,14 +28,12 @@ class Command(BaseCommand):
                 UrlData(url="/partie/"+str(part_number)+"/"+slugify(part_title),
                 slug="/p"+str(part_number) 
                 ).save()
-
-                       
                 id += 1              
                 continue
-            for subfile in sorted(glob.glob(file+"\\*" )):              
+            for subfile in sorted(glob.glob(file+os.path.sep+"*" )):              
                 title = open(subfile,encoding='utf-8').read().split('\n')[0].strip()
                 number=int(subfile.split('chapitre-')[1].split(os.path.sep)[0])
-               
+                print(title)
                 if "!index.md" in subfile:                  
                     part = Part.objects.get(number=part_number)
                     Chapter(

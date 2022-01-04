@@ -49,7 +49,7 @@
                             <ul class="toc list-group">
                                 {% for article in subject.chapter_set.all %}
                                 <a class="list-group-item toc-section toc-chapter-{{subject.number}}"
-                                    href="/section/{{article.number}}/{{article.slug}}">
+                                    href="/chapitre/{{article.number}}/{{article.slug}}">
                                     <span class="label label-default">{{article.number}}</span> {{article.title}}
                                 </a>
                                 {% endfor %}
