@@ -11,6 +11,8 @@ class Part(models.Model):
     content = models.TextField()
     main_title = models.CharField(max_length=500,default='')
     text =  models.TextField(default='')
+    #newsetup
+    forewords = models.TextField(default='')
     class Meta:
         ordering = ('number',)
 
@@ -38,6 +40,12 @@ class Article(models.Model):
     content = models.TextField()
     chapter = models.ForeignKey(Chapter, on_delete=models.DO_NOTHING)
     text =  models.TextField(default='')
+    #new setup
+    key = models.TextField(default='')
+    measures = models.TextField(default='')
+    asavoir = models.TextField(default='')
+    forewords = models.TextField(default='')
+    
 
     class Meta:
         ordering = ('number',)

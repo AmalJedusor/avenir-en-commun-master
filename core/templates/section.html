@@ -45,18 +45,56 @@
                <section class="actions actions-s">
                   {% include '_partager.html' %}
                </section>
+
                <hr>
                <section class="content-text parsedown">
                   <div class="subject-body">
-                     {{ content | safe }}
+                     <div class="semi-lead subject-foreword">
+                        <p>
+                           {{ subject.forewords | safe }}
+                     </p>
+                  </div>
+                   
+                     <section class="section-measures">
+                        <header><p>Nous proposons de réaliser les mesures suivantes&nbsp;:</p></header>
+                     <nav class="list-measures list-group">
+                        
+                     {% for measure in subject.measures %}                                   
+                        <li id="mesure-{{forloop.counter}} " class="list-group-item">
+                           {{measure}}
+                        </li>
+                   
+                 {% endfor %}
+               </nav>
+            </section>
+
                   </div>
                </section>
+
+               {% if subject.asavoir %}
+   <article class="addenda-main" id="addenda-main">
+      <header class="page-header addenda-header">
+         <h2 class="h4" id="addenda">  <i class="fa fa-fw fa-thumb-tack"></i> A savoir</h2>
+      </header>
+      <div class="addenda-list">
+         <section class="addendum-main addendum" id="addendum-main-1">
+           
+            <div class="addendum-body"><p>
+           <p><strong> {{ subject.asavoir|linebreaksbr  }} </strong></p>
+         </div>
+      </section></div></article>
+
+   {% endif %}
                <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page"><i
                      class="fa fa-arrow-up" aria-hidden="true"></i><span> Retour en haut de page</span></a>
-
+            </article>
          </div>
       </div>
+      
+   
+
    </div>
+
    <script>
 
       var t = $('.list-measures > .list-group-item.active').first();

@@ -11,6 +11,8 @@ import pandas as pd
 from elasticsearch_dsl import Search
 from elasticsearch_dsl.connections import connections
 from elasticsearch_dsl import Q
+import ast
+import json
 def home(request):
     return render(request, "home.html")
 
@@ -119,6 +121,10 @@ def chapter(request, n, slug=''):
 def section(request, n, slug):
 
     article = Article.objects.get(number=n)
+    res = article.measures
+
+    article.measures =  ast.literal_eval(res)
+  
     prev = None
     next = None
 

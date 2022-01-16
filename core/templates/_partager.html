@@ -12,7 +12,7 @@
 <div class="collapse collapsable share-collapsable" id="panel-c-share-{{subject.number}}">
     <div class="panel-wrap">
         <div class="panel panel-default">
-            <div class="panel-heading">Faites tourner {% if result.entity == 'chapitre' %} ce chapitre ! {% else %}
+            <div class="panel-heading">Faites tourner {% if subject.entity == 'chapitre' %} ce chapitre ! {% else %}
                 cette section ! {% endif %} </div>
             <div class="panel-body">
                 <div class="row">
@@ -24,7 +24,7 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-fw fa-anchor" aria-hidden="true"></i>
                                     </div>
-                                    {% if result.entity == 'chapitre' %}
+                                    {% if subject.entity == 'chapitre' %}
                                     <input type="text" id="share-control-c-{{subject.number}}"
                                         class="form-control share-control" readonly="readonly"
                                         value="http://laec.fr/c{{subject.number}}" autofocus />
@@ -43,7 +43,7 @@
                         <label><i class="fa fa-fw fa-share" aria-hidden="true"></i>Réseaux sociaux</label>
 
                         <nav class="btn-group networks" role="group">
-                            {% if result.entity == 'chapitre' %}
+                            {% if subject.entity == 'chapitre' %}
                             <a data-popup-dimensions="560,430"
                                 href="https://www.facebook.com/sharer/sharer.php?u=https://laec.fr/c{{subject.number}}"
                                 class="btn btn-default share-link" data-network="Facebook"
