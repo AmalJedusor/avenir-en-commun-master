@@ -17,15 +17,22 @@ class Command(BaseCommand):
                 # explication de la partie
 
                 print(file)
-                p = os.popen('.\markdown_to_json\scripts\md_to_json.py ' + file).read()
-                p = p.replace('None','null')
-       
+                p = os.popen('.\markdown_to_json\scripts\md_to_json.py ' + file).read()  
                 output_part = json.loads(str(p).encode('utf8'))
-            
+               
+                if "Forewords" in output_part:  
+                    forewords = output_part["Forewords"]          
+                    part_number=int(file.split('partie-')[1].split(os.path.sep)[0])
+
+                    part = Part.objects.get(number = str(part_number))
+                    part.forewords = forewords
+                    part.save()
+                
+                 
                 print('---------------------------------------------------------')  
                 """part_title = open(file,encoding='utf-8').read().split('\n')[0].strip()
                 print(part_title)
-                part_number=int(file.split('partie-')[1].split(os.path.sep)[0])
+                
                 content =strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:]))
                 Part(
                         number= part_number,
@@ -51,9 +58,8 @@ class Command(BaseCommand):
                
                 if "!index.md" in subfile:
                     c = os.popen('.\markdown_to_json\scripts\md_to_json.py ' + subfile).read()
-                    c = c.replace('None','null')
                     print(subfile)
-                    output_chap = json.loads(str(c).encode('utf8'))
+                    output_chap = json.loads(str(c))
                     print(output_chap["Titre"])
                     print('---------------------------------------------------------')
                 # explication du chapitre
@@ -80,16 +86,13 @@ class Command(BaseCommand):
                 s = os.popen('.\markdown_to_json\scripts\md_to_json.py ' + subfile).read()
                 s = s.replace('None','null')
        
-                output = json.loads(str(s).encode('utf8'))
-                
-        
+                output = json.loads(str(s))
                 chapter_number = int(subfile.split('chapitre-')[1].split(os.path.sep)[0])
                 number= int(subfile.split(os.path.sep)[-1].replace('.md', ''))
-                print(str(number))
+               
                 title = output["Titre"]
                 entity="section"                
-                key = output["Cle"]
-              
+               
                 asavoir = ""
                 if "A_Savoir" in output:
                     asavoir = output["A_Savoir"]          
@@ -114,11 +117,11 @@ class Command(BaseCommand):
                     article.forewords = forewords
                     article.save()
                 if "Cle" in output:  
-                    cle = output["Cle"]          
+                    key = output["Cle"]          
             
                     article = Article.objects.get(number = str(number))
                   
-                    article.cle = cle
+                    article.key = key
                     article.save()    
               
              

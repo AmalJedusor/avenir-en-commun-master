@@ -24,9 +24,9 @@ import json
 import markdown_to_json
 from markdown_to_json.vendor.docopt import docopt
 from markdown_to_json.vendor import CommonMark
-import traceback
 
 from markdown_to_json.markdown_to_json import Renderer, CMarkASTNester
+
 import logging
 logging.basicConfig(
     format="%(message)s", stream=sys.stderr, level=logging.INFO)
@@ -39,23 +39,20 @@ def writable_io_or_stdout(filename):
         return
     else:
         try:
-            f = open(filename, 'w',encoding="utf-8")
+            f = open(filename, 'w', encoding="utf-8")
             yield f
-          
+            f.close()
         except:
             logging.error("Error: Can't open {0} for writing".format(
                 filename))
             sys.exit(1)
-        finally:
-              f.close()
 
 
 def get_markdown_ast(markdown_file):
     try:
-        f = open(markdown_file, 'r', encoding="utf-8")      
+        f = open(markdown_file, 'r',encoding="utf-8")
         return CommonMark.DocParser().parse(f.read())
-    except Exception:
-        traceback.print_exc()
+    except:
         logging.error("Error: Can't open {0} for reading".format(
             markdown_file))
         sys.exit(1)
@@ -70,7 +67,7 @@ def jsonify_markdown(markdown_file, outfile, indent):
         ast = get_markdown_ast(markdown_file)
         nested = nester.nest(ast)
         rendered = renderer.stringify_dict(nested)
-        json.dump(rendered, f, indent=indent,ensure_ascii=False)
+        json.dump(rendered, f, indent=indent)
         f.write("\n")
     return 0
 

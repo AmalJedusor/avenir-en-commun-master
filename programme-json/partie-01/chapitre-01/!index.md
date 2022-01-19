@@ -1,3 +1,2 @@
 # Titre
-
-Démocratie et institutions
+Démocratie et Institutions

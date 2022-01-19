@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """Pythonic command-line interface parser that will make you smile.
 
  * http://docopt.org

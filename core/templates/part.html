@@ -37,7 +37,10 @@
                     <hr />
                     <section class="content-text parsedown">
                         <div class="subject-body">
-                            {{ content|safe }}
+                            <div class="semi-lead subject-foreword">
+                                <p>
+                                   {{ subject.forewords |linebreaksbr | safe }}
+                             </p>
                         </div>
                     </section>
                     {% if subject.number != "0" %}

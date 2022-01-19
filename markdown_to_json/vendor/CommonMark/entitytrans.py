@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Python 3.4 HTML5 entity unescaping for all! Based on https://hg.python.org/cpython/file/500d3d6f22ff/Lib/html/__init__.py
 """

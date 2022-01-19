@@ -29,6 +29,8 @@ def mentions(request):
     return render(request, "mentions-legales.html")
 def part(request, n, slug=''):
     part = Part.objects.get(number=n)
+
+    print(part.forewords)
     prev = None
     next = None
     print( part.main_title)
