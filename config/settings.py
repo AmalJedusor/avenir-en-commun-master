@@ -30,10 +30,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # PROD
 DEBUG = True
-ALLOWED_HOSTS = ["laec-prod-test.ey.r.appspot.com",'127.0.0.1','localhost']
-ELASTICSEARCH_HOST = "es"
-ELASTICSEARCH_PORT = '9200'
-ELASTICSEARCH_SCHEME = "http"
+ALLOWED_HOSTS = ["laec-prod-test.ey.r.appspot.com",'127.0.0.1',env('PROD_HOST')]
+ELASTICSEARCH_HOST = env('ELASTICSEARCH_HOST')
+ELASTICSEARCH_PORT = env('ELASTICSEARCH_PORT')
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -117,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'core.search_backends.CustomElasticSearchEngine',
-        'URL': ELASTICSEARCH_SCHEME+'://'+ELASTICSEARCH_HOST+':'+ELASTICSEARCH_PORT+'/',
+        'URL': 'http://'+ELASTICSEARCH_HOST+':'+ELASTICSEARCH_PORT+'/',
         'TIMEOUT': 60 * 5,
         'INCLUDE_SPELLING': True,
         'INDEX_NAME': 'haystack',
