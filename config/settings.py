@@ -30,7 +30,9 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # PROD
 DEBUG = True
-ALLOWED_HOSTS = ["laec-prod-test.ey.r.appspot.com",'127.0.0.1','localhost']
+ALLOWED_HOSTS = ["laec-prod-test.ey.r.appspot.com",'127.0.0.1',env('PROD_HOST')]
+ELASTICSEARCH_HOST = env('ELASTICSEARCH_HOST')
+ELASTICSEARCH_PORT = env('ELASTICSEARCH_PORT')
 
 # Application definition
 
@@ -84,7 +86,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD':  env('DATABASE_PASS'),
@@ -115,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'core.search_backends.CustomElasticSearchEngine',
-        'URL': 'http://127.0.0.1:9200/',
+        'URL': 'http://'+ELASTICSEARCH_HOST+':'+ELASTICSEARCH_PORT+'/',
         'TIMEOUT': 60 * 5,
         'INCLUDE_SPELLING': True,
         'INDEX_NAME': 'haystack',
@@ -125,7 +127,7 @@ HAYSTACK_CONNECTIONS = {
 #ELASTICSEARCH
 ELASTICSEARCH_DSL={
     'default': {
-        'hosts': '127.0.0.1:9200'
+        'hosts': ELASTICSEARCH_HOST+':'+ELASTICSEARCH_PORT
     },
 }
 ELASTICSEARCH_INDEX_SETTINGS   = {
@@ -140,7 +142,7 @@ ELASTICSEARCH_INDEX_SETTINGS   = {
             "type" : "text",
             "analyzer" : "edgengram_analyzer"
           },
-         
+
           "title" : {
             "type" : "text",
             "analyzer" : "snowball"
