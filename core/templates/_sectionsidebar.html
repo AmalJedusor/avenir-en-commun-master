@@ -29,7 +29,7 @@
       <a href="{{next.url}}{{next.number}}/{{next.slug}}" rel="{{ rel }}" title="{{ next.desc }}" data-load-display>
         <i class="fa fa-fw fa-arrow-right" aria-hidden="true"></i>
         {% if next.entity == 'section' %} {{ next.number }} . {{ next.title }}</a>   {% else %}
-        <span class="alternate">{{ next.main_title }} </span><br>{{ next.sub_title }}</a>
+        <span class="alternate">{{ next.sub_title }} </span><br>{{ next.main_title }} </a>
         {% endif %}
 
     {% endif %}
@@ -40,7 +40,7 @@
       <a href="{{prev.url}}{{prev.number}}/{{prev.slug}}" rel="{{ rel }}" title="{{ prev.desc }}" data-load-display>
       <i class="fa fa-fw fa-arrow-left" aria-hidden="true"></i>
         {% if  prev.entity == 'section' %} {{ prev.number }} . {{ prev.title }}</a>  {% else %}
-        <span class="alternate"> {{ prev.main_title }}  </span><br>{{ prev.sub_title }} </a>
+        <span class="alternate"> {{ prev.sub_title }}  </span><br> {{ prev.main_title }} </a>
        {% endif %}
     </li>
     {% endif %}

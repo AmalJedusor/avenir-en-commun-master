@@ -7,7 +7,8 @@ from django.template.defaultfilters import slugify
 from django.utils.html import strip_tags
 from core.models import Chapter, Article, UrlData, Part
 import markdown_to_json.scripts.md_to_json as md_to_json
-import subprocess
+
+from core.management.md_to_json import jsonify_markdown
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -16,9 +17,10 @@ class Command(BaseCommand):
             if "!index.md" in file:   
                 # explication de la partie
 
-                print(file)
-                p = os.popen('.\markdown_to_json\scripts\md_to_json.py ' + file).read()  
-                output_part = json.loads(str(p).encode('utf8'))
+             
+                 
+                output_part = json.loads(jsonify_markdown(file,None).encode('utf8'))
+
                
                 if "Forewords" in output_part:  
                     forewords = output_part["Forewords"]          
@@ -58,7 +60,7 @@ class Command(BaseCommand):
                
                 if "!index.md" in subfile:
                     c = os.popen('.\markdown_to_json\scripts\md_to_json.py ' + subfile).read()
-                    print(subfile)
+                    
                     output_chap = json.loads(str(c))
                     print(output_chap["Titre"])
                     print('---------------------------------------------------------')
