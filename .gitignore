@@ -3,4 +3,6 @@ db.sqlite3
 settings.py
 .env
 config/.env
+wait.sh
+Dockerfile
 

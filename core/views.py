@@ -13,19 +13,21 @@ from elasticsearch_dsl.connections import connections
 from elasticsearch_dsl import Q
 import ast
 import json
+from django.conf import settings
+
 def home(request):
     return render(request, "home.html")
 
 
 def toc(request):
- 
+
     return render(request, "toc.html",{
         'chapters': Chapter.objects.all(),
         'parts': Part.objects.all()
-       
+
     })
 def mentions(request):
- 
+
     return render(request, "mentions-legales.html")
 def part(request, n, slug=''):
     part = Part.objects.get(number=n)
@@ -126,18 +128,18 @@ def section(request, n, slug):
     res = article.measures
 
     article.measures =  ast.literal_eval(res)
-  
+
     prev = None
     next = None
 
-    #previous 
+    #previous
     try:
         prev = Article.objects.get(id = int(article.id)-1)
         prev.desc = "Section précédente"
         prev.url = "/section/"
     except Article.DoesNotExist:
         prev = None
-    
+
     #next
     try:
          next = Article.objects.get(id = int(article.id)+1)
@@ -151,7 +153,7 @@ def section(request, n, slug):
             next.desc = "Chapitre suivant"
             next.url = "/chapitre/"
         except Chapter.DoesNotExist:
-            next = None   
+            next = None
 
     return render(request, "section.html", {
         'subject': article,
@@ -167,7 +169,7 @@ def random(request):
     article = choice(list(Article.objects.all()))
 
     return redirect(f'/section/{article.number}/{article.slug}')
-  
+
 
 def fin(request):
     baseurl = request.build_absolute_uri()
@@ -178,24 +180,25 @@ def fin(request):
 def recherche(request):
     """My custom search view."""
 
-   
-    # further filter queryset based on some set of criteria     
+
+    # further filter queryset based on some set of criteria
     req = request.GET.get('q','')
     print(req)
   #  res  = queryset.filter(content_auto=req)
-    #highlight = MyHighlighter(req, html_tag='mark', css_class='found', max_length=35)     
+    #highlight = MyHighlighter(req, html_tag='mark', css_class='found', max_length=35)
     #for r in res:
         #   highlight.highlight(r.content)
-        
+
         #  highlight.highlight(r.content)
-    elastic_client = Elasticsearch()
+    elastic_client = Elasticsearch([settings.ELASTICSEARCH_HOST],scheme=settings.ELASTICSEARCH_SCHEME)
+    #elastic_client = Elasticsearch(['http://es:9200'])
     # create a Python dictionary for the search query:
     search_param = {
         "query": {
             "simple_query_string": {
                 "query": req,
-                "fields": ["title_auto","content_auto"], 
-                "default_operator": "or",       
+                "fields": ["title_auto","content_auto"],
+                "default_operator": "or",
             }
             },
                 "highlight" : {
@@ -204,11 +207,11 @@ def recherche(request):
                     "post_tags" : ["</mark>"],
                 "fields": {
                      "title_auto": {
-                "fragment_size": 300,           
-                     }, 
+                "fragment_size": 300,
+                     },
                  "content_auto": {
                 "fragment_size": 300,
-              
+
 
             }
                 }
@@ -216,13 +219,13 @@ def recherche(request):
     }
     # get a response from the cluster
     response = elastic_client.search(index="haystack", body=search_param)
-    connections.create_connection(hosts=['localhost'], timeout=20)
+    connections.create_connection(hosts=[settings.ELASTICSEARCH_HOST], timeout=20)
     s = Search(index='haystack')
     q = Q("multi_match", query=req, fields=['title_auto','content_auto'])
     s = s.query(q).extra(from_=0, size=100)
     s = s.highlight('title_auto', 'content_auto',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=True, number_of_fragments=1, fragment_size=300)
     s = s.execute()
-    for h in s.hits:  
+    for h in s.hits:
         print(h.content)
     return render(request, "recherche.html", {
         'query': s,

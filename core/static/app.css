@@ -11941,7 +11941,7 @@ ul#side-navigation span.alternate {
 .theme-chapter-3.jumbotron h1 b {
     text-shadow: 0.5px 0.5px 0 #f6a9a9, 1px 1px 0 #f6a5a5, 1.5px 1.5px 0 #f5a0a0, 2px 2px 0 #f59b9b, 2.5px 2.5px 0 #f49797, 3px 3px 0 #f49797, 3.5px 3.5px 0 #f49292, 3px 3px 10px rgba(0, 0, 0, 0.3)
 }
-  
+
 @media (min-width:992px) {
     .theme-chapter-3.jumbotron h1 b {
         text-shadow: 0.5px 0.5px 0 #f6a9a9, 1px 1px 0 #f6a5a5, 1.5px 1.5px 0 #f5a0a0, 2px 2px 0 #f59b9b, 2.5px 2.5px 0 #f49797, 3px 3px 0 #f49797, 3.5px 3.5px 0 #f49292, 3px 3px 10px rgba(0, 0, 0, 0.3)
@@ -11991,7 +11991,7 @@ ul#side-navigation span.alternate {
 }
 
 .jumbotron h1 b .fa {
-    
+
     vertical-align: bottom
 }
 
@@ -12735,7 +12735,7 @@ ul#side-navigation span.alternate {
 
 .toc-chapter-0 span.label {
     background-color: transparent;
-    border: #3f2682; 
+    border: #3f2682;
     border: 2px solid rgba(63, 38, 130, 0.3);
     color: #3f2682;
     color: rgba(63, 38, 130, 0.7)
@@ -12980,7 +12980,7 @@ ul#side-navigation span.alternate {
 }
 
 .toc .list-group-item h4 {
- 
+
     margin-bottom: 0
 }
 
@@ -14298,7 +14298,7 @@ footer.footer>.container {
 
 .theme-chapter-4 .btn-default:hover .fa {
     color: #515151 !important
-} 
+}
 .theme-chapter-4 *::-moz-selection {
     color: #fff;
     background-color: rgba(40, 79, 220, 0.8)
@@ -16868,13 +16868,13 @@ h6 .alternate,
 }
 
 
-  
+
   /* Step 2: Reference Individual Icons */
   .icon-chapter-1::before {
     font-family: "FontAwesome";
     content: "\f19c";
   }
-  
+
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-2::before {
     font-family: "FontAwesome";
@@ -16884,7 +16884,7 @@ h6 .alternate,
     font-family: "FontAwesome";
     content: "\f4d8";
   }
-  
+
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-4::before {
     font-family: "FontAwesome";
@@ -16894,12 +16894,12 @@ h6 .alternate,
     font-family: "FontAwesome";
     content: "\f043";
   }
-  
+
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-6::before {
     font-family: "FontAwesome";
     content: "\f21e";
-  } 
+  }
    /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-7::before {
     font-family: "FontAwesome";
@@ -16915,7 +16915,7 @@ h6 .alternate,
     font-family: "FontAwesome";
     content: "\e219";
   }
-  
+
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-10::before {
     font-family: "FontAwesome";
@@ -16925,12 +16925,12 @@ h6 .alternate,
     font-family: "FontAwesome";
     content: "\e0c0";
   }
-  
+
   /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-12::before {
     font-family: "FontAwesome";
     content: "\f5c0";
-  } 
+  }
    /* Note: Make sure to include the correct weight and Unicode value for the icon */
   .icon-chapter-13::before {
     font-family: "FontAwesome";
@@ -16941,4 +16941,3 @@ h6 .alternate,
     font-family: "FontAwesome";
     content: "\f135";
   }
-   
