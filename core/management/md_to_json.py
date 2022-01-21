@@ -60,35 +60,10 @@ def get_markdown_ast(markdown_file):
         f.close()
 
 
-def jsonify_markdown(markdown_file, outfile, indent):
+def jsonify_markdown(markdown_file, indent):
     nester = CMarkASTNester()
     renderer = Renderer()
-    with writable_io_or_stdout(outfile) as f:
-        ast = get_markdown_ast(markdown_file)
-        nested = nester.nest(ast)
-        rendered = renderer.stringify_dict(nested)
-        json.dump(rendered, f, indent=indent)
-        f.write("\n")
-    return 0
-
-
-def main(args=[]):
-    pargs = docopt(
-        __doc__,
-        version="md_to_json {0}".format(markdown_to_json.__version__,),)
-    indent = -1
-    try:
-        indent = int(pargs.get('-i'))
-    except:
-        logging.error("Error: Indent must be a number")
-        sys.exit(1)
-    if indent < 0:
-        indent = None
-    return jsonify_markdown(
-        pargs['<markdown_file>'],
-        pargs.get('-o'),
-        indent)
-
-
-if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+    ast = get_markdown_ast(markdown_file)
+    nested = nester.nest(ast)
+    rendered = renderer.stringify_dict(nested)
+    return json.dumps(rendered, indent=indent)+"\n"
