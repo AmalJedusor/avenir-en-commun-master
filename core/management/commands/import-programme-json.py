@@ -6,8 +6,10 @@ from django.core.management.base import BaseCommand
 from django.template.defaultfilters import slugify
 from django.utils.html import strip_tags
 from core.models import Chapter, Article, UrlData, Part
+
+import markdown_to_json.scripts.md_to_json as md_to_json
+
 from core.management.md_to_json import jsonify_markdown
-import subprocess
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
