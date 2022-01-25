@@ -26,7 +26,7 @@
                id="partie-{{part.number}}"
                class="list-group-item toc-chapter toc-chapter-{{part.number}}"
                href="/part/{{part.number}}/{{part.slug}}">
-             
+               <i class="fa fa-fw fa-2x fa-pull-right icon icon-part-{{part.number}}" aria-hiddent="true"></i>
                                  <h3>{{part.title}}</h3>
                              
             </a>
@@ -38,11 +38,11 @@
                   id="chapitre-{{chapter.number}}"
                   class="list-group-item toc-chapter toc-chapter-{{part.number}}"
                   href="/chapitre/{{chapter.number}}/{{chapter.slug}}">
-                  <i class="fa fa-fw fa-2x fa-pull-right icon icon-chapter-{{chapter.number}}" aria-hiddent="true"></i>
+                
                   {% if chapter.main_title %}                    
-                                    <h4>{{chapter.main_title}}</h4>
+                   <h4> {{chapter.main_title}}</h4>
                   {% else %}
-                  <span class="alternate">{{ chapter.title }}</span>
+                <span class="alternate">{{ chapter.title }}</span>
 
                   {% endif %}
                </a>

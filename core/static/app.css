@@ -473,8 +473,8 @@ h2,
 .h2,
 h3,
 .h3 {
-    margin-top: 25px;
-    margin-bottom: 12.5px
+    margin-top: 12.5px;
+    margin-bottom:12.5px
 }
 
 h1 small,
@@ -12999,8 +12999,9 @@ ul#side-navigation span.alternate {
 }
 
 .toc .list-group-item i.fa {
-    margin-top: 5px;
-    padding-bottom: 5px;
+    margin-top: 12.5px;
+    margin-bottom: 12.5px;
+    
 }
 
 .toc .list-group-item.visited {
@@ -16870,6 +16871,30 @@ h6 .alternate,
 
 
   /* Step 2: Reference Individual Icons */
+
+  /* parts icons*/
+  .icon-part-1::before {
+    font-family: "FontAwesome";
+    content: "\f66f";
+  }
+  .icon-part-2::before {
+    font-family: "FontAwesome";
+    content: "\f06c";
+  }
+  .icon-part-3::before {
+    font-family: "FontAwesome";
+    content: "\f2b5";
+  }
+  .icon-part-4::before {
+    font-family: "FontAwesome";
+    content: "\f0c0";
+  }
+  .icon-part-5::before {
+    font-family: "FontAwesome";
+    content: "\f7a2";
+  }
+
+  /* chapters */
   .icon-chapter-1::before {
     font-family: "FontAwesome";
     content: "\f19c";
@@ -16941,3 +16966,12 @@ h6 .alternate,
     font-family: "FontAwesome";
     content: "\f135";
   }
+
+
+/* no click on chapters unless 12*/
+[id^=chapitre] {
+    pointer-events: none;
+}
+[id=chapitre-12] {
+    pointer-events: all;
+    }

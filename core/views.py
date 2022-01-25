@@ -45,26 +45,26 @@ def part(request, n, slug=''):
     if prev is None:
         try:
             print(part.id)
-            prev = Chapter.objects.get(id=int(part.id) -1)
+            prev = Part.objects.get(id=int(part.id) -1)
 
-            prev.desc = "Chapitre précédent"
-            prev.url = "/chapitre/"
-        except Chapter.DoesNotExist:
+            prev.desc = "Partie précédente"
+            prev.url = "/part/"
+        except Part.DoesNotExist:
             prev = None
 
 
     try:
-        next  = Article.objects.get(id = int(part.id)+1)
+        next  = Article.objects.get(id = int(part.id)+2)
         next.desc = "Section suivante"
         next.url = "/section/"
     except Article.DoesNotExist:
         next = None
     if next is None:
         try:
-            next = Chapter.objects.get(id = int(part.id)+1)
-            next.desc = "Chapitre suivant"
-            next.url = "/chapitre/"
-        except Chapter.DoesNotExist:
+            next = Part.objects.get(id = int(part.number)+1)
+            next.desc = "Partie suivante"
+            next.url = "/part/"
+        except Part.DoesNotExist:
             next = None
 
 
@@ -90,11 +90,11 @@ def chapter(request, n, slug=''):
         prev = None
     if prev is None:
         try:
-            prev = Chapter.objects.get(number=int(n) -1)
-            print( chapter.number)
-            prev.desc = "Chapitre précédent"
-            prev.url = "/chapitre/"
-        except Chapter.DoesNotExist:
+            prev = Part.objects.get(number=int(chapter.part.number) -1)
+           
+            prev.desc = "Partie précédente"
+            prev.url = "/part/"
+        except Part.DoesNotExist:
             prev = None
 
 
@@ -106,10 +106,10 @@ def chapter(request, n, slug=''):
         next = None
     if next is None:
         try:
-            next = Chapter.objects.get(number = int(chapter.number)+1)
-            next.desc = "Chapitre suivant"
-            next.url = "/chapitre/"
-        except Chapter.DoesNotExist:
+            next = Part.objects.get(number = int(chapter.part.number)+1)
+            next.desc = "Partie suivante"
+            next.url = "/part/"
+        except Part.DoesNotExist:
             next = None
 
 
@@ -126,9 +126,7 @@ def section(request, n, slug):
 
     article = Article.objects.get(number=n)
     res = article.measures
-
     article.measures =  ast.literal_eval(res)
-
     prev = None
     next = None
 
@@ -139,7 +137,22 @@ def section(request, n, slug):
         prev.url = "/section/"
     except Article.DoesNotExist:
         prev = None
-
+    if prev is None:
+        try:
+            prev = Chapter.objects.get(number = int(article.id) -1)
+            if prev is not None:
+                prev = Article.objects.get(id = int(article.id)-2)
+                prev.desc = "Section précédente"
+                prev.url = "/section/"
+        except Chapter.DoesNotExist:
+            prev = None
+    if prev is None:
+        try:
+            prev = Part.objects.get(number = int(article.chapter.part.number)-1)
+            prev.desc = "Partie précédente"
+            prev.url = "/part/"
+        except Part.DoesNotExist:
+            prev = None
     #next
     try:
          next = Article.objects.get(id = int(article.id)+1)
@@ -149,11 +162,21 @@ def section(request, n, slug):
         next = None
     if next is None:
         try:
-            next = Chapter.objects.get(number = int(article.chapter.number)+1)
-            next.desc = "Chapitre suivant"
-            next.url = "/chapitre/"
+            next = Part.objects.get(number = int(article.id)+1)
+            next.desc = "Partie suivante"
+            next.url = "/part/"
+        except Part.DoesNotExist:
+            next = None
+    if next is None:
+        try:
+            next = Chapter.objects.get(number = int(article.id) +1)
+            if next is not None:
+                next = Article.objects.get(id = int(article.id)+2)
+                next.desc = "Section suivante"
+                next.url = "/section/"
         except Chapter.DoesNotExist:
             next = None
+    
 
     return render(request, "section.html", {
         'subject': article,
