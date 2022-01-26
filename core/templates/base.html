@@ -17,6 +17,9 @@
                 H.className = H.className.replace(/\bno-js\b/, "js");
             })(document.documentElement);
         </script>
+        
+        <script src="/static/app.js"></script>
+
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title> {% if title is None %} LAEC.fr – Le programme de la France Insoumise – L'Avenir En Commun {% else %} {{title}} {% endif %} </title>
@@ -31,19 +34,7 @@
         <meta name="application-name" content="LAEC.fr" />
         <!-- Opensearch -->
         <link rel="search" type="application/opensearchdescription+xml" title="LAEC.fr" href="http://laec.fr/opensearch.xml" />
-        <!-- Microdonnées JSON-LD -->
-        <script type="application/ld+json">
-            {
-                "@context": "http://schema.org",
-                "@type": "WebSite",
-                "url": "http://laec.fr/",
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "http://laec.fr/recherche?termes={searchTerms}",
-                    "query-input": "required name=searchTerms"
-                }
-            }
-        </script>
+        
         <!-- Meta social -->
         <meta property="og:site_name" content="LAEC.fr" />
         <meta property="og:locale" content="fr_FR" />

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block html_class %}page-chapter theme-chapter-{{subject.part_id}} {% endblock %}
 {% block body %}
-
+<script src="/static/app.js"></script>
 <body id="body">
     <div class="visible-print-block text-center print-logotype" aria-hidden="true">
         <img src="/static/livre-phi-laec-fr-mention-impression.svg" style="max-height: 70px; width: auto;"
@@ -71,6 +71,6 @@
         </div>
     </div>
     {% include '_footer.html' %}
-    <script src="/static/app.js"></script>
+   
 </body>
 {% endblock %}

@@ -2,7 +2,7 @@
 from random import choice
 from django.shortcuts import render, redirect
 import markdown
-from .models import Chapter, Article, Part, UrlData
+from .models import Chapter, Article, Measure, Part, UrlData
 from haystack.query import SQ
 
 from elasticsearch import Elasticsearch
@@ -18,7 +18,8 @@ from django.conf import settings
 def home(request):
     return render(request, "home.html")
 
-
+def measure(request,n,m):
+    redirect(f'/s',n,"slfksksf",m)
 def toc(request):
 
     return render(request, "toc.html",{
@@ -122,11 +123,13 @@ def chapter(request, n, slug=''):
         'title' : chapter.sub_title,
     })
 
-def section(request, n, slug):
+def section(request, n, slug,m='None'):
 
     article = Article.objects.get(number=n)
     res = article.measures
-    article.measures =  ast.literal_eval(res)
+    article.measures =  Measure.objects.filter(section_id= article.number).exclude(key=True)
+    article.key =  Measure.objects.get(section_id= article.number,key=True)
+    print(article.key)
     prev = None
     next = None
 

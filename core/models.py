@@ -28,6 +28,7 @@ class Chapter(models.Model):
     text =  models.TextField(default='')
     part = models.ForeignKey(Part, on_delete=models.DO_NOTHING,default='')
 
+
     class Meta:
         ordering = ('number',)
 
@@ -57,3 +58,13 @@ class UrlData(models.Model):
 
     class Meta:
         ordering = ('slug',)
+
+class Measure(models.Model):
+    number = models.IntegerField(primary_key=True)
+    section = models.ForeignKey(Article, on_delete=models.DO_NOTHING)
+    text=models.TextField( default='')
+    key = models.BooleanField(default=False)
+
+
+    class Meta:
+        ordering = ('number',)
