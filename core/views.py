@@ -92,7 +92,7 @@ def chapter(request, n, slug=''):
     if prev is None:
         try:
             prev = Part.objects.get(number=int(chapter.part.number) -1)
-           
+
             prev.desc = "Partie précédente"
             prev.url = "/part/"
         except Part.DoesNotExist:
@@ -179,7 +179,7 @@ def section(request, n, slug,m='None'):
                 next.url = "/section/"
         except Chapter.DoesNotExist:
             next = None
-    
+
 
     return render(request, "section.html", {
         'subject': article,
@@ -260,5 +260,9 @@ def recherche(request):
 
 def redirect_short(request,n):
      content = UrlData.objects.get(slug=request.path)
-     print(content)
+
+     return render(request, "card.html", {
+         'cardimg' : 'c1s2.png',
+         'redirect' : content.url
+         })
      return redirect( content.url,n = n)

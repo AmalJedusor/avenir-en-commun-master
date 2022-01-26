@@ -10,8 +10,8 @@ while ! nc -z es 9200 ; do
     sleep 3
 done
 #sleep 30
-python manage.py migrate
 python manage.py makemigrations
+python manage.py migrate
 python manage.py import-programme-v2
 python manage.py import-programme-json
 python manage.py rebuild_index --noinput
