@@ -142,9 +142,10 @@ def section(request, n, slug,m='None'):
         prev = None
     if prev is None:
         try:
-            prev = Chapter.objects.get(number = int(article.id) -1)
+            prev = Chapter.objects.get(number = int(article.chapter.number) -1)
+            print(prev.title)
             if prev is not None:
-                prev = Article.objects.get(id = int(article.id)-2)
+                prev = Article.objects.get(number = int(article.number)-1)
                 prev.desc = "Section précédente"
                 prev.url = "/section/"
         except Chapter.DoesNotExist:
@@ -156,6 +157,8 @@ def section(request, n, slug,m='None'):
             prev.url = "/part/"
         except Part.DoesNotExist:
             prev = None
+
+
     #next
     try:
          next = Article.objects.get(id = int(article.id)+1)
@@ -172,9 +175,9 @@ def section(request, n, slug,m='None'):
             next = None
     if next is None:
         try:
-            next = Chapter.objects.get(number = int(article.id) +1)
+            next = Chapter.objects.get(number = int(article.chapter.number) +1)
             if next is not None:
-                next = Article.objects.get(id = int(article.id)+2)
+                next = Article.objects.get(number = int(article.number)+1)
                 next.desc = "Section suivante"
                 next.url = "/section/"
         except Chapter.DoesNotExist:
