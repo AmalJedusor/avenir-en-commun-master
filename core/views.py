@@ -128,7 +128,11 @@ def section(request, n, slug,m='None'):
     article = Article.objects.get(number=n)
     res = article.measures
     article.measures =  Measure.objects.filter(section_id= article.number).exclude(key=True)
-    article.key =  Measure.objects.get(section_id= article.number,key=True)
+    try:
+      article.key =  Measure.objects.get(section_id= article.number,key=True)
+    except Measure.DoesNotExist:
+      article.key = None
+   
     print(article.key)
     prev = None
     next = None
