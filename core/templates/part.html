@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block html_class %}page-chapter theme-chapter-{{subject.number}} {% endblock %}
+{% block html_class %}page-part theme-part-{{subject.number}} {% endblock %}
 {% block body %}
 
 <body id="body">
@@ -32,7 +32,7 @@
                 {% include '_sectionsidebar.html' %}
                 <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
                     <section class="actions actions-c">
-                        {% include '_partager.html' %}
+                        {% include '_partager_partie.html' %}
                     </section>
                     <hr />
                     <section class="content-text parsedown">

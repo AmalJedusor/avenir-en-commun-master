@@ -1,0 +1,105 @@
+<section class="actions actions-s">
+    <div class="btn-toolbar" role="toolbar" aria-label="Actions disponibles pourcette section">
+        <div class="btn-group"></div>
+        <div class="btn-group">
+            <button title="Lien direct vers la section et boutons de partage sur les réseaux sociaux"
+                class="btn btn-defaultshare-collapser collapsed" data-target="#panel-c-share-{{subject.number}}" type="button"
+                aria-controls="panel-c-share-{{subject.number}}" aria-expanded="false" data-toggle="collapse"><i
+                    class="fa fa-fw fa-share-alt"></i>&nbsp;<span
+                    class="visible-lg-inline">Partager</span></button><button title="À propos du livre papier…"
+                class="btn btn-defaultpageref-collapser" data-target="#panel-c-pageref-{{subject.number}}"
+                aria-controls="panel-c-pageref-{{subject.number}}" aria-expanded="false" data-toggle="collapse"><i
+                    class="fa fa-fw fa-bookmark"></i>&nbsp;<span class="visible-lg-inline">Page
+                    <strong>25</strong></span></button>
+        </div>
+        <div class="btn-group"><button title="Version audio de la page courante"
+                class="btn btn-defaultaudiobook-collapser" data-target="#panel-c-audiobook-{{subject.number}}"
+                aria-controls="panel-c-audiobook-{{subject.number}}" aria-expanded="false" data-toggle="collapse"><i
+                    class="fa fa-fw fa-volume-up"></i>&nbsp;<span class="visible-lg-inline">Écouter</span></button>
+        </div>
+        <div class="btn-group pull-right js-only"></div>
+    </div>
+    <div class="collapsableshare-collapsable collapse" id="panel-c-share-{{subject.number}}">
+        <div class="panel-wrap">
+            <div class="panel panel-default">
+                <div class="panel-heading">Faites tourner cette partie &nbsp;!</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-5"><label for="share-control-c-{{subject.number}}"><i class="fa fa-fw fa-link"
+                                    aria-hidden="true"></i>Lien court direct</label>
+                            <div class="form">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-fw fa-anchor"
+                                                aria-hidden="true"></i></div><input type="text" id="share-control-c-{{subject.number}}"
+                                            class="form-control share-control" readonly="readonly"
+                                            value="https://laec.fr/p{{subject.number}}" autofocus="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7"><label><i class="fa fa-fw fa-share" aria-hidden="true"></i>Réseaux
+                                sociaux</label>
+                            <nav class="btn-group networks" role="group"><a data-popup-dimensions="560,430"
+                                    href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flaec.fr%2Fs3"
+                                    class="btn btn-default share-link" data-network="Facebook"
+                                    title="Partager cette section sur Facebook"><span
+                                        class="visible-lg-inline visible-sm-inline">Facebook </span><i
+                                        class="fa fa-fw fa-facebook"></i></a><a data-popup-dimensions="430,284"
+                                    href="https://twitter.com/home?status=%C3%80%20lire%20absolument%C2%A0%3A%20https%3A%2F%2Flaec.fr%2Fs3%20%F0%9F%98%8E%20%23AvenirEnCommun%20%23M%C3%A9lenchon%20%23JLM2017"
+                                    class="btn btn-default share-link" data-network="Twitter"
+                                    title="Partager cette section sur twitter"><span
+                                        class="visible-lg-inline visible-sm-inline">Twitter </span><i
+                                        class="fa fa-fw fa-twitter"></i></a><a data-popup-dimensions="400,415"
+                                    href="https://plus.google.com/share?url=https%3A%2F%2Flaec.fr%2Fs3"
+                                    class="btn btn-default share-link" data-network="Google+"
+                                    title="Partager cette section sur Google+"><span
+                                        class="visible-lg-inline visible-sm-inline">Google+ </span><i
+                                        class="fa fa-fw fa-google-plus"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="collapse collapsablepageref-collapsable" id="panel-c-pageref-{{subject.number}}">
+        <div class="panel-wrap">
+            <div class="panel panel-default">
+                <div class="panel-heading">L'Avenir en commun</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-2 col-sm-push-10 hidden-xs"><img
+                                src="/img/livre/miniature-couverture-avenir-en-commun-france-insoumise-melenchon.png"
+                                alt="Couverture du livre-programme aux publié aux éditions du Seuil"
+                                class="img-responsive img-thumbnail"></div>
+                        <div class="col-sm-10 col-sm-pull-2">
+                            <p>Retrouvez ce passage à la <strong>page25</strong>* du livre-programme de la France
+                                insoumise, publié aux <a
+                                    href="http://www.seuil.com/ouvrage/l-avenir-en-commun-jean-luc-melenchon/9782021317510"
+                                    class="external"
+                                    title="Le programme sur le site officiel des éditions du Seuil">éditions du
+                                    Seuil</a> et trouvable dans toutes les <a class="external"
+                                    title="«&nbsp;Les libraires&nbsp;», réseau de librairies indépendantes"
+                                    href="https://www.leslibraires.fr/le_reseau/">librairies</a> au prix de
+                                <strong>3&nbsp;€</strong>.
+                            </p>
+                            <p>Vous pouvez aussi l'obtenir dans des magasins en lignes tels qu'<a
+                                    href="https://www.amazon.fr/programme-insoumise-candidat-Jean-Luc-M%C3%A9lenchon/dp/202131751X/"
+                                    class="external">Amazon</a> ou la <a
+                                    href="http://livre.fnac.com/a9371063/Jean-Luc-Melenchon-L-avenir-en-commun"
+                                    class="external">Fnac</a>, ou encore le commander via internet chez un <a
+                                    class="external"
+                                    title="Trouver «L'Avenir en commun&nbsp;» dans le réseau «&nbsp;les libraires&nbsp;»"
+                                    href="https://www.leslibraires.fr/livre/9275770-l-avenir-en-commun-le-programme-de-la-france-i--jean-luc-melenchon-le-seuil">libraire
+                                    indépendant</a> proche de chez vous.</p>
+                            <p class="text-muted small">* dans l'édition de <strong>décembre 2016</strong>, ISBN&nbsp;:
+                                <strong>978-2-02-131751-0</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
