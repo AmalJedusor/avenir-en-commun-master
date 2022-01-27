@@ -270,18 +270,17 @@ def recherche(request):
 
 
 def redirect_short(request,n):
-     print(request.path)
      content = UrlData.objects.get(slug=request.path)
 
      print("content url " + content.url)
      return redirect( content.url,n = n)
 
 def redirect_short_measure(request,n,m=0):
-     print(request.path)
+
      content = UrlData.objects.get(slug="/s"+n+"/")
      return render(request, "card.html", {
-
-         'n':n,
+         'host': settings.PROD_HOST,
+         'shortlink':'s'+n+'m'+m,
          'redirect' : content.url+"#mesure-"+m
      })
 
