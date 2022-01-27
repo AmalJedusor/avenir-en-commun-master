@@ -270,7 +270,7 @@ def recherche(request):
 
 
 def redirect_short(request,n):
-     print(request.path)
+     
      content = UrlData.objects.get(slug=request.path)
 
 
