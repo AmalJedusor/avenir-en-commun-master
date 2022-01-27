@@ -10,4 +10,4 @@ RUN apk update && apk add bash tk wkhtmltopdf python3 python3-dev mariadb-dev bu
 RUN apk add netcat-openbsd libffi-dev
 
 RUN pip3 install -r requirements.txt
-RUN pip3 install selenium
+RUN pip3 install selenium pillow
