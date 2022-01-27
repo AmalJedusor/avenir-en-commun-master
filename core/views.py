@@ -270,7 +270,7 @@ def recherche(request):
 
 
 def redirect_short(request,n):
-     
+
      content = UrlData.objects.get(slug=request.path)
 
 
@@ -280,6 +280,7 @@ def redirect_short(request,n):
          'redirect' : content.url
          })
      return redirect( content.url,n = n)
+
 
 
 
@@ -326,3 +327,19 @@ def visuel(request, v):
         mesure['mesure'] = re.sub(r'(\*)([^\*]+)\1',r'<span class="highlight">\2</span>',mesure['mesure'])
         return render(request,"visuels/mesure.html", mesure)
     return HttpResponseNotFound('<h1>Pas de visuel</h1>')
+
+mesures_path = os.path.join('generation_visuels','mesures.json')
+if os.path.exists(mesures_path):
+    with open(mesures_path,'r') as f:
+        mesures_list = sorted(list(json.loads(f.read()).values()),key=lambda x:x['nmesure'])
+else:
+    mesures_list = []
+
+grid_nbitems = 20
+
+def grid(request):
+
+    return render(request, "visuels/grid.html",dict(mesures=mesures_list[:grid_nbitems]))
+
+def grid_page(request,p):
+    return render(request, "visuels/grid.html",dict(mesures=mesures_list[(p-1)*grid_nbitems:p*grid_nbitems]))
