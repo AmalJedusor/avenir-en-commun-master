@@ -5,7 +5,7 @@ import markdown
 from .models import Chapter, Article, Measure, Part, UrlData
 from haystack.query import SQ
 
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, HttpResponseNotFound, Http404
 import os
 from elasticsearch import Elasticsearch
 from django.utils.html import strip_tags
@@ -134,7 +134,7 @@ def section(request, n, slug,m='None'):
       article.key =  Measure.objects.get(section_id= article.number,key=True)
     except Measure.DoesNotExist:
       article.key = None
-   
+
     print(article.key)
     prev = None
     next = None
@@ -267,11 +267,16 @@ def recherche(request):
         'request' :req
     })
 
+
+
 def redirect_short(request,n):
+     print(request.path)
      content = UrlData.objects.get(slug=request.path)
 
+
      return render(request, "card.html", {
-         'cardimg' : 'c1s2.png',
+         'host': settings.PROD_HOST,
+         'n':n,
          'redirect' : content.url
          })
      return redirect( content.url,n = n)
@@ -288,15 +293,36 @@ def visuel(request, v):
         ('#412883','#aa9ec9'), #4
         ('#679ae7','#c0d6f7ff'), #5
     ]
-    with open('generation_visuels/sections.json','r') as f:
-        sections = json.loads(f.read())
+    sections_path = os.path.join('generation_visuels','sections.json')
+    if os.path.exists(sections_path):
+        with open(sections_path,'r') as f:
+            sections_dict = json.loads(f.read())
+    else:
+        sections_dict = {}
+
+    mesures_path = os.path.join('generation_visuels','mesures.json')
+    if os.path.exists(mesures_path):
+        with open(mesures_path,'r') as f:
+            mesures_dict = json.loads(f.read())
+    else:
+        mesures_dict = {}
 
 
-    if v in sections.keys():
-        section  = sections[v]
+    if v in sections_dict.keys():
+        section  = sections_dict[v]
         background = 'mP{p}.png'.format(p=section['npartie'])
         section['couleurs'] = couleurs[section['npartie']-1]
         section['background'] = background
         section['section'] = re.sub(r'(\*)([^\*]+)\1',r'<span class="highlight">\2</span>',section['section'])
         return render(request,"visuels/section.html", section)
         #return render(request,"visuels/"+v+".html")
+
+    if v in mesures_dict.keys():
+        mesure  = mesures_dict[v]
+        background = 'm{c}P{p}.png'.format(c='c' if mesure['cle'] else '',p=mesure['npartie'])
+        mesure['couleurs'] = couleurs[mesure['npartie']-1]
+        mesure['background'] = background
+        mesure['section'] = re.sub(r'(\*)([^\*]+)\1',r'\2',mesure['section'])
+        mesure['mesure'] = re.sub(r'(\*)([^\*]+)\1',r'<span class="highlight">\2</span>',mesure['mesure'])
+        return render(request,"visuels/mesure.html", mesure)
+    return HttpResponseNotFound('<h1>Pas de visuel</h1>')

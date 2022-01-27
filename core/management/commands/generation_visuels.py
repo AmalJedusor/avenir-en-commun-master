@@ -87,25 +87,23 @@ class Command(BaseCommand):
                 if str(nmesure) != row['MESURE N°']:
                     print('PB',nmesure,row)
 
-                mes = [npartie,partie,nchapitre,chapitre,nsection,section,row['MESURE N°'],row['MESURE'],row['MESURE CLEF']=='OUI',0]
+                mes = [npartie,partie,nchapitre,chapitre,nsection,section,nmesure,row['MESURE'],row['MESURE CLEF']=='OUI',0]
                 hash = hashlib.md5(json.dumps(mes).encode('utf8')).hexdigest()
                 mes.append(hash!=mesures_dict.get('s{s}m{m}'.format(s=nsection,m=nmesure),{'hash':''})['hash'])
                 mes.append(hash)
                 mesures.append(mes)
 
-
-        sections_dict = dict(('c{c}s{s}'.format(c=nchapitre,s=nsection),dict(shortlink='c{c}s{s}'.format(c=nchapitre,s=nsection),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,adjust,new,hash in sections)
+        mesures_dict = dict(('s{s}m{m}'.format(s=nsection,m=nmesure),dict(shortlink='s{s}m{m}'.format(s=nsection,m=nmesure),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,nmesure=nmesure,mesure=mesure,cle=cle,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,nmesure,mesure,cle,adjust,new,hash in mesures)
         import json
         with open(mesures_path,'w') as f:
             f.write(json.dumps(mesures_dict))
 
-
-        mesures_dict = dict(('s{s}m{m}'.format(s=nsection,m=nmesure),dict(shortlink='s{s}m{m}'.format(s=nsection,m=nmesure),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,nmesure=nmesure,mesure=mesure,cle=cle,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,nmesure,mesure,cle,adjust,new,hash in mesures)
+        sections_dict = dict(('c{c}s{s}'.format(c=nchapitre,s=nsection),dict(shortlink='c{c}s{s}'.format(c=nchapitre,s=nsection),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,adjust,new,hash in sections)
         import json
         with open(sections_path,'w') as f:
             f.write(json.dumps(sections_dict))
 
-        exit()
+
         from selenium import webdriver
         from selenium.webdriver.common.keys import Keys
         from selenium.webdriver.common.by import By
@@ -135,33 +133,34 @@ class Command(BaseCommand):
 
 
         for npartie,partie,nchapitre,chapitre,nsection,section,adjust,new,hash in sections:
-            if not 'all' in options['ids'] and not 'sections' in optins['ids'] and options['ids'] and not "s{n}".format(n=nsection) in options['ids']:
-                continue
-            if new==False:
+            if not 'update' in options['ids'] and not 'all' in options['ids'] and not 'sections' in options['ids'] and options['ids'] and not "s{n}".format(n=nsection) in options['ids']:
                 continue
             name = "c{c}s{s}".format(c=nchapitre,s=nsection)
             basepath = os.path.join('core','static','visuels')
             imgpath = os.path.join(basepath,name+'.png')
+
+            if 'update' in options['ids'] and new==False and os.path.exists(imgpath):
+                continue
             print(imgpath)
             driver.get('http://'+ip+':8000/visuel/'+name)
             time.sleep(1)
             driver.find_element(By.ID, 'mesure').screenshot(imgpath)
 
-        driver.quit()
-        exit()
 
-        for v in ('','_alt'):
-            for npartie,partie,nchapitre,chapitre,nsection,section,nmesure,mesure,cle,adjust in mesures:
-                name = "s{s}m{m}".format(s=nsection,m=nmesure)
-                mesure = re.sub(r'(\*)([^\*]+)\1',r'<span class="highlight">\2</span>',mesure)
-                background = ("mc" if cle else "m") + 'P{n}{v}.png'.format(n=npartie,v=v)
-                html_content = mesure_template.render(adjust=adjust,background=background,cle=cle,titre=section, titre_numero=nsection,couleurs=couleurs[npartie-1],mesure=mesure,shortlink=name)
 
-                with open('visuels/html/'+name+v+'.html','w') as f:
-                    f.write(html_content)
-                driver.get('file:///home/olivier/devs/laecV2/gen/visuels/html/'+name+v+'.html')
-                time.sleep(1)
-                driver.find_element(By.ID, 'mesure').screenshot('visuels/png/Mesures/'+name+v+'.png')
+        for npartie,partie,nchapitre,chapitre,nsection,section,nmesure,mesure,cle,adjust,new,hash in mesures:
+            if not 'update' in options['ids'] and not 'all' in options['ids'] and not 'sections' in options['ids'] and options['ids'] and not "m{n}".format(n=nmesure) in options['ids']:
+                continue
+            name = "s{s}m{m}".format(s=nsection,m=nmesure)
+            basepath = os.path.join('core','static','visuels')
+            imgpath = os.path.join(basepath,name+'.png')
+
+            if 'update' in options['ids'] and new==False and os.path.exists(imgpath):
+                continue
+            print(imgpath)
+            driver.get('http://'+ip+':8000/visuel/'+name)
+            time.sleep(1)
+            driver.find_element(By.ID, 'mesure').screenshot(imgpath)
 
 
 
