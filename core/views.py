@@ -331,7 +331,7 @@ def visuel(request, v):
 mesures_path = os.path.join('generation_visuels','mesures.json')
 if os.path.exists(mesures_path):
     with open(mesures_path,'r') as f:
-        mesures_list = sorted(list(json.loads(f.read()).values()),key=lambda x:x['nmesure'])
+        mesures_list = sorted(list(json.loads(f.read()).values()),key=lambda x:int(x['nmesure']))
 else:
     mesures_list = []
 
@@ -342,4 +342,4 @@ def grid(request):
     return render(request, "visuels/grid.html",dict(mesures=mesures_list[:grid_nbitems]))
 
 def grid_page(request,p):
-    return render(request, "visuels/grid.html",dict(mesures=mesures_list[(p-1)*grid_nbitems:p*grid_nbitems]))
+    return render(request, "visuels/grid_page.html",dict(mesures=mesures_list[(p-1)*grid_nbitems:p*grid_nbitems]))

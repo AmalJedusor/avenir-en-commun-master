@@ -6,6 +6,7 @@ let msnry = new Masonry( grid, {
   itemSelector: 'none', // select none at first
   columnWidth: '.grid__col-sizer',
   gutter: '.grid__gutter-sizer',
+  horizontalOrder: true,
   percentPosition: true,
   stagger: 30,
   // nicer reveal transition
@@ -24,7 +25,7 @@ imagesLoaded( grid, function() {
 
 
 function getPath() {
-    return '/grid/'+ (1+this.loadCount);
+    return '/grid/'+ (2+this.loadCount);
 }
 
 //-------------------------------------//
