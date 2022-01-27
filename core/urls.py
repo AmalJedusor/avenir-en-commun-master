@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path, re_path
 from django.conf.urls import url
 from core import views
 #from .views import MySearchView
@@ -13,7 +13,9 @@ urlpatterns = [
     path('fin/', views.fin),
     path('page/mentions-legales', views.mentions),
     path('recherche/', views.recherche),
-    path('s<slug:n>',views.redirect_short),
-    path('c<slug:n>',views.redirect_short),
-    path('s<slug:n>m<slug:m>', views.measure)
+    path('c<n>/',views.redirect_short),
+
+    re_path(r'^s(?P<n>[0-9]{1,2})/$',views.redirect_short),
+    re_path(r'^s(?P<n>[0-9]{1,2})m(?P<m>[0-9]{1,3})/$',views.redirect_short_measure),
+
 ]

@@ -266,10 +266,18 @@ def recherche(request):
     })
 
 def redirect_short(request,n):
+     print(request.path)
      content = UrlData.objects.get(slug=request.path)
 
-     return render(request, "card.html", {
-         'cardimg' : 'c1s2.png',
-         'redirect' : content.url
-         })
+     print("content url " + content.url)
      return redirect( content.url,n = n)
+
+def redirect_short_measure(request,n,m=0):
+     print(request.path)
+     content = UrlData.objects.get(slug="/s"+n+"/")
+     return render(request, "card.html", {
+        
+         'n':n,
+         'redirect' : content.url+"#mesure-"+m
+     })
+

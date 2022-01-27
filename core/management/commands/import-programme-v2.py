@@ -7,9 +7,11 @@ from core.models import Chapter, Article, UrlData, Part, Measure
 class Command(BaseCommand):
     def handle(self, *args, **options):
         Measure.objects.all().delete()
+        UrlData.objects.all().delete()
         Article.objects.all().delete()
         Chapter.objects.all().delete()
-        UrlData.objects.all().delete()
+        Part.objects.all().delete()
+      
     
         Part.objects.all().delete()
         id = 0
@@ -29,7 +31,7 @@ class Command(BaseCommand):
                         content= strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:])),                                    
                 ).save()
                 UrlData(url="/partie/"+str(part_number)+"/"+slugify(part_title),
-                slug="/p"+str(part_number) 
+                slug="/p"+str(part_number) +"/"
                 ).save()
                 id += 1              
                 continue
@@ -51,8 +53,8 @@ class Command(BaseCommand):
                             sub_title = part_title,
                             part = part
                         ).save()                   
-                    UrlData(url="chapitre/"+str(number)+"/"+slugify(title),
-                    slug="/c"+str(number) 
+                    UrlData(url="/chapitre/"+str(number)+"/"+slugify(title),
+                    slug="/c"+str(number) +"/"
                     ).save()
                     id += 1              
                     continue
@@ -73,6 +75,6 @@ class Command(BaseCommand):
                 ).save()
                
                 UrlData(url="/section/"+str(number)+"/"+slugify(title),
-                        slug="/s"+str(number) 
+                        slug="/s"+str(number)+"/"
                         ).save()
                 id +=1            
