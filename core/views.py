@@ -278,6 +278,14 @@ else:
     mesures_dict = {}
     mesures_list = []
 
+sections_path = os.path.join('generation_visuels','sections.json')
+if os.path.exists(sections_path):
+    with open(sections_path,'r') as f:
+        sections_dict = json.loads(f.read())
+else:
+    sections_dict = {}
+
+
 def shorten_text(txt,length):
     if len(txt)>length and length>3:
         txt = txt[:length-3] + '...'
@@ -286,7 +294,19 @@ def shorten_text(txt,length):
 def redirect_short(request,n):
      content = UrlData.objects.get(slug=request.path)
 
-     print("content url " + content.url)
+     shortlink = 's{n}'.format(n=n)
+     section = sections_dict.get(shortlink)
+     if not section:
+         return HttpResponseNotFound('<h1>Section inconnue</h1>')
+
+     return render(request, "card.html", {
+          'host': settings.PROD_HOST,
+          'titre': shorten_text(re.sub(r'(\*)([^\*]+)\1',r'\2',section['chapitre']),50),
+          'description': shorten_text(re.sub(r'(\*)([^\*]+)\1',r'\2',section['section']),124),
+          'shortlink': shortlink,
+          'redirect' : content.url
+      })
+
      return redirect( content.url,n = n)
 
 def redirect_short_measure(request,n,m=0):

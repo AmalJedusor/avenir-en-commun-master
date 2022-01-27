@@ -98,7 +98,7 @@ class Command(BaseCommand):
         with open(mesures_path,'w') as f:
             f.write(json.dumps(mesures_dict))
 
-        sections_dict = dict(('c{c}s{s}'.format(c=nchapitre,s=nsection),dict(shortlink='c{c}s{s}'.format(c=nchapitre,s=nsection),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,adjust,new,hash in sections)
+        sections_dict = dict(('s{s}'.format(s=nsection),dict(shortlink='s{s}'.format(s=nsection),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,adjust,new,hash in sections)
         import json
         with open(sections_path,'w') as f:
             f.write(json.dumps(sections_dict))
@@ -136,7 +136,7 @@ class Command(BaseCommand):
         for npartie,partie,nchapitre,chapitre,nsection,section,adjust,new,hash in sections:
             if not 'update' in options['ids'] and not 'all' in options['ids'] and not 'sections' in options['ids'] and options['ids'] and not "s{n}".format(n=nsection) in options['ids']:
                 continue
-            name = "c{c}s{s}".format(c=nchapitre,s=nsection)
+            name = "s{s}".format(c=nchapitre,s=nsection)
             basepath = os.path.join('core','static','visuels')
             imgpath = os.path.join(basepath,name+'.png')
             jpgpath = os.path.join(basepath,name+'.jpg')
