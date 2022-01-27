@@ -269,6 +269,20 @@ def recherche(request):
 
 
 
+mesures_path = os.path.join('generation_visuels','mesures.json')
+if os.path.exists(mesures_path):
+    with open(mesures_path,'r') as f:
+        mesures_dict = json.loads(f.read())
+        mesures_list = sorted(list(mesures_dict.values()),key=lambda x:int(x['nmesure']))
+else:
+    mesures_dict = {}
+    mesures_list = []
+
+def shorten_text(txt,length):
+    if len(txt)>length and length>3:
+        txt = txt[:length-3] + '...'
+    return txt
+
 def redirect_short(request,n):
      content = UrlData.objects.get(slug=request.path)
 
@@ -276,14 +290,24 @@ def redirect_short(request,n):
      return redirect( content.url,n = n)
 
 def redirect_short_measure(request,n,m=0):
-
      content = UrlData.objects.get(slug="/s"+n+"/")
+
+     shortlink = 's{n}m{m}'.format(n=n,m=m)
+     mesure = mesures_dict.get(shortlink)
+     if not mesure:
+         return HttpResponseNotFound('<h1>Mesure inconnue</h1>')
+
      return render(request, "card.html", {
          'host': settings.PROD_HOST,
-         'shortlink':'s'+n+'m'+m,
+         'titre': shorten_text(re.sub(r'(\*)([^\*]+)\1',r'\2',mesure['section']),50),
+         'description': shorten_text(re.sub(r'(\*)([^\*]+)\1',r'\2',mesure['mesure']),124),
+         'shortlink': shortlink,
          'redirect' : content.url+"#mesure-"+m
      })
 
+#Title mesure & section : Nom de la section (si < 50 caractères sinon 47 premiers char + "...")
+#Descr mesure : Texte de la mesure (si < 124 caractères sinon 121 premiers char + "...")
+#Descr section : Texte de la section (si < 124 caractères sinon 121 premiers char + "...")
 
 
 
@@ -331,12 +355,6 @@ def visuel(request, v):
         return render(request,"visuels/mesure.html", mesure)
     return HttpResponseNotFound('<h1>Pas de visuel</h1>')
 
-mesures_path = os.path.join('generation_visuels','mesures.json')
-if os.path.exists(mesures_path):
-    with open(mesures_path,'r') as f:
-        mesures_list = sorted(list(json.loads(f.read()).values()),key=lambda x:int(x['nmesure']))
-else:
-    mesures_list = []
 
 grid_nbitems = 20
 

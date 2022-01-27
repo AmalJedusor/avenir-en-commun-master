@@ -31,8 +31,8 @@
         <meta property="og:site_name" content="LAEC.fr" />
         <meta property="og:locale" content="fr_FR" />
         <meta property="og:type" content="{{entity}}" />
-        <meta property="og:title" content= "{% if title is None %} LAEC.fr – Le programme de la France Insoumise – L'Avenir En Commun {% else %} {{title}} {% endif %}" />
-        <meta property="og:description" content="Description temporaire.." />
+        <meta property="og:title" content= "{{titre}}" />
+        <meta property="og:description" content="{{description}}" />
         <meta property="og:image" content="https://{{ host }}/static/visuels/{{ shortlink }}.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="628" />
@@ -55,6 +55,6 @@
         />
     </head>
     <script>
-      window.location = "{{ redirect | safe }}";
+      //window.location = "{{ redirect | safe }}";
     </script>
 </html>
