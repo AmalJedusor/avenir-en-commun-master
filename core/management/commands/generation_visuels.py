@@ -25,6 +25,8 @@ class Command(BaseCommand):
         import requests
         import csv
         import io
+        import re
+
         response = requests.get('https://docs.google.com/spreadsheet/ccc?key=1NBkcDOXTXGwajAWpnueTUzihJ1z_j2ydD3dO6-iuA-k&output=csv')
         assert response.status_code == 200, 'Wrong status code'
         csvfile = io.StringIO(response.content.decode('utf8'))
@@ -33,11 +35,21 @@ class Command(BaseCommand):
 
         import hashlib
         import json
+        import os
 
-        mesures_dict = {}
-        with open('generation_visuels/sections.json','r') as f:
-            sections_dict = json.loads(f.read())
+        sections_path = os.path.join('generation_visuels','sections.json')
+        if os.path.exists(sections_path):
+            with open(sections_path,'r') as f:
+                sections_dict = json.loads(f.read())
+        else:
+            sections_dict = {}
 
+        mesures_path = os.path.join('generation_visuels','mesures.json')
+        if os.path.exists(mesures_path):
+            with open(mesures_path,'r') as f:
+                mesures_dict = json.loads(f.read())
+        else:
+            mesures_dict = {}
         mesures = []
         chapitres = []
         sections = []
@@ -74,20 +86,26 @@ class Command(BaseCommand):
                 nmesure += 1
                 if str(nmesure) != row['MESURE N°']:
                     print('PB',nmesure,row)
-                    
+
                 mes = [npartie,partie,nchapitre,chapitre,nsection,section,row['MESURE N°'],row['MESURE'],row['MESURE CLEF']=='OUI',0]
                 hash = hashlib.md5(json.dumps(mes).encode('utf8')).hexdigest()
                 mes.append(hash!=mesures_dict.get('s{s}m{m}'.format(s=nsection,m=nmesure),{'hash':''})['hash'])
                 mes.append(hash)
                 mesures.append(mes)
 
-        import re
-        import os
+
         sections_dict = dict(('c{c}s{s}'.format(c=nchapitre,s=nsection),dict(shortlink='c{c}s{s}'.format(c=nchapitre,s=nsection),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,adjust,new,hash in sections)
         import json
-        with open('generation_visuels/sections.json','w') as f:
+        with open(mesures_path,'w') as f:
+            f.write(json.dumps(mesures_dict))
+
+
+        mesures_dict = dict(('s{s}m{m}'.format(s=nsection,m=nmesure),dict(shortlink='s{s}m{m}'.format(s=nsection,m=nmesure),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,nmesure=nmesure,mesure=mesure,cle=cle,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,nmesure,mesure,cle,adjust,new,hash in mesures)
+        import json
+        with open(sections_path,'w') as f:
             f.write(json.dumps(sections_dict))
 
+        exit()
         from selenium import webdriver
         from selenium.webdriver.common.keys import Keys
         from selenium.webdriver.common.by import By
