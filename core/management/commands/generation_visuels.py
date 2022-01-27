@@ -128,6 +128,7 @@ class Command(BaseCommand):
         import time
         import random
         import socket
+        from PIL import Image
 
         ip = socket.gethostbyname(socket.gethostname())
 
@@ -138,13 +139,17 @@ class Command(BaseCommand):
             name = "c{c}s{s}".format(c=nchapitre,s=nsection)
             basepath = os.path.join('core','static','visuels')
             imgpath = os.path.join(basepath,name+'.png')
+            jpgpath = os.path.join(basepath,name+'.jpg')
 
-            if 'update' in options['ids'] and new==False and os.path.exists(imgpath):
-                continue
-            print(imgpath)
-            driver.get('http://'+ip+':8000/visuel/'+name)
-            time.sleep(1)
-            driver.find_element(By.ID, 'mesure').screenshot(imgpath)
+            if not ('update' in options['ids'] and new==False and os.path.exists(imgpath)):
+                print(imgpath)
+                driver.get('http://'+ip+':8000/visuel/'+name)
+                time.sleep(1)
+                driver.find_element(By.ID, 'mesure').screenshot(imgpath)
+            if not os.path.exists(jpgpath):
+                im1 = Image.open(imgpath)
+                im1.convert('RGB').save(jpgpath)
+                print(jpgpath)
 
 
 
@@ -154,13 +159,17 @@ class Command(BaseCommand):
             name = "s{s}m{m}".format(s=nsection,m=nmesure)
             basepath = os.path.join('core','static','visuels')
             imgpath = os.path.join(basepath,name+'.png')
+            jpgpath = os.path.join(basepath,name+'.jpg')
 
-            if 'update' in options['ids'] and new==False and os.path.exists(imgpath):
-                continue
-            print(imgpath)
-            driver.get('http://'+ip+':8000/visuel/'+name)
-            time.sleep(1)
-            driver.find_element(By.ID, 'mesure').screenshot(imgpath)
+            if not('update' in options['ids'] and new==False and os.path.exists(imgpath)):
+                print(imgpath)
+                driver.get('http://'+ip+':8000/visuel/'+name)
+                time.sleep(1)
+                driver.find_element(By.ID, 'mesure').screenshot(imgpath)
+            if not os.path.exists(jpgpath):
+                im1 = Image.open(imgpath)
+                im1.convert('RGB').save(jpgpath)
+                print(jpgpath)
 
 
 

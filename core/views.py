@@ -280,8 +280,70 @@ def redirect_short_measure(request,n,m=0):
      print(request.path)
      content = UrlData.objects.get(slug="/s"+n+"/")
      return render(request, "card.html", {
-        
+
          'n':n,
          'redirect' : content.url+"#mesure-"+m
      })
 
+
+
+
+import os
+import re
+def visuel(request, v):
+    couleurs = [
+        ('#ed8f0e','#ffd397'), #1
+        ('#32bf7c','#a9e7c9'), #2
+        ('#f06e6e','#ffc7c7'), #3
+        ('#412883','#aa9ec9'), #4
+        ('#679ae7','#c0d6f7ff'), #5
+    ]
+    sections_path = os.path.join('generation_visuels','sections.json')
+    if os.path.exists(sections_path):
+        with open(sections_path,'r') as f:
+            sections_dict = json.loads(f.read())
+    else:
+        sections_dict = {}
+
+    mesures_path = os.path.join('generation_visuels','mesures.json')
+    if os.path.exists(mesures_path):
+        with open(mesures_path,'r') as f:
+            mesures_dict = json.loads(f.read())
+    else:
+        mesures_dict = {}
+
+
+    if v in sections_dict.keys():
+        section  = sections_dict[v]
+        background = 'mP{p}.png'.format(p=section['npartie'])
+        section['couleurs'] = couleurs[section['npartie']-1]
+        section['background'] = background
+        section['section'] = re.sub(r'(\*)([^\*]+)\1',r'<span class="highlight">\2</span>',section['section'])
+        return render(request,"visuels/section.html", section)
+        #return render(request,"visuels/"+v+".html")
+
+    if v in mesures_dict.keys():
+        mesure  = mesures_dict[v]
+        background = 'm{c}P{p}.png'.format(c='c' if mesure['cle'] else '',p=mesure['npartie'])
+        mesure['couleurs'] = couleurs[mesure['npartie']-1]
+        mesure['background'] = background
+        mesure['section'] = re.sub(r'(\*)([^\*]+)\1',r'\2',mesure['section'])
+        mesure['mesure'] = re.sub(r'(\*)([^\*]+)\1',r'<span class="highlight">\2</span>',mesure['mesure'])
+        return render(request,"visuels/mesure.html", mesure)
+    return HttpResponseNotFound('<h1>Pas de visuel</h1>')
+
+mesures_path = os.path.join('generation_visuels','mesures.json')
+if os.path.exists(mesures_path):
+    with open(mesures_path,'r') as f:
+        mesures_list = sorted(list(json.loads(f.read()).values()),key=lambda x:int(x['nmesure']))
+else:
+    mesures_list = []
+
+grid_nbitems = 20
+
+def grid(request):
+
+    return render(request, "visuels/grid.html",dict(mesures=mesures_list[:grid_nbitems]))
+
+def grid_page(request,p):
+    return render(request, "visuels/grid_page.html",dict(mesures=mesures_list[(p-1)*grid_nbitems:p*grid_nbitems]))
