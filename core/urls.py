@@ -15,5 +15,6 @@ urlpatterns = [
     path('recherche/', views.recherche),
     path('s<slug:n>',views.redirect_short),
     path('c<slug:n>',views.redirect_short),
-    path('s<slug:n>m<slug:m>', views.measure)
+    path('s<slug:n>m<slug:m>', views.measure),
+    path('visuel/<slug:v>', views.visuel)
 ]

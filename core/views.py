@@ -5,6 +5,8 @@ import markdown
 from .models import Chapter, Article, Measure, Part, UrlData
 from haystack.query import SQ
 
+from django.http import HttpResponse, Http404
+import os
 from elasticsearch import Elasticsearch
 from django.utils.html import strip_tags
 import pandas as pd
@@ -266,3 +268,28 @@ def redirect_short(request,n):
          'redirect' : content.url
          })
      return redirect( content.url,n = n)
+
+
+
+import os
+import re
+def visuel(request, v):
+    couleurs = [
+        ('#ed8f0e','#ffd397'), #1
+        ('#32bf7c','#a9e7c9'), #2
+        ('#f06e6e','#ffc7c7'), #3
+        ('#412883','#aa9ec9'), #4
+        ('#679ae7','#c0d6f7ff'), #5
+    ]
+    with open('generation_visuels/sections.json','r') as f:
+        sections = json.loads(f.read())
+
+
+    if v in sections.keys():
+        section  = sections[v]
+        background = 'mP{p}.png'.format(p=section['npartie'])
+        section['couleurs'] = couleurs[section['npartie']-1]
+        section['background'] = background
+        section['section'] = re.sub(r'(\*)([^\*]+)\1',r'<span class="highlight">\2</span>',section['section'])
+        return render(request,"visuels/section.html", section)
+        #return render(request,"visuels/"+v+".html")
