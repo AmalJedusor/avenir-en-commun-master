@@ -5,6 +5,8 @@ import markdown
 from .models import Chapter, Article, Measure, Part, UrlData
 from haystack.query import SQ
 
+from django.http import HttpResponse, HttpResponseNotFound, Http404
+import os
 from elasticsearch import Elasticsearch
 from django.utils.html import strip_tags
 import pandas as pd
@@ -132,7 +134,7 @@ def section(request, n, slug,m='None'):
       article.key =  Measure.objects.get(section_id= article.number,key=True)
     except Measure.DoesNotExist:
       article.key = None
-   
+
     print(article.key)
     prev = None
     next = None
@@ -264,6 +266,8 @@ def recherche(request):
         'query': s,
         'request' :req
     })
+
+
 
 def redirect_short(request,n):
      print(request.path)

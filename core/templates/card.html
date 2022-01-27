@@ -33,16 +33,16 @@
         <meta property="og:type" content="{{entity}}" />
         <meta property="og:title" content= "{% if title is None %} LAEC.fr – Le programme de la France Insoumise – L'Avenir En Commun {% else %} {{title}} {% endif %}" />
         <meta property="og:description" content="Description temporaire.." />
-        <meta property="og:image" content="http://laecv2.caissesdegreve.fr/static/visuels/{{ cardimg }}" />
+        <meta property="og:image" content="http://{{ host }}/static/visuels/{{ n }}.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="628" />
-        <meta property="og:url" content="http://laec.fr/sasa" />
+        <meta property="og:url" content="http://{{ host }}/{{ n }}" />
         <meta property="fb:app_id" content="secret" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@yourtwitterid" />
         <meta name="twitter:title" content="Twitter:title">
         <meta name="twitter:description" content="Twitter:desc">
-        <meta property="twitter:image" content="http://laecv2.caissesdegreve.fr/static/visuels/{{ cardimg }}" />
+        <meta property="twitter:image" content="http://{{ host }}/static/visuels/{{ n }}.png" />
         <!-- Feuilles de styles -->
         <link rel="stylesheet" href="/static/app.css" />
         <!--[if lt IE 9]>
@@ -55,6 +55,6 @@
         />
     </head>
     <script>
-      window.location = "{{ redirect | safe }}";
+      //window.location = "{{ redirect | safe }}";
     </script>
 </html>
