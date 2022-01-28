@@ -1,0 +1,479 @@
+:root {
+    --aec_violet: #3F2682;
+    --aec_red: #F53B3B;
+    --aec_white: #FFFFFF;
+}
+
+.violet-underline {
+    color: var(--aec_violet);
+    font-weight: bold;
+}
+
+.red-underline {
+    color: var(--aec_red);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Apotek Comp';
+    src: url("../fonts/ApotekComp-Light.woff2") format("woff2"), url("../fonts/ApotekComp-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apotek Comp';
+    src: url("../fonts/ApotekComp-Medium.woff2") format("woff2"), url("../fonts/ApotekComp-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Apotek Comp';
+    src: url("../fonts/ApotekComp-Regular.woff2") format("woff2"), url("../fonts/ApotekComp-Regular.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    padding-top: 0;
+}
+
+.navbar {
+    transition: all 400ms ease-in-out;
+}
+
+.navbar-default {
+    background-color: #f8f8f844;
+    border-color: #e7e7e744;
+}
+
+.navbar-default.enabled {
+    background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%);
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: var(--aec_white);
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: var(--aec_red);
+}
+
+.wrap-all-visible-v2 {
+    position: relative;
+    background-color: var(--aec_violet);
+}
+
+#searchbox {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: inset 0px 4px 20px rgba(0, 0, 0, 0.25);
+    padding: 0 30px;
+    font-size: 14px;
+}
+
+#searchbox::-webkit-input-placeholder {
+    font-size: 14px;
+}
+
+.navbar-searchbox-form .input-group {
+    max-width: 100% !important;
+}
+
+.navbar-searchbox-form [type=submit] {
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    background-color: var(--aec_violet);
+    color: var(--aec_white);
+}
+
+.navbar-searchbox-form [type=submit]:hover {
+    color: var(--aec_red);
+}
+
+.page-index .jumbotron {
+    position: relative;
+    background-image: none;
+    overflow: hidden;
+    z-index: 0;
+    min-height: calc(100vh + 50px);
+}
+
+.page-index .jumb-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding-bottom: 40px;
+    /* background-color: blue; */
+}
+
+.page-index .jumb-bg svg.left {
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.page-index .jumb-bg svg {
+    position: absolute;
+    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.page-index .jumb-bg svg path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 5s linear infinite;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+
+    100% {
+        stroke-dashoffset: -1000;
+    }
+}
+
+.page-index .jumb-bg svg.right {
+    position: absolute;
+    right: 0;
+    left: 100%;
+}
+
+.page-index .jumb-bg svg.glass {
+    position: absolute;
+    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.page-index .jumbotron::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 300%;
+    width: 70%;
+    background-color: red;
+    background: radial-gradient(at top left, rgba(245, 59, 59, 0.7) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%);
+    background-position: top left;
+    z-index: -1;
+}
+
+.page-index .jumbotron::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 150%;
+    width: 30%;
+    background-color: red;
+    background: radial-gradient(at bottom right, rgba(245, 59, 59, 0.2) 0%, rgba(63, 38, 130, 0.5) 40%, rgba(63, 38, 130, 0.9) 100%);
+    background-position: bottom right;
+    z-index: -2;
+}
+
+.page-index .jumbotron .container {
+    position: relative;
+    z-index: 1;
+}
+
+.page-index .jumbotron .container h1 {
+    font-family: 'Apotek Comp';
+    text-transform: uppercase;
+    font-size: 120px;
+    line-height: 73.5%;
+    font-weight: lighter;
+}
+
+.page-index .jumbotron .container hr {
+    width: 50%;
+    border-color: var(--aec_white);
+    margin-right: 100%;
+}
+
+.page-index .jumbotron .container p {
+    font-family: 'Apotek Comp';
+    text-transform: uppercase;
+    font-size: 48px;
+    color: var(--aec_white);
+    line-height: 1;
+}
+
+.page-index .jumbotron .btn-cta {
+    box-shadow: 0.5px 0.5px 0 #b4f7ff, 1px 1px 0 #aef6ff, 1.5px 1.5px 0 #a9f5ff, 2px 2px 0 #a4f5ff, 2.5px 2.5px 0 #9ff4ff, 3px 3px 0 #9ff4ff, 3.5px 3.5px 0 #9af4ff, 4px 4px 0 #9af4ff, 4.5px 4.5px 0 #95f3ff, 3px 4px 20px rgb(0 0 0 / 40%);
+    background-color: var(--aec_white);
+    color: var(--aec_violet);
+    text-shadow: none;
+    border: 1px solid transparent;
+}
+
+.page-index .jumbotron .edition {
+    margin-top: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    font-size: 12px !important;
+    text-transform: initial !important;
+}
+
+.page-index .jumbotron .seuil {
+    margin-top: 25px;
+}
+
+.page-index .jumbotron .edition a {
+    text-decoration: underline;
+    color: var(--aec_white) !important;
+}
+
+.page-index .jumbotron .btn-cta:hover {
+    box-shadow: none;
+    background-color: var(--aec_violet);
+    color: var(--aec_white);
+    border: 1px solid var(--aec_white);
+}
+
+.page-index .jumbotron .jlm img {
+    width: 100%;
+    max-width: 325px;
+    margin-bottom: 15px;
+}
+
+.page-index .jumbotron .wave1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.page-index .jumbotron .wheel-svg {
+    position: absolute;
+    top: calc(50% - 90px);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transform: scale(0.7);
+}
+
+
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(60px);
+    }
+}
+
+svg #wheel {
+    opacity: 0.9;
+    animation: scroll ease 2s infinite;
+}
+
+svg #mouse {
+    opacity: 0.4;
+}
+
+.wrap-container-main {
+    overflow: hidden;
+}
+
+.laec-def-lines {
+    position: relative;
+}
+
+.laec-def-lines svg {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    /* z-index: 2; */
+}
+
+.laec-def-lines svg path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 5s linear infinite;
+}
+
+section.laec-def .title {
+    font-family: Apotek Comp;
+    font-size: 48px;
+    color: var(--aec_violet)
+}
+
+section.laec-def .title hr {
+    width: 50%;
+    border-color: var(--aec_violet);
+    margin-right: 100%;
+}
+
+section.laec-def .content {
+    text-justify: distribute;
+    line-height: 2.5;
+    text-align: justify;
+}
+
+section.laec-def .btn-def {
+    margin-top: 80px;
+}
+
+section.laec-def .btn-def .btn-cta {
+    box-shadow: 0.5px 0.5px 0 #b4f7ff, 1px 1px 0 #aef6ff, 1.5px 1.5px 0 #a9f5ff, 2px 2px 0 #a4f5ff, 2.5px 2.5px 0 #9ff4ff, 3px 3px 0 #9ff4ff, 3.5px 3.5px 0 #9af4ff, 4px 4px 0 #9af4ff, 4.5px 4.5px 0 #95f3ff, 3px 4px 20px rgb(0 0 0 / 40%);
+    background-color: var(--aec_violet);
+    color: var(--aec_white);
+    text-shadow: none;
+    border: 1px solid transparent;
+}
+
+section.laec-def .btn-def .btn-cta:hover {
+    box-shadow: 0.5px 0.5px 0 #b4f7ff, 1px 1px 0 #aef6ff, 1.5px 1.5px 0 #a9f5ff, 2px 2px 0 #a4f5ff, 2.5px 2.5px 0 #9ff4ff, 3px 3px 0 #9ff4ff, 3.5px 3.5px 0 #9af4ff, 4px 4px 0 #9af4ff, 4.5px 4.5px 0 #95f3ff, 3px 4px 20px rgb(0 0 0 / 40%);
+    background-color: var(--aec_white);
+    color: var(--aec_violet);
+    text-shadow: none;
+    border: 1px solid var(--aec_violet);
+    ;
+}
+
+.p-container {
+    position: relative;
+}
+
+.p-more {
+    padding-bottom: 100px;
+    padding-top: 100px;
+    position: relative;
+    z-index: 1;
+}
+
+.p-more-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 2;
+}
+
+.p-more-bot {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50px;
+}
+
+.p-more .title {
+    font-family: Apotek Comp;
+    font-size: 48px;
+    color: var(--aec_white)
+}
+
+.p-more .title hr {
+    width: 50%;
+    border-color: var(--aec_white);
+    margin-right: 100%;
+}
+
+.p-more .content p {
+    line-height: 2.5;
+    color: var(--aec_white);
+    text-align: justify;
+}
+
+footer.footer {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    padding-bottom: 40px;
+    box-shadow: none;
+    position: relative;
+    z-index: 1;
+}
+
+footer.footer p {
+    color: var(--aec_white);
+}
+
+.foot {
+    position: relative;
+    overflow: hidden;
+}
+
+.foot svg {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.foot svg path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 5s linear infinite;
+}
+
+.foot::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 200%;
+    width: 50%;
+    background-color: red;
+    background: radial-gradient(at bottom right, rgba(245, 59, 59, 0.2) 0%, rgba(63, 38, 130, 0.5) 40%, rgba(63, 38, 130, 0.9) 100%);
+    background-position: bottom right;
+    z-index: 0;
+}
+
+@media (max-width: 991px) {
+    .page-index .jumbotron .container h1 {
+        margin-top: 60px;
+    }
+
+    .page-index .jumbotron .container hr {
+        margin-right: auto;
+    }
+
+    .page-index .jumbotron .jlm {
+        margin-bottom: 20px;
+    }
+
+    .page-index .jumbotron .jlm img {
+        width: 40%;
+        max-width: 325px;
+        margin-bottom: 20px;
+        margin-top: 25px;
+    }
+
+    .wheel-svg {
+        display: none;
+    }
+
+    section.laec-def .content {
+        margin-bottom: 55px;
+    }
+
+    section.laec-def .content:last-child {
+        margin-bottom: 0;
+    }
+
+    section.laec-def .btn-def {
+        margin-top: 40px;
+    }
+
+    .text-xs-center {
+        text-align: center;
+    }
+}

@@ -18,6 +18,7 @@ import json
 from django.conf import settings
 
 def home(request):
+    return render(request, "newhome.html")
     return render(request, "home.html")
 
 def measure(request,n,m):
