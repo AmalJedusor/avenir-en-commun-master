@@ -1,118 +1,15 @@
-<!DOCTYPE html>
-<html lang="fr" class="page no-js not-logged-in theme-frontend page-index page-aos">
-<!--
-
-
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-░░░█░░░█▀█░█▀▀░█▀▀░░░░█▀▀░█▀▄░░░░
-░░░█░░░█▀█░█▀▀░█░░░░░░█▀▀░█▀▄░░░░
-░░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀░░▀░░░▀░▀░░░░
-░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-+===== L'Avenir En Commun ======+
-
--->
-
-<head>
-    <!-- Classe .js/.no-js https://www.paulirish.com/2009/avoiding-the-fouc-v3/ -->
-    <script>
-        (function (H) {
-            H.className = H.className.replace(/\bno-js\b/, 'js')
-        })(document.documentElement)
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>LAEC.fr – Le programme de la France Insoumise –L&#039;Avenir En Commun</title>
-    <meta name="description" content="Le programme de la France insoumise en version intégrale" />
-    <script src="https://kit.fontawesome.com/5fa0e3eada.js" crossorigin="anonymous"></script>
-    <!-- Icônes et autres -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/img/application/favicon-152.png">
-    <meta name="msapplication-TileColor" content="#FFFFFF">
-    <meta name="msapplication-TileImage" content="/img/application/favicon-144.png">
-    <meta name="msapplication-tooltip" content="L&#039;Avenir En Commun, le programme de la France Insoumise en ligne">
-    <meta name="msapplication-config" content="/misc/ieconfig.xml">
-    <meta name="application-name" content="LAEC.fr" />
-
-    <!-- Opensearch -->
-    <link rel="search" type="application/opensearchdescription+xml" title="LAEC.fr" href="/opensearch.xml">
-
-    <!-- Microdonnées JSON-LD -->
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "WebSite",
-            "url": "https://laec.fr/",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://laec.fr/recherche?q={searchTerms}",
-                "query-input": "required name=searchTerms"
-            }
-        }
-    </script>
-    <!-- Meta social -->
-    <meta property="og:site_name" content="LAEC.fr">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="LAEC.fr – Le programme de la France Insoumise –L&#039;Avenir En Commun">
-    <meta property="og:description" content="Le programme de la France insoumise en version intégrale">
-    <meta property="og:image"
-        content="https://laec.fr/img/social/accueil-laec-fr-l-avenir-en-commun-programme-melenchon-france-insoumise.jpg">
-    <meta property="og:image:width" content="1920">
-    <meta property="og:image:height" content="1008">
-    <meta property="og:url" content="https://laec.fr/">
-    <meta property="fb:app_id" content="secret">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@yourtwitterid">
-    <!-- Feuilles de styles -->
-    <!-- <link rel="stylesheet" href="/css/app.css?damperate" /> -->
-    <link rel="stylesheet" rel="subresource" href="/static/app.css" />
-    <link rel="stylesheet" rel="subresource" href="/static/assets/style/laec-v2.css" />
-    <!--[if lt IE 9]>
-      <script src="/js/static/ie-html5shiv-respond.min.js"></script>
-    <![endif]-->
-    <script defer src="/static/assets/js/observer.js"></script>
-</head>
+{% extends 'base.html' %}
+{% block html_class %}page-index page-aos{% endblock %}
+{% block body %}
 
 <body id="body">
     <div class="visible-print-block text-center print-logotype" aria-hidden="true"><img
             src="/static/livre-phi-laec-fr-mention-impression.svg" style="max-height: 70px; width: auto;"
-            alt="Logotype l'avenir en commun"
-            data-no-svg-src="/static/livre-phi-laec-fr-mention-impression.png" />
+            alt="Logotype l'avenir en commun" data-no-svg-src="/static/livre-phi-laec-fr-mention-impression.png" />
         <hr><small>Le programme de la <strong>France insoumise</strong></small></div>
     <div class="wrap-all-visible-v2">
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span
-                            class="sr-only">Afficher la navigation</span><i class="fa fa-fw fa-navicon"
-                            aria-hidden="true"></i></button><a class="navbar-brand" accesskey="1"
-                        title="L&#039;Avenir En Commun, le programme de la France insoumise" rel="home"
-                        data-load-display href="/"><img src="/static/assets/svg/LAEC-logo.svg"
-                            style="max-height: 50px; transform: scale(0.8); transform-origin: center left;"
-                            data-no-svg-src="/static/laec-fr-couleur-marge-interne.png"
-                            alt="Logotype « l'avenir en commun »"><span class="sr-only">L'avenir en commun</span></a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a title="Sommaire complet du programme" data-load-display href="/sommaire">
-                                <i class="fa fa-fw fa-list-ul" aria-hidden="true"></i><span class="hidden-sm">
-                                    Table
-                                    des matières</span><span class="visible-sm-inline"> Sommaire</span></a></li>
-                    </ul>
-                    <form action="/recherche" class="navbar-form navbar-right navbar-searchbox-form form-total-loading">
-                        <div class="input-group"><input type="text" id="searchbox" name="q" autocomplete="off"
-                                class="form-control" placeholder="Ex: Partage, écologie…"><span
-                                class="input-group-btn"><button type="submit" class="btn btn-default"><span
-                                        class="sr-only">Rechercher</span><i class="fa fa-fw fa-search"
-                                        aria-hidden="true"></i></button></span></div>
-                    </form>
-                </div>
-            </div>
-            <div class="flash-group"></div>
-        </nav>
-        <div class="jumbotron jumbotron-massive">
+        {% include "_navbar.html" %}
+        <div class="jumbotron jumbotron-massive newhome">
             <div class="jumbotron jumb-bg">
                 <svg class="left" width="2074" height="1469" viewBox="0 0 2074 1469" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -157,46 +54,41 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-6 text-xs-center">
-                        <h1>L'avenir <br>en <br>commun</h1>
+                        <h1><span class="woa">L</span>'<span class="woa">a</span>venir <br class="rm-mobile"><span class="woa">e</span>n <br><span class="woa">c</span>ommun</h1>
                         <hr>
                         <p>L'harmonie des êtres humains
                             <br>entre eux et avec la nature.</p>
-                        <a class="btn btn-primary btn-cta btn-lg" data-track-event="Appel à l'action" data-event-action="Consulter" data-event-name="Accueil" href="/sommaire" data-load-display="" title="Table des matières du programme">
-                        <!--<button class="btn btn-primary btn-cta btn-lg">-->Consulter <i class="fa fa-fw fa-arrow-right"
-                                aria-hidden="true"></i><!--</button>--></a>
+                        <a class="btn btn-primary btn-cta btn-lg" data-track-event="Appel à l'action"
+                            data-event-action="Consulter" data-event-name="Accueil" href="/sommaire"
+                            data-load-display="" title="Table des matières du programme">
+                            <!--<button class="btn btn-primary btn-cta btn-lg">-->Consulter <i
+                                class="fa fa-fw fa-arrow-right" aria-hidden="true"></i>
+                            <!--</button>--></a>
                         <p class="edition seuil">Texte© Éditions du Seuil, 2020</p>
                     </div>
 
                     <div class="col-xs-12 col-md-6 text-xs-center text-right jlm">
-                        <img class="text-left" src="/static/assets/svg/jlm.svg" alt="melenchon">
+                        <img style="--op: 0.2" class="text-left" src="/static/assets/svg/jlm.svg?o=0.5" alt="melenchon">
                         <p>Le programme de la <br>France Insoumise 2022</p>
-                        <p class="edition">Version en ligne – Réalisée par des <a href="">citoyens insoumis</a></p>
+                        <p class="edition">Version en <span id="ligne">ligne</span> – Réalisée par des <a href="https://discord-insoumis.fr/">citoyens insoumis</a></p>
                     </div>
                 </div>
             </div>
-            <svg class="wave1" width="100%" height="50" preserveAspectRatio="none" viewBox="0 0 1280 103" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_6_136)">
-                    <path
-                        d="M0 51.5L42.6667 49.7941C85.3333 47.9594 170.667 44.7406 256 44.6441C341.333 44.7406 426.667 47.9594 512 48.0559C597.333 47.9594 682.667 44.7406 768 48.0559C853.333 51.5 938.667 61.8 1024 58.3559C1109.33 55.0406 1194.67 37.6594 1237.33 29.1941L1280 20.6V103H1237.33C1194.67 103 1109.33 103 1024 103C938.667 103 853.333 103 768 103C682.667 103 597.333 103 512 103C426.667 103 341.333 103 256 103C170.667 103 85.3333 103 42.6667 103H0V51.5Z"
-                        fill="white" />
-                </g>
-                <defs>
-                    <clipPath id="clip0_6_136">
-                        <rect width="1280" height="103" fill="white" />
-                    </clipPath>
-                </defs>
-            </svg>
-            <svg class="wheel-svg" width="40px" height="100%" viewBox="0 0 247 390" version="1.1"
-                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
-                <path id="wheel" d="M123.359,79.775l0,72.843" style="fill:none;stroke:#fff;stroke-width:20px;" />
-                <path id="mouse"
-                    d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z"
-                    style="fill:none;stroke:#fff;stroke-width:20px;" />
-            </svg>
+            <svg class="wave1" width="100%" height="50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,64L34.3,58.7C68.6,53,137,43,206,74.7C274.3,107,343,181,411,176C480,171,549,85,617,74.7C685.7,64,754,128,823,128C891.4,128,960,64,1029,53.3C1097.1,43,1166,85,1234,96C1302.9,107,1371,85,1406,74.7L1440,64L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+              </svg>
+            <a href="#laec-def">
+                <svg class="wheel-svg" width="40px" height="100%" viewBox="0 0 247 390" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+                    <path id="wheel" d="M123.359,79.775l0,72.843" style="fill:none;stroke:#fff;stroke-width:20px;" />
+                    <path id="mouse"
+                        d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z"
+                        style="fill:none;stroke:#fff;stroke-width:20px;" />
+                </svg>
+            </a>
         </div>
-        <div class="wrap-container-main" data-track-scroll="Section">
+        <div class="wrap-container-main newhome" data-track-scroll="Section">
             <div class="laec-def-lines">
                 <svg width="2076" height="884" viewBox="0 0 2076 884" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -208,7 +100,7 @@
                         stroke="#3F2682" stroke-opacity="0.15" />
                 </svg>
             </div>
-            <section class="container laec-def">
+            <section id="laec-def" class="container laec-def">
                 <div class="row">
                     <div class="col-md-6 offset-md-6 title">
                         LAEC en trois points
@@ -216,23 +108,26 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 content aos-init aos-animate" data-aos="flip-up" data-aos-delay="400">
+                    <div class="col-md-4 content aos-init aos-animate" data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom" data-aos-delay="200">
                         <span class="violet-underline">LAEC.fr</span> (abréviation de « L'<span
                             class="violet-underline">A</span>venir <span class="violet-underline">E</span>n <span
                             class="violet-underline">C</span>ommun »), c'est le texte programme de la <span
                             class="violet-underline">France Insoumise</span> initialement publié en décembre 2016 et mis
                         à jour en novembre 2020 accessible en ligne de manière simple et claire.
                     </div>
-                    <div class="col-md-4 content">
+                    <div class="col-md-4 content aos-init aos-animate" data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom" data-aos-delay="300">
                         <span class="violet-underline">LAEC.fr</span>, c'est aussi le moyen pour les convaincus de
                         pouvoir <span class="violet-underline">partager</span> facilement chaque élement sur leurs
                         rézosocios préférés en gros comme en détail, du chapitre jusqu'à la mesure. Un outil idéal pour
                         répondre aux questions que se posent les gens sur le <span
                             class="violet-underline">programme</span> !
                     </div>
-                    <div class="col-md-4 content">
+                    <div class="col-md-4 content aos-init aos-animate" data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom" data-aos-delay="400">
                         <span class="violet-underline">LAEC.fr</span> est le produit d'une initiative indépendante de <a
-                            href=""><u>citoyens insoumis</u></a>.
+                            href="https://discord-insoumis.fr/"><u>citoyens insoumis</u></a>.
 
                         Leur objectif est la diffusion maximale du programme et la création d'un lieu de <span
                             class="violet-underline">partage</span> aussi bien à destination des militants que du grand
@@ -242,10 +137,12 @@
                 <div class="row btn-def">
                     <div class="col-md-6 offset-md-6">
 
-                        <a class="btn btn-primary btn-cta btn-lg" data-track-event="Appel à l'action" data-event-action="Consulter" data-event-name="Accueil" href="/sommaire" data-load-display="" title="Table des matières du programme">
-                        <!--<button class="btn btn-primary btn-cta btn-lg">-->Allez, c’est parti !
+                        <a class="btn btn-primary btn-cta btn-lg" data-track-event="Appel à l'action"
+                            data-event-action="Consulter" data-event-name="Accueil" href="/sommaire"
+                            data-load-display="" title="Table des matières du programme">
+                            <!--<button class="btn btn-primary btn-cta btn-lg">-->Allez, c’est parti !
                             <i class="fa fa-fw fa-arrow-right" aria-hidden="true"></i>
-                        <!--</button>--></a>
+                            <!--</button>--></a>
                     </div>
                 </div>
             </section>
@@ -272,16 +169,17 @@
                     </div>
                     <div class="row content">
                         <div class="col-md-12">
-                            <p>
+                            <p class="aos-init aos-animate" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+                                data-aos-delay="200"">
                                 Le site <span class="red-underline">LAEC.fr</span> a été développé en utilisant le
                                 cadriciel
-                                <u>Symfony</u> à l'origine mais relancé en
-                                <u>Django</u> en 2021. Pour sa présentation, le site bénéficie des services de
-                                <u>Bootstrap</u>,
+                                <a href="https://symfony.com/"><u>Symfony</u></a> à l'origine mais relancé en
+                                <a href="https://www.djangoproject.com/"><u>Django</u></a> en 2021. Pour sa présentation, le site bénéficie des services de
+                                <a href="https://getbootstrap.com/"><u>Bootstrap</u></a>,
                                 de belles
-                                icônes fournies par <u>FontAwesome</u> modifiées et compilées grâce à <u>IcoMoon</u>.
+                                icônes fournies par <a href="https://fontawesome.com/"><u>FontAwesome</u></a> modifiées et compilées grâce à <a href="https://icomoon.io/"><u>IcoMoon</u></a>.
                                 <br><br>
-                                Le site est developpé par une équipe indépendante de citoyens insoumis. Le contenu du
+                                Le site est developpé par une équipe indépendante de <a href="https://discord-insoumis.fr/"><u>citoyens insoumis</u></a>. Le contenu du
                                 site
                                 n'engage que l'équipe de <span class="red-underline">LAEC.fr</span>, mais pas la France
                                 Insoumise dans son ensemble.
@@ -290,25 +188,10 @@
                     </div>
                 </div>
             </div>
-            <!-- <footer class="footer">
-                <div class="container">
-                    <nav class="nav-inline pull-right"><a href="/page/mentions-legales"
-                            title="Mentions legales et politique de confidentialité"><i class="fa fa-fw fa-file-text-o"
-                                aria-hidden="true"></i> Mentions<span class="hidden-xs"> légales / Données
-                                personnelles</span></a><span class="hidden-xs">·</span><a href="/contact"
-                            title="ContacterLAEC.fr"><i class="fa fa-fw fa-envelope-o" aria-hidden="true"></i>
-                            Contact</a><span class="hidden-xs">·</span><a href="/recherche"
-                            title="Rechercher dansL&#039;Avenir En Commun"><i class="fa fa-fw fa-search"
-                                aria-hidden="true"></i><span class="hidden-xs"> Recherche</span></a></nav>
-                    <p class="text-muted"><small><i class="fa fa-fw fa-coffee" data-special></i><span class="hidden-xs">
-                                Site à l'initiative de <a href="http://discord-insoumis.fr/" class="external"
-                                    title="Découvrez le Discord Insoumis et ses nombreuses initiatives…">citoyens
-                                    insoumis</a>.</span></small></p>
-                </div>
-            </footer> -->
+
         </section>
+        {% include '_footer.html' %}
     </div>
     <!--<script src="/static/app.js?damperate"></script>-->
 </body>
-
-</html>
+{% endblock %}

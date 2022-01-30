@@ -11,4 +11,9 @@ const handler = (entries) => {
 const observer = new window.IntersectionObserver(handler, {
     threshold: 0.9
 })
-observer.observe(sentinalEl)
+
+if (window.matchMedia("(min-width: 991px)").matches) {
+  observer.observe(sentinalEl)
+} else {
+  headerEl.classList.add('enabled')
+}
