@@ -1,7 +1,3 @@
-html{
-    /* scroll-behavior:smooth; */
-}
-
 :root {
     --aec_violet: #3F2682;
     --aec_red: #F53B3B;
@@ -96,20 +92,20 @@ body {
     padding-bottom: 0 !important;
 }
 
-.navbar {
+/* .wrap-all-visible-v2 .navbar {
     transition: background 600ms ease-in-out;
 }
 
-.navbar-default {
+.wrap-all-visible-v2 .navbar-default {
     background: #f8f8f844;
     border-color: #e7e7e744;
-}
-
-/* .navbar-default.enabled {
-    background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%);
 } */
 
-.navbar-default.enabled {
+.wrap-all-visible-v2 .navbar-default {
+    background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%);
+}
+
+/* .wrap-all-visible-v2 .navbar-default.enabled {
     animation: header-anim 350ms ease-in-out forwards;
 }
 
@@ -120,7 +116,7 @@ body {
     to {
         background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%);
     }
-}
+} */
 
 .navbar-default .navbar-nav>li>a {
     color: var(--aec_white);
@@ -161,12 +157,6 @@ body {
     max-width: 100% !important;
 }
 
-.navbar-searchbox-form [type=submit] {
-    border-top-right-radius: 20px !important;
-    border-bottom-right-radius: 20px !important;
-    background-color: var(--aec_violet);
-    color: var(--aec_white);
-}
 
 .navbar-searchbox-form [type=submit]:hover {
     color: var(--aec_red);
@@ -189,6 +179,9 @@ body {
     height: 50px;
     transform: translateY(-50px);
     background-image: url('../svg/wave.svg');
+    background-position: center;
+    background-size: 100% 50px;
+    background-repeat: no-repeat;
 }
 
 .aside-content-container {
@@ -509,19 +502,12 @@ section.laec-def .btn-def .btn-cta:hover {
     text-align: justify;
 }
 
-footer.footer {
-    position: relative;
-    border: none;
-    background: linear-gradient(105deg, rgba(245,59,59,1) 0%, rgba(63,38,130,1) 25%, rgba(63,38,130,1) 100%);
-}
-
 .wrap-all-visible-v2 footer.footer {
     position: relative;
     border: none;
+    margin-top: 0 !important;
     background: linear-gradient(105deg, rgba(63,38,130,1) 0%, rgba(63,38,130,1) 77%, rgba(245,59,59,0.19511554621848737) 100%);
 }
-
-
 
 .foot {
     position: relative;
@@ -619,4 +605,87 @@ footer.footer {
     .text-xs-center {
         text-align: center;
     }
+
+    .navbar-default .navbar-nav>li:hover {
+        position: relative;
+        border-bottom: 2px dashed transparent;
+        background-color: rgba(255, 255, 255, 0.192);
+    }
+}
+
+.page-toc {
+    --p-color: #3F2682;
+}
+.theme-part-0, .theme-chapter-0 {
+    --p-color: #3F2682;
+}
+.theme-part-1, .theme-chapter-1 {
+    --p-color: #ec8b00;
+}
+.theme-part-2, .theme-chapter-2 {
+    --p-color: #32BF7C;
+}
+.theme-part-3, .theme-chapter-3 {
+    --p-color: #EF6464;
+}
+.theme-part-4, .theme-chapter-4 {
+    --p-color: #3DB2AB;
+}
+.theme-part-5, .theme-chapter-5 {
+    --p-color: #C1306B;
+}
+
+.navbar {
+    background-color: var(--p-color, #3F2682);
+}
+
+.page-toc .navbar, .page-toc .jumbotron {
+    background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%) !important;
+}
+
+.page-toc .jumbotron::after {
+    content: "";
+    background-image: url(../../img/livre.png);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+}
+
+.navbar-searchbox-form .btn-default .fa {
+    color: #FFFFFF !important;
+}
+
+.navbar-searchbox-form .btn-default .fa:hover {
+    color: #dfdfdf !important;
+}
+
+.navbar-searchbox-form [type=submit] {
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+    background-color: var(--p-color);
+    color: var(--aec_white);
+}
+
+footer.footer {
+    position: relative;
+    border: none;
+    background-color: var(--p-color, #3F2682);
+    margin-top: 30px;
+}
+
+.page-toc footer.footer {
+    background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%) !important;
+}
+
+footer.footer a {
+    color: #FFFFFF !important;
+}
+
+.navbar-fixed-top .navbar-toggle.collapsed {
+    color: #FFFFFF;
 }
