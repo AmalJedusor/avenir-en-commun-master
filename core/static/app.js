@@ -10237,7 +10237,7 @@ function(t) {
 /*!
  * jQuery doTimeout: Like setTimeout, but better - v1.0 - 3/3/2010
  * http://benalman.com/projects/jquery-dotimeout-plugin/
- * 
+ *
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
@@ -10312,7 +10312,7 @@ function(t) {
 /*!
  * jQuery outside events - v1.1 - 3/16/2010
  * http://benalman.com/projects/jquery-outside-events-plugin/
- * 
+ *
  * Copyright (c) 2010 "Cowboy" Ben Alman
  * Dual licensed under the MIT and GPL licenses.
  * http://benalman.com/about/license/
@@ -11092,12 +11092,12 @@ __app.bonus = {
             i = ['crown', 'keep', 'calm', 'and', 'vote', 'melenchon'],
             e = $('<div class="special-backdrop"/>'),
             o = $('<div class="container-fluid"/>');
-        cantstenchon = $('<div id="cant-stenchon" class="scrollable"><img class="img-content-drop-shadow" src="/img/special/cant-stenchon.png"><img class="layer" id="deal-with-it" src="/img/special/layer-deal-with-it.png"><img class="layer" id="thug-life" src="/img/special/layer-thug-life.png"><img class="layer" id="petard" src="/img/special/layer-petard.png"></div>');
+        cantstenchon = $('<div id="cant-stenchon" class="scrollable"><img class="img-content-drop-shadow" src="/static/special/cant-stenchon.png"><img class="layer" id="deal-with-it" src="/static/special/layer-deal-with-it.png"><img class="layer" id="thug-life" src="/static/special/layer-thug-life.png"><img class="layer" id="petard" src="/static/special/layer-petard.png"></div>');
         credits = $('<div id="credits" class="scrollable"><p class="semi-lead">Avec les compliments de <a class="external" href="https://twitter.com/TintinCastrol" title="Votre dévoué serviteur">TintinCastro</a></p></div>');
         t.__log('Adding Elements to DOM');
         for (var a = 0; a < i.length; ++a) {
             var n = i[a],
-                s = '/img/special/' + a + '-' + n;
+                s = '/static/special/' + a + '-' + n;
             img = $('<img width="2500"/>').attr('src', s + (Modernizr.svg ? '.svg' : '.png')).addClass('img-responsive img-responsive-center img-responsive-svg-fix img-content-drop-shadow'), wrapper = $('<div/>');
             wrapper.attr('id', n).addClass('message-item scrollable').append(img).appendTo(o)
         };
@@ -11153,7 +11153,7 @@ __app.bonus = {
         __app.sounds.activate('special');
         e._buildElements();
         var a = Modernizr.svg ? '.svg' : '.png',
-            t = ['/img/special/cant-stenchon.png', '/img/special/layer-deal-with-it.png', '/img/special/layer-petard.png', '/img/special/layer-thug-life.png', '/img/special/0-crown' + a, '/img/special/1-keep' + a, '/img/special/2-calm' + a, '/img/special/3-and' + a, '/img/special/4-vote' + a, '/img/special/5-melenchon' + a, ],
+            t = ['/static/special/cant-stenchon.png', '/static/special/layer-deal-with-it.png', '/static/special/layer-petard.png', '/static/special/layer-thug-life.png', '/static/special/0-crown' + a, '/static/special/1-keep' + a, '/static/special/2-calm' + a, '/static/special/3-and' + a, '/static/special/4-vote' + a, '/static/special/5-melenchon' + a, ],
             n = function() {
                 var a = t.shift();
                 $('<img/>').on('load', function() {
@@ -12656,7 +12656,7 @@ __app.sounds = {
         quieter: 'app:sounds:quieter'
     },
     options: {
-        path: '/audio/',
+        path: '/static/special/',
         prefix: 'app-sounds-',
         formats: {
             'ogg': 'audio/ogg',
