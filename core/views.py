@@ -280,9 +280,9 @@ def recherche(request):
 
     connections.create_connection(hosts=[settings.ELASTICSEARCH_HOST], timeout=20)
     s = Search(index='haystack')
-    q = Q("multi_match", query=req, fields=['title_auto','content_auto'])
+    q = Q("multi_match", query=req, fields=['title','content'])
     s = s.query(q).extra(from_=0, size=100)
-    s = s.highlight('title_auto', 'content_auto',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=True, number_of_fragments=1, fragment_size=300)
+    s = s.highlight('title', 'content',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=True, number_of_fragments=1, fragment_size=300)
     s = s.execute()
 
     def extract_kw(s):
@@ -294,10 +294,10 @@ def recherche(request):
         return keywords
     for result in s:
         keywords = []
-        if 'content_auto' in result.meta.highlight:
-            keywords += extract_kw(result.meta.highlight.content_auto[0])
-        if 'title_auto' in result.meta.highlight:
-            keywords += extract_kw(result.meta.highlight.title_auto[0])
+        if 'content' in result.meta.highlight:
+            keywords += extract_kw(result.meta.highlight.content[0])
+        if 'title' in result.meta.highlight:
+            keywords += extract_kw(result.meta.highlight.title[0])
         result.keywords = sorted(list(set(keywords)),key=lambda x:len(x), reverse=True)
 
 
