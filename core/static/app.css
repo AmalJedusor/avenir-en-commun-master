@@ -89,6 +89,12 @@ mark {
     color: #000
 }
 
+h1 mark, h1 .mark {
+  background-color: #fcf8e380;
+  padding: 0em;
+  color: white;
+}
+
 small {
     font-size: 80%
 }

@@ -198,7 +198,7 @@ def section(request, n, slug,m='None'):
             next = None
 
 
-    logging.warning('highlight ?')
+
     searchterms = request.GET.get('q','').replace(',','|')
     def highlight(item):
         return re.sub(r'('+searchterms+')',r'<mark>\1</mark>',item)
@@ -209,7 +209,8 @@ def section(request, n, slug,m='None'):
     if article.measures:
         for m in article.measures:
             m.text_high = highlight(m.text) if searchterms else m.text
-
+    if searchterms and article.title:
+        article.title = highlight(article.title)
     #logging.warning(content)
     return render(request, "section.html", {
         'subject': article,
@@ -253,7 +254,7 @@ def recherche(request):
         "query": {
             "simple_query_string": {
                 "query": req,
-                "fields": ["title","content"],
+                "fields": ["title_auto","content_auto"],
                 "default_operator": "or",
             }
             },
@@ -279,19 +280,27 @@ def recherche(request):
 
     connections.create_connection(hosts=[settings.ELASTICSEARCH_HOST], timeout=20)
     s = Search(index='haystack')
-    q = Q("multi_match", query=req, fields=['title','content'])
+    q = Q("multi_match", query=req, fields=['title_auto','content_auto'])
     s = s.query(q).extra(from_=0, size=100)
-    s = s.highlight('title', 'content',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=True, number_of_fragments=1, fragment_size=300)
+    s = s.highlight('title_auto', 'content_auto',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=True, number_of_fragments=1, fragment_size=300)
     s = s.execute()
 
-    for result in s:
+    def extract_kw(s):
+        kw = s.split('<mark>')
         keywords = []
-        kw = result.meta.highlight.content[0].split('<mark>')
         if len(kw)>1:
             for ss in kw[1:]:
-                logger.warning(ss.split('</mark>')[0])
                 keywords.append(ss.split('</mark>')[0])
-            result.keywords = sorted(keywords,key=lambda x:len(x), reverse=True)
+        return keywords
+    for result in s:
+        keywords = []
+        if 'content_auto' in result.meta.highlight:
+            keywords += extract_kw(result.meta.highlight.content_auto[0])
+        if 'title_auto' in result.meta.highlight:
+            keywords += extract_kw(result.meta.highlight.title_auto[0])
+        result.keywords = sorted(list(set(keywords)),key=lambda x:len(x), reverse=True)
+
+
     return render(request, "recherche.html", {
         'query': s,
         'request' :req
