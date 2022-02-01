@@ -21,7 +21,7 @@
                   <span class="sr-only">Rechercher</span>
                </button>
             </span>
-            <input type="text" name="q" autocomplete="off" class="search-terms form-control instant-search"
+            <input type="text" name="q" autocomplete="off" class="search-terms form-control instant-search" placeholder="Votre recherche ici"
                value="{{ request|title|truncatechars:20 }}">
          </div>
          <p class="sidelines" aria-hidden="true">
@@ -63,13 +63,13 @@
                </p>
 
                <ul id="resultats" class="list-group search-results">
-                 
+
                   {% for result in query %}
                   <li class="list-group-item">
                   {% include './result.html' %}
                   </li>
                   {% endfor %}
-                
+
                </ul>
 
                <p class="sidelines" aria-hidden="true">
