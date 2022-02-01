@@ -200,17 +200,16 @@ def section(request, n, slug,m='None'):
 
     logging.warning('highlight ?')
     searchterms = request.GET.get('q','').replace(',','|')
-    if searchterms:
-        def highlight(item):
-            return re.sub(r'('+searchterms+')',r'<mark>\1</mark>',item)
-        if article.forewords:
-            article.forewords = highlight(article.forewords)
-        if article.key:
-            article.key.text_high = highlight(article.key.text)
-        if article.measures:
-            for m in article.measures:
-                m.text_high = highlight(m.text)
-        
+    def highlight(item):
+        return re.sub(r'('+searchterms+')',r'<mark>\1</mark>',item)
+    if searchterms and article.forewords:
+        article.forewords = highlight(article.forewords)
+    if article.key:
+        article.key.text_high = highlight(article.key.text) if searchterms else article.key.text
+    if article.measures:
+        for m in article.measures:
+            m.text_high = highlight(m.text) if searchterms else m.text
+
     #logging.warning(content)
     return render(request, "section.html", {
         'subject': article,
