@@ -1,7 +1,7 @@
 {% extends 'base.html'  %}
 {% block html_classes %} page-the-end page-aos{% endblock %}
 {% block body %}
-<body id="body" data-aos-easing="ease-out-back" data-aos-duration="1300" data-aos-delay="0">
+<body id="body" class="fin" data-aos-easing="ease-out-back" data-aos-duration="1300" data-aos-delay="0">
   <div class="wrap-all-visible">
     {% include "_navbar.html" %}
 {% block jumbotron %}
@@ -29,7 +29,7 @@
       <p>
         <small>Vous pouvez aussi <strong>partager</strong> ce site : peut-être connaissez-vous des gens sur <a class="share-link" data-popup-dimensions="560,430" href="https://www.facebook.com/sharer/sharer.php?u={{baseurl}}" title="Partagez ce site sur Facebook" data-network="Facebook">Facebook</a> ou <a data-popup-dimensions="430,284" href="https://twitter.com/home?status=" class="share-link" data-network="Twitter" title="Partagez ce site sur Twitter ">Twitter</a> que cela intéresserait…</small>
       </p>
- 
+
       <p class="sidelines" aria-hidden="true">
         <i class="fa fa-flag-checkered"></i>
       </p>
@@ -38,7 +38,7 @@
         <a title="Consulter une section du programme au hasard" data-load-display href="/random"><i class="fa fa-fw fa-random" aria-hidden="true"></i> Revoir une page au hasard</a>
 
         <span class="link-separator">•</span>
-        
+
         <a data-load-display href="/sommaire" title="Retour au sommaire"><i class="fa fa-fw fa-list-ul"></i> Retour à la table des matières</a>
       </p>
     </div>
