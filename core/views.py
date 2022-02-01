@@ -17,6 +17,13 @@ import ast
 import json
 from django.conf import settings
 
+
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
+
 def home(request):
     return render(request, "newhome.html")
     return render(request, "home.html")
@@ -136,7 +143,7 @@ def section(request, n, slug,m='None'):
     except Measure.DoesNotExist:
       article.key = None
 
-    print(article.key)
+
     prev = None
     next = None
 
@@ -191,6 +198,15 @@ def section(request, n, slug,m='None'):
             next = None
 
 
+    logging.warning('highlight ?')
+    searchterm = request.GET.get('q','')
+    if searchterm:
+        if article.key:
+            article.key.text = re.sub(r'('+searchterm+')',r'<span class="highlight">\1</span class="hightlight">',article.key.text)
+        if article.measures:
+            for m in article.measures:
+                m.text = re.sub(r'('+searchterm+')',r'<span class="highlight">\1</span class="hightlight">',m.text)
+    #logging.warning(content)
     return render(request, "section.html", {
         'subject': article,
         'content': markdown.Markdown().convert(article.text),
@@ -219,21 +235,21 @@ def recherche(request):
 
     # further filter queryset based on some set of criteria
     req = request.GET.get('q','')
-    print(req)
+    #print(req)
   #  res  = queryset.filter(content_auto=req)
     #highlight = MyHighlighter(req, html_tag='mark', css_class='found', max_length=35)
     #for r in res:
         #   highlight.highlight(r.content)
 
         #  highlight.highlight(r.content)
-    elastic_client = Elasticsearch([settings.ELASTICSEARCH_HOST])
+    #elastic_client = Elasticsearch([settings.ELASTICSEARCH_HOST])
     #elastic_client = Elasticsearch(['http://es:9200'])
     # create a Python dictionary for the search query:
     search_param = {
         "query": {
             "simple_query_string": {
                 "query": req,
-                "fields": ["title_auto","content_auto"],
+                "fields": ["title","content"],
                 "default_operator": "or",
             }
             },
@@ -242,10 +258,10 @@ def recherche(request):
                 "pre_tags" : ["<mark>"],
                     "post_tags" : ["</mark>"],
                 "fields": {
-                     "title_auto": {
+                     "title": {
                 "fragment_size": 300,
                      },
-                 "content_auto": {
+                 "content": {
                 "fragment_size": 300,
 
 
@@ -254,15 +270,16 @@ def recherche(request):
     }
     }
     # get a response from the cluster
-    response = elastic_client.search(index="haystack", body=search_param)
+    #response = elastic_client.search(index="haystack", body=search_param)
+    #logger.warning(response)
+
     connections.create_connection(hosts=[settings.ELASTICSEARCH_HOST], timeout=20)
     s = Search(index='haystack')
-    q = Q("multi_match", query=req, fields=['title_auto','content_auto'])
+    q = Q("multi_match", query=req, fields=['title','content'])
     s = s.query(q).extra(from_=0, size=100)
-    s = s.highlight('title_auto', 'content_auto',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=True, number_of_fragments=1, fragment_size=300)
+    s = s.highlight('title', 'content',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=True, number_of_fragments=1, fragment_size=300)
     s = s.execute()
-    for h in s.hits:
-        print(h.content)
+
     return render(request, "recherche.html", {
         'query': s,
         'request' :req

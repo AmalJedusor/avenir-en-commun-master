@@ -9,14 +9,14 @@
 {% endcomment %}
 
 
-   <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}" 
+   <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ request }}"
       title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
-      <h2 class="h4"> 
-          {%if result.meta.highlight.title_auto %}  
-          {{ result.meta.highlight.title_auto | first  | safe }} 
-          {% else %} {{result.title_auto | safe}} 
+      <h2 class="h4">
+          {%if result.meta.highlight.title %}
+          {{ result.meta.highlight.title | first  | safe }}
+          {% else %} {{result.title | safe}}
           {% endif %}  </h2>
-   </a>
+
    <cite>
       {% if result.entity == 'chapitre' %}
       <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/c{{result.number}}
@@ -24,14 +24,11 @@
       <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/s{{result.number}}
       {% endif %}
    </cite>
- 
-   <p class="highlights">...{% if result.meta.highlight.content_auto %}
-       {{result.meta.highlight.content_auto | first | safe }}   
-       {% else %} 
-       {{result.content_auto | striptags | safe |slice:":300" }} 
-       {% endif %} 
-       ...</p>
- 
- 
-  
 
+   <p class="highlights">...{% if result.meta.highlight.content %}
+       {{result.meta.highlight.content | first | safe }}
+       {% else %}
+       {{result.content | striptags | safe |slice:":300" }}
+       {% endif %}
+       ...</p>
+   </a>

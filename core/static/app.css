@@ -19,6 +19,10 @@ body {
     margin: 0
 }
 
+.highlight {
+  background-color: #ffffa4;
+}
+
 article,
 aside,
 details,
@@ -13001,7 +13005,7 @@ ul#side-navigation span.alternate {
 .toc .list-group-item i.fa {
     margin-top: 12.5px;
     margin-bottom: 12.5px;
-    
+
 }
 
 .toc .list-group-item.visited {
