@@ -199,13 +199,18 @@ def section(request, n, slug,m='None'):
 
 
     logging.warning('highlight ?')
-    searchterm = request.GET.get('q','')
-    if searchterm:
+    searchterms = request.GET.get('q','').replace(',','|')
+    if searchterms:
+        def highlight(item):
+            return re.sub(r'('+searchterms+')',r'<mark>\1</mark>',item)
+        if article.forewords:
+            article.forewords = highlight(article.forewords)
         if article.key:
-            article.key.text = re.sub(r'('+searchterm+')',r'<span class="highlight">\1</span class="hightlight">',article.key.text)
+            article.key.text_high = highlight(article.key.text)
         if article.measures:
             for m in article.measures:
-                m.text = re.sub(r'('+searchterm+')',r'<span class="highlight">\1</span class="hightlight">',m.text)
+                m.text_high = highlight(m.text)
+        
     #logging.warning(content)
     return render(request, "section.html", {
         'subject': article,
@@ -280,6 +285,14 @@ def recherche(request):
     s = s.highlight('title', 'content',pre_tags=["<mark>"],post_tags=["</mark>"],require_field_match=True, number_of_fragments=1, fragment_size=300)
     s = s.execute()
 
+    for result in s:
+        keywords = []
+        kw = result.meta.highlight.content[0].split('<mark>')
+        if len(kw)>1:
+            for ss in kw[1:]:
+                logger.warning(ss.split('</mark>')[0])
+                keywords.append(ss.split('</mark>')[0])
+            result.keywords = sorted(keywords,key=lambda x:len(x), reverse=True)
     return render(request, "recherche.html", {
         'query': s,
         'request' :req

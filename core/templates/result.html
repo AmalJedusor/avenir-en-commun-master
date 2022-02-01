@@ -8,8 +8,8 @@
 {% endif %}
 {% endcomment %}
 
-
-   <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ request }}"
+  {{ result.keywords|join:", " }}
+   <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}"
       title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
       <h2 class="h4">
           {%if result.meta.highlight.title %}
