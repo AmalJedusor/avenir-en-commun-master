@@ -12,10 +12,12 @@
    <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}"
       title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
       <h2 class="h4">
-          {%if result.meta.highlight.title %}
-          {{ result.meta.highlight.title | first  | safe }}
-          {% else %} {{result.title | safe}}
-          {% endif %}  </h2>
+        {%if result.meta.highlight.title %}
+        {{ result.meta.highlight.title | first  | safe }}
+        {%elif result.meta.highlight.title %}
+        {{ result.meta.highlight.title_auto | first  | safe }}
+        {% else %} {{result.title | safe}}
+        {% endif %}  </h2>
 
    <cite>
       {% if result.entity == 'chapitre' %}
@@ -27,6 +29,8 @@
 
    <p class="highlights">...{% if result.meta.highlight.content %}
        {{result.meta.highlight.content | first | safe }}
+       {% elif result.meta.highlight.content_auto %}
+           {{result.meta.highlight.content_auto | first | safe }}
        {% else %}
        {{result.content | striptags | safe |slice:":300" }}
        {% endif %}
