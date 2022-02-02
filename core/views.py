@@ -209,8 +209,8 @@ def section(request, n, slug,m='None'):
     if article.measures:
         for m in article.measures:
             m.text_high = highlight(m.text) if searchterms else m.text
-    if searchterms and article.title:
-        article.title = highlight(article.title)
+
+    article.title_high = highlight(article.title) if searchterms else article.title
     #logging.warning(content)
     return render(request, "section.html", {
         'subject': article,
