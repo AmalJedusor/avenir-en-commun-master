@@ -294,8 +294,14 @@ def recherche(request):
             for ss in kw[1:]:
                 keywords.append(ss.split('</mark>')[0])
         return keywords
-    for result in s:
-        logging.warning(result.title+result.entity)
+    firstout = True
+    for i,result in enumerate(s):
+
+        #logging.warning(result.title+result.entity)
+        result.order = i + 1000 if result.entity == 'externalpage' else 0
+        if result.entity == 'externalpage' and firstout:
+            result.first = True
+            firstout = False
         keywords = []
         for f in ['content','title','content_auto','title_auto']:
             if f in result.meta.highlight:
@@ -304,7 +310,7 @@ def recherche(request):
 
 
     return render(request, "recherche.html", {
-        'query': s,
+        'query': sorted(list(s),key=lambda e:e['order']),
         'request' :req
     })
 

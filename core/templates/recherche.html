@@ -65,6 +65,11 @@
                <ul id="resultats" class="list-group search-results">
 
                   {% for result in query %}
+                  {% if result.first %}
+                  <p class="sidelines" aria-hidden="true" style="margin-top:1em">
+                     Pour en savoir plus
+                  </p>
+                  {% endif %}
                   <li class="list-group-item">
                   {% include './result.html' %}
                   </li>
