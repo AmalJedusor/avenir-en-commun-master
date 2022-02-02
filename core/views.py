@@ -248,8 +248,8 @@ def recherche(request):
 
         #  highlight.highlight(r.content)
     #elastic_client = Elasticsearch([settings.ELASTICSEARCH_HOST])
-    from core.models import ExternalPage
-    logging.warning(ExternalPage.objects.all())
+    #from core.models import ExternalPage
+    #logging.warning(ExternalPage.objects.all())
     #elastic_client = Elasticsearch(['http://es:9200'])
     # create a Python dictionary for the search query:
     search_param = {

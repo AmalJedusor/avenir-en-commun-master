@@ -82,4 +82,4 @@ class ExternalPage(models.Model):
     markdown = models.TextField(default='')
     url = models.CharField(max_length=200,default='')
     def __str__(self):
-        return '{id}:{title}'.format(id=self.id,title=self.title)
+        return '{id}:{content}'.format(id=self.id,content=self.content)

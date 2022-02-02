@@ -22,9 +22,8 @@ class Command(BaseCommand):
 
         def get_elements(etype,url):
             html =  get_html(url)
-
-            elts = html.xpath('//article[contains(@class,"category-'+etype+'")]/a/@href')
-            imgs = html.xpath('//article[contains(@class,"category-'+etype+'")]/a/div/img/@data-src')
+            elts = html.xpath('//article[contains(@class,"category-'+etype.lower()+'")]/a/@href')
+            imgs = html.xpath('//article[contains(@class,"category-'+etype.lower()+'")]/a/div/img/@data-src')
             for i,elt_url in enumerate(elts):
                 html = get_html(elt_url)
                 title = html.xpath('//title/text()')[0].split('-')[0]
@@ -32,8 +31,8 @@ class Command(BaseCommand):
                 nodes = html.xpath('//div[@class="elementor-widget-container"]/h2[not(@class)]/parent::*')
                 content = lxml.html.tostring(nodes[0], pretty_print=True, method="html")
                 elt_name = elt_url.split('/')[-2]
-                img = etype+'_'+elt_name+'.png'
-                print(self._id,title.strip(),img)
+                img = etype.lower()+'_'+elt_name+'.png'
+                txt_content = "\n".join(html.xpath('//div[@class="elementor-widget-container"]/h2[not(@class)]/parent::*//text()'))
                 ExternalPage(
                     id = self._id,
                     markdown =  markdownify.markdownify(content),
@@ -43,10 +42,10 @@ class Command(BaseCommand):
                     html = content,
                     url = elt_url,
                     image = img,
-                    content = "\n".join(etree.XPath("//text()")(nodes[0]))
+                    content = txt_content
                 ).save()
                 self._id += 1
-                with open(os.path.join(path,img.lower()),'wb') as f:
+                with open(os.path.join(path,img),'wb') as f:
                     f.write(requests.get(imgs[i]).content)
 
 
