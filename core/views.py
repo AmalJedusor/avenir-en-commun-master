@@ -248,6 +248,8 @@ def recherche(request):
 
         #  highlight.highlight(r.content)
     #elastic_client = Elasticsearch([settings.ELASTICSEARCH_HOST])
+    from core.models import ExternalPage
+    logging.warning(ExternalPage.objects.all())
     #elastic_client = Elasticsearch(['http://es:9200'])
     # create a Python dictionary for the search query:
     search_param = {
@@ -293,6 +295,7 @@ def recherche(request):
                 keywords.append(ss.split('</mark>')[0])
         return keywords
     for result in s:
+        logging.warning(result.title+result.entity)
         keywords = []
         for f in ['content','title','content_auto','title_auto']:
             if f in result.meta.highlight:

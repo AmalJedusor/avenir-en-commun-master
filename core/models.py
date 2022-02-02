@@ -46,7 +46,7 @@ class Article(models.Model):
     measures = models.TextField(default='')
     asavoir = models.TextField(default='')
     forewords = models.TextField(default='')
-    
+
 
     class Meta:
         ordering = ('number',)
@@ -68,3 +68,18 @@ class Measure(models.Model):
 
     class Meta:
         ordering = ('number',)
+
+
+
+class ExternalPage(models.Model):
+    id =  models.IntegerField(default=1)
+    title = models.CharField(max_length=100,primary_key=True)
+    content = models.TextField(default='')
+    entity=models.CharField(max_length=500, default='')
+    doctype= models.CharField(max_length=100, default='')
+    image = models.CharField(max_length=100)
+    html = models.TextField(default='')
+    markdown = models.TextField(default='')
+    url = models.CharField(max_length=200,default='')
+    def __str__(self):
+        return '{id}:{title}'.format(id=self.id,title=self.title)

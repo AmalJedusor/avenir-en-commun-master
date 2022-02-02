@@ -8,31 +8,54 @@
 {% endif %}
 {% endcomment %}
 
-  {{ result.keywords|join:", " }}
-   <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}"
-      title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
-      <h2 class="h4">
-        {%if result.meta.highlight.title %}
-        {{ result.meta.highlight.title | first  | safe }}
-        {%elif result.meta.highlight.title %}
-        {{ result.meta.highlight.title_auto | first  | safe }}
-        {% else %} {{result.title | safe}}
-        {% endif %}  </h2>
+  <!--{{ result.keywords|join:", " }}-->
+  {% if result.entity == 'externalpage' %}
+  <a href="{{ result.url }}"
+     title="{{ result.title }}">
+    <img src="/static/melenchon2022/{{ result.image }}" style="height:15rem;">
+     <h2 class="h4">
+       {{ result.doctype }} : {{ result.title }} </h2>
 
-   <cite>
-      {% if result.entity == 'chapitre' %}
-      <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/c{{result.number}}
+  <cite>
+     <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>{{ result.url }}
+
+  </cite>
+
+  <p class="highlights">...{% if result.meta.highlight.content %}
+      {{result.meta.highlight.content | first | safe }}
+      {% elif result.meta.highlight.content_auto %}
+          {{result.meta.highlight.content_auto | first | safe }}
       {% else %}
-      <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/s{{result.number}}
+      {{result.content | striptags | safe |slice:":300" }}
       {% endif %}
-   </cite>
+      ...</p>
+  </a>
+{% else %}
+  <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}"
+     title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
+     <h2 class="h4">
+       {%if result.meta.highlight.title %}
+       {{ result.meta.highlight.title | first  | safe }}
+       {%elif result.meta.highlight.title_auto %}
+       {{ result.meta.highlight.title_auto | first  | safe }}
+       {% else %} {{result.title | safe}}
+       {% endif %}  </h2>
 
-   <p class="highlights">...{% if result.meta.highlight.content %}
-       {{result.meta.highlight.content | first | safe }}
-       {% elif result.meta.highlight.content_auto %}
-           {{result.meta.highlight.content_auto | first | safe }}
-       {% else %}
-       {{result.content | striptags | safe |slice:":300" }}
-       {% endif %}
-       ...</p>
-   </a>
+  <cite>
+     {% if result.entity == 'chapitre' %}
+     <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/c{{result.number}}
+     {% else %}
+     <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/s{{result.number}}
+     {% endif %}
+  </cite>
+
+  <p class="highlights">...{% if result.meta.highlight.content %}
+      {{result.meta.highlight.content | first | safe }}
+      {% elif result.meta.highlight.content_auto %}
+          {{result.meta.highlight.content_auto | first | safe }}
+      {% else %}
+      {{result.content | striptags | safe |slice:":300" }}
+      {% endif %}
+      ...</p>
+  </a>
+{% endif %}
