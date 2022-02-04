@@ -1,12 +1,4 @@
-{% load highlight %}
-{% comment %}
-{% link_icon = 'link' %}
-{% if result.entity is chapitre %}
-{% link_icon = result.entity.icon ?: 'phi' %}
-{% elseif result.entity is section %}
-{% link_icon = result.entity.chapter.icon %}
-{% endif %}
-{% endcomment %}
+
 
   <!--{{ result.keywords|join:", " }}-->
 
@@ -18,7 +10,7 @@
        {{ result.doctype }} : {{ result.title }} </h2>
 
   <cite>
-     <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>{{ result.url }}
+     <i class="fa fa-fw fa-external-link" aria-hidden="true"></i> {{ result.url }}
 
   </cite>
 
@@ -43,10 +35,11 @@
        {% endif %}  </h2>
 
   <cite>
+    <i class="fa fa-fw icon icon-part-{{result.part_number}}" aria-hidden="true"></i>
      {% if result.entity == 'chapitre' %}
-     <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/c{{result.number}}
+      https://laec.fr/c{{result.number}}
      {% else %}
-     <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/s{{result.number}}
+      https://laec.fr/s{{result.number}}
      {% endif %}
   </cite>
 

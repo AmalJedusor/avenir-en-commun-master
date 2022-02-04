@@ -295,8 +295,16 @@ def recherche(request):
                 keywords.append(ss.split('</mark>')[0])
         return keywords
     firstout = True
-    for i,result in enumerate(s):
+#    {% load highlight %}
 
+#    {% link_icon = 'link' %}
+#    {% if result.entity is chapitre %}
+#    {% link_icon = result.entity.icon ?: 'phi' %}
+#    {% elseif result.entity is section %}
+#    {% link_icon = result.entity.chapter.icon %}
+#    {% endif %}
+    for i,result in enumerate(s):
+        
         #logging.warning(result.title+result.entity)
         result.order = i + 1000 if result.entity == 'externalpage' else 0
         if result.entity == 'externalpage' and firstout:

@@ -3,4 +3,5 @@
 {{ object.slug }}
 {{ object.title }}
 {{ object.entity }}
+{{ object.part_number }}
 {{ object.id }}
