@@ -21,7 +21,7 @@
                   <span class="sr-only">Rechercher</span>
                </button>
             </span>
-            <input type="text" name="q" autocomplete="off" class="search-terms form-control instant-search" placeholder="Votre recherche ici"
+            <input type="text" name="q" autocomplete="off" class="search-terms form-control" placeholder="Votre recherche ici"
                value="{{ request|title|truncatechars:20 }}">
          </div>
          <p class="sidelines" aria-hidden="true">
@@ -65,6 +65,11 @@
                <ul id="resultats" class="list-group search-results">
 
                   {% for result in query %}
+                  {% if result.first %}
+                  <p class="sidelines" aria-hidden="true" style="margin-top:1em">
+                     Pour en savoir plus
+                  </p>
+                  {% endif %}
                   <li class="list-group-item">
                   {% include './result.html' %}
                   </li>

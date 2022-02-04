@@ -1,38 +1,55 @@
-{% load highlight %}
-{% comment %}
-{% link_icon = 'link' %}
-{% if result.entity is chapitre %}
-{% link_icon = result.entity.icon ?: 'phi' %}
-{% elseif result.entity is section %}
-{% link_icon = result.entity.chapter.icon %}
-{% endif %}
-{% endcomment %}
 
-  {{ result.keywords|join:", " }}
-   <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}"
-      title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
-      <h2 class="h4">
-        {%if result.meta.highlight.title %}
-        {{ result.meta.highlight.title | first  | safe }}
-        {%elif result.meta.highlight.title %}
-        {{ result.meta.highlight.title_auto | first  | safe }}
-        {% else %} {{result.title | safe}}
-        {% endif %}  </h2>
 
-   <cite>
-      {% if result.entity == 'chapitre' %}
-      <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/c{{result.number}}
+  <!--{{ result.keywords|join:", " }}-->
+
+  {% if result.entity == 'externalpage' %}
+  <a href="{{ result.url }}"
+     title="{{ result.title }}">
+    <img src="/static/melenchon2022/{{ result.image }}" style="height:15rem;">
+     <h2 class="h4">
+       {{ result.doctype }} : {{ result.title }} </h2>
+
+  <cite>
+     <i class="fa fa-fw fa-external-link" aria-hidden="true"></i> {{ result.url }}
+
+  </cite>
+
+  <p class="highlights">...{% if result.meta.highlight.content %}
+      {{result.meta.highlight.content | first | safe }}
+      {% elif result.meta.highlight.content_auto %}
+          {{result.meta.highlight.content_auto | first | safe }}
       {% else %}
-      <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i>https://laec.fr/s{{result.number}}
+      {{result.content | striptags | safe |slice:":300" }}
       {% endif %}
-   </cite>
+      ...</p>
+  </a>
+{% else %}
+  <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}"
+     title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
+     <h2 class="h4">
+       {%if result.meta.highlight.title %}
+       {{ result.meta.highlight.title | first  | safe }}
+       {%elif result.meta.highlight.title_auto %}
+       {{ result.meta.highlight.title_auto | first  | safe }}
+       {% else %} {{result.title | safe}}
+       {% endif %}  </h2>
 
-   <p class="highlights">...{% if result.meta.highlight.content %}
-       {{result.meta.highlight.content | first | safe }}
-       {% elif result.meta.highlight.content_auto %}
-           {{result.meta.highlight.content_auto | first | safe }}
-       {% else %}
-       {{result.content | striptags | safe |slice:":300" }}
-       {% endif %}
-       ...</p>
-   </a>
+  <cite>
+    <i class="fa fa-fw icon icon-part-{{result.part_number}}" aria-hidden="true"></i>
+     {% if result.entity == 'chapitre' %}
+      https://laec.fr/c{{result.number}}
+     {% else %}
+      https://laec.fr/s{{result.number}}
+     {% endif %}
+  </cite>
+
+  <p class="highlights">...{% if result.meta.highlight.content %}
+      {{result.meta.highlight.content | first | safe }}
+      {% elif result.meta.highlight.content_auto %}
+          {{result.meta.highlight.content_auto | first | safe }}
+      {% else %}
+      {{result.content | striptags | safe |slice:":300" }}
+      {% endif %}
+      ...</p>
+  </a>
+{% endif %}

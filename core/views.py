@@ -209,8 +209,8 @@ def section(request, n, slug,m='None'):
     if article.measures:
         for m in article.measures:
             m.text_high = highlight(m.text) if searchterms else m.text
-    if searchterms and article.title:
-        article.title = highlight(article.title)
+
+    article.title_high = highlight(article.title) if searchterms else article.title
     #logging.warning(content)
     return render(request, "section.html", {
         'subject': article,
@@ -248,6 +248,8 @@ def recherche(request):
 
         #  highlight.highlight(r.content)
     #elastic_client = Elasticsearch([settings.ELASTICSEARCH_HOST])
+    #from core.models import ExternalPage
+    #logging.warning(ExternalPage.objects.all())
     #elastic_client = Elasticsearch(['http://es:9200'])
     # create a Python dictionary for the search query:
     search_param = {
@@ -292,7 +294,22 @@ def recherche(request):
             for ss in kw[1:]:
                 keywords.append(ss.split('</mark>')[0])
         return keywords
-    for result in s:
+    firstout = True
+#    {% load highlight %}
+
+#    {% link_icon = 'link' %}
+#    {% if result.entity is chapitre %}
+#    {% link_icon = result.entity.icon ?: 'phi' %}
+#    {% elseif result.entity is section %}
+#    {% link_icon = result.entity.chapter.icon %}
+#    {% endif %}
+    for i,result in enumerate(s):
+        
+        #logging.warning(result.title+result.entity)
+        result.order = i + 1000 if result.entity == 'externalpage' else 0
+        if result.entity == 'externalpage' and firstout:
+            result.first = True
+            firstout = False
         keywords = []
         for f in ['content','title','content_auto','title_auto']:
             if f in result.meta.highlight:
@@ -301,7 +318,7 @@ def recherche(request):
 
 
     return render(request, "recherche.html", {
-        'query': s,
+        'query': sorted(list(s),key=lambda e:e['order']),
         'request' :req
     })
 

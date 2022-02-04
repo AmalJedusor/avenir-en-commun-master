@@ -23,6 +23,7 @@ class Chapter(models.Model):
     title = models.CharField(max_length=500)
     id =  models.IntegerField(default=1)
     content = models.TextField()
+    part_number = models.CharField(max_length=10)
     main_title = models.CharField(max_length=500,default='')
     sub_title = models.CharField(max_length=500,default='')
     text =  models.TextField(default='')
@@ -37,6 +38,7 @@ class Article(models.Model):
     slug = models.CharField(max_length=500)
     entity=models.CharField(max_length=50, default='')
     title = models.CharField(max_length=500)
+    part_number = models.CharField(max_length=10)
     id =  models.IntegerField(default=1)
     content = models.TextField()
     chapter = models.ForeignKey(Chapter, on_delete=models.DO_NOTHING)
@@ -46,7 +48,7 @@ class Article(models.Model):
     measures = models.TextField(default='')
     asavoir = models.TextField(default='')
     forewords = models.TextField(default='')
-    
+
 
     class Meta:
         ordering = ('number',)
@@ -68,3 +70,18 @@ class Measure(models.Model):
 
     class Meta:
         ordering = ('number',)
+
+
+
+class ExternalPage(models.Model):
+    id =  models.IntegerField(default=1)
+    title = models.CharField(max_length=100,primary_key=True)
+    content = models.TextField(default='')
+    entity=models.CharField(max_length=500, default='')
+    doctype= models.CharField(max_length=100, default='')
+    image = models.CharField(max_length=100)
+    html = models.TextField(default='')
+    markdown = models.TextField(default='')
+    url = models.CharField(max_length=200,default='')
+    def __str__(self):
+        return '{id}:{content}'.format(id=self.id,content=self.content)

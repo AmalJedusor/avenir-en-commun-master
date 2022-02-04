@@ -1,7 +1,7 @@
 {{ object.content }}
-{{ object.number }}
-{{ object.slug }}
 {{ object.title }}
+{{ object.url }}
 {{ object.entity }}
-{{ object.part_number }}
+{{ object.doctype }}
+{{ object.image }}
 {{ object.id }}
