@@ -11,7 +11,7 @@
         <small>Le programme de la <strong>France insoumise</strong></small>
     </div>
     {% include "_navbar.html" %}
-    <div class="theme-chapter-{{subject.part_id}} jumbotron" aria-hidden="true">
+    <div class="theme-chapter theme-chapter-{{subject.part_id}} jumbotron" aria-hidden="true">
         <div class="container">
             <h1><i
                     class="fa fa-fw fa-pull-right fa-3x icon-chapter-{{ subject.number }} visible-lg-inline-block visible-md-inline-block"></i>
@@ -31,7 +31,7 @@
             <div class="row">
                 {% include '_sectionsidebar.html' %}
                 <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
-                
+
                     <hr />
                     <section class="content-text parsedown">
                         <div class="semi-lead subject-foreword">
@@ -69,6 +69,6 @@
         </div>
     </div>
     {% include '_footer.html' %}
-   
+
 </body>
 {% endblock %}

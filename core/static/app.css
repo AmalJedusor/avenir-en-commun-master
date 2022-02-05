@@ -22,6 +22,10 @@ body {
 .highlight {
   background-color: #ffffa4;
 }
+ul#side-navigation li.hasard {
+  background-color:  var(--p-color-2, #3F2682);
+}
+
 p.pretext {
   font-size: 105%;
   margin-top: 10px;
@@ -350,13 +354,14 @@ textarea {
 }
 
 a {
-    color: #00b6cd;
+    color: var(--p-color, #3F2682);
+    /*color: #00b6cd;*/
     text-decoration: none
 }
 
 a:hover,
 a:focus {
-    color: #007281;
+    color: var(--aec_violet, #3F2682);
     text-decoration: underline
 }
 
@@ -11752,6 +11757,7 @@ ul#side-navigation li:not(.heading):hover .fa {
     text-shadow: none !important;
     background: transparent !important;
     color: #00b6cd !important;
+    color: var(--aec_violet,#3F2682) !important;
     transform: scale(1.2) translateX(-2px)
 }
 
@@ -13265,103 +13271,103 @@ span.search-results-count strong.suggestion:hover {
 }
 
 .theme-chapter-8.page-section .list-measures .list-group-item.active {
-    background-color: #c34c32;
-    border-color: #b5462f
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-8.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-8.page-section .list-measures .list-group-item.active:focus {
-    background-color: #cc543b
+  background-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-un-programme-en-evolution-permanente.page-section .list-measures .list-group-item.active {
-    background-color: #c34c32;
-    border-color: #b5462f
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-un-programme-en-evolution-permanente.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-un-programme-en-evolution-permanente.page-section .list-measures .list-group-item.active:focus {
-    background-color: #cc543b
+  background-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-1.page-section .list-measures .list-group-item.active {
-    background-color: #e48700;
-    border-color: #d27c00
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-1.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-1.page-section .list-measures .list-group-item.active:focus {
-    background-color: #f69100
+  background-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-2.page-section .list-measures .list-group-item.active {
-    background-color: #32BF7C;
-    border-color: #32BF7C
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-2.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-2.page-section .list-measures .list-group-item.active:focus {
-    background-color: #32BF7C
+  background-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-3.page-section .list-measures .list-group-item.active {
-    background-color: #30b978;
-    border-color: #2dab6f
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-3.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-3.page-section .list-measures .list-group-item.active:focus {
-    background-color: #34c781
+  background-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-4.page-section .list-measures .list-group-item.active {
-    background-color: #4467e1;
-    border-color: #355ade
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-4.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-4.page-section .list-measures .list-group-item.active:focus {
-    background-color: #5473e3
+  background-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-5.page-section .list-measures .list-group-item.active {
-    background-color: #bb2e68;
-    border-color: #ad2b60
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-5.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-5.page-section .list-measures .list-group-item.active:focus {
-    background-color: #c93270
+  background-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-6.page-section .list-measures .list-group-item.active {
-    background-color: #f8b614;
-    border-color: #f2ae08
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-6.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-6.page-section .list-measures .list-group-item.active:focus {
-    background-color: #f8bb25
+  background-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-7.page-section .list-measures .list-group-item.active {
-    background-color: #3baca6;
-    border-color: #369f99
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-7.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-7.page-section .list-measures .list-group-item.active:focus {
-    background-color: #40bab2
+  background-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-8.page-section .list-measures .list-group-item.active {
-    background-color: #9b0720;
-    border-color: #9b0720
+  background-color: var(--p-color, #3F2682);
+  border-color: var(--p-color, #3F2682);
 }
 
 .theme-chapter-8.page-section .list-measures .list-group-item.active:hover,
 .theme-chapter-8.page-section .list-measures .list-group-item.active:focus {
-    background-color: #9b0720
+  background-color: var(--p-color, #3F2682);
 }
 
 
@@ -14154,9 +14160,34 @@ footer.footer>.container {
     padding-top: 12.5px
 }
 
-.color-chapter-introduction-de-jean-luc-melenchon {
-    color: #c94e34
+.color-chapter {
+  color: var(--p-color);
 }
+
+.theme-chapter .page-header h1,
+.theme-chapter .page-header h2 {
+    color: var(--p-color-1);
+}
+
+.theme-chapter .btn-default .fa {
+  color: var(--p-color);
+}
+
+.theme-chapter .btn-default:hover .fa {
+    color: #515151 !important
+}
+
+.theme-chapter *::selection {
+    color: #fff;
+    background-color: var(--p-colot-1);
+}
+
+.theme-chapter *::-moz-selection {
+    color: #fff;
+    background-color: var(--p-colot-1);
+}
+
+/*
 
 .theme-chapter-8 .page-header h1,
 .theme-chapter-8 .page-header h2 {
@@ -14320,16 +14351,16 @@ footer.footer>.container {
 }
 
 .color-chapter-5 {
-    color: #c1306b
+  color: var(--p-color);
 }
 
 .theme-chapter-5 .page-header h1,
 .theme-chapter-5 .page-header h2 {
-    color: #b92e66
+    color: var(--p-color-1);
 }
 
 .theme-chapter-5 .btn-default .fa {
-    color: #ad2b60
+  color: var(--p-color);
 }
 
 .theme-chapter-5 .btn-default:hover .fa {
@@ -14338,12 +14369,12 @@ footer.footer>.container {
 
 .theme-chapter-5 *::selection {
     color: #fff;
-    background-color: rgba(160, 40, 89, 0.8)
+    background-color: var(--p-colot-1);
 }
 
 .theme-chapter-5 *::-moz-selection {
     color: #fff;
-    background-color: rgba(160, 40, 89, 0.8)
+    background-color: var(--p-colot-1);
 }
 
 .color-chapter-6 {
@@ -14424,7 +14455,7 @@ footer.footer>.container {
     background-color: #c94e34;
     border-color: #b5462f
 }
-
+*/
 .theme-chapter-un-programme-en-evolution-permanente .btn-bookmark.active,
 .theme-chapter-un-programme-en-evolution-permanente .btn-bookmark.active .fa {
     color: white !important
@@ -14858,6 +14889,22 @@ footer.footer>.container {
     transition: max-height 0.3s ease-out
 }
 
+.theme-chapter .modal-backdrop {
+    background-color: var(--p-color);
+}
+
+.theme-chapter .modal .modal-header .close {
+    color: var(--p-color);
+}
+
+.theme-chapter .modal .modal-header h4 {
+    color: var(--p-color);
+}
+
+.theme-chapter .modal .modal-footer i.fa {
+    color: var(--p-color);
+}
+/*
 .theme-chapter-8 .modal-backdrop {
     background-color: #c94e34
 }
@@ -14923,19 +14970,19 @@ footer.footer>.container {
 }
 
 .theme-chapter-3 .modal-backdrop {
-    background-color: #32bf7c
+    background-color: var(--p-color);
 }
 
 .theme-chapter-3 .modal .modal-header .close {
-    color: #2dab6f
+    color: var(--p-color);
 }
 
 .theme-chapter-3 .modal .modal-header h4 {
-    color: #30b777
+    color: var(--p-color);
 }
 
 .theme-chapter-3 .modal .modal-footer i.fa {
-    color: #2dab6f
+    color: var(--p-color);
 }
 
 .theme-chapter-4 .modal-backdrop {
@@ -15001,7 +15048,7 @@ footer.footer>.container {
 .theme-chapter-7 .modal .modal-footer i.fa {
     color: #369f99
 }
-
+*/
 .theme-minimal {
     position: relative;
     min-height: 100%

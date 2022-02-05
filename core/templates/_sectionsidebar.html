@@ -5,7 +5,7 @@
 
   <ul role="navigation" id="side-navigation">
 
-    <li>
+    <li class="hasard">
       <a title="Consulter une section du programme au hasard" data-load-display href="/hasard"><i
           class="fa fa-fw fa-random" aria-hidden="true"></i> Au hasard !</a>
     </li>
@@ -48,15 +48,15 @@
     {% if subject.entity == 'section' %}
     <li><label>Préface de la partie</label><a href="/part/{{subject.chapter.part.number}}/{{subject.chapter.part.slug}}" rel="contents" title="Préface du chapitre" data-load-display="">
       <i class="fa fa-fw fa-arrow-up" aria-hidden="true"></i><span class="alternate">{{subject.chapter.main_title}} </span><br>{{subject.chapter.sub_title}}</a></li>
-  
+
     {% else %}
     <li><label>Retour au sommaire</label><a href="/sommaire" rel="contents" title="Retour au sommaire" data-load-display="">
       <i class="fa fa-fw fa-list-ul" aria-hidden="true"></i>Table des matières</a></li>
-  
+
     {% endif %}
-  
-  
-   
+
+
+
 
   </ul>
 
