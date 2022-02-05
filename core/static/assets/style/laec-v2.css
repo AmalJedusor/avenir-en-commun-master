@@ -677,7 +677,9 @@ section.laec-def .btn-def .btn-cta:hover {
 .page-toc .jumbotron,
 .page-search .jumbotron,
 .fin .jumbotron,
-.fin .navbar {
+.fin .navbar,
+.page-search .navbar
+{
     background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%) !important;
 }
 
@@ -720,7 +722,7 @@ footer.footer {
     margin-top: 30px;
 }
 
-.page-toc footer.footer {
+.page-toc footer.footer, .page-search footer.footer {
     background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%) !important;
 }
 
@@ -752,4 +754,22 @@ footer.footer a {
     .jumbotron h1, .jumbotron .h1 {
         font-size: 48px;
     }
+}
+
+.page-search .jumbotron .search-terms, .page-search .jumbotron .search-terms::placeholder {
+    text-shadow: 0.5px 0.5px 0 #9a7fe4, 1px 1px 0 #9a7fe4, 1.5px 1.5px 0 #9a7fe4, 2px 2px 0 #9a7fe4, 1.5px 1.5px 10px rgb(0 0 0 / 30%) !important;
+}
+
+.search-results img {
+    position: absolute;
+    right: 10px;
+    top: -45px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px #0000001c;
+    transform: scale(0.7);
+}
+
+.search-results img:hover {
+    top: -80px;
+    transform: scale(1);
 }
