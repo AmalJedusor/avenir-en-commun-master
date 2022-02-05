@@ -13196,7 +13196,7 @@ ul#side-navigation span.alternate {
 
 .page-search .search-results .list-group-item>a:hover {
     text-decoration: underline;
-    color: #00b6cd
+    color: var(--aec_red);
 }
 
 #resultats h2 {
