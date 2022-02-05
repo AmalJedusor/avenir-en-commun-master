@@ -14,6 +14,7 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py import-programme-v2
 python manage.py import-programme-json
+python manage.py import-gsheet
 python manage.py import-plans-livrets
 python manage.py rebuild_index --noinput
 python manage.py runserver 0.0.0.0:8000

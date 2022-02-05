@@ -13,6 +13,8 @@ class Part(models.Model):
     text =  models.TextField(default='')
     #newsetup
     forewords = models.TextField(default='')
+    afterwords = models.TextField(default='')
+    page =  models.IntegerField(default=1)
     class Meta:
         ordering = ('number',)
 
@@ -28,7 +30,7 @@ class Chapter(models.Model):
     sub_title = models.CharField(max_length=500,default='')
     text =  models.TextField(default='')
     part = models.ForeignKey(Part, on_delete=models.DO_NOTHING,default='')
-
+    page =  models.IntegerField(default=0)
 
     class Meta:
         ordering = ('number',)
@@ -48,7 +50,8 @@ class Article(models.Model):
     measures = models.TextField(default='')
     asavoir = models.TextField(default='')
     forewords = models.TextField(default='')
-
+    afterwords = models.TextField(default='')
+    page =  models.IntegerField(default=0)
 
     class Meta:
         ordering = ('number',)
@@ -66,7 +69,7 @@ class Measure(models.Model):
     section = models.ForeignKey(Article, on_delete=models.DO_NOTHING)
     text=models.TextField( default='')
     key = models.BooleanField(default=False)
-
+    page =  models.IntegerField(default=0)
 
     class Meta:
         ordering = ('number',)

@@ -22,7 +22,11 @@ body {
 .highlight {
   background-color: #ffffa4;
 }
-
+p.pretext {
+  font-size: 105%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 article,
 aside,
 details,
