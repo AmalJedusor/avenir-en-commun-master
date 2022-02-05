@@ -136,6 +136,7 @@ def chapter(request, n, slug=''):
 def section(request, n, slug,m='None'):
 
     article = Article.objects.get(number=n)
+    
     res = article.measures
     article.measures =  Measure.objects.filter(section_id= article.number).exclude(key=True)
     try:
@@ -208,10 +209,16 @@ def section(request, n, slug,m='None'):
         article.key.text_high = highlight(article.key.text) if searchterms else article.key.text
     if article.measures:
         for m in article.measures:
+            spl = m.text.split('|')
+            if len(spl)>1:
+                m.text = spl[1]
+                m.pretext = spl[0]
             m.text_high = highlight(m.text) if searchterms else m.text
 
     article.title_high = highlight(article.title) if searchterms else article.title
     #logging.warning(content)
+
+
     return render(request, "section.html", {
         'subject': article,
         'content': markdown.Markdown().convert(article.text),
@@ -295,6 +302,14 @@ def recherche(request):
                 keywords.append(ss.split('</mark>')[0])
         return keywords
     firstout = True
+#    {% load highlight %}
+
+#    {% link_icon = 'link' %}
+#    {% if result.entity is chapitre %}
+#    {% link_icon = result.entity.icon ?: 'phi' %}
+#    {% elseif result.entity is section %}
+#    {% link_icon = result.entity.chapter.icon %}
+#    {% endif %}
     for i,result in enumerate(s):
 
         #logging.warning(result.title+result.entity)

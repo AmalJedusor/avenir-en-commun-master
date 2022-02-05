@@ -15,7 +15,7 @@ urlpatterns = [
     path('recherche/', views.recherche),
     path('c<n>/',views.redirect_short),
 
-  
+
 
     re_path(r'^s(?P<n>[0-9]{1,2})/$',views.redirect_short),
     re_path(r'^s(?P<n>[0-9]{1,2})m(?P<m>[0-9]{1,3})/$',views.redirect_short_measure),

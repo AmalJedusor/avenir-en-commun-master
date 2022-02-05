@@ -34,6 +34,15 @@ class Command(BaseCommand):
                     part.forewords = forewords
                     part.save()
 
+                if "Afterwords" in output_part:
+                    print('afterwords')
+                    forewords = output_part["Afterwords"]
+                    part_number=int(file.split('partie-')[1].split(os.path.sep)[0])
+
+                    part = Part.objects.get(number = str(part_number))
+                    part.afterwords = forewords
+                    part.save()
+
 
                 print('---------------------------------------------------------')
 
@@ -46,7 +55,7 @@ class Command(BaseCommand):
                     print(output_chap["Titre"])
                     print('---------------------------------------------------------')
                 # explication du chapitre
-             
+
                     continue
                 # section
                 output = json.loads(jsonify_markdown(subfile,None).replace('None','null').encode('utf8'))
@@ -71,19 +80,19 @@ class Command(BaseCommand):
                     article.save()
                     Measure(
                         number= measure_id,
-                        section = article, 
-                        text = key, 
-                        key = True                                  
+                        section = article,
+                        text = key,
+                        key = True
                          ).save()
                     measure_id +=1
                 if "Mesures" in output:
-                    measures = output["Mesures"]         
-                    article = Article.objects.get(number = str(number))                  
+                    measures = output["Mesures"]
+                    article = Article.objects.get(number = str(number))
                     for mesure in measures:
                         Measure(
                         number= measure_id,
-                        section = article, 
-                        text = mesure,                                   
+                        section = article,
+                        text = mesure,
                          ).save()
                         measure_id +=1
                     article.save()
@@ -92,4 +101,10 @@ class Command(BaseCommand):
                     article = Article.objects.get(number = str(number))
                     article.forewords = forewords
                     article.save()
-                
+
+                if "Afterwords" in output:
+                    print('#############################')
+                    forewords = output["Afterwords"]
+                    article = Article.objects.get(number = str(number))
+                    article.afterwords = forewords
+                    article.save()
