@@ -23,7 +23,7 @@ body {
   background-color: #ffffa4;
 }
 ul#side-navigation li.hasard {
-  background-color:  var(--p-color-2, #3F2682);
+  /*background-color:  var(--p-color-2, #3F2682);*/
 }
 
 p.pretext {
@@ -2843,8 +2843,10 @@ fieldset[disabled] .btn-default.focus {
 
 .btn-primary {
     color: #fff;
-    background-color: #00b6cd;
-    border-color: #009fb4
+    /*background-color: #00b6cd;
+    border-color: #009fb4;*/
+    background-color: var(--aec_violet);
+    border-color: var(--aec_violet)
 }
 
 .btn-primary:focus,

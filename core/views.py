@@ -136,7 +136,7 @@ def chapter(request, n, slug=''):
 def section(request, n, slug,m='None'):
 
     article = Article.objects.get(number=n)
-    
+
     res = article.measures
     article.measures =  Measure.objects.filter(section_id= article.number).exclude(key=True)
     try:
@@ -310,8 +310,13 @@ def recherche(request):
 #    {% elseif result.entity is section %}
 #    {% link_icon = result.entity.chapter.icon %}
 #    {% endif %}
+    laec_count = 0
+    external_count = 0
     for i,result in enumerate(s):
-
+        if result.entity == 'externalpage':
+            external_count += 1
+        else:
+            laec_count += 1
         #logging.warning(result.title+result.entity)
         result.order = i + 1000 if result.entity == 'externalpage' else 0
         if result.entity == 'externalpage' and firstout:
@@ -326,6 +331,8 @@ def recherche(request):
 
     return render(request, "recherche.html", {
         'query': sorted(list(s),key=lambda e:e['order']),
+        'laec_count': laec_count,
+        'external_count': external_count,
         'request' :req
     })
 
