@@ -361,7 +361,7 @@ a {
 
 a:hover,
 a:focus {
-    color: var(--aec_violet, #3F2682);
+    color: var(--p-color, #3F2682);
     text-decoration: underline
 }
 
@@ -11756,8 +11756,8 @@ ul#side-navigation li:not(.heading):hover .fa {
     box-shadow: none !important;
     text-shadow: none !important;
     background: transparent !important;
-    color: #00b6cd !important;
-    color: var(--aec_violet,#3F2682) !important;
+    /*color: #00b6cd !important;*/
+    color: var(--p-color,#3F2682) !important;*/
     transform: scale(1.2) translateX(-2px)
 }
 
