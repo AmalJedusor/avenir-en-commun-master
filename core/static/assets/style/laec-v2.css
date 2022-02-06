@@ -653,16 +653,16 @@ section.laec-def .btn-def .btn-cta:hover {
 
 .theme-part-4,
 .theme-chapter-4 {
-    --p-color: #3DB2AB;
-    --p-color-1: #3DB2AB88;
-    --p-color-2: #3DB2AB22;
+    --p-color: #3F2682;
+    --p-color-1: #3F268288;
+    --p-color-2: #3F268222;
 }
 
 .theme-part-5,
 .theme-chapter-5 {
-    --p-color: #C1306B;
-    --p-color-1: #C1306B88;
-    --p-color-2: #C1306B22;
+    --p-color: #5B92E5;
+    --p-color-1: #5B92E588;
+    --p-color-2: #5B92E522;
 }
 
 .page-toc .jumbotron h1 b {
@@ -677,9 +677,7 @@ section.laec-def .btn-def .btn-cta:hover {
 .page-toc .jumbotron,
 .page-search .jumbotron,
 .fin .jumbotron,
-.fin .navbar,
-.page-search .navbar
-{
+.fin .navbar {
     background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%) !important;
 }
 
@@ -722,7 +720,7 @@ footer.footer {
     margin-top: 30px;
 }
 
-.page-toc footer.footer, .page-search footer.footer {
+.page-toc footer.footer {
     background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%) !important;
 }
 
@@ -754,22 +752,4 @@ footer.footer a {
     .jumbotron h1, .jumbotron .h1 {
         font-size: 48px;
     }
-}
-
-.page-search .jumbotron .search-terms, .page-search .jumbotron .search-terms::placeholder {
-    text-shadow: 0.5px 0.5px 0 #9a7fe4, 1px 1px 0 #9a7fe4, 1.5px 1.5px 0 #9a7fe4, 2px 2px 0 #9a7fe4, 1.5px 1.5px 10px rgb(0 0 0 / 30%) !important;
-}
-
-.search-results img {
-    position: absolute;
-    right: 10px;
-    top: -45px;
-    border-radius: 10px;
-    box-shadow: 4px 4px 8px #0000001c;
-    transform: scale(0.7);
-}
-
-.search-results img:hover {
-    top: -80px;
-    transform: scale(1);
 }
