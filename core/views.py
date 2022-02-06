@@ -43,7 +43,7 @@ def mentions(request):
     return render(request, "mentions-legales.html")
 def part(request, n, slug=''):
     part = Part.objects.get(number=n)
-
+    logging.warning(part.shortlink)
     prev = None
     next = None
     print( part.main_title)
@@ -138,7 +138,8 @@ def chapter(request, n, slug=''):
 def section(request, n, slug,m='None'):
 
     article = Article.objects.get(number=n)
-
+    logging.warning(article.shortlink)
+    logging.warning(m)
     res = article.measures
     article.measures =  Measure.objects.filter(section_id= article.number).exclude(key=True)
     try:
@@ -218,7 +219,7 @@ def section(request, n, slug,m='None'):
             m.text_high = highlight(m.text) if searchterms else m.text
 
     article.title_high = highlight(article.title) if searchterms else article.title
-    #logging.warning(content)
+    logging.warning(article.slug)
 
 
     return render(request, "section.html", {
@@ -380,7 +381,7 @@ def redirect_short(request,n):
           'redirect' : content.url
       })
 
-     return redirect( content.url,n = n)
+
 
 def redirect_short_measure(request,n,m=0):
      content = UrlData.objects.get(slug="/s"+n+"/")

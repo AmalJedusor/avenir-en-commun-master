@@ -15,6 +15,8 @@ class Part(models.Model):
     forewords = models.TextField(default='')
     afterwords = models.TextField(default='')
     page =  models.IntegerField(default=1)
+    shortlink = models.CharField(max_length=20,default='')
+
     class Meta:
         ordering = ('number',)
 
@@ -31,6 +33,7 @@ class Chapter(models.Model):
     text =  models.TextField(default='')
     part = models.ForeignKey(Part, on_delete=models.DO_NOTHING,default='')
     page =  models.IntegerField(default=0)
+    shortlink = models.CharField(max_length=20,default='')
 
     class Meta:
         ordering = ('number',)
@@ -52,6 +55,7 @@ class Article(models.Model):
     forewords = models.TextField(default='')
     afterwords = models.TextField(default='')
     page =  models.IntegerField(default=0)
+    shortlink = models.CharField(max_length=20,default='')
 
     class Meta:
         ordering = ('number',)
@@ -70,6 +74,7 @@ class Measure(models.Model):
     text=models.TextField( default='')
     key = models.BooleanField(default=False)
     page =  models.IntegerField(default=0)
+    shortlink = models.CharField(max_length=20,default='')
 
     class Meta:
         ordering = ('number',)

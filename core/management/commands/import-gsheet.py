@@ -56,8 +56,10 @@ class Command(BaseCommand):
                 partie = row['PARTIE']
 
                 parts_md[str(npartie)].page = row['PAGE']
+                parts_md[str(npartie)].shortlink = "p{partie}".format(partie=npartie)
+
                 parts_md[str(npartie)].save()
-                print(parts_md[str(npartie)].page)
+
                 npartie += 1
 
 
@@ -65,6 +67,7 @@ class Command(BaseCommand):
                 chapitre = row['CHAPITRE'].strip()
                 nchapitre += 1
                 chapters_md[str(nchapitre)].page = row['PAGE']
+                chapters_md[str(nchapitre)].shortlink = "c{chapitre}".format(chapitre=nchapitre)
                 chapters_md[str(nchapitre)].save()
 
                 chapitres.append((npartie,partie,nchapitre,chapitre.split(':')[1].strip()))
@@ -76,6 +79,7 @@ class Command(BaseCommand):
                     exit()
 
                 articles_md[nsection].page = row['PAGE']
+                articles_md[nsection].shortlink = "c{chapitre}s{section}".format(chapitre=nchapitre,section=nsection)
                 articles_md[nsection].save()
 
                 sec = [npartie,partie,nchapitre,chapitre.split(':')[1].strip(),nsection,section,0]
@@ -96,6 +100,8 @@ class Command(BaseCommand):
                 #    print(mesures_md[nmesure].text)
 
                 mesures_md[nmesure].page = row['PAGE']
+                mesures_md[nmesure].shortlink = "s{section}m{mesure}".format(section=nsection,mesure=nmesure)
+
                 mesures_md[nmesure].save()
                 mes = [npartie,partie,nchapitre,chapitre,nsection,section,nmesure,row['MESURE'],row['MESURE CLEF']=='OUI',0]
                 hash = hashlib.md5(json.dumps(mes).encode('utf8')).hexdigest()
