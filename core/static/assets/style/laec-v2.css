@@ -504,6 +504,10 @@ section.laec-def .btn-def .btn-cta:hover {
     text-align: justify;
 }
 
+.p-more .content p u {
+    color: #FFF;
+}
+
 .wrap-all-visible-v2 footer.footer {
     position: relative;
     border: none;
@@ -749,7 +753,142 @@ footer.footer a {
 }
 
 @media screen and (min-width: 768px) {
-    .jumbotron h1, .jumbotron .h1 {
+
+    .jumbotron h1,
+    .jumbotron .h1 {
         font-size: 48px;
     }
+}
+
+
+.panel-body {
+    padding: 0;
+}
+
+.grid-p {
+    padding: 10px !important;
+    display: flex;
+    align-items: center;
+}
+
+.panel-filters {
+    margin-top: 20px;
+    background-color: var(--aec_violet);
+    color: #FFFFFF;
+}
+
+@media (max-width: 991px) {
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-left,
+    .navbar-right {
+        float: none !important;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .navbar-nav {
+        float: none !important;
+        margin-top: 7.5px;
+    }
+
+    .navbar-nav>li {
+        float: none;
+    }
+
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .collapse.in {
+        display: block !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-p {
+        display: block;
+    }
+    .panel-filters .btn-search {
+        margin-top: 10px;
+    }
+}
+
+.filters .navbar, .filters .footer.footer{
+    background: linear-gradient(105deg, rgba(245, 59, 59, 1) 0%, rgba(63, 38, 130, 1) 25%, rgba(63, 38, 130, 1) 100%) !important;
+}
+
+.filters .btn-copy svg {
+    max-width: 10px;
+}
+
+.filters .panel-footer-labels {
+    display: flex;
+    justify-content: space-between;
+}
+
+.panel-filters .btn-search {
+    background-color: #FFF;
+    color: var(--aec_violet);
+    border: 1px solid transparent;
+}
+
+.panel-filters .btn-search:hover {
+    background-color: var(--aec_violet);
+    color: #FFF;
+    border: 1px solid #FFF;
+    transform: scale(1.05);
+}
+
+.filters .panel-footer-labels span {
+    padding: 5px 10px;
+}
+
+.filters .panel-footer-labels span:nth-child(2) {
+    background-color: var(--aec_violet);
+    cursor: pointer;
+}
+
+.filters .border-20 {
+    border-radius: 20px;
+}
+
+.filters .btn-copy {
+    position: relative;
+}
+
+.filters .btn-copy:hover {
+    transform: scale(1.1);
+}
+
+.filters .btn-copy.copied::after {
+    content: "Lien copié";
+    position: absolute;
+    top: 4px;
+    right: 67px;
+    color: var(--aec_violet);
+}
+
+.filters .btn-copy.copied {
+    background-color: #EEE !important;
+    color: var(--aec_violet);
 }
