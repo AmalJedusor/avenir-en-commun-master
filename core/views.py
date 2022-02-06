@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 
 def home(request):
-    return render(request, "newhome.html")
+    return render(request, "newhome.html",{ 'host': settings.PROD_HOST})
     return render(request, "home.html")
 
 def measure(request,n,m):
@@ -33,6 +33,7 @@ def measure(request,n,m):
 def toc(request):
 
     return render(request, "toc.html",{
+        'host': settings.PROD_HOST,
         'chapters': Chapter.objects.all(),
         'parts': Part.objects.all()
 
@@ -43,7 +44,6 @@ def mentions(request):
 def part(request, n, slug=''):
     part = Part.objects.get(number=n)
 
-    logging.warning(part,part.page)
     prev = None
     next = None
     print( part.main_title)
@@ -80,6 +80,7 @@ def part(request, n, slug=''):
 
 
     return render(request, "part.html", {
+        'host': settings.PROD_HOST,
         'subject': part,
         'content': markdown.Markdown().convert(part.content),
         'next': next,
@@ -125,6 +126,7 @@ def chapter(request, n, slug=''):
 
 
     return render(request, "chapter.html", {
+        'host': settings.PROD_HOST,
         'subject': chapter,
         'content': markdown.Markdown().convert(chapter.text),
         'next': next,
@@ -220,6 +222,7 @@ def section(request, n, slug,m='None'):
 
 
     return render(request, "section.html", {
+        'host': settings.PROD_HOST,
         'subject': article,
         'content': markdown.Markdown().convert(article.text),
         'next': next,
@@ -330,6 +333,7 @@ def recherche(request):
 
 
     return render(request, "recherche.html", {
+        'host': settings.PROD_HOST,
         'query': sorted(list(s),key=lambda e:e['order']),
         'laec_count': laec_count,
         'external_count': external_count,
