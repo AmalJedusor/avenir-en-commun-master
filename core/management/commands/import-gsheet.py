@@ -39,7 +39,7 @@ class Command(BaseCommand):
         sections = []
 
         partie = ""
-        npartie = 0
+        npartie = 1
         chapitre = ""
         nchapitre = 0
         section = ""
@@ -49,13 +49,15 @@ class Command(BaseCommand):
         articles_md = dict((m.number,m) for m in Article.objects.all())
         chapters_md = dict((m.number,m) for m in Chapter.objects.all())
         parts_md = dict((m.number,m) for m in Part.objects.all())
-        
+        print(len(parts_md))
+
         for row in reader:
             if row['PARTIE']!= partie:
                 partie = row['PARTIE']
 
                 parts_md[str(npartie)].page = row['PAGE']
                 parts_md[str(npartie)].save()
+                print(parts_md[str(npartie)].page)
                 npartie += 1
 
 

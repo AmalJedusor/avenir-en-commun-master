@@ -43,7 +43,7 @@ def mentions(request):
 def part(request, n, slug=''):
     part = Part.objects.get(number=n)
 
-    print(part.forewords)
+    logging.warning(part,part.page)
     prev = None
     next = None
     print( part.main_title)
