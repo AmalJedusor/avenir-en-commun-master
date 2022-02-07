@@ -14178,12 +14178,12 @@ footer.footer>.container {
 
 .theme-part *::selection {
     color: #fff;
-    background-color: var(--p-colot-1);
+    background-color: var(--p-color-1);
 }
 
 .theme-part *::-moz-selection {
     color: #fff;
-    background-color: var(--p-colot-1);
+    background-color: var(--p-color-1);
 }
 
 /*
