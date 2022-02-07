@@ -626,44 +626,40 @@ section.laec-def .btn-def .btn-cta:hover {
     --p-color-2: #3F268222;
 }
 
-.theme-part-0,
-.theme-chapter-0 {
+.theme-part-0{
     --p-color: #3F2682;
     --p-color-1: #3F268288;
     --p-color-2: #3F268222;
 }
 
-.theme-part-1,
-.theme-chapter-1 {
+.theme-part-1 {
     --p-color: #EC8900;
     --p-color-1: #EC890088;
     --p-color-2: #EC890022;
 }
 
-.theme-part-2,
-.theme-chapter-2 {
+.theme-part-2 {
     --p-color: #32BF7C;
     --p-color-1: #32BF7C88;
     --p-color-2: #32BF7C22;
 
 }
 
-.theme-part-3,
-.theme-chapter-3 {
+.theme-part-3{
     --p-color: #EF6464;
     --p-color-1: #EF646488;
     --p-color-2: #EF646422;
 }
 
-.theme-part-4,
-.theme-chapter-4 {
+.theme-part-4
+ {
     --p-color: #3F2682;
     --p-color-1: #3F268288;
     --p-color-2: #3F268222;
 }
 
-.theme-part-5,
-.theme-chapter-5 {
+.theme-part-5
+ {
     --p-color: #5B92E5;
     --p-color-1: #5B92E588;
     --p-color-2: #5B92E522;

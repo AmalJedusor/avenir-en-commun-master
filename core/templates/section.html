@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@yourtwitterid" />
 {% endblock %}
-{% block html_class %}page-section theme-chapter theme-chapter-{{subject.chapter.part_id}} {% endblock %}
+{% block html_class %}page-section theme-part theme-part-{{subject.chapter.part_number}} {% endblock %}
 {% block body %}
 
 
@@ -29,7 +29,7 @@
    </div>
    {% include "_navbar.html" %}
 
-   <div class="theme-chapter-{{subject.chapter.part_id}} jumbotron" aria-hidden="true">
+   <div class="theme-part-{{subject.chapter.part_number}} jumbotron" aria-hidden="true">
       <div class="container">
          <h1>
             <span class="number">{{subject.number}}</span>

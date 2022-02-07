@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block html_class %}page-part theme-part-{{subject.number}} {% endblock %}
+{% block html_class %}page-part theme-part theme-part-{{subject.number}} {% endblock %}
 {% block card %}
 <meta property="og:site_name" content="LAEC.fr" />
 <meta property="og:locale" content="fr_FR" />
@@ -25,7 +25,7 @@
         <small>Le programme de la <strong>France insoumise</strong></small>
     </div>
     {% include "_navbar.html" %}
-    <div class="theme-chapter-{{subject.number}} jumbotron" aria-hidden="true">
+    <div class="theme-part-{{subject.number}} jumbotron" aria-hidden="true">
         <div class="container">
             <h1><i
                     class="fa fa-fw fa-pull-right fa-3x icon-part-{{subject.number }} visible-lg-inline-block visible-md-inline-block"></i>
@@ -58,9 +58,9 @@
                         </div>
                     </section>
                     {% if subject.number != "0" %}
-                    <section class="chapter-toc theme-chapter-{{subject.number}}">
-                        <header class="page-header">
-                            <h2 class="h4"><i class="fa fa-fw fa-list-ul"></i> Sommaire de la partie</h2>
+                    <section class="theme-part-{{subject.number}}">
+                        <header class="page-header addenda-header">
+                            <h2 class="h4" id="addenda"><i class="fa fa-fw fa-list-ul"></i> Sommaire de la partie</h2>
                         </header>
                         <nav class="toc" role="navigation">
                             <ul class="toc list-group">
