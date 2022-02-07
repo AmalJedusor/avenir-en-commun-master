@@ -14,14 +14,14 @@
     <div class="theme-chapter theme-chapter-{{subject.part_id}} jumbotron" aria-hidden="true">
         <div class="container">
             <h1><i
-                    class="fa fa-fw fa-pull-right fa-3x icon-chapter-{{ subject.number }} visible-lg-inline-block visible-md-inline-block"></i>
+                    class="fa fa-fw fa-pull-right fa-3x icon-part-{{ subject.part_number }} visible-lg-inline-block visible-md-inline-block"></i>
 
 
                 <span class="alternate">{{subject.sub_title}}</span>
                 <b class="text-balance">{{ subject.main_title }}</b>
             </h1>
 
-            <p class="sidelines"><i class="fa icon-chapter-{{ subject.number }}"></i></p>
+            <p class="sidelines"><i class="fa icon-part-{{ subject.part_number }}"></i></p>
             <a rel="contents" data-load-display href="/sommaire" title="Retour au sommaire"><i
                     class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
         </div>
