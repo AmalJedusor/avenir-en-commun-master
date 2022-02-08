@@ -138,6 +138,7 @@ def chapter(request, n, slug=''):
         'host': settings.PROD_HOST,
         'subject': chapter,
         'content': markdown.Markdown().convert(chapter.text),
+        'description':'',
         'next': next,
         'prev': prev,
         'book_navigation':None,
@@ -237,6 +238,7 @@ def section(request, n, slug,m='None'):
         'content': markdown.Markdown().convert(article.text),
         'next': next,
         'prev': prev,
+        'description': shorten_text(article.forewords,124),
         'book_navigation':None,
         'title' : article.title,
     })
@@ -378,6 +380,7 @@ def redirect_short(request,n):
      if not section:
          return HttpResponseNotFound('<h1>Section inconnue</h1>')
 
+     return redirect(content.url)
      return render(request, "card.html", {
           'host': settings.PROD_HOST,
           'titre': shorten_text(re.sub(r'(\*)([^\*]+)\1',r'\2',section['chapitre']),50),

@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
-{% block card %}
+<!--
 <meta property="og:site_name" content="LAEC.fr" />
 <meta property="og:locale" content="fr_FR" />
 <meta property="og:type" content="{{entity}}" />
-<meta property="og:title" content= "{% if title is None %} LAEC.fr – Le programme de la France Insoumise – L'Avenir En Commun {% else %} {{title}} {% endif %}" />
-<meta property="og:description" content="Description temporaire.." />
+<meta property="og:title" content= "{{title}}" />
+<meta property="og:description" content="{{ description }}" />
 <meta property="og:image" content="https://{{ host }}/static/visuels/{{ subject.shortlink }}.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="628" />
 <meta property="og:url" content="https://{{ host }}/{{n }}" />
 <meta property="fb:app_id" content="secret" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@yourtwitterid" />
-{% endblock %}
+<meta name="twitter:site" content="@yourtwitterid" />-->
 {% block html_class %}page-section theme-part theme-part-{{subject.chapter.part_number}} {% endblock %}
 {% block body %}
 
