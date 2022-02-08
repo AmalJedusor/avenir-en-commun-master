@@ -79,7 +79,7 @@ class Command(BaseCommand):
                     exit()
 
                 articles_md[nsection].page = row['PAGE']
-                articles_md[nsection].shortlink = "c{chapitre}s{section}".format(chapitre=nchapitre,section=nsection)
+                articles_md[nsection].shortlink = "s{section}".format(section=nsection)
                 articles_md[nsection].save()
 
                 sec = [npartie,partie,nchapitre,chapitre.split(':')[1].strip(),nsection,section,0]

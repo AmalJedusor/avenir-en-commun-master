@@ -38,9 +38,17 @@ def toc(request):
         'parts': Part.objects.all()
 
     })
+
 def mentions(request):
 
     return render(request, "mentions-legales.html")
+
+def shorten_text(txt,length):
+    if len(txt)>length and length>3:
+        txt = txt[:length-3] + '...'
+    return txt
+
+
 def part(request, n, slug=''):
     part = Part.objects.get(number=n)
     logging.warning(part.shortlink)
@@ -85,6 +93,7 @@ def part(request, n, slug=''):
         'content': markdown.Markdown().convert(part.content),
         'next': next,
         'prev': prev,
+        'description': shorten_text(part.forewords,124),
         'book_navigation':None,
         'title' : part.title,
     })
@@ -360,10 +369,6 @@ else:
     sections_dict = {}
 
 
-def shorten_text(txt,length):
-    if len(txt)>length and length>3:
-        txt = txt[:length-3] + '...'
-    return txt
 
 def redirect_short(request,n):
      content = UrlData.objects.get(slug=request.path)
