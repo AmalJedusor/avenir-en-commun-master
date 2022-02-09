@@ -458,11 +458,20 @@ def visuel(request, v):
     return HttpResponseNotFound('<h1>Pas de visuel</h1>')
 
 
-grid_nbitems = 20
+grid_nbitems = 21
 
-def grid(request):
+def grid(request,p=0):
+    chapitres=sorted(Chapter.objects.all(), key=lambda x:int(x.number))
+    if p>0:
+        measures = [m for m in mesures_list if m['nchapitre'] == int(p)][:grid_nbitems]
+    else:
+        measures = mesures_list[:grid_nbitems]
 
-    return render(request, "visuels/grid.html",dict(mesures=mesures_list[:grid_nbitems]))
+    return render(request, "visuels/grid.html",dict(p=str(p),mesures=measures,chapitres=chapitres))
 
-def grid_page(request,p):
-    return render(request, "visuels/grid_page.html",dict(mesures=mesures_list[(p-1)*grid_nbitems:p*grid_nbitems]))
+def grid_page(request,p,gp):
+    if p>0:
+        measures = [m for m in mesures_list if m['nchapitre'] == int(p)][(gp-1)*grid_nbitems:gp*grid_nbitems]
+    else:
+        measures = mesures_list[(gp-1)*grid_nbitems:gp*grid_nbitems]
+    return render(request, "visuels/grid_page.html",dict(mesures=measures))
