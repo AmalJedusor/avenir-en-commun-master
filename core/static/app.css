@@ -9,6 +9,16 @@
 
 /* normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+@font-face {
+  font-family:'icomoon';
+  src:url("/static/icomoon.eot?aqfmk4");
+  src:url("/static/icomoon.eot?aqfmk4#iefix") format('embedded-opentype'), url("/static/icomoon.woff?aqfmk4") format('woff'), url("/static/icomoon.ttf?aqfmk4") format('truetype'), url("/static/icomoon.svg?aqfmk4#icomoon") format('svg');
+  font-weight:normal;
+  font-style:normal;
+}
+.fa {display:inline-block;font:normal normal normal 14px/1 icomoon;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
