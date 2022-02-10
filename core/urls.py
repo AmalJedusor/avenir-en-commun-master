@@ -28,6 +28,5 @@ urlpatterns = [
     path('visuels/<int:p>',views.visuels),
     path('visuels/<int:p>/<int:gp>',views.visuels),
     path('404',views.error_404),
-    re_path(r"^.*", views.error_404),
 
 ]
