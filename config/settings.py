@@ -29,7 +29,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # PROD
-#DEBUG = True
+DEBUG = True
 ALLOWED_HOSTS = ["laec-prod-test.ey.r.appspot.com",'127.0.0.1','*',env('PROD_HOST')]
 ELASTICSEARCH_HOST = env('ELASTICSEARCH_HOST')
 ELASTICSEARCH_PORT = env('ELASTICSEARCH_PORT')
