@@ -353,7 +353,7 @@ def recherche(request):
 
 
 
-def error_404(request):
+def error_404(request,exception=None):
     return render(request, "404.html", {})
 
 
