@@ -229,7 +229,6 @@ def section(request, n, slug,m='None'):
             m.text_high = highlight(m.text) if searchterms else m.text
 
     article.title_high = highlight(article.title) if searchterms else article.title
-    logging.warning(article.slug)
 
 
     return render(request, "section.html", {
@@ -352,6 +351,10 @@ def recherche(request):
         'request' :req
     })
 
+
+
+def error_404(request):
+    return render(request, "404.html", {})
 
 
 mesures_path = os.path.join('generation_visuels','mesures.json')
