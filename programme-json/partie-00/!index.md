@@ -1,5 +1,4 @@
 # Titre
-
 Introduction de Jean-Luc Mélenchon
 # Forewords
 Le programme « L’Avenir en commun » est davantage qu’un ensemble de mesures concrètes. Il apporte surtout une vision du monde pour le futur. C’est un besoin fondamental de notre temps quand le monde entre dans une telle ère de changements écologiques et de destructions sociales, de mutations irréversibles et d’incertitudes totales. Les candidatures qui se limitent à quelques propositions, si séduisantes qu’elles soient, n’y répondent pas. Je me fais donc un devoir de résumer notre projet : construire une société d’entraide ayant pour but l’harmonie des êtres humains entre eux et avec la nature. Tel sera le but visé en toutes circonstances, même très imprévues.

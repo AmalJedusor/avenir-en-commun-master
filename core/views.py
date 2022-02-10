@@ -65,7 +65,7 @@ def part(request, n, slug=''):
         try:
             print(part.id)
             prev = Part.objects.get(id=int(part.id) -1)
-
+            logging.warning(prev.title)
             prev.desc = "Partie précédente"
             prev.url = "/part/"
         except Part.DoesNotExist:
@@ -86,7 +86,7 @@ def part(request, n, slug=''):
         except Part.DoesNotExist:
             next = None
 
-
+    part.chapter_ordered = sorted(part.chapter_set.all(),key=lambda x:int(x.number))
     return render(request, "part.html", {
         'host': settings.PROD_HOST,
         'subject': part,

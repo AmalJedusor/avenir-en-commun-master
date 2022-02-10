@@ -1,7 +1,5 @@
 # Titre
-
 Unir pour bien vivre
-
 # Forewords
 « Mais je suis de ceux qui pensent et qui affirment qu’on peut détruire la misère. Remarquez-le bien, messieurs, je ne dis pas diminuer, amoindrir, limiter, circonscrire, je dis détruire. La misère est une maladie du corps social comme la lèpre était une maladie du corps humain ; la misère peut disparaître comme la lèpre a disparu. Détruire la misère ! Oui, cela est possible ! Les législateurs et les gouvernants doivent y songer sans cesse ; car, en pareille matière, tant que le possible n’est pas fait, le devoir n’est pas rempli. » Victor Hugo, Discours à l’Assemblée nationale, 9 juillet 1849
 
