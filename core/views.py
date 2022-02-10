@@ -492,4 +492,4 @@ def visuels(request,p=0,gp=1):
     else:
         measures=measures[:grid_nbitems]
 
-    return render(request, "visuels/grid.html",dict(p=str(p),q=q,mesures=measures,chapitres=chapitres))
+    return render(request, "visuels/grid.html",dict(p=str(p),q=q,mesures=measures,chapitres=chapitres, host=settings.PROD_HOST))

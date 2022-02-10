@@ -16,7 +16,11 @@
   font-weight:normal;
   font-style:normal;
 }
+
 .fa {display:inline-block;font:normal normal normal 14px/1 icomoon;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+
+
 
 
 html {
@@ -7638,6 +7642,10 @@ button.close {
 }
 
 .fa-phi:before {
+    content: "\e901"
+}
+
+.fa.icon-part-0:before {
     content: "\e901"
 }
 

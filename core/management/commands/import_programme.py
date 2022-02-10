@@ -10,6 +10,8 @@ class Command(BaseCommand):
         Chapter.objects.all().delete()
         UrlData.objects.all().delete()
         id = 0
+
+
         for file in sorted(glob.glob("programme/chapitre*/*.md")):
             if "!index.md" in file:
                 title = open(file,encoding='utf-8').read().split('\n')[0][1:].strip()
@@ -23,12 +25,12 @@ class Command(BaseCommand):
                         id=id,
                         main_title=title,
                         content= strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:])),
-                        text ='\n'.join(open(file,encoding='utf-8').read().split('\n')[1:])                  
+                        text ='\n'.join(open(file,encoding='utf-8').read().split('\n')[1:])
                     ).save()
                     UrlData(url="/chapitre/"+str(number)+"/"+slugify(title),
-                    slug="/c"+str(number) 
-                    ).save()    
-                    print( "chapter : " + title)                
+                    slug="/c"+str(number)
+                    ).save()
+                    print( "chapter : " + title)
                 else:
                     Chapter(
                             number= number,
@@ -37,15 +39,15 @@ class Command(BaseCommand):
                             title=title,
                             id= id,
                             content=strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:])),
-                            text ='\n'.join(open(file,encoding='utf-8').read().split('\n')[1:]),                       
+                            text ='\n'.join(open(file,encoding='utf-8').read().split('\n')[1:]),
                             main_title = title.split(',', 1)[0],
                             sub_title = title.split(',', 1)[1]
                         ).save()
                     print( "chapter : " + title)
                     UrlData(url="chapitre/"+str(number)+"/"+slugify(title),
-                    slug="/c"+str(number) 
+                    slug="/c"+str(number)
                     ).save()
-                id += 1              
+                id += 1
                 continue
             chapter_number = file.split('chapitre-')[1].split(os.path.sep)[0]
             chapter = Chapter.objects.get(number=chapter_number)
@@ -63,8 +65,8 @@ class Command(BaseCommand):
             ).save()
             print( "article : " + title)
             UrlData(url="/section/"+str(number)+"/"+slugify(title),
-                    slug="/s"+str(number) 
+                    slug="/s"+str(number)
                     ).save()
-    
+
 
             id +=1
