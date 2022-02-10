@@ -24,6 +24,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+def simple_md_to_html(md):
+    CITATION_RE = r'(\*)([^\*]+)\1'
+    QUOTE_RE = r'(\_)([^\_]+)\1'
+    import re
+    md = re.sub(QUOTE_RE,r'<span class="quote">\2</span>',md)
+    md = re.sub(CITATION_RE,r'<span class="citation">\2</span>',md)
+    return md
+
 def home(request):
     return render(request, "newhome.html",{ 'host': settings.PROD_HOST})
     return render(request, "home.html")
@@ -87,6 +95,8 @@ def part(request, n, slug=''):
             next = None
 
     part.chapter_ordered = sorted(part.chapter_set.all(),key=lambda x:int(x.number))
+    part.forewords = simple_md_to_html(part.forewords)
+
     return render(request, "part.html", {
         'host': settings.PROD_HOST,
         'subject': part,
@@ -213,6 +223,7 @@ def section(request, n, slug,m='None'):
 
 
 
+
     searchterms = request.GET.get('q','').replace(',','|')
     def highlight(item):
         return re.sub(r'('+searchterms+')',r'<mark>\1</mark>',item)
@@ -230,6 +241,7 @@ def section(request, n, slug,m='None'):
 
     article.title_high = highlight(article.title) if searchterms else article.title
 
+    article.forewords = simple_md_to_html(article.forewords)
 
     return render(request, "section.html", {
         'host': settings.PROD_HOST,

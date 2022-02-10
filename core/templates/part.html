@@ -40,7 +40,8 @@
                         <div class="subject-body">
                             <div class="semi-lead subject-foreword">
                                 <p>
-                                   {{ subject.forewords |linebreaksbr | safe }}
+
+                                   {{ subject.forewords | safe | linebreaksbr  }}
                              </p>
                         </div>
                     </section>

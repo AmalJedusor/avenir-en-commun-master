@@ -103,7 +103,6 @@ class Command(BaseCommand):
                     article.save()
 
                 if "Afterwords" in output:
-                    print('#############################')
                     forewords = output["Afterwords"]
                     article = Article.objects.get(number = str(number))
                     article.afterwords = forewords

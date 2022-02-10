@@ -21,7 +21,10 @@
 
 
 
-
+.citation {
+  font-style: italic;
+  font-weight: bold;
+}
 
 html {
     font-family: sans-serif;
