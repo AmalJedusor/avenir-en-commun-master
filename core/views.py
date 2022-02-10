@@ -475,3 +475,21 @@ def grid_page(request,p,gp):
     else:
         measures = mesures_list[(gp-1)*grid_nbitems:gp*grid_nbitems]
     return render(request, "visuels/grid_page.html",dict(mesures=measures))
+
+import unidecode
+
+
+def visuels(request,p=0,gp=1):
+    chapitres=sorted(Chapter.objects.all(), key=lambda x:int(x.number))
+    q = request.GET.get('q','')
+    measures = [m for m in mesures_list if (p==0 or m['nchapitre'] == int(p))]
+    if q!='':
+        import unidecode
+        uq = ' '+unidecode.unidecode(q).lower()+' '
+        measures = [m for m in measures if uq in m['mesure_search']]
+    if gp>0:
+        measures=measures[(gp-1)*grid_nbitems:gp*grid_nbitems]
+    else:
+        measures=measures[:grid_nbitems]
+
+    return render(request, "visuels/grid.html",dict(p=str(p),q=q,mesures=measures,chapitres=chapitres))

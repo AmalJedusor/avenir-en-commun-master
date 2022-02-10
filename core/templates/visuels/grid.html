@@ -31,8 +31,8 @@
             <div class="col-xs-4 col-md-1 col-lg-1">
               <span class="subtitle">Chapitre</span>
             </div>
-            <div class="col-xs-8 col-md-8 col-lg-9">
-              <select  onchange="window.location = '/visuels/'+this.options[this.selectedIndex].value;" class="form-control border-20" data-val="true" data-val-number="The field Chapitre must be a number."
+            <div class="col-xs-12 col-md-6 col-lg-7">
+              <select onchange="search();" id="visuchap" class="form-control border-20" data-val="true" data-val-number="The field Chapitre must be a number."
                 data-val-required="The Chapitre field is required." id="Chapitre" name="Chapitre">
                 <option {% if p == '0' %}selected="selected"{% endif %} value="0">Tous</option>
                 {% for chapter in chapitres %}
@@ -40,10 +40,16 @@
                 {% endfor %}
               </select>
             </div>
-            <!--<div class="col-xs-12 col-md-3 col-lg-2">
-              <button class="btn border-20 btn-block btn-kootour-bold btn-search" type="submit">Filtrer</button>
+            <div class="col-xs-12 col-md-4 col-lg-5">
+              <!--<input type="text" id="visusearch" autocomplete="off" class="form-control" placeholder="Ex: Partage, écologie…"></span></div>-->
+              <div class="input-group">
+                <input onkeypress="handle(event);" id="visusearch" class="form-control border-20" value="{{q}}" placeholder="Ex: école">
+                <span class="input-group-btn border-20">
+                <button onclick="search();" id="visusearch_button" class="btn btn-default"><span class="sr-only">Rechercher visuel</span><i class="fa fa-fw fa-search" aria-hidden="true"></i></button>
+                </span>
+              </div>
 
-            </div>-->
+            </div>
 
 
           </section>
@@ -60,8 +66,22 @@
   </div>
 </div>
 <script>
+
+  function handle(e){
+          if(e.keyCode === 13){
+              e.preventDefault(); // Ensure it is only this code that runs
+              search();
+          }
+  }
+  function search() {
+    textsearch = document.getElementById('visusearch').value;
+    chapsearch = document.getElementById('visuchap').selectedIndex;
+    window.location = '/visuels/'+chapsearch+'?q='+textsearch;
+  }
+
   function getPath() {
-      return '/visuelsp/{{p}}/'+ (2+this.loadCount);
+      console.log(this.loadCount);
+      return '/visuels/{{p}}/'+ (2+this.loadCount)+ '?q={{q}}';
   }
   //-------------------------------------//
 

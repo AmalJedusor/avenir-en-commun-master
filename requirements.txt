@@ -10,3 +10,4 @@ elasticsearch-dsl>=5,<6
 requests
 pandas
 thefuzz
+unidecode

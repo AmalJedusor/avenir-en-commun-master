@@ -93,7 +93,12 @@ class Command(BaseCommand):
                 mes.append(hash)
                 mesures.append(mes)
 
-        mesures_dict = dict(('s{s}m{m}'.format(s=nsection,m=nmesure),dict(shortlink='s{s}m{m}'.format(s=nsection,m=nmesure),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,nmesure=nmesure,mesure=mesure,cle=cle,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,nmesure,mesure,cle,adjust,new,hash in mesures)
+        def make_searchable(s):
+            import unidecode
+            import re
+            return ' '+re.sub(r"[^a-z ]"," ",unidecode.unidecode(s.lower()))+' '
+
+        mesures_dict = dict(('s{s}m{m}'.format(s=nsection,m=nmesure),dict(shortlink='s{s}m{m}'.format(s=nsection,m=nmesure),npartie=npartie,partie=partie,nchapitre=nchapitre,chapitre=chapitre,nsection=nsection,section=section,nmesure=nmesure,mesure=mesure,mesure_search=make_searchable(mesure),cle=cle,adjust=adjust,hash=hash)) for npartie,partie,nchapitre,chapitre,nsection,section,nmesure,mesure,cle,adjust,new,hash in mesures)
         import json
         with open(mesures_path,'w') as f:
             f.write(json.dumps(mesures_dict))
