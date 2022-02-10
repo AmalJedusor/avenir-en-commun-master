@@ -423,6 +423,14 @@ section.laec-def .title {
     color: var(--aec_violet)
 }
 
+section.laec-def .title2 {
+    font-family: Apotek Comp;
+    font-size: 32px;
+    color: var(--aec_violet)
+}
+
+
+
 section.laec-def .title hr {
     width: 50%;
     border-color: var(--aec_violet);

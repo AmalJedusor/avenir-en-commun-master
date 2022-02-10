@@ -49,7 +49,7 @@ def toc(request):
 
 def mentions(request):
 
-    return render(request, "mentions-legales.html")
+    return render(request, "mentions-legales-new.html")
 
 def shorten_text(txt,length):
     if len(txt)>length and length>3:
