@@ -4,7 +4,7 @@ from core import views
 #from .views import MySearchView
 from haystack.generic_views import SearchView
 
-#handler404 = 'core.views.error_404'
+handler404 = 'core.views.error_404'
 
 urlpatterns = [
     path('', views.home),
