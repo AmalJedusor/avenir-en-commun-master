@@ -49,7 +49,6 @@ def load_nav_tree():
     return nav
 
 def toc(request):
-    build_nav_tree()
     parts = Part.objects.all()
     for p in parts:
         p.chapters_ordered = []
