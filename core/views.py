@@ -40,39 +40,6 @@ def home(request):
 def measure(request,n,m):
     redirect(f'/s',n,"slfksksf",m)
 
-def build_nav_tree():
-    nav = [dict(id=p.id, number=p.number, entity="part") for p in Part.objects.all()]
-
-    nav += [ dict(id=c.id, number=c.number, entity="chapter") for c in Chapter.objects.all()]
-    nav += [ dict(id=a.id, number=a.number,entity="section") for a in Article.objects.all()]
-    nav.sort(key=lambda x:int(x['id']))
-
-    def get_next(nav,i):
-        i += 1
-        while i<len(nav) and nav[i]['entity']=='chapter':
-            i += 1
-        return dict(next_id=i,next_entity=nav[i]['entity']) if i<len(nav) else dict(next_id = None,next_entity = None)
-
-    def get_prev(nav,i):
-        i -= 1
-        while i>0 and (nav[i]['entity']!='section'):
-            i -= 1
-        return dict(prev_id=i,prev_entity=nav[i]['entity']) if i>=0 else dict(prev_id = None,prev_entity = None)
-
-    for i,n in enumerate(nav):
-        n.update(get_next(nav,i))
-        n.update(get_prev(nav,i))
-
-    # Custom chapire 12 "Europe"
-    nav[84].update(next_id=85, next_entity="custom_europe")
-    nav[85].update(entity="custom_europe")
-    nav[86].update(prev_id=85, prev_entity="custom_europe")
-
-    logging.warning(nav)
-    import json
-    import os
-    with open(os.path.join('core','data','navtree.json'),'w') as f:
-        f.write(json.dumps(nav))
 
 def load_nav_tree():
     import json

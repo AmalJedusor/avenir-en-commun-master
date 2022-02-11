@@ -5,11 +5,12 @@ from django.template.defaultfilters import slugify
 from django.utils.html import strip_tags
 from core.models import Chapter, Article, UrlData, Part, Measure
 
-def build_nav_tree():
-    nav = [dict(id=p.id, entity="part") for p in Part.objects.all()]
 
-    nav += [ dict(id=c.id, entity="chapter") for c in Chapter.objects.all()]
-    nav += [ dict(id=a.id, entity="section") for a in Article.objects.all()]
+def build_nav_tree():
+    nav = [dict(id=p.id, number=p.number, entity="part") for p in Part.objects.all()]
+
+    nav += [ dict(id=c.id, number=c.number, entity="chapter") for c in Chapter.objects.all()]
+    nav += [ dict(id=a.id, number=a.number,entity="section") for a in Article.objects.all()]
     nav.sort(key=lambda x:int(x['id']))
 
     def get_next(nav,i):
@@ -20,7 +21,7 @@ def build_nav_tree():
 
     def get_prev(nav,i):
         i -= 1
-        while i>=0 and nav[i]['entity']!='section':
+        while i>0 and (nav[i]['entity']!='section'):
             i -= 1
         return dict(prev_id=i,prev_entity=nav[i]['entity']) if i>=0 else dict(prev_id = None,prev_entity = None)
 
@@ -28,7 +29,13 @@ def build_nav_tree():
         n.update(get_next(nav,i))
         n.update(get_prev(nav,i))
 
-    #logging.warning(nav)
+    # Custom chapire 12 "Europe"
+    
+    nav[84].update(next_id=85, next_entity="custom_europe")
+    nav[85].update(entity="custom_europe")
+    nav[86].update(prev_id=85, prev_entity="custom_europe")
+
+
     import json
     import os
     with open(os.path.join('core','data','navtree.json'),'w') as f:
@@ -47,7 +54,6 @@ class Command(BaseCommand):
             return s.replace('’',"'")
 
         id = 0
-        last_elt = None
         for file in sorted(glob.glob("programme-v2/partie-*/*")):
             if "!index.md" in file:
                 part_title = open(file,encoding='utf-8').read().split('\n')[0].strip()
@@ -56,12 +62,7 @@ class Command(BaseCommand):
                 content =strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:]))
 
 
-                if last_elt:
-                    last_elt.nav_suiv_id = id
-                    last_elt.nav_suiv_type = "partie"
-                    last_elt.save()
-
-                nav_last_elt = Part(
+                Part(
                         number= part_number,
                         slug=slugify(part_title),
                         entity="partie",
@@ -69,12 +70,7 @@ class Command(BaseCommand):
                         id=id,
                         main_title=part_title,
                         content= make_searchable(strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:]))),
-                        nav_prec_id = nav_last_elt.id if nav_last_elt else None,
-                        nav_prec_type = nav_last_elt.entity if nav_last_elt else None,
-                )
-
-                last_elt = nav_last_elt
-                last_elt.save()
+                ).save()
 
                 UrlData(url="/partie/"+str(part_number)+"/"+slugify(part_title),
                 slug="/p"+str(part_number) +"/"
@@ -88,7 +84,7 @@ class Command(BaseCommand):
                 if "!index.md" in subfile:
                     part = Part.objects.get(number=part_number)
 
-                    last_elt = Chapter(
+                    Chapter(
                             number= number,
                             slug=slugify(title),
                             entity="chapitre",
@@ -100,11 +96,8 @@ class Command(BaseCommand):
                             main_title = title.split(',', 1)[0],
                             sub_title = part_title,
                             part = part,
-                            nav_prec_id = nav_last_elt.id if nav_last_elt else None,
-                            nav_prec_type = nav_last_elt.entity if nav_last_elt else None,
-                        )
+                        ).save()
 
-                    last_elt.save()
 
                     UrlData(url="/chapitre/"+str(number)+"/"+slugify(title),
                     slug="/c"+str(number) +"/"
@@ -117,12 +110,8 @@ class Command(BaseCommand):
                 title = open(subfile,encoding='utf-8').read().split('\n')[0].strip()
                 number= int(subfile.split(os.path.sep)[-1].replace('.md', ''))
 
-                if last_elt:
-                    last_elt.nav_suiv_id = id
-                    last_elt.nav_suiv_type = "section"
-                    last_elt.save()
 
-                nav_last_elt = Article(
+                Article(
                     number=number,
                     slug=slugify(title),
                     entity="section",
@@ -132,16 +121,13 @@ class Command(BaseCommand):
                     content = make_searchable(strip_tags('\n'.join(open(subfile,encoding='utf-8').read().split('\n')[1:]))),
                     text='\n'.join(open(subfile,encoding='utf-8').read().split('\n')[1:]),
                     chapter=chapter,
-                    nav_prec_id = nav_last_elt.id if nav_last_elt else None,
-                    nav_prec_type = nav_last_elt.entity if nav_last_elt else None,
-                )
-
-                last_elt = nav_last_elt
-                nav_last_elt.save()
+                ).save()
 
                 UrlData(url="/section/"+str(number)+"/"+slugify(title),
                         slug="/s"+str(number)+"/"
                         ).save()
                 id +=1
+
+
 
         build_nav_tree()
