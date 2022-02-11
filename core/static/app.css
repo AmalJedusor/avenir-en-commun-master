@@ -13022,8 +13022,8 @@ ul#side-navigation span.alternate {
 }
 
 .toc .list-group-item h4 {
-
-    margin-bottom: 0
+  margin-bottom: 4px;
+      margin-top: 8px;
 }
 
 .toc .list-group-item .icon-bookmarked,
