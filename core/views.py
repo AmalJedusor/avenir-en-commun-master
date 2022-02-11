@@ -75,7 +75,7 @@ def part(request, n, slug=''):
             prev = Part.objects.get(id=int(part.id) -1)
             logging.warning(prev.title)
             prev.desc = "Partie précédente"
-            prev.url = "/part/"
+            prev.url = "/partie/"
         except Part.DoesNotExist:
             prev = None
 
@@ -90,7 +90,7 @@ def part(request, n, slug=''):
         try:
             next = Part.objects.get(id = int(part.number)+1)
             next.desc = "Partie suivante"
-            next.url = "/part/"
+            next.url = "/partie/"
         except Part.DoesNotExist:
             next = None
 
@@ -124,7 +124,7 @@ def chapter(request, n, slug=''):
             prev = Part.objects.get(number=int(chapter.part.number) -1)
 
             prev.desc = "Partie précédente"
-            prev.url = "/part/"
+            prev.url = "/partie/"
         except Part.DoesNotExist:
             prev = None
 
@@ -139,7 +139,7 @@ def chapter(request, n, slug=''):
         try:
             next = Part.objects.get(number = int(chapter.part.number)+1)
             next.desc = "Partie suivante"
-            next.url = "/part/"
+            next.url = "/partie/"
         except Part.DoesNotExist:
             next = None
 
@@ -192,7 +192,7 @@ def section(request, n, slug,m='None'):
         try:
             prev = Part.objects.get(number = int(article.chapter.part.number)-1)
             prev.desc = "Partie précédente"
-            prev.url = "/part/"
+            prev.url = "/partie/"
         except Part.DoesNotExist:
             prev = None
 
@@ -208,7 +208,7 @@ def section(request, n, slug,m='None'):
         try:
             next = Part.objects.get(number = int(article.id)+1)
             next.desc = "Partie suivante"
-            next.url = "/part/"
+            next.url = "/partie/"
         except Part.DoesNotExist:
             next = None
     if next is None:
