@@ -30,7 +30,8 @@
             <div class="list-group-item list-group-separator" aria-hidden="true">
 
             </div>
-            {% for chapter in part.chapter_set.all %}
+
+            {% for chapter in part.chapters_ordered %}
                <a
                   id="chapitre-{{chapter.number}}"
                   class="list-group-item toc-chapter toc-chapter-{{part.number}}"

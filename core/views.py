@@ -20,6 +20,7 @@ from django.conf import settings
 
 import logging
 
+
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
@@ -38,12 +39,60 @@ def home(request):
 
 def measure(request,n,m):
     redirect(f'/s',n,"slfksksf",m)
+
+def build_nav_tree():
+    nav = [dict(id=p.id, number=p.number, entity="part") for p in Part.objects.all()]
+
+    nav += [ dict(id=c.id, number=c.number, entity="chapter") for c in Chapter.objects.all()]
+    nav += [ dict(id=a.id, number=a.number,entity="section") for a in Article.objects.all()]
+    nav.sort(key=lambda x:int(x['id']))
+
+    def get_next(nav,i):
+        i += 1
+        while i<len(nav) and nav[i]['entity']=='chapter':
+            i += 1
+        return dict(next_id=i,next_entity=nav[i]['entity']) if i<len(nav) else dict(next_id = None,next_entity = None)
+
+    def get_prev(nav,i):
+        i -= 1
+        while i>0 and (nav[i]['entity']!='section'):
+            i -= 1
+        return dict(prev_id=i,prev_entity=nav[i]['entity']) if i>=0 else dict(prev_id = None,prev_entity = None)
+
+    for i,n in enumerate(nav):
+        n.update(get_next(nav,i))
+        n.update(get_prev(nav,i))
+
+    # Custom chapire 12 "Europe"
+    nav[84].update(next_id=85, next_entity="custom_europe")
+    nav[85].update(entity="custom_europe")
+    nav[86].update(prev_id=85, prev_entity="custom_europe")
+
+    logging.warning(nav)
+    import json
+    import os
+    with open(os.path.join('core','data','navtree.json'),'w') as f:
+        f.write(json.dumps(nav))
+
+def load_nav_tree():
+    import json
+    import os
+    with open(os.path.join('core','data','navtree.json'),'r') as f:
+        nav = json.loads(f.read())
+    return nav
+
 def toc(request):
+    build_nav_tree()
+    parts = Part.objects.all()
+    for p in parts:
+        p.chapters_ordered = []
+    for c in sorted(Chapter.objects.all(),key=lambda x:int(x.number)):
+        parts[int(c.part.number)].chapters_ordered.append(c)
 
     return render(request, "toc.html",{
         'host': settings.PROD_HOST,
-        'chapters': Chapter.objects.all(),
-        'parts': Part.objects.all()
+        #'chapters': chapter_orders,
+        'parts': parts
 
     })
 
@@ -57,46 +106,61 @@ def shorten_text(txt,length):
     return txt
 
 
+
+def get_prev_next(id):
+
+    nav = load_nav_tree()
+    previd = nav[id]['prev_id']
+    nextid = nav[id]['next_id']
+    logging.warning((previd,nav[nextid]))
+    if previd:
+        if nav[previd]['entity'] == 'section':
+            prev  = Article.objects.get(id = previd)
+            prev.desc = "Section précédente"
+            prev.url = "/section/"
+
+        elif nav[previd]['entity'] == 'part':
+            prev = Part.objects.get(id = previd)
+            prev.desc = "Partie précédente"
+            prev.url = "/partie/"
+            prev.part_number = prev.number
+        elif nav[previd]['entity'] == 'custom_europe':
+            prev = Chapter.objects.get(id = previd)
+            prev.desc = "Préface chapitre"
+            prev.sub_title = ""
+            prev.url = "/chapitre/"
+
+    else:
+        prev = None
+
+    if nextid:
+        if nav[nextid]['entity'] == 'section':
+            next = Article.objects.get(id = nextid)
+            next.desc = "Section suivante"
+            next.url = "/section/"
+        elif nav[nextid]['entity'] == 'part':
+            next  = Part.objects.get(id = nextid)
+            next.desc = "Partie suivante"
+            next.url = "/partie/"
+            next.part_number = next.number
+        elif nav[nextid]['entity'] == 'custom_europe':
+            next = Chapter.objects.get(id = nextid)
+            next.desc = "Préface chapitre Europe"
+            prev.sub_title = ""
+            next.url = "/chapitre/"
+    else:
+        next = None
+
+    return prev,next
+
 def part(request, n, slug=''):
     part = Part.objects.get(number=n)
-    logging.warning(part.shortlink)
-    prev = None
-    next = None
-    print( part.main_title)
-    try:
-        prev  = Article.objects.get(id = int(part.id)-1)
-        prev.desc = "Section précédente"
-        prev.url = "/section/"
-    except Article.DoesNotExist:
-        prev = None
-    if prev is None:
-        try:
-            print(part.id)
-            prev = Part.objects.get(id=int(part.id) -1)
-            logging.warning(prev.title)
-            prev.desc = "Partie précédente"
-            prev.url = "/part/"
-        except Part.DoesNotExist:
-            prev = None
 
-
-    try:
-        next  = Article.objects.get(id = int(part.id)+2)
-        next.desc = "Section suivante"
-        next.url = "/section/"
-    except Article.DoesNotExist:
-        next = None
-    if next is None:
-        try:
-            next = Part.objects.get(id = int(part.number)+1)
-            next.desc = "Partie suivante"
-            next.url = "/part/"
-        except Part.DoesNotExist:
-            next = None
+    prev,next = get_prev_next(part.id)
 
     part.chapter_ordered = sorted(part.chapter_set.all(),key=lambda x:int(x.number))
     part.forewords = simple_md_to_html(part.forewords)
-
+    part.part_number = part.number
     return render(request, "part.html", {
         'host': settings.PROD_HOST,
         'subject': part,
@@ -108,41 +172,12 @@ def part(request, n, slug=''):
         'title' : part.title,
     })
 
+
+
 def chapter(request, n, slug=''):
     chapter = Chapter.objects.get(number=n)
-    prev = None
-    next = None
-    print( chapter.main_title)
-    try:
-        prev  = Article.objects.get(id = int(chapter.id)-1)
-        prev.desc = "Section précédente"
-        prev.url = "/section/"
-    except Article.DoesNotExist:
-        prev = None
-    if prev is None:
-        try:
-            prev = Part.objects.get(number=int(chapter.part.number) -1)
 
-            prev.desc = "Partie précédente"
-            prev.url = "/part/"
-        except Part.DoesNotExist:
-            prev = None
-
-
-    try:
-        next  = Article.objects.get(id = int(chapter.id)+1)
-        next.desc = "Section suivante"
-        next.url = "/section/"
-    except Article.DoesNotExist:
-        next = None
-    if next is None:
-        try:
-            next = Part.objects.get(number = int(chapter.part.number)+1)
-            next.desc = "Partie suivante"
-            next.url = "/part/"
-        except Part.DoesNotExist:
-            next = None
-
+    prev,next = get_prev_next(chapter.id)
 
     return render(request, "chapter.html", {
         'host': settings.PROD_HOST,
@@ -158,8 +193,6 @@ def chapter(request, n, slug=''):
 def section(request, n, slug,m='None'):
 
     article = Article.objects.get(number=n)
-    logging.warning(article.shortlink)
-    logging.warning(m)
     res = article.measures
     article.measures =  Measure.objects.filter(section_id= article.number).exclude(key=True)
     try:
@@ -167,61 +200,7 @@ def section(request, n, slug,m='None'):
     except Measure.DoesNotExist:
       article.key = None
 
-
-    prev = None
-    next = None
-
-    #previous
-    try:
-        prev = Article.objects.get(id = int(article.id)-1)
-        prev.desc = "Section précédente"
-        prev.url = "/section/"
-    except Article.DoesNotExist:
-        prev = None
-    if prev is None:
-        try:
-            prev = Chapter.objects.get(number = int(article.chapter.number) -1)
-            print(prev.title)
-            if prev is not None:
-                prev = Article.objects.get(number = int(article.number)-1)
-                prev.desc = "Section précédente"
-                prev.url = "/section/"
-        except Chapter.DoesNotExist:
-            prev = None
-    if prev is None:
-        try:
-            prev = Part.objects.get(number = int(article.chapter.part.number)-1)
-            prev.desc = "Partie précédente"
-            prev.url = "/part/"
-        except Part.DoesNotExist:
-            prev = None
-
-
-    #next
-    try:
-         next = Article.objects.get(id = int(article.id)+1)
-         next.desc = "Section suivante"
-         next.url = "/section/"
-    except Article.DoesNotExist:
-        next = None
-    if next is None:
-        try:
-            next = Part.objects.get(number = int(article.id)+1)
-            next.desc = "Partie suivante"
-            next.url = "/part/"
-        except Part.DoesNotExist:
-            next = None
-    if next is None:
-        try:
-            next = Chapter.objects.get(number = int(article.chapter.number) +1)
-            if next is not None:
-                next = Article.objects.get(number = int(article.number)+1)
-                next.desc = "Section suivante"
-                next.url = "/section/"
-        except Chapter.DoesNotExist:
-            next = None
-
-
+    prev,next = get_prev_next(article.id)
 
 
     searchterms = request.GET.get('q','').replace(',','|')
@@ -242,6 +221,7 @@ def section(request, n, slug,m='None'):
     article.title_high = highlight(article.title) if searchterms else article.title
 
     article.forewords = simple_md_to_html(article.forewords)
+
 
     return render(request, "section.html", {
         'host': settings.PROD_HOST,
