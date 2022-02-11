@@ -16,11 +16,8 @@
          {% include '_sidebar.html' %}
          <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
             <nav class="toc list-group" role="navigation">
-             
-              
-            <div class="list-group-item list-group-separator" aria-hidden="true">
-               <p class="sidelines"><i class="fa fa-fw fa-scissors"></i></p>
-            </div>
+
+
             {% for part in parts %}
             <a
                id="partie-{{part.number}}"
@@ -28,18 +25,18 @@
                href="/part/{{part.number}}/{{part.slug}}">
                <i class="fa fa-fw fa-2x fa-pull-right icon icon-part-{{part.number}}" aria-hiddent="true"></i>
                                  <h3>{{part.title}}</h3>
-                             
+
             </a>
             <div class="list-group-item list-group-separator" aria-hidden="true">
-             
+
             </div>
             {% for chapter in part.chapter_set.all %}
                <a
                   id="chapitre-{{chapter.number}}"
                   class="list-group-item toc-chapter toc-chapter-{{part.number}}"
                   href="/chapitre/{{chapter.number}}/{{chapter.slug}}">
-                
-                  {% if chapter.main_title %}                    
+
+                  {% if chapter.main_title %}
                    <h4> {{chapter.main_title}}</h4>
                   {% else %}
                 <span class="alternate">{{ chapter.title }}</span>
@@ -54,7 +51,7 @@
                   </a>
                   {% endfor %}
                   <div class="list-group-item list-group-separator" aria-hidden="true">
-                   
+
                   </div>
             {% endfor %}
             <div class="list-group-item list-group-separator" aria-hidden="true">
@@ -68,7 +65,7 @@
          </div>
       </div>
       {% include '_footer.html' %}
-    
+
    </body>
 </html>
 {% endblock body %}
