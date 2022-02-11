@@ -19,7 +19,8 @@ urlpatterns = [
 
     re_path(r'^s(?P<n>[0-9]{1,2})/$',views.redirect_short),
     re_path(r'^s(?P<n>[0-9]{1,2})m(?P<m>[0-9]{1,3})/$',views.redirect_short_measure),
-    path('c<slug:n>',views.redirect_short),
+    path('c<slug:n>/',views.redirect_short_cp),
+    path('p<slug:n>/',views.redirect_short_cp),
     path('visuel/<slug:v>', views.visuel),
     path('grid',views.grid),
     path('grid/<int:p>',views.grid_page)

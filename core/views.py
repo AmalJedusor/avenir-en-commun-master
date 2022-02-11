@@ -365,6 +365,12 @@ def shorten_text(txt,length):
         txt = txt[:length-3] + '...'
     return txt
 
+def redirect_short_cp(request,n):
+     print(request.path)
+     content = UrlData.objects.get(slug=request.path)
+     print(content)
+     return redirect( content.url,n = n)
+
 def redirect_short(request,n):
      content = UrlData.objects.get(slug=request.path)
 
