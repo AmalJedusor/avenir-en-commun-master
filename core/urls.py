@@ -11,7 +11,7 @@ urlpatterns = [
     path('sommaire', views.toc),
     path('chapitre/<slug:n>/<slug:slug>', views.chapter),
     path('section/<slug:n>/<slug:slug>', views.section),
-    path('part/<slug:n>/<slug:slug>', views.part),
+    path('partie/<slug:n>/<slug:slug>', views.part),
     path('hasard', views.random),
     path('fin/', views.fin),
     path('page/mentions-legales', views.mentions),
