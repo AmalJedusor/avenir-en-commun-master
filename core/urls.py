@@ -3,6 +3,9 @@ from django.conf.urls import url
 from core import views
 #from .views import MySearchView
 from haystack.generic_views import SearchView
+
+handler404 = 'core.views.error_404'
+
 urlpatterns = [
     path('', views.home),
     path('sommaire', views.toc),
@@ -22,6 +25,9 @@ urlpatterns = [
     path('c<slug:n>/',views.redirect_short_cp),
     path('p<slug:n>/',views.redirect_short_cp),
     path('visuel/<slug:v>', views.visuel),
-    path('grid',views.grid),
-    path('grid/<int:p>',views.grid_page)
+    path('visuels',views.visuels),
+    path('visuels/<int:p>',views.visuels),
+    path('visuels/<int:p>/<int:gp>',views.visuels),
+    path('404',views.error_404),
+
 ]

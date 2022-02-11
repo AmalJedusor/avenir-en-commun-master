@@ -1,49 +1,14 @@
-<div class="panel panel-default panel-filters">
-  <div class="panel-body">
 
-    <div class="container-fluid mt-4">
-
-      <section class="row grid-p">
-
-
-        <div class="col-xs-4 col-md-1 col-lg-1">
-          <span class="subtitle">Chapitre</span>
-        </div>
-        <div class="col-xs-8 col-md-8 col-lg-9">
-          <select class="form-control border-20" data-val="true" data-val-number="The field Chapitre must be a number."
-            data-val-required="The Chapitre field is required." id="Chapitre" name="Chapitre">
-            <option selected="selected" value="1">Tous</option>
-            <option value="2">Chapitre 1</option>
-            <option value="3">Chapitre 2</option>
-          </select>
-        </div>
-        <div class="col-xs-12 col-md-3 col-lg-2">
-          <button class="btn border-20 btn-block btn-kootour-bold btn-search" type="submit">Filtrer</button>
-
-        </div>
-
-
-      </section>
-
-    </div>
-  </div>
-</div>
 
 
 <!--class continer-->
 <div class="row copy-img">
   {% for m in mesures %}
-  <div class="col-xs-12 col-sm-6 col-lg-4">
+  <div class="grid__item col-xs-12 col-sm-6 col-lg-4">
     <div class="panel panel-default">
-      <div class="panel-body">
+      <a href="/{{m.shortlink}}">
         <img class="img-responsive" src="/static/visuels/{{m.shortlink}}.jpg" />
-      </div>
-      <div class="panel-footer">
-        <div class="panel-footer-labels">
-          <span class="label label-primary">Primary</span>
-          <span class="label label-primary btn-copy" data-link="/static/visuels/{{m.shortlink}}.jpg">Lien <i class="fa fa-copy" style="pointer-events: none;"></i></span>
-        </div>
-      </div>
+      </a>
     </div>
   </div>
   {% endfor %}

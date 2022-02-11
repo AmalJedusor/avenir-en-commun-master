@@ -12,8 +12,9 @@ class Command(BaseCommand):
         Chapter.objects.all().delete()
         Part.objects.all().delete()
 
+        def make_searchable(s):
+            return s.replace('’',"'")
 
-        Part.objects.all().delete()
         id = 0
         for file in sorted(glob.glob("programme-v2/partie-*/*")):
             if "!index.md" in file:
@@ -25,10 +26,10 @@ class Command(BaseCommand):
                         number= part_number,
                         slug=slugify(part_title),
                         entity="partie",
-                        title=part_title,
+                        title=make_searchable(part_title),
                         id=id,
                         main_title=part_title,
-                        content= strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:])),
+                        content= make_searchable(strip_tags('\n'.join(open(file,encoding='utf-8').read().split('\n')[1:]))),
                 ).save()
                 UrlData(url="/partie/"+str(part_number)+"/"+slugify(part_title),
                 slug="/p"+str(part_number) +"/"
@@ -45,10 +46,10 @@ class Command(BaseCommand):
                             number= number,
                             slug=slugify(title),
                             entity="chapitre",
-                            title=title,
+                            title=make_searchable(title),
                             part_number=part_number,
                             id= id,
-                            content=strip_tags('\n'.join(open(subfile,encoding='utf-8').read().split('\n')[1:])),
+                            content=make_searchable(strip_tags('\n'.join(open(subfile,encoding='utf-8').read().split('\n')[1:]))),
                             text ='\n'.join(open(subfile,encoding='utf-8').read().split('\n')[1:]),
                             main_title = title.split(',', 1)[0],
                             sub_title = part_title,
@@ -64,14 +65,15 @@ class Command(BaseCommand):
                 chapter = Chapter.objects.get(number=chapter_number)
                 title = open(subfile,encoding='utf-8').read().split('\n')[0].strip()
                 number= int(subfile.split(os.path.sep)[-1].replace('.md', ''))
+
                 Article(
                     number=number,
                     slug=slugify(title),
                     entity="section",
-                    title=title,
+                    title=make_searchable(title),
                     part_number=part_number,
                     id=id,
-                    content=strip_tags('\n'.join(open(subfile,encoding='utf-8').read().split('\n')[1:])),
+                    content = make_searchable(strip_tags('\n'.join(open(subfile,encoding='utf-8').read().split('\n')[1:]))),
                     text='\n'.join(open(subfile,encoding='utf-8').read().split('\n')[1:]),
                     chapter=chapter,
                 ).save()

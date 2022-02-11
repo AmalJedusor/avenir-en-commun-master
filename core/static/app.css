@@ -9,6 +9,23 @@
 
 /* normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+@font-face {
+  font-family:'icomoon';
+  src:url("/static/icomoon.eot?aqfmk4");
+  src:url("/static/icomoon.eot?aqfmk4#iefix") format('embedded-opentype'), url("/static/icomoon.woff?aqfmk4") format('woff'), url("/static/icomoon.ttf?aqfmk4") format('truetype'), url("/static/icomoon.svg?aqfmk4#icomoon") format('svg');
+  font-weight:normal;
+  font-style:normal;
+}
+
+.fa {display:inline-block;font:normal normal normal 14px/1 icomoon;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+
+
+.citation {
+  font-style: italic;
+  font-weight: bold;
+}
+
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -627,8 +644,8 @@ mark,
     text-transform: capitalize
 }
 
-.text-muted {
-    color: #c3c3c3
+.text-grey {
+    color: #b9b9b9
 }
 
 .text-primary {
@@ -4873,6 +4890,8 @@ a.label:focus {
     cursor: pointer
 }
 
+
+
 .label-default {
     background-color: #c3c3c3
 }
@@ -7626,6 +7645,10 @@ button.close {
 }
 
 .fa-phi:before {
+    content: "\e901"
+}
+
+.fa.icon-part-0:before {
     content: "\e901"
 }
 
@@ -13131,9 +13154,12 @@ ul#side-navigation span.alternate {
     -webkit-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
-    text-shadow: 0.5px 0.5px 0 #da8270, 1px 1px 0 #d97f6c, 1.5px 1.5px 0 #d87b67, 2px 2px 0 #d77863, 2.5px 2.5px 0 #d6745f, 3px 3px 0 #d6745f, 3.5px 3.5px 0 #d5715b, 3px 3px 10px rgba(0, 0, 0, 0.3)
+    text-shadow: 0.5px 0.5px 0 #9a7fe4, 1px 1px 0 #9a7fe4, 1.5px 1.5px 0 #9a7fe4, 2px 2px 0 #9a7fe4, 1.5px 1.5px 10px rgb(0 0 0 / 30%);
 }
-
+.page-search .jumbotron input.search-terms::placeholder {
+  color: white;
+  opacity: 0.9;
+}
 .page-search .jumbotron .search-terms:focus {
     -webkit-box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
     box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3)
@@ -13158,6 +13184,7 @@ ul#side-navigation span.alternate {
     margin-bottom: 6.25px;
     font-size: 18px;
     color: #c94e34;
+    overflow-wrap: break-word;
     font-family: Roboto, "Segoe UI", "Helvetica Neue", Helvetica, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
     font-weight: 500;
     font-style: normal

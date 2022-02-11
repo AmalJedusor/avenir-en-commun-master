@@ -35,6 +35,8 @@ ELASTICSEARCH_HOST = env('ELASTICSEARCH_HOST')
 ELASTICSEARCH_PORT = env('ELASTICSEARCH_PORT')
 PROD_HOST = env('PROD_HOST')
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -118,6 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'core.search_backends.CustomElasticSearchEngine',
+        #'ENGINE': 'core.search_backends.AsciifoldingElasticSearchEngine',
         'URL': 'http://'+ELASTICSEARCH_HOST+':'+ELASTICSEARCH_PORT+'/',
         'TIMEOUT': 60 * 5,
         'INCLUDE_SPELLING': True,
@@ -137,7 +140,7 @@ ELASTICSEARCH_INDEX_SETTINGS   = {
         "properties" : {
           "content" : {
             "type" : "text",
-            "analyzer" : "snowball"
+            "analyzer" : "ascii_analyser"
           },
           "content_auto" : {
             "type" : "text",
@@ -146,7 +149,7 @@ ELASTICSEARCH_INDEX_SETTINGS   = {
 
           "title" : {
             "type" : "text",
-            "analyzer" : "snowball"
+            "analyzer" : "ascii_analyser"
           },
           "title_auto" : {
             "type" : "text",
@@ -158,15 +161,19 @@ ELASTICSEARCH_INDEX_SETTINGS   = {
   'settings': {
                 "analysis": {
                     "analyzer": {
+                        "ascii_analyser" : {
+                            "tokenizer" : "standard",
+                            "filter" : ["standard", "asciifolding", "snowfrench", "lowercase","french_elision"]
+                        },
                         "ngram_analyzer": {
                             "type": "custom",
                             "tokenizer": "lowercase",
-                            "filter": ["haystack_ngram"]
+                            "filter": ["haystack_ngram","asciifolding"]
                         },
                         "edgengram_analyzer": {
                             "type": "custom",
                             "tokenizer": "lowercase",
-                            "filter": ["haystack_edgengram"]
+                            "filter": ["haystack_edgengram","asciifolding"]
                         }
                     },
                     "tokenizer": {
@@ -183,6 +190,19 @@ ELASTICSEARCH_INDEX_SETTINGS   = {
                         }
                     },
                     "filter": {
+                        "french_elision": {
+                              "type":         "elision",
+                              "articles_case": True,
+                              "articles": [
+                                  "l", "m", "t", "qu", "n", "s",
+                                  "j", "d", "c", "jusqu", "quoiqu",
+                                  "lorsqu", "puisqu"
+                                ]
+                        },
+                        "snowfrench": {
+                            "type": "snowball",
+                            "language": "French"
+                        },
                         "haystack_ngram": {
                             "type": "nGram",
                             "min_gram": 6,

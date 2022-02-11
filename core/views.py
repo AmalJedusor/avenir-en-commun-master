@@ -24,6 +24,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+def simple_md_to_html(md):
+    CITATION_RE = r'(\*)([^\*]+)\1'
+    QUOTE_RE = r'(\_)([^\_]+)\1'
+    import re
+    md = re.sub(QUOTE_RE,r'<span class="quote">\2</span>',md)
+    md = re.sub(CITATION_RE,r'<span class="citation">\2</span>',md)
+    return md
+
 def home(request):
     return render(request, "newhome.html",{ 'host': settings.PROD_HOST})
     return render(request, "home.html")
@@ -38,9 +46,17 @@ def toc(request):
         'parts': Part.objects.all()
 
     })
+
 def mentions(request):
 
-    return render(request, "mentions-legales.html")
+    return render(request, "mentions-legales-new.html")
+
+def shorten_text(txt,length):
+    if len(txt)>length and length>3:
+        txt = txt[:length-3] + '...'
+    return txt
+
+
 def part(request, n, slug=''):
     part = Part.objects.get(number=n)
     logging.warning(part.shortlink)
@@ -57,7 +73,7 @@ def part(request, n, slug=''):
         try:
             print(part.id)
             prev = Part.objects.get(id=int(part.id) -1)
-
+            logging.warning(prev.title)
             prev.desc = "Partie précédente"
             prev.url = "/part/"
         except Part.DoesNotExist:
@@ -78,6 +94,8 @@ def part(request, n, slug=''):
         except Part.DoesNotExist:
             next = None
 
+    part.chapter_ordered = sorted(part.chapter_set.all(),key=lambda x:int(x.number))
+    part.forewords = simple_md_to_html(part.forewords)
 
     return render(request, "part.html", {
         'host': settings.PROD_HOST,
@@ -85,6 +103,7 @@ def part(request, n, slug=''):
         'content': markdown.Markdown().convert(part.content),
         'next': next,
         'prev': prev,
+        'description': shorten_text(part.forewords,124),
         'book_navigation':None,
         'title' : part.title,
     })
@@ -129,6 +148,7 @@ def chapter(request, n, slug=''):
         'host': settings.PROD_HOST,
         'subject': chapter,
         'content': markdown.Markdown().convert(chapter.text),
+        'description':'',
         'next': next,
         'prev': prev,
         'book_navigation':None,
@@ -203,6 +223,7 @@ def section(request, n, slug,m='None'):
 
 
 
+
     searchterms = request.GET.get('q','').replace(',','|')
     def highlight(item):
         return re.sub(r'('+searchterms+')',r'<mark>\1</mark>',item)
@@ -219,8 +240,8 @@ def section(request, n, slug,m='None'):
             m.text_high = highlight(m.text) if searchterms else m.text
 
     article.title_high = highlight(article.title) if searchterms else article.title
-    logging.warning(article.slug)
 
+    article.forewords = simple_md_to_html(article.forewords)
 
     return render(request, "section.html", {
         'host': settings.PROD_HOST,
@@ -228,6 +249,7 @@ def section(request, n, slug,m='None'):
         'content': markdown.Markdown().convert(article.text),
         'next': next,
         'prev': prev,
+        'description': shorten_text(article.forewords,124),
         'book_navigation':None,
         'title' : article.title,
     })
@@ -343,6 +365,10 @@ def recherche(request):
 
 
 
+def error_404(request,exception=None):
+    return render(request, "404.html", {})
+
+
 mesures_path = os.path.join('generation_visuels','mesures.json')
 if os.path.exists(mesures_path):
     with open(mesures_path,'r') as f:
@@ -360,10 +386,6 @@ else:
     sections_dict = {}
 
 
-def shorten_text(txt,length):
-    if len(txt)>length and length>3:
-        txt = txt[:length-3] + '...'
-    return txt
 
 def redirect_short_cp(request,n):
      print(request.path)
@@ -379,6 +401,7 @@ def redirect_short(request,n):
      if not section:
          return HttpResponseNotFound('<h1>Section inconnue</h1>')
 
+     return redirect(content.url)
      return render(request, "card.html", {
           'host': settings.PROD_HOST,
           'titre': shorten_text(re.sub(r'(\*)([^\*]+)\1',r'\2',section['chapitre']),50),
@@ -456,11 +479,38 @@ def visuel(request, v):
     return HttpResponseNotFound('<h1>Pas de visuel</h1>')
 
 
-grid_nbitems = 20
+grid_nbitems = 21
 
-def grid(request):
+def grid(request,p=0):
+    chapitres=sorted(Chapter.objects.all(), key=lambda x:int(x.number))
+    if p>0:
+        measures = [m for m in mesures_list if m['nchapitre'] == int(p)][:grid_nbitems]
+    else:
+        measures = mesures_list[:grid_nbitems]
 
-    return render(request, "visuels/grid.html",dict(mesures=mesures_list[:grid_nbitems]))
+    return render(request, "visuels/grid.html",dict(p=str(p),mesures=measures,chapitres=chapitres))
 
-def grid_page(request,p):
-    return render(request, "visuels/grid_page.html",dict(mesures=mesures_list[(p-1)*grid_nbitems:p*grid_nbitems]))
+def grid_page(request,p,gp):
+    if p>0:
+        measures = [m for m in mesures_list if m['nchapitre'] == int(p)][(gp-1)*grid_nbitems:gp*grid_nbitems]
+    else:
+        measures = mesures_list[(gp-1)*grid_nbitems:gp*grid_nbitems]
+    return render(request, "visuels/grid_page.html",dict(mesures=measures))
+
+import unidecode
+
+
+def visuels(request,p=0,gp=1):
+    chapitres=sorted(Chapter.objects.all(), key=lambda x:int(x.number))
+    q = request.GET.get('q','')
+    measures = [m for m in mesures_list if (p==0 or m['nchapitre'] == int(p))]
+    if q!='':
+        import unidecode
+        uq = ' '+unidecode.unidecode(q).lower()+' '
+        measures = [m for m in measures if uq in m['mesure_search']]
+    if gp>0:
+        measures=measures[(gp-1)*grid_nbitems:gp*grid_nbitems]
+    else:
+        measures=measures[:grid_nbitems]
+
+    return render(request, "visuels/grid.html",dict(p=str(p),q=q,mesures=measures,chapitres=chapitres, host=settings.PROD_HOST))

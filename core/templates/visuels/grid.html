@@ -2,17 +2,17 @@
 {% block bhead %}
 <!-- <link rel="stylesheet" href="/static/visuels/grid/grid.css"> -->
 <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script>
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+<!--<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>-->
+<style>
+  .grid__item {
+    transition: transform .2s;
+  }
+  .grid__item:hover {
+    transform: scale(1.1);
+  }
+</style>
 {% endblock %}
 {% block body %}
-<div class="visible-print-block text-center print-logotype" aria-hidden="true">
-  <img src="/img/logotype/livre-phi-laec-fr-mention-impression.svg" style="max-height: 70px; width: auto;"
-    alt="Logotype l'avenir en commun" data-no-svg-src="/img/logotype/livre-phi-laec-fr-mention-impression.png" />
-  <hr>
-  <small>Le programme de la
-    <strong>France insoumise</strong>
-  </small>
-</div>
 
 <div class="filters">
 
@@ -20,26 +20,96 @@
 
 <div class="container">
   <div class="wrap-container-main">
-    <div class="grid are-images-unloaded">
-      <div class="grid__col-sizer"></div>
-      <div class="grid__gutter-sizer"></div>
+    <div class="panel panel-default panel-filters">
+      <div class="panel-body">
+
+        <div class="container-fluid mt-4">
+
+          <section class="row grid-p">
+
+
+            <div class="col-xs-4 col-md-1 col-lg-1">
+              <span class="subtitle">Chapitre</span>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-7">
+              <select onchange="search();" id="visuchap" class="form-control border-20" data-val="true" data-val-number="The field Chapitre must be a number."
+                data-val-required="The Chapitre field is required." id="Chapitre" name="Chapitre">
+                <option {% if p == '0' %}selected="selected"{% endif %} value="0">Tous</option>
+                {% for chapter in chapitres %}
+                <option {% if chapter.number == p %}selected="selected"{% endif %} value="{{ chapter.number }}">{{ chapter.title }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="col-xs-12 col-md-4 col-lg-5">
+              <!--<input type="text" id="visusearch" autocomplete="off" class="form-control" placeholder="Ex: Partage, écologie…"></span></div>-->
+              <div class="input-group">
+                <input onkeypress="handle(event);" id="visusearch" class="form-control border-20" value="{{q}}" placeholder="Ex: école">
+                <span class="input-group-btn border-20">
+                <button onclick="search();" id="visusearch_button" class="btn btn-default"><span class="sr-only">Rechercher visuel</span><i class="fa fa-fw fa-search" aria-hidden="true"></i></button>
+                </span>
+              </div>
+
+            </div>
+
+
+          </section>
+
+        </div>
+      </div>
+    </div>
+    <div class="grid">
       {% include 'visuels/grid_page.html' %}
     </div>
 
-    <div class="page-load-status">
-      <div class="loader-ellips infinite-scroll-request">
-        <span class="loader-ellips__dot"></span>
-        <span class="loader-ellips__dot"></span>
-        <span class="loader-ellips__dot"></span>
-        <span class="loader-ellips__dot"></span>
-      </div>
-      <p class="infinite-scroll-last">End of content</p>
-      <p class="infinite-scroll-error">No more pages to load</p>
-    </div>
-    <script src="/static/visuels/grid/grid.js"></script>
+
 
   </div>
 </div>
+<script>
+
+  function handle(e){
+          if(e.keyCode === 13){
+              e.preventDefault(); // Ensure it is only this code that runs
+              search();
+          }
+  }
+  function search() {
+    textsearch = document.getElementById('visusearch').value;
+    chapsearch = document.getElementById('visuchap').selectedIndex;
+    window.location = '/visuels/'+chapsearch+'?q='+textsearch;
+  }
+
+  function getPath() {
+      console.log(this.loadCount);
+      return '/visuels/{{p}}/'+ (2+this.loadCount)+ '?q={{q}}';
+  }
+  //-------------------------------------//
+
+  let grid = document.querySelector('.grid');
+
+
+  //-------------------------------------//
+  // init Infinte Scroll
+
+  let infScroll = new InfiniteScroll( grid, {
+    path: getPath,
+    append: '.grid__item',
+  });
+
+  const copyLink = document.querySelector(".copy-img");
+
+  copyLink.addEventListener('click', e => {
+    if(e.target.classList.contains('btn-copy')) {
+      const link = window.location.origin + e.target.dataset.link;
+      e.target.classList.add('copied');
+      navigator.clipboard.writeText(link);
+      setTimeout(() => {
+        e.target.classList.remove('copied');
+      }, 1000);
+    }
+  })
+
+</script>
 {% include '_footer.html' %}
 </div>
 

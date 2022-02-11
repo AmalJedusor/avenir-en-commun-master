@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block html_class %}page-chapter  theme-part theme-part-{{subject.part_number}} {% endblock %}
+
+
 {% block body %}
 
 <body id="body">
@@ -48,10 +50,11 @@
                         <nav class="toc" role="navigation">
                             <ul class="toc list-group">
                                 {% for article in subject.article_set.all %}
-                                <a class="list-group-item toc-section toc-part-{{subject.part_number}}"
+                                <a class="list-group-item toc-section toc-chapter-{{subject.part_number}}"
                                     href="/section/{{article.number}}/{{article.slug}}">
                                     <span class="label label-default">{{article.number}}</span> {{article.title}}
                                 </a>
+
                                 {% endfor %}
                             </ul>
                         </nav>

@@ -4,8 +4,7 @@ S’adapter au système de la nature
 
 # Forewords
 
-« Sommes-nous donc hypnotisés au point d’accepter le médiocre et le nocif, comme si
-nous avions perdu la force ou la pénétration nécessaire pour exiger le bon ? »
+« Sommes-nous donc hypnotisés au point d’accepter le médiocre et le nocif, comme si nous avions perdu la force ou la pénétration nécessaire pour exiger le bon ? »
 — Rachel Carson, Printemps silencieux, 1962
 
 « Le comportement borné des hommes en face de la nature conditionne leur comportement borné entre eux » — Karl Marx, L’idéologie allemande, 1845
