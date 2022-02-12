@@ -69,6 +69,8 @@ body {
 
 
 
+
+
 @keyframes letter-effect {
     0% {
         color: var(--aec_white);
@@ -901,4 +903,13 @@ footer.footer a {
 .filters .btn-copy.copied {
     background-color: #EEE !important;
     color: var(--aec_violet);
+}
+
+/* lenteurs firefox */
+@supports (-moz-appearance:none) {
+   .page-index .jumb-bg svg path, .laec-def-lines svg path, .foot svg path {
+      stroke-dasharray: 0;
+      stroke-dashoffset: 0;
+      animation: none;
+   }
 }
