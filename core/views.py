@@ -78,7 +78,7 @@ def get_prev_next(id):
     nav = load_nav_tree()
     previd = nav[id]['prev_id']
     nextid = nav[id]['next_id']
-    logging.warning((previd,nav[nextid]))
+    
     if previd:
         if nav[previd]['entity'] == 'section':
             prev  = Article.objects.get(id = previd)
