@@ -9,7 +9,7 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404
 import os
 from elasticsearch import Elasticsearch
 from django.utils.html import strip_tags
-import pandas as pd
+#import pandas as pd
 from elasticsearch_dsl import Search
 from elasticsearch_dsl.connections import connections
 from elasticsearch_dsl import Q
@@ -78,7 +78,7 @@ def get_prev_next(id):
     nav = load_nav_tree()
     previd = nav[id]['prev_id']
     nextid = nav[id]['next_id']
-    
+
     if previd:
         if nav[previd]['entity'] == 'section':
             prev  = Article.objects.get(id = previd)
