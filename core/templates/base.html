@@ -46,7 +46,7 @@
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="628" />
         <meta property="og:url" content="{% if subject is None or subject.shortlink == None %} https://{{ host }}/ {%else% }
-        https://{{ host }}/{{subject.shortlink }}" />
+        https://{{ host }}/{{subject.shortlink }}{% endif %} />
         <meta property="fb:app_id" content="secret" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@yourtwitterid" />
