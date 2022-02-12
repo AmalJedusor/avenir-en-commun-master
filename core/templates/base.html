@@ -42,7 +42,7 @@
         <meta property="og:type" content="{{entity}}" />
         <meta property="og:title" content= "{% if title is None %} LAEC.fr – Le programme de Jean-Luc Mélenchon pour 2022 {% else %} {{title}} {% endif %}" />
         <meta property="og:description" content="{% if description is None %} L'Avenir En Commun, le programme de Jean-Luc Mélenchon pour l'union populaire 2022 en version intégrale {% else %} {{ description }} {% endif %}" />
-        <meta property="og:image" content="{% if subject is None or subject.shortlink == None  %} https://{{ host }}/static/img/card.png{% else %}https://{{ host }}/static/visuels/{{subject.shortlink }}.png{% endif %}" />
+        <meta property="og:image" content="{% if subject is None or subject.shortlink == ''  %} https://{{ host }}/static/img/card.png{% else %}https://{{ host }}/static/visuels/{{subject.shortlink }}.png{% endif %}" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="628" />
         <meta property="og:url" content="{% if subject is None or subject.shortlink == None %} https://{{ host }}/ {%else% }
