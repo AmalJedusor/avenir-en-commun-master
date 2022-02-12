@@ -5,6 +5,9 @@
 <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script>
 <!--<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>-->
 <style>
+
+  body { margin:0; padding:0; }
+
   .grid__item {
     transition: transform .2s;
   }
@@ -16,6 +19,7 @@
     left: 0;
     right: 0;
     bottom:0;
+    margin: 0px;
   }
   .form-control {
       font-size: 16px;
@@ -43,13 +47,15 @@
     padding-top: 7px;
     padding-bottom: 4px;
 }
+span.subtitle {
+  font-size: 16.5px;
+}
 </style>
 {% endblock %}
 {% block body %}
 
 
 {% include "_navbar.html" %}
-
 <div class="jumbotron ">
       <div class="container">
         <div class="panel panel-default panel-filters">
@@ -149,8 +155,10 @@
   })
 
 </script>
+<div id="footer_container">
 {% include '_footer.html' %}
 </div>
+
 
 
 
