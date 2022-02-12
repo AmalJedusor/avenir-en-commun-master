@@ -4,6 +4,7 @@
 
   {% if result.entity == 'externalpage' %}
   <a href="{{ result.url }}"
+     class="resultat"
      title="{{ result.title }}">
     <img src="/static/melenchon2022/{{ result.image }}" style="height:15rem;">
      <h2 class="h4">
@@ -24,7 +25,7 @@
       ...</p>
   </a>
 {% else %}
-  <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}"
+  <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}" class="resultat"
      title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
      <h2 class="h4">
        {%if result.meta.highlight.title %}

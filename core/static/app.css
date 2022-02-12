@@ -7923,7 +7923,7 @@ button.close {
     content: "\f03e"
 }
 
-.fa-pencil:before {
+.fa-pen:before {
     content: "\f040"
 }
 
@@ -13022,8 +13022,8 @@ ul#side-navigation span.alternate {
 }
 
 .toc .list-group-item h4 {
-
-    margin-bottom: 0
+  margin-bottom: 4px;
+      margin-top: 8px;
 }
 
 .toc .list-group-item .icon-bookmarked,
@@ -13041,7 +13041,7 @@ ul#side-navigation span.alternate {
 }
 
 .toc .list-group-item i.fa {
-    margin-top: 12.5px;
+    margin-top: 10.5px;
     margin-bottom: 12.5px;
 
 }
@@ -16910,22 +16910,22 @@ h6 .alternate,
 }
 
 .loading-animation .loading-bar:nth-child(1) {
-    background-color: #00b6cd;
+    background-color: #3F2682;
     animation-delay: 0
 }
 
 .loading-animation .loading-bar:nth-child(2) {
-    background-color: #c94e34;
+    background-color: #F53B3B;;
     animation-delay: 0.09s
 }
 
 .loading-animation .loading-bar:nth-child(3) {
-    background-color: #00b6cd;
+    background-color: #3F2682;
     animation-delay: 0.18s
 }
 
 .loading-animation .loading-bar:nth-child(4) {
-    background-color: #c94e34;
+    background-color: #F53B3B;;
     animation-delay: 0.27s
 }
 
