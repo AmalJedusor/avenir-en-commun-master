@@ -10,17 +10,21 @@ class Command(BaseCommand):
         import csv
         import io
         import re
-
-        response = requests.get('https://docs.google.com/spreadsheet/ccc?key=1NBkcDOXTXGwajAWpnueTUzihJ1z_j2ydD3dO6-iuA-k&output=csv')
-        assert response.status_code == 200, 'Wrong status code'
-        csvfile = io.StringIO(response.content.decode('utf8'))
-        csvfile.readline()
-        reader = csv.DictReader(csvfile)
-
-        import hashlib
         import json
         import os
 
+        try:
+            response = requests.get('https://docs.google.com/spreadsheet/ccc?key=1NBkcDOXTXGwajAWpnueTUzihJ1z_j2ydD3dO6-iuA-k&output=csv')
+            assert response.status_code == 200, 'Wrong status code'
+            csvfile = io.StringIO(response.content.decode('utf8'))
+            csvfile.readline()
+            reader = csv.DictReader(csvfile)
+            with open(os.path.join('core','data','gsheet.json'),'w') as f:
+                f.write(json.dumps(list(reader)))
+        except:
+            with open(os.path.join('core','data','gsheet.json'),'r') as f:
+                reader = json.loads(f.read())
+        import hashlib
         sections_path = os.path.join('generation_visuels','sections.json')
         if os.path.exists(sections_path):
             with open(sections_path,'r') as f:
@@ -49,7 +53,7 @@ class Command(BaseCommand):
         articles_md = dict((m.number,m) for m in Article.objects.all())
         chapters_md = dict((m.number,m) for m in Chapter.objects.all())
         parts_md = dict((m.number,m) for m in Part.objects.all())
-        print(len(parts_md))
+
 
         for row in reader:
             if row['PARTIE']!= partie:
