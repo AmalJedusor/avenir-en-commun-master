@@ -6,7 +6,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN echo -e "http://nl.alpinelinux.org/alpine/v3.12/main\nhttp://nl.alpinelinux.org/alpine/v3.12/community" > /etc/apk/repositories
+RUN echo -e "https://nl.alpinelinux.org/alpine/v3.12/main\nhttps://nl.alpinelinux.org/alpine/v3.12/community" > /etc/apk/repositories
 RUN apk update
 RUN apk add --no-cache mariadb-connector-c-dev
 RUN apk add bash tk python3 python3-dev mariadb-dev build-base
