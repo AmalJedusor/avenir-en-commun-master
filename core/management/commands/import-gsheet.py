@@ -19,11 +19,13 @@ class Command(BaseCommand):
             csvfile = io.StringIO(response.content.decode('utf8'))
             csvfile.readline()
             reader = csv.DictReader(csvfile)
+            reader = list(reader)
             with open(os.path.join('core','data','gsheet.json'),'w') as f:
-                f.write(json.dumps(list(reader)))
+                f.write(json.dumps(reader))
         except:
             with open(os.path.join('core','data','gsheet.json'),'r') as f:
                 reader = json.loads(f.read())
+
         import hashlib
         sections_path = os.path.join('generation_visuels','sections.json')
         if os.path.exists(sections_path):
@@ -71,6 +73,7 @@ class Command(BaseCommand):
                 chapitre = row['CHAPITRE'].strip()
                 nchapitre += 1
                 chapters_md[str(nchapitre)].page = row['PAGE']
+
                 chapters_md[str(nchapitre)].shortlink = "c{chapitre}".format(chapitre=nchapitre)
                 chapters_md[str(nchapitre)].save()
 
