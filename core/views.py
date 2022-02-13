@@ -2,7 +2,7 @@
 from random import choice
 from django.shortcuts import render, redirect
 import markdown
-from .models import Chapter, Article, Measure, Part, UrlData
+from .models import Chapter, Article, Measure, Part, UrlData, ExternalPage
 from haystack.query import SQ
 
 from django.http import HttpResponse, HttpResponseNotFound, Http404
@@ -427,21 +427,18 @@ def visuel(request, v):
 
 grid_nbitems = 21
 
-def grid(request,p=0):
-    chapitres=sorted(Chapter.objects.all(), key=lambda x:int(x.number))
-    if p>0:
-        measures = [m for m in mesures_list if m['nchapitre'] == int(p)][:grid_nbitems]
-    else:
-        measures = mesures_list[:grid_nbitems]
 
-    return render(request, "visuels/grid.html",dict(p=str(p),mesures=measures,chapitres=chapitres))
-
-def grid_page(request,p,gp):
+livrets_nbitems = 20
+def livrets_plans(request,p=0):
+    ext_list = sorted(ExternalPage.objects.all(), key=lambda x:x.doctype)
+    livrets = [e for e in ext_list if e.doctype == 'Livret']
+    plans = [e for e in ext_list if e.doctype == 'Plan']
     if p>0:
-        measures = [m for m in mesures_list if m['nchapitre'] == int(p)][(gp-1)*grid_nbitems:gp*grid_nbitems]
+        exts = ext_list[(p-1)*livrets_nbitems:p*livrets_nbitems]
     else:
-        measures = mesures_list[(gp-1)*grid_nbitems:gp*grid_nbitems]
-    return render(request, "visuels/grid_page.html",dict(mesures=measures))
+        exts = ext_list[:livrets_nbitems]
+
+    return render(request, "livrets_plans.html",dict(livrets=livrets, plans=plans, hosts=settings.PROD_HOST))
 
 import unidecode
 

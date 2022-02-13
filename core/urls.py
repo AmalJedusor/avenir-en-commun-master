@@ -28,6 +28,7 @@ urlpatterns = [
     path('visuels',views.visuels),
     path('visuels/<int:p>',views.visuels),
     path('visuels/<int:p>/<int:gp>',views.visuels),
+    path('livrets-et-plans',views.livrets_plans),
     path('404',views.error_404),
 
 ]
