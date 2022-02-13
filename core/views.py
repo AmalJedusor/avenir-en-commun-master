@@ -438,7 +438,7 @@ def livrets_plans(request,p=0):
     else:
         exts = ext_list[:livrets_nbitems]
 
-    return render(request, "livrets_plans.html",dict(livrets=livrets, plans=plans, hosts=settings.PROD_HOST))
+    return render(request, "livrets_plans.html",dict(livrets=livrets, plans=plans, host=settings.PROD_HOST))
 
 import unidecode
 
