@@ -10575,7 +10575,7 @@ __app.aos = {
         AOS.init({
             easing: a.options.easing,
             duration: a.options.duration,
-
+            disable: 'mobile',
         })
     },
     remove: function() {

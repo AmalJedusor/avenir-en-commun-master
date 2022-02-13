@@ -315,8 +315,8 @@ body {
 
 .page-index .jumbotron .btn-cta {
     box-shadow: 0.5px 0.5px 0 #b4f7ff, 1px 1px 0 #aef6ff, 1.5px 1.5px 0 #a9f5ff, 2px 2px 0 #a4f5ff, 2.5px 2.5px 0 #9ff4ff, 3px 3px 0 #9ff4ff, 3.5px 3.5px 0 #9af4ff, 4px 4px 0 #9af4ff, 4.5px 4.5px 0 #95f3ff, 3px 4px 20px rgb(0 0 0 / 40%);
-    background-color: var(--aec_white);
-    color: var(--aec_violet) !important;
+    background-color: var(--aec_red);
+    color: var(--aec_white) !important;
     text-shadow: none;
     border: 1px solid transparent;
 }
