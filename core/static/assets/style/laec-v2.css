@@ -162,6 +162,12 @@ body {
     font-size: 14px;
 }
 
+@media all and (min-width: 992px) and (max-width: 1200px) {
+    #searchbox {
+        width: 14rem;
+    }
+}
+
 #searchbox::-webkit-input-placeholder {
     font-size: 14px;
 }
