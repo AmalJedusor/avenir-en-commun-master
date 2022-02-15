@@ -13165,7 +13165,7 @@ ul#side-navigation span.alternate {
 @media all and (max-width: 630px) {
     .page-search .jumbotron .search-terms {
         font-size: 20px;
-        margin-top: 18px;
+        margin-top: 9px;
     }
 }
 .page-search .jumbotron input.search-terms::placeholder {
