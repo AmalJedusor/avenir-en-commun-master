@@ -13130,6 +13130,12 @@ ul#side-navigation span.alternate {
     font-size: 51px
 }
 
+@media all and (max-width: 630px) {
+    .page-search .jumbotron .search-addon {
+        font-size: 40px;
+    }
+}
+
 .js .page-search .jumbotron .form-instant-search [type="submit"] {
     outline: none !important
 }
@@ -13155,6 +13161,12 @@ ul#side-navigation span.alternate {
     -o-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
     text-shadow: 0.5px 0.5px 0 #9a7fe4, 1px 1px 0 #9a7fe4, 1.5px 1.5px 0 #9a7fe4, 2px 2px 0 #9a7fe4, 1.5px 1.5px 10px rgb(0 0 0 / 30%);
+}
+@media all and (max-width: 630px) {
+    .page-search .jumbotron .search-terms {
+        font-size: 20px;
+        margin-top: 18px;
+    }
 }
 .page-search .jumbotron input.search-terms::placeholder {
   color: white;
