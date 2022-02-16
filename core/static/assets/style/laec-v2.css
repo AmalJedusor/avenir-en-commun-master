@@ -197,7 +197,7 @@ body {
     right: 0;
     height: 30px;
     transform: translateY(-30px);
-    background-image: url('../svg/wave.svg');
+    background-image: url('/static/assets/svg/wave.svg');
     background-position: center;
     background-size: 100% 30px;
     background-repeat: no-repeat;
@@ -721,7 +721,7 @@ section.laec-def .btn-def .btn-cta:hover {
 
 .page-toc .jumbotron::after {
     content: "";
-    background-image: url(../../img/livre.png);
+    background-image: url(/static/img/livre.png);
     position: absolute;
     top: 0;
     right: 0;

@@ -6,14 +6,7 @@
 
 
 <body id="body">
-   <div class="visible-print-block text-center print-logotype" aria-hidden="true">
-      <img src="/img/logotype/livre-phi-laec-fr-mention-impression.svg" style="max-height: 70px; width: auto;"
-         alt="Logotype l'avenir en commun" data-no-svg-src="/img/logotype/livre-phi-laec-fr-mention-impression.png" />
-      <hr>
-      <small>Le programme de la
-         <strong>France insoumise</strong>
-      </small>
-   </div>
+   
    {% include "_navbar.html" %}
 
    <div class="theme-part-{{subject.chapter.part_number}} jumbotron" aria-hidden="true">
@@ -144,6 +137,6 @@
       <a data-popup-dimensions="430,284" href="https://twitter.com/intent/tweet?text=Voici une des mesures de l'%23AvenirEnCommun pour laquelle je vais voter %23Melenchon2022 🗳️ https://{{host}}/s{{subject.number}}m{{measure.number}} https://{{host}}/s{{subject.number}}m{{measure.number}}" class="btn btn-default share-link" data-network="Twitter" title="Partager cette mesure sur twitter"><span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i></a></nav></div></div></div></div></div></div><div class="collapse collapsablepageref-collapsable" id="panel-m-pageref-{{measure.number}}"><div class="panel-wrap"><div class="panel panel-default"><div class="panel-heading">L'Avenir en commun</div><div class="panel-body"><div class="row"><div class="col-sm-2 col-sm-push-10 hidden-xs"><img src="/static/img/livrefront_small.jpg" alt="Couverture du livre-programme aux publié aux éditions du Seuil" class="img-responsive img-thumbnail"></div><div class="col-sm-10 col-sm-pull-2"><p>Retrouvez ce passage à la <strong>page {{measure.page}}</strong> du livre-programme de la France insoumise, publié aux <a href="http://www.seuil.com/ouvrage/l-avenir-en-commun-jean-luc-melenchon/9782021317510" class="external" title="Le programme sur le site officiel des éditions du Seuil">éditions du Seuil</a> et trouvable dans toutes les <a class="external" title="«&nbsp;Les libraires&nbsp;», réseau de librairies indépendantes" href="https://www.leslibraires.fr/le_reseau/">librairies</a> au prix de <strong>3&nbsp;€</strong>.</p><p>Vous pouvez aussi l'obtenir dans des magasins en lignes tels qu'<a href="https://www.amazon.fr/programme-insoumise-candidat-Jean-Luc-M%C3%A9lenchon/dp/202131751X/" class="external">Amazon</a> ou la <a href="http://livre.fnac.com/a9371063/Jean-Luc-Melenchon-L-avenir-en-commun" class="external">Fnac</a>, ou encore le commander via internet chez un <a class="external" title="Trouver «L'Avenir en commun&nbsp;» dans le réseau «&nbsp;les libraires&nbsp;»" href="https://www.leslibraires.fr/livre/9275770-l-avenir-en-commun-le-programme-de-la-france-i--jean-luc-melenchon-le-seuil">libraire indépendant</a> proche de chez vous.</p></div></div></div></div></div></div></div></div></div></div>
 
 {% endfor %}
-<script src="/js/app.js?damperate"></script>
+
 </body>
 {% endblock %}
