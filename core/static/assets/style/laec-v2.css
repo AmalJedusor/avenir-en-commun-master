@@ -922,10 +922,3 @@ footer.footer a {
     background-color: #EEE !important;
     color: var(--aec_violet);
 }
-
-@media screen and (min-width: 1200px) {
-    .grid__item img {
-      min-height: 390px;
-      object-fit: cover;
-    }
-}
