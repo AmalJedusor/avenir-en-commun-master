@@ -13191,6 +13191,9 @@ __app.totalLoading = {
         __app.__body.append('<div class="' + a + '"></div>');
         $('.' + a).prepend(o);
         __app.__document.on('click', t.options.selector, function() {
+            if ($(this).attr('id') === 'back-to-top') {
+                return;
+            }
             t.start()
         });
         __app.__document.on('submit', '.form-total-loading', function() {
