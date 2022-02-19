@@ -29,6 +29,7 @@
 {% else %}
   <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}" class="resultat"
      title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
+     <article>
      <h2 class="h4">
        {%if result.meta.highlight.title %}
        {{ result.meta.highlight.title | first  | safe }}
@@ -54,5 +55,6 @@
       {{result.content | striptags | safe |slice:":300" }}
       {% endif %}
       ...</p>
+    </article>
   </a>
 {% endif %}
