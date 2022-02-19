@@ -6,7 +6,7 @@
   <ul role="navigation" id="side-navigation">
 
     <li class="hasard">
-      <a title="Consulter une section du programme au hasard" data-load-display href="/hasard"><i
+      <a title="Consulter une section du programme au hasard" data-load-display href="/hasard" class="link--no-outline"><i
           class="fa fa-fw fa-random" aria-hidden="true"></i> Au hasard !</a>
     </li>
 
@@ -26,7 +26,7 @@
     {% if next %}
     <li{% if next.part_number != subject.part_number %} class="theme-part-{{ next.part_number }}"{% endif %}>
       <label>{{ next.desc }}</label>
-      <a href="{{next.url}}{{next.number}}/{{next.slug}}" rel="{{ rel }}" title="{{ next.desc }}" data-load-display>
+      <a href="{{next.url}}{{next.number}}/{{next.slug}}" rel="{{ rel }}" title="{{ next.desc }}" data-load-display class="link--no-outline">
         <i class="fa fa-fw fa-arrow-right" aria-hidden="true"></i>
         {% if next.entity == 'section' %} {{ next.number }} . {{ next.title }}</a>   {% else %}
         <span class="alternate">{{ next.sub_title }} </span>{{ next.main_title }} </a>
@@ -37,7 +37,7 @@
     {% if prev %}
     <li{% if prev.part_number != subject.part_number %} class="theme-part-{{ prev.part_number }}"{% endif %}>
       <label>{{ prev.desc }}</label>
-      <a href="{{prev.url}}{{prev.number}}/{{prev.slug}}" rel="{{ rel }}" title="{{ prev.desc }}" data-load-display>
+      <a href="{{prev.url}}{{prev.number}}/{{prev.slug}}" rel="{{ rel }}" title="{{ prev.desc }}" data-load-display class="link--no-outline">
       <i class="fa fa-fw fa-arrow-left" aria-hidden="true"></i>
         {% if  prev.entity == 'section' %} {{ prev.number }} . {{ prev.title }}</a>  {% else %}
         <span class="alternate"> {{ prev.sub_title }}  </span> {{ prev.main_title }} </a>
@@ -46,11 +46,11 @@
     {% endif %}
 
     {% if subject.entity == 'section' %}
-    <li><label>Préface de la partie</label><a href="/partie/{{subject.chapter.part.number}}/{{subject.chapter.part.slug}}" rel="contents" title="Préface du chapitre" data-load-display="">
+    <li><label>Préface de la partie</label><a href="/partie/{{subject.chapter.part.number}}/{{subject.chapter.part.slug}}" rel="contents" title="Préface du chapitre" data-load-display="" class="link--no-outline">
       <i class="fa fa-fw fa-arrow-up" aria-hidden="true"></i><span class="alternate">{{subject.chapter.main_title}} </span>{{subject.chapter.sub_title}}</a></li>
 
     {% else %}
-    <li class="theme-part-0"><label>Retour au sommaire</label><a href="/sommaire" rel="contents" title="Retour au sommaire" data-load-display="">
+    <li class="theme-part-0"><label>Retour au sommaire</label><a href="/sommaire" rel="contents" title="Retour au sommaire" data-load-display="" class="link--no-outline">
       <i class="fa fa-fw fa-list-ul" aria-hidden="true"></i>Table des matières</a></li>
 
     {% endif %}

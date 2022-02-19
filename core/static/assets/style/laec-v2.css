@@ -968,3 +968,8 @@ footer.footer a {
     outline: none;
     text-decoration: none;
 }
+
+.link--no-outline {
+    outline: none !important;
+    /* I hate !important, it should never be used, but I had no choice */
+}

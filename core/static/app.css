@@ -11783,7 +11783,7 @@ ul#side-navigation li:not(.heading):focus a {
 }
 
 ul#side-navigation li:not(.heading):hover .fa,
-ul#side-navigation li:not(.heading):focus .fa {
+ul#side-navigation li:not(.heading):focus-within .fa {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
