@@ -952,18 +952,19 @@ footer.footer a {
 
 .jump-link:focus {
     position: fixed;
-    top: .5rem;
+    top: .75rem;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 99999;
     height: auto;
     width: fit-content;
-    padding: .1rem .5rem;
+    padding: .5rem 1rem;
     margin: auto;
     overflow: auto;
-    clip-path: auto;
+    clip-path: none;
     border-radius: .25rem;
     color: var(--aec_white);
     background-color: var(--aec_red);
     outline: none;
+    text-decoration: none;
 }
