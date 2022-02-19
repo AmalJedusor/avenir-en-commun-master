@@ -11770,7 +11770,7 @@ ul#side-navigation li {
 }
 
 ul#side-navigation li:not(.heading):hover,
-ul#side-navigation li:not(.heading):focus {
+ul#side-navigation li:not(.heading):focus-within {
     transform: scale(1.02);
     z-index: 10;
     -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
