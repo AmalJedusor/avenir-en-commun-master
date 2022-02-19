@@ -8229,7 +8229,7 @@ button.close {
 }
 
 .fa-external-link:before {
-    content: "\f08e"
+    content: "\f08e" !important
 }
 
 .fa-sign-in:before {
