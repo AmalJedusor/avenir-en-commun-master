@@ -938,3 +938,32 @@ footer.footer a {
 #last-footer--legal {
     order: 1;
 }
+
+.jump-link {
+    border: 0;
+    padding: 0;
+    clip-path: inset(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute;
+}
+
+.jump-link:focus {
+    position: fixed;
+    top: .5rem;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: auto;
+    width: fit-content;
+    padding: .1rem .5rem;
+    margin: auto;
+    overflow: auto;
+    clip-path: auto;
+    border-radius: .25rem;
+    color: var(--aec_white);
+    background-color: var(--aec_red);
+    outline: none;
+}
