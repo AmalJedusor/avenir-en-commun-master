@@ -11765,18 +11765,21 @@ ul#side-navigation li {
     cursor: pointer
 }
 
-ul#side-navigation li:not(.heading):hover {
+ul#side-navigation li:not(.heading):hover,
+ul#side-navigation li:not(.heading):focus {
     transform: scale(1.02);
     z-index: 10;
     -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3)
 }
 
-ul#side-navigation li:not(.heading):hover a {
+ul#side-navigation li:not(.heading):hover a,
+ul#side-navigation li:not(.heading):focus a {
     text-decoration: underline
 }
 
-ul#side-navigation li:not(.heading):hover .fa {
+ul#side-navigation li:not(.heading):hover .fa,
+ul#side-navigation li:not(.heading):focus .fa {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
@@ -12767,12 +12770,14 @@ ul#side-navigation span.alternate {
     color: #3f2682 !important
 }
 
-.toc-chapter-0:hover {
+.toc-chapter-0:hover,
+.toc-chapter-0:focus {
     background-color: #24164c !important;
     border-color: #24164c !important
 }
 
-.toc-chapter-0:hover span.label {
+.toc-chapter-0:hover span.label,
+.toc-chapter-0:focus span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
@@ -12790,12 +12795,14 @@ ul#side-navigation span.alternate {
     color: #EC8900 !important
 }
 
-.toc-chapter-1:hover {
+.toc-chapter-1:hover,
+.toc-chapter-1:focus {
     background-color: #EC8900 !important;
     border-color: #EC8900 !important
 }
 
-.toc-chapter-1:hover span.label {
+.toc-chapter-1:hover span.label,
+.toc-chapter-1:focus span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
@@ -12813,12 +12820,14 @@ ul#side-navigation span.alternate {
     color: #32BF7C !important
 }
 
-.toc-chapter-2:hover {
+.toc-chapter-2:hover,
+.toc-chapter-2:focus {
     background-color: #32BF7C !important;
     border-color: #32BF7C !important
 }
 
-.toc-chapter-2:hover span.label {
+.toc-chapter-2:hover span.label,
+.toc-chapter-2:focus span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
@@ -12836,12 +12845,14 @@ ul#side-navigation span.alternate {
     color: #EF6464 !important
 }
 
-.toc-chapter-3:hover {
+.toc-chapter-3:hover,
+.toc-chapter-3:focus {
     background-color: #EF6464 !important;
     border-color: #EF6464 !important
 }
 
-.toc-chapter-3:hover span.label {
+.toc-chapter-3:hover span.label,
+.toc-chapter-3:focus span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
@@ -12859,12 +12870,14 @@ ul#side-navigation span.alternate {
     color: #3F2682 !important
 }
 
-.toc-chapter-4:hover {
+.toc-chapter-4:hover,
+.toc-chapter-4:focus {
     background-color: #3F2682 !important;
     border-color: #3F2682 !important
 }
 
-.toc-chapter-4:hover span.label {
+.toc-chapter-4:hover span.label,
+.toc-chapter-4:focus span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
@@ -12881,12 +12894,14 @@ ul#side-navigation span.alternate {
     color: #5B92E5 !important
 }
 
-.toc-chapter-5:hover {
+.toc-chapter-5:hover,
+.toc-chapter-5:focus {
     background-color: #5B92E5 !important;
     border-color: #5B92E5 !important
 }
 
-.toc-chapter-5:hover span.label {
+.toc-chapter-5:hover span.label,
+.toc-chapter-5:focus span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
@@ -12902,12 +12917,14 @@ ul#side-navigation span.alternate {
     color: #e8a707 !important
 }
 
-.toc-chapter-6:hover {
+.toc-chapter-6:hover,
+.toc-chapter-6:focus {
     background-color: #f8b81b !important;
     border-color: #f8b81b !important
 }
 
-.toc-chapter-6:hover span.label {
+.toc-chapter-6:hover span.label,
+.toc-chapter-6:focus span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
@@ -12925,12 +12942,14 @@ ul#side-navigation span.alternate {
     color: #349791 !important
 }
 
-.toc-chapter-7:hover {
+.toc-chapter-7:hover,
+.toc-chapter-7:focus {
     background-color: #3F2682 !important;
     border-color: #3F2682 !important
 }
 
-.toc-chapter-7:hover span.label {
+.toc-chapter-7:hover span.label,
+.toc-chapter-7:focus span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
@@ -12948,12 +12967,14 @@ ul#side-navigation span.alternate {
     color: #d6402f !important
 }
 
-.toc-chapter-8:hover {
+.toc-chapter-8:hover,
+.toc-chapter-8:focus {
     background-color: #d6402f !important;
     border-color: #d6402f !important
 }
 
-.toc-chapter-8:hover span.label {
+.toc-chapter-8:hover span.label,
+.toc-chapter-8:focus span.label {
     opacity: 0.5;
     color: #fff;
     border-color: #fff
@@ -13063,7 +13084,8 @@ ul#side-navigation span.alternate {
     color: inherit !important
 }
 
-.toc .list-group-item:hover {
+.toc .list-group-item:hover,
+.toc .list-group-item:focus {
     color: #fff !important;
     transform: scale(1.02);
     z-index: 10;
@@ -17117,12 +17139,3 @@ h6 .alternate,
     font-family: "FontAwesome";
     content: "\f135";
   }
-
-
-/* no click on chapters unless 12*/
-[id^=chapitre] {
-    pointer-events: none;
-}
-[id=chapitre-12] {
-    pointer-events: all;
-    }
