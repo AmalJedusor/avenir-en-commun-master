@@ -922,3 +922,19 @@ footer.footer a {
     background-color: #EEE !important;
     color: var(--aec_violet);
 }
+
+.last-footer {
+    display: flex;
+}
+
+#last-footer--search {
+    order: 3;
+}
+
+#last-footer--contact {
+    order: 2;
+}
+
+#last-footer--legal {
+    order: 1;
+}
