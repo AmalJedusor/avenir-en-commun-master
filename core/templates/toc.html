@@ -22,7 +22,7 @@
             {% for part in parts %}
             <a
                id="partie-{{part.number}}"
-               class="list-group-item toc-chapter toc-chapter-{{part.number}}"
+               class="list-group-item toc-chapter toc-chapter-{{part.number}} --no-outline"
                href="/partie/{{part.number}}/{{part.slug}}">
                <i class="fa fa-fw fa-2x fa-pull-right icon icon-part-{{part.number}}" aria-hiddent="true"></i>
                                  <h3>{{part.title}}</h3>
@@ -35,7 +35,7 @@
             {% for chapter in part.chapters_ordered %}
                <a
                   id="chapitre-{{chapter.number}}"
-                  class="list-group-item toc-chapter toc-chapter-{{part.number}}"
+                  class="list-group-item toc-chapter toc-chapter-{{part.number}} --no-outline"
                   href="/chapitre/{{chapter.number}}/{{chapter.slug}}">
 
                   {% if chapter.main_title %}
@@ -47,7 +47,7 @@
                </a>
                   {% for article in chapter.article_set.all %}
                   <a
-                     class="list-group-item toc-section toc-chapter-{{part.number}}"
+                     class="list-group-item toc-section toc-chapter-{{part.number}} --no-outline"
                      href="/section/{{article.number}}/{{article.slug}}">
                      <span class="label label-default">{{article.number}}</span> {{article.title}}
                   </a>
