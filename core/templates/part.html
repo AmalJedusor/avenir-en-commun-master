@@ -13,7 +13,7 @@
 
 
 
-                <b class="text-balance">{{ subject.main_title }}</b>
+                <b class="text-balance" tabindex="0">{{ subject.main_title }}</b>
             </h1>
 
             <p class="sidelines"><i class="fa icon-part-{{ subject.number }}"></i></p>
@@ -33,7 +33,7 @@
                     <section class="content-text parsedown">
                         <div class="subject-body">
                             <div class="semi-lead subject-foreword">
-                                <p>
+                                <p tabindex="0">
 
                                    {{ subject.forewords | safe | linebreaksbr  }}
                              </p>
