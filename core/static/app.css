@@ -13308,7 +13308,8 @@ span.search-results-count strong.suggestion:hover {
     transition: all 0.15s ease-out
 }
 
-.list-measures .list-group-item:hover {
+.list-measures .list-group-item:hover,
+.list-measures .list-group-item:focus-within {
     transform: scale(1.02);
     z-index: 10;
     -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);

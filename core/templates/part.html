@@ -47,7 +47,7 @@
                         <nav class="toc" role="navigation">
                             <ul class="toc list-group">
                                 {% for article in subject.chapter_ordered %}
-                                <a class="list-group-item toc-section toc-chapter-{{subject.number}}"
+                                <a class="list-group-item toc-section toc-chapter-{{subject.number}} --no-outline"
                                     href="/chapitre/{{article.number}}/{{article.slug}}">
                                     <span class="label label-default">{{article.number}}</span> {{article.title}}
                                 </a>
