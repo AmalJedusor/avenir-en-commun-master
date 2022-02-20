@@ -4,7 +4,7 @@
 {% block body %}
 
 <body id="body">
-    
+    {% include "_jump_link.html" %}
     {% include "_navbar.html" %}
     <div class="theme-part-{{subject.number}} jumbotron" aria-hidden="true">
         <div class="container">
@@ -13,7 +13,7 @@
 
 
 
-                <b class="text-balance">{{ subject.main_title }}</b>
+                <b class="text-balance" tabindex="0">{{ subject.main_title }}</b>
             </h1>
 
             <p class="sidelines"><i class="fa icon-part-{{ subject.number }}"></i></p>
@@ -21,7 +21,7 @@
                     class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
         </div>
     </div>
-    <div class="wrap-container-main">
+    <div class="wrap-container-main" id="main">
         <div class="container container-main">
             <div class="row">
                 {% include '_sectionsidebar.html' %}
@@ -33,7 +33,7 @@
                     <section class="content-text parsedown">
                         <div class="subject-body">
                             <div class="semi-lead subject-foreword">
-                                <p>
+                                <p tabindex="0">
 
                                    {{ subject.forewords | safe | linebreaksbr  }}
                              </p>

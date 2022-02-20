@@ -5,7 +5,7 @@
 {% block body %}
 
 <body id="body">
-  
+    {% include "_jump_link.html" %}
     {% include "_navbar.html" %}
     <div class="theme-part theme-part-{{subject.part_number}} jumbotron" aria-hidden="true">
         <div class="container">
@@ -22,7 +22,7 @@
                     class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
         </div>
     </div>
-    <div class="wrap-container-main">
+    <div class="wrap-container-main" id="main">
         <div class="container container-main">
             <div class="row">
                 {% include '_sectionsidebar.html' %}
@@ -39,7 +39,7 @@
                     {% if subject.number != "0" %}
                     <section class="part-toc theme-part-{{subject.part_number}}">
                         <header class="page-header">
-                            <h2 class="h4"><i class="fa fa-fw fa-list-ul"></i> Sommaire du chapitre</h2>
+                            <h2 class="h4" tabindex="0"><i class="fa fa-fw fa-list-ul" aria-hidden="true"></i> Sommaire du chapitre</h2>
                         </header>
                         <nav class="toc" role="navigation">
                             <ul class="toc list-group">
