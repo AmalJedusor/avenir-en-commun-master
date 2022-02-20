@@ -3,6 +3,7 @@
 {% block body %}
 
 <body id="body" class="page-search page-search-results">
+   {% include "_jump_link.html" %}
    {% include "_navbar.html" %}
 
 
@@ -14,7 +15,7 @@
 
    <div class="jumbotron">
       <form class="container form-total-loading " method='GET' action="/recherche">
-         <div class="input-group">
+         <div class="input-group" id="main">
             <span class="input-group-btn">
                <button class="search-addon" type="submit" title="Effectuer une recherche sur « L'avenir en commun »">
                   <i class="fa fa-fw fa-search" aria-hidden="true"></i>
@@ -31,9 +32,9 @@
             data-prototype="<strong>__total__</strong> occurence__plural__ pour « <strong>__query__</strong> » dans « {{ site_long_name }} »">
             {% if not query %}<i class="fa fa-fw fa-lightbulb-o" aria-hidden="true"></i> Pourquoi ne pas
             essayer
-            ci-dessus des termes tels que <a href="/recherche?q=partage"><strong class="suggestion">partage</strong></a>, <a href="/recherche?q=écologie"><strong class="suggestion">écologie</strong></a>, <a href="/recherche?q=santé"><strong class="suggestion">santé</strong></a>,
-              <a href="/recherche?q=industrie"><strong class="suggestion">industrie</strong></a>, <a href="/recherche?q=économie"><strong class="suggestion">économie</strong></a>, <a href="/recherche?q=planification"><strong class="suggestion">planification</strong></a>, <a href="/recherche?q=transition"><strong class="suggestion">transition</strong></a>, <a href="/recherche?q=indépendance"><strong class="suggestion">indépendance</strong></a>,
-              <a href="/recherche?q=Europe"><strong class="suggestion">Europe</strong></a>, <a href="/recherche?q=finance"><strong class="suggestion">finance</strong></a>, <a href="/recherche?q=protectionnisme"><strong class="suggestion">protectionnisme</strong></a>, <a href="/recherche?q=laïcité"><strong class="suggestion">laïcité</strong></a>, <a href="/recherche?q=coopération"><strong class="suggestion">coopération</strong></a>, etc.
+            ci-dessus des termes tels que <a href="/recherche?q=partage" tabindex="-1"><strong class="suggestion">partage</strong></a>, <a href="/recherche?q=écologie" tabindex="-1"><strong class="suggestion">écologie</strong></a>, <a href="/recherche?q=santé" tabindex="-1"><strong class="suggestion">santé</strong></a>,
+              <a href="/recherche?q=industrie" tabindex="-1"><strong class="suggestion">industrie</strong></a>, <a href="/recherche?q=économie" tabindex="-1"><strong class="suggestion">économie</strong></a>, <a href="/recherche?q=planification" tabindex="-1"><strong class="suggestion">planification</strong></a>, <a href="/recherche?q=transition" tabindex="-1"><strong class="suggestion">transition</strong></a>, <a href="/recherche?q=indépendance" tabindex="-1"><strong class="suggestion">indépendance</strong></a>,
+              <a href="/recherche?q=Europe" tabindex="-1"><strong class="suggestion">Europe</strong></a>, <a href="/recherche?q=finance" tabindex="-1"><strong class="suggestion">finance</strong></a>, <a href="/recherche?q=protectionnisme" tabindex="-1"><strong class="suggestion">protectionnisme</strong></a>, <a href="/recherche?q=laïcité" tabindex="-1"><strong class="suggestion">laïcité</strong></a>, <a href="/recherche?q=coopération" tabindex="-1"><strong class="suggestion">coopération</strong></a>, etc.
             {% else %}
             « <strong>{{ request|title }}</strong> »
             {% if laec_count > 0 %}

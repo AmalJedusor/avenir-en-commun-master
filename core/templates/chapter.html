@@ -5,7 +5,7 @@
 {% block body %}
 
 <body id="body">
-  
+    {% include "_jump_link.html" %}
     {% include "_navbar.html" %}
     <div class="theme-part theme-part-{{subject.part_number}} jumbotron" aria-hidden="true">
         <div class="container">
@@ -22,7 +22,7 @@
                     class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
         </div>
     </div>
-    <div class="wrap-container-main">
+    <div class="wrap-container-main" id="main">
         <div class="container container-main">
             <div class="row">
                 {% include '_sectionsidebar.html' %}
