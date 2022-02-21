@@ -22,7 +22,7 @@ class Command(BaseCommand):
 
         def get_elements(etype,url):
             import json
-            try:
+            if 1:
                 html =  get_html(url)
                 elts = html.xpath('//article[contains(@class,"category-'+etype.lower()+'")]/a/@href')
                 imgs = html.xpath('//article[contains(@class,"category-'+etype.lower()+'")]/a/div/img/@data-src')
@@ -38,7 +38,7 @@ class Command(BaseCommand):
                     txt_content = "\n".join(html.xpath('//div[@class="elementor-widget-container"]/h2[not(@class)]/parent::*//text()'))
                     epdata = dict(
                         id = self._id,
-                        markdown =  markdownify.markdownify(content),
+                        markdown =  '',  #markdownify.markdownify(content),
                         entity="externalpage",
                         title=title.strip(),
                         doctype=etype,
@@ -57,7 +57,7 @@ class Command(BaseCommand):
                 print(json_backup)
                 with open(os.path.join('core','data',etype+'.json'),'w') as f:
                     f.write(json.dumps(json_backup))
-            except:
+            else: #except:
                 print("backup")
                 with open(os.path.join('core','data',etype+'.json'),'r') as f:
                     json_backup = json.loads(f.read())
