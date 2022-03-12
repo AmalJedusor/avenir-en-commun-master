@@ -29,7 +29,7 @@ class Command(BaseCommand):
                 json_backup = []
                 for i,elt_url in enumerate(elts):
                     html = get_html(elt_url)
-                    title = html.xpath('//title/text()')[0].split('-')[0]
+                    title = html.xpath('//title/text()')[0].split(' -')[0]
 
                     nodes = html.xpath('//div[@class="elementor-widget-container"]/h2[not(@class)]/parent::*')
                     content = lxml.html.tostring(nodes[0], pretty_print=True, method="html")
