@@ -25,7 +25,7 @@ class Command(BaseCommand):
             if 1:
                 html =  get_html(url)
                 elts = html.xpath('//article[contains(@class,"category-'+etype.lower()+'")]/a/@href')
-                imgs = html.xpath('//article[contains(@class,"category-'+etype.lower()+'")]/a/div/img/@data-src')
+                imgs = html.xpath('//article[contains(@class,"category-'+etype.lower()+'")]/a/div/img/@src')
                 json_backup = []
                 for i,elt_url in enumerate(elts):
                     html = get_html(elt_url)
@@ -54,7 +54,7 @@ class Command(BaseCommand):
                     with open(os.path.join(path,img),'wb') as f:
                         f.write(requests.get(imgs[i]).content)
 
-                print(json_backup)
+                #print(json_backup)
                 with open(os.path.join('core','data',etype+'.json'),'w') as f:
                     f.write(json.dumps(json_backup))
             else: #except:
